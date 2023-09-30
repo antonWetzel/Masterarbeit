@@ -10,17 +10,21 @@
 	document
 }
 
+
 = Exposé
+
 
 == Problem
 
 Informationsgewinnung über Bäume aus Messdaten von Wäldern.
+
 
 === Eingabe
 
 - 3D Punktwolken (präferiert)
 	- nur Positionen
 - Bilder
+
 
 === Zwischenformate
 
@@ -61,6 +65,7 @@ Informationsgewinnung über Bäume aus Messdaten von Wäldern.
 - Forschung
 	- ...
 
+
 == Referenzen
 
 - https://dl.acm.org/doi/10.1109/TVCG.2015.2513409
@@ -71,6 +76,9 @@ Informationsgewinnung über Bäume aus Messdaten von Wäldern.
 - https://dl.acm.org/doi/10.1145/3478513.3480486
 \
 - https://www.3dforest.eu/
+- https://github.com/apburt/treeseg
+- https://github.com/VUKOZ-OEL/3d-forest
+
 
 == Anderes
 
