@@ -13,49 +13,51 @@
 
 = Exposé
 
+#pad(x: 1.5cm, align(center)[
+	*Berechnung von Eigenschaften aus 3D-Punktwoken von Wäldern und Visualiserung der 3D-Daten mit Hilfe der Eigenschaften*
+])
 
-== Problem
+== Motivation
 
-Informationsgewinnung über Bäume aus Messdaten von Wäldern.
+Zuerst werden für jeden Baum die Eigenschaften berechnet. Dafür werden die 3D-Daten eingelesen, die Berechnung für jeden Baum durchgeführt und die Ergebnisse zusammen mit den 3D Daten abgespeichert.
 
+Die Eigenschaften und 3D Daten können dadurch gemeinsam für die Visualisierung verwendet werden. Dies ermöglicht eine interaktive Visualisierung mit spezialisierter Software, welche eine Analyse der Daten vereinfacht.
 
-=== Eingabe
+=== Eingabedaten
 
-- 3D Punktwolken (präferiert)
-	- nur Positionen
-- Bilder
+Die Daten sind mit Laserscans aufgenommen, wobei der Scan von Flugzeugen, Dronen und vom Boden aus durchgeführt wird. Teilgebiete sind mehrfach aufgenommen, einmal ohne und einmal mit Blättern. Die Datensätze sind bereits in einzelne Bäume unterteilt. Zusätzlich wurden für Teilgebiete zusätzlich die Baumart, Höhe, Durchmesser auf Brusthöhe und Anfangshöhe und Durchmesser der Krone gemessen.
 
+=== Eigenschaften
 
-=== Zwischenformate
+Ein Datensatz muss zuerst in einzelne Bäume unterteilt werden, um diese einzeln weiter zu verarbeiten.
 
-- `custom`
-- `.ply`
-- `.obj`
+Eigenschaften für den gesamten Baum können aus den Punkten berechnet werden. Dazu gehören die Höhe des Baumes und der Krone, Durchmesser von Stamm und der Krone und das Baumvolumen. Die berechneteten Eigenschaften können mit den erfasten Messwerten verglichen werden, um die Korrektheit zu berwerten.
 
+Mit einer Segmentierung des Baumes in Stamm, Äste und Blätter kann der Baum weiter unterteilt werden. Die Segmente bilden die Kanten von einem Graph, wobei Gebelungen und Endpunkte die Knoten bilden. Bei den Ästen kann die Stufe zugeordnet werden, wie viele Teilungen sie vom Stamm entfernt sind.
 
-=== Ergebnisse
+=== Visualisierung
 
-- Visualisierung
-	- Custom
-		- Farbe?
-		- Eye Dome Lighting?
-	- Godot
-	- Unreal
-- Arbeit
-	- Ziel
-	- Analyse momentaner Stand (Software und Forschung)
-	- eigene Software
-	- eigene Forschung
-- Statistiken
-	- Pro Baum
-		- Höhe
-		- Durchmesser
-		- relevante Punkte (Graph)
-			- Start
-			- Gabelungen
-			- Spitzen
-	- Wald
-		- in Bäume unterteilen? (schon gemacht in Datensatz)
+Für die Visualisierung ist nur die Position der einzelnen Punkte bekannt. Weil die Messdaten keine Farbinformationen enthalten müssen andere Eigenschaften verwendet werden. Um die Punkte zu unterschieden kann die Höhe der einzelen Punkte mit einem Farbverlauf verwendet werden. Die vorherige Berechnung von weiteren Eigenschaften ermöglichen komplexere Möglichkeiten, dazu gehört die unterschiedliche Einfärbung von unterschiedlichen Bäumen oder von unterschiedlichen Segmenten
+
+Um auch größere Datensätze zu Visualisieren, werden beim Berechnen der Eigenschaften auch gröbere Detailstufen berechnet, welche für weit entfernte Bäume verwendet werden könne.
+
+Für eine bessere Visualisierung der Tiefeninformation kann `Eye Dome Lighting` verwendet werden, welches Ränder der 3D-Modelle hervorhebt.
+
+=== Generierung von 3D-Modellen
+
+Für die Visualisierung können die Punkte Trianguliert werden, wodurch ein 3D-Modell mit einer Oberfläche entsteht. Für die Farbinformationen können die Methoden aus der Visualisierung oder generierte Texturen verwendet werden.
+
+Dabei muss der Stamm und Äste unterschiedlich zu den Blättern gehändelt werden, weil die Punkte zugehörig zu den Blättern keine Oberfläche bilden.
+
+Für die Validierung der 3D-Modelle können syntetisch generierte Baummodelle verwendet werden. Aus diesen wird eine Punktwolke generiert, aus der das Modell berechnet wird. Das berechnete Modell kann mit dem syntetischen Verglichen werden.
+
+== Weitere Verabeitung
+
+Die Eigenschaften in Kombination mit der Klassifikation der Bäume in den Messdaten ermöglicht eine Metrik für die Baumart. Dadurch können syntetisch generierte Baummodelle validiert werden.
+
+Für die gleichen Regionen können unterschiedliche Datensätze von unterschiedlichen Messmethoden verglichen werden. Dadurch können Vor- und Nachteile der Methoden ausgearbeitet werden.
+
+Die Ergebnisse können auch mit bildbasierenden Verfahren verglichen werden, wodurch Vor- und Nachteile zu strukturel unterschiedlichen Methoden ausgearbeitete werden können.
 
 
 == Stand der Technik
@@ -65,29 +67,20 @@ Informationsgewinnung über Bäume aus Messdaten von Wäldern.
 - Forschung
 	- ...
 
+== Überblick
 
-== Referenzen
+- Überblick
+- Eigenschaften der Messdaten
+- Ziele Berechnung Eigenschaften
+- Ziele Visualisierung
+- Stand der Technik
+- Erreichte Ergebnisse Berechnung Eigenschaften
+- Erreichte Ergebnisse Visualisierung
+- Weitere Möglichkeiten
+- Weitere Benutzng der Ergebnisse
+- Resümee
+- Bibliographie
 
-- https://dl.acm.org/doi/10.1109/TVCG.2015.2513409
-- https://nph.onlinelibrary.wiley.com/doi/full/10.1111/nph.15517
-- https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13121
-- https://ieeexplore.ieee.org/document/8462802
-- https://dl.acm.org/doi/10.1145/3478513.3480525
-- https://dl.acm.org/doi/10.1145/3478513.3480486
-\
-- https://www.3dforest.eu/
-- https://github.com/apburt/treeseg
-- https://github.com/VUKOZ-OEL/3d-forest
+== Bibliographie
 
-
-== Anderes
-
-- Deutsch oder Englisch
-- Typst
-- Kommunikation
-	- E-mail
-	- Discord
-	- ...
-- Besprechungen
-	- Webex
-	- Person
+...
