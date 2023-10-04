@@ -1,0 +1,86 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "watch files",
+			"command": "typst-lt",
+			"args": [
+				"watch",
+				"${workspaceFolder}",
+				"--plain",
+				"--language=de-DE",
+				"--rules=${workspaceFolder}/typstls.json"
+			],
+			"runOptions": {
+				"runOn": "folderOpen",
+			},
+			"isBackground": true,
+			"problemMatcher": {
+				"owner": "typstlt",
+				"fileLocation": "absolute",
+				"background": {
+					"activeOnStart": false,
+					"beginsPattern": "^START$",
+					"endsPattern": "^END$"
+				},
+				"pattern": {
+					"regexp": "^(.*) (\\d+):(\\d+)-(\\d+):(\\d+) (warning|error|info) (.*)$",
+					"file": 1,
+					"line": 2,
+					"column": 3,
+					"endLine": 4,
+					"endColumn": 5,
+					"severity": 6,
+					"message": 7
+				}
+			}
+		},
+		{
+			"label": "run server",
+			"command": "java",
+			"runOptions": {
+				"runOn": "folderOpen",
+			},
+			"args": [
+				"-cp",
+				"../LanguageTool-6.2/languagetool-server.jar",
+				"org.languagetool.server.HTTPServer",
+				"--port",
+				"8081",
+				"--allow-origin"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "watch expose",
+			"command": "typst",
+			"runOptions": {
+				"runOn": "folderOpen",
+			},
+			"args": [
+				"watch",
+				"--diagnostic-format=short",
+				"expose.typ",
+			],
+			"isBackground": true,
+			// "problemMatcher": {
+			// 	"owner": "typst",
+			// 	"fileLocation": "absolute",
+			// 	"pattern": {
+			// 		"regexp": "^\\\\\\\\\\?\\\\(.*):(\\d+):(\\d+): (warning|info|error): (.*)$",
+			// 		"file": 1,
+			// 		"line": 2,
+			// 		"column": 3,
+			// 		"severity": 4,
+			// 		"message": 5
+			// 	},
+			// 	"background": {
+			// 		"activeOnStart": false,
+			// 		"beginsPattern": "compiled",
+			// 		"endsPattern": "."
+			// 	}
+			// }
+			"problemMatcher": [],
+		}
+	]
+}

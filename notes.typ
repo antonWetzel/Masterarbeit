@@ -1,5 +1,6 @@
 = Notes
 
+
 == Anderes
 
 - Deutsch
@@ -11,6 +12,7 @@
 	- Webex
 	- Person
 
+
 == Todo
 
 - Exposé
@@ -21,14 +23,17 @@
 - Farben
 - Viewer und Importer zusammenführen
 
+
 == Arbeit
 
 - Als Überblick/Momentaner Stand für Professor
+
 
 == Zwischenformate
 
 - `custom` für Punktwolke und Visualisierung
 - `.ply`/`.gltf` für 3D (noch offen)
+
 
 == Referenzen
 
@@ -42,3 +47,11 @@
 - https://www.3dforest.eu/
 - https://github.com/apburt/treeseg
 - https://github.com/VUKOZ-OEL/3d-forest
+
+
+== Abkürzungen
+
+- UAV
+	- unmanned aerial vehicle (Drohne)
+- ALS
+	- airborne laser scanning (Flugzeug)
