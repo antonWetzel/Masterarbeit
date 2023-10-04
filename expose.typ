@@ -25,7 +25,7 @@
 		set align(left)
 		set par(hanging-indent: 1cm)
 		align(left, pad(x: 1cm)[
-			*Arbeitstitel: Berechnung von charakteristischen Eigenschaften von Bäumen aus 3D-Punktwolken von Wäldern und Visualisierung der 3D-Daten mithilfe der Eigenschaften.*
+			*Arbeitstitel: Berechnung von charakteristischen Eigenschaften von Bäumen mit 3D-Punktwolken von Wäldern und Visualisierung der 3D-Daten mithilfe der Eigenschaften.*
 		])
 	}
 	v(1fr)
@@ -61,16 +61,33 @@ Mit Lidar Technologie können größere Gebiete wie Teile von Wäldern als 3D-Pu
 Durch eine automatisierte Extraktion von charakteristischen Eigenschaften aus den 3D-Punktwolken ist eine angepasste Visualisierung der Daten möglich. Die Software soll dabei interaktiv die berechneten Eigenschaften geeignet präsentieren.
 
 
+= Stand der Technik
+
+Der Artikel _Adjudicating Perspectives on Forest Structure: How Do Airborne, Terrestrial, and Mobile Lidar-Derived Estimates Compare?_ @scantech beschäftigt sich mit unterschiedlichen Lidar Scanverfahren. Dabei werden Verfahren vom Boden oder aus der Luft verglichen, um Vor- und Nachteile zu ermitteln.
+
+Ein häufiges Format für Lidar-Daten ist das LAS Dateiformat @las. Bei diesem werden die Messpunkte mit den bekannten Punkteigenschaften gespeichert. Je nach Messtechnologie können unterschiedliche Daten bei unterschiedlichen Punktwolken bekannt sein, aber die Position der Punkte ist immer gegeben.
+
+Aufgrund der großen Datenmengen werden LAS Dateien häufig im komprimierten LASzip Format @laz gespeichert. Die Kompression ist Verlustfrei und ermöglicht eine Kompressionsrate zwischen 5 und 15 je nach Eingabedaten.
+
+_LASTools_ @lastools ist eine Sammlung von Software für die allgemeine Verarbeitung von LAS Dateien. Dazu gehört die Umwandlung in andere Dateiformate, Analyse der Daten und Visualisierung der Punkte.
+
+Ein Überblick über Lidar Scans von Bäumen vom Boden aus wird in der Arbeit _Terrestrial LiDAR: a three-dimensional revolution in how we look at trees_ @terrestriallidar gegeben. Mehrere mögliche Informationen werden erklärt, welche aus den Daten ermittelt werden können.
+
+In der Arbeit _Extracting individual trees from lidar point clouds using treeseg_ @treeseg wird ein Algorithmus ausgearbeitet, welcher eine automatisierte Segmentierung von Lidar-Daten von Wäldern in einzelne Bäume ermöglicht.
+
+Die Arbeit _Forest Data Collection by UAV Lidar-Based 3D Mapping: Segmentation of Individual Tree Information from 3D Point Clouds_ @forestscan beschäftigt sich mit dem Erfassen von Daten, aber auch der Extraktion von relevanten Punkten der einzelnen Bäume.
+
+
 = Eingabedaten
 
-Der Datensatz @data beinhaltet $12$ Hektar Waldfläche in Deutschland, Baden-Württemberg. Die Daten sind mit Laserscans aufgenommen, wobei die Scans von Flugzeugen, Drohnen und vom Boden aus durchgeführt wurde. Dabei entstehen 3D-Punktwolken, welche im komprimiert LAS Dateiformat @las @laz gegeben sind.
+Der benutze Datensatz @data beinhaltet $12$ Hektar Waldfläche in Deutschland, Baden-Württemberg. Die Daten sind mit Laserscans aufgenommen, wobei die Scans von Flugzeugen, Drohnen und vom Boden aus durchgeführt wurde. Dabei entstehen 3D-Punktwolken, welche im komprimiert LAS Dateiformat @las @laz gegeben sind.
 
 Der Datensatz ist bereits in einzelne Bäume unterteilt. Zusätzlich wurden für $6$ Hektar die Baumart, Höhe, Stammdurchmesser auf Brusthöhe und Anfangshöhe und Durchmesser der Krone gemessen.
 
 
 = Ziel
 
-Das Ziel ist die Entwicklung von einem Softwareprojekt für die spezialisierte Auswertung und Visualisierung von 3D-Punktwolken von Wäldern. Als Eingabe soll nur die Punktwolken ohne weiteren Informationen ausreichen.
+Das Ziel ist die Entwicklung von einem Softwareprojekt für die spezialisierte Auswertung und Visualisierung von 3D-Punktwolken von Wäldern. Als Eingabe soll nur die Punktwolken ohne weiteren Informationen ausreichen. Durch die Kombination von Auswertung und Visualisierung kann über eine allgemeine Visualisierung von LAS Dateien hinausgegangen werden.
 
 Für die technische Umsetzung wird die Programmiersprache Rust und die Grafikkartenschnittstelle WebGPU verwendet.
 
@@ -100,23 +117,6 @@ Im Folgenden ist eine Auflistung der momentanen Ziele. Während der Entwicklung 
 	- Klassifikator für Baumarten
 	- Validierung der 3D-Modelle basierend auf synthetischen Bäumen
 	- Vergleich der unterschiedlichen Messmethoden
-	- Vergleich zu bildbasierenden Verfahren
-
-
-= Stand der Technik
-
-Der Artikel _Adjudicating Perspectives on Forest Structure: How Do Airborne, Terrestrial, and Mobile Lidar-Derived Estimates Compare?_ @scantech beschäftigt sich mit unterschiedlichen Lidar Scanverfahren. Dabei werden Verfahren vom Boden oder aus der Luft verglichen, um Vor- und Nachteile zu ermitteln.
-
-Ein häufiges Format für Lidar-Daten ist das LAS Dateiformat @las. Bei diesem werden die Messpunkte mit den bekannten Punkteigenschaften gespeichert. Je nach Messtechnologie können unterschiedliche Daten bei unterschiedlichen Punktwolken bekannt sein, aber die Position der Punkte ist immer gegeben.
-
-Aufgrund der großen Datenmengen werden LAS Dateien häufig im komprimierten LASzip Format @laz gespeichert. Die Kompression ist Verlustfrei und ermöglicht eine Kompressionsrate zwischen 5 und 15 je nach Eingabedaten.
-
-_LASTools_ @lastools ist eine Sammlung von Software für die allgemeine Verarbeitung von LAS Dateien. Dazu gehört die Umwandlung in andere Dateiformate, Analyse der Daten und Visualisierung der Punkte.
-
-Ein Überblick über Lidar Scans vom Boden aus wird in der Arbeit _Terrestrial LiDAR: a three-dimensional revolution in how we look at trees_ @terrestriallidar gegeben. Mehrere mögliche Informationen werden erklärt, welche aus den Daten ermittelt werden können.
-
-In der Arbeit _Extracting individual trees from lidar point clouds using treeseg_ @treeseg wird ein Algorithmus ausgearbeitet, welcher eine automatisierte Segmentierung von Lidar-Daten von Wäldern in einzelne Bäume ermöglicht.
-
-Die Arbeit _Forest Data Collection by UAV Lidar-Based 3D Mapping: Segmentation of Individual Tree Information from 3D Point Clouds_ @forestscan beschäftigt sich mit dem Erfassen der Daten, aber auch der Extraktion von relevanten Punkten der einzelnen Bäume.
+	- Vergleich zu Verfahren basierend auf Bilddaten
 
 #bibliography("expose.bib")
