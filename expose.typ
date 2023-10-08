@@ -63,8 +63,8 @@ Diese Arbeit erkundet die Möglichkeiten einer automatisierten Auswertung von 3D
 Durch die Kombination von Analyse und Visualisierung können die gefundenen Eigenschaften interaktive aufgearbeitete werden, was hoffentlich die Analyse von Waldstücken vereinfacht. Dabei kann die Visualisierung auf die genauen Anforderungen spezialisiert werden, um die Ergebnisse ideal zu präsentieren.
 
 #figure(
-	caption: [Visualisierung von einem Waldstück | Datensatz @data, Datei `ULS-off_BR01_2020-03-27.laz`],
-	boxed(image(width: 80%, "images/forest_eye_dome_white.png")),
+	caption: [Visualisierung von einem Waldstück | Datensatz @data, Datei `ALS-on_SP02_2019-07-05_140m.laz`],
+	boxed(image(width: 70%, "images/overview.png")),
 )
 
 
