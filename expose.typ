@@ -62,12 +62,12 @@ Größere Gebiete wie Teile von Wäldern können als 3D-Punktwolken gescannt wer
 
 Diese Arbeit erkundet die Möglichkeiten einer automatisierten Auswertung von 3D-Punktwolken von Wäldern. Dazu gehört eine Analyse, welche charakteristischen Eigenschaften aus den Daten ermittelt werden können und wie diese geeignet Visualisiert werden können.
 
-Durch die Kombination von Analyse und Visualisierung können die gefundenen Eigenschaften interaktive aufgearbeitete werden, was hoffentlich die Analyse von Waldstücken vereinfacht. Dabei kann die Visualisierung auf die genauen Anforderungen spezialisiert werden, um die Ergebnisse ideal zu präsentieren.
+Durch die Kombination von Analyse und Visualisierung können die gefundenen Eigenschaften interaktive aufgearbeitete werden, was hoffentlich die Analyse von Waldstücken vereinfacht. Dabei kann die Visualisierung auf die genauen Anforderungen spezialisiert werden, um die Ergebnisse ideal zu präsentieren. Eine einfache Visualisierung ist in @overview zu sehen.
 
 #figure(
 	caption: [Visualisierung von einem Waldstück | Datensatz @data, Datei `ALS-on_SP02_2019-07-05_140m.laz`],
 	boxed(image(width: 100%, "images/overview.png")),
-)
+) <overview>
 
 
 = Stand der Technik
