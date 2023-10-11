@@ -16,7 +16,7 @@
 	document
 }
 
-#page(columns: 1, align(center, {
+#align(center, {
 
 	set text(size: 1.25em)
 	text(size: 1.25em, [= Exposé])
@@ -51,12 +51,14 @@
 	)
 	v(2fr)
 	image(width: 70%, "images/logo_tui.svg")
-}))
+
+	pagebreak()
+})
 
 
 = Motivation
 
-Größere Gebiete wie Teile von Wäldern können als 3D-Punktwolken gescannt werden, aber der Zustand vom Waldstück ist nicht direkt aus den Daten ersichtlich. Mit einer automatisierten Analyse der Daten könnte das Waldstück digitalisiert werden, wodurch Informationen wie Artenbestand oder Gesundheit abgeschätzt werden können.
+Größere Gebiete wie Teile von Wäldern können als 3D-Punktwolken gescannt werden, aber der Zustand vom Waldstück ist nicht direkt aus den Daten ersichtlich. Mit einer automatisierten Analyse der Daten kann das Waldstück digitalisiert werden, wodurch Informationen wie Artenbestand oder Gesundheit abgeschätzt werden können.
 
 Diese Arbeit erkundet die Möglichkeiten einer automatisierten Auswertung von 3D-Punktwolken von Wäldern. Dazu gehört eine Analyse, welche charakteristischen Eigenschaften aus den Daten ermittelt werden können und wie diese geeignet Visualisiert werden können.
 
@@ -70,9 +72,9 @@ Durch die Kombination von Analyse und Visualisierung können die gefundenen Eige
 
 = Stand der Technik
 
-Punktwolken können mit unterschiedlichen Lidar Scanverfahren aufgenommen werden. Aufnahmen vom Boden oder aus der Luft bieten dabei verschiedene Vor- und Nachteile @scantech. Bei einem Scan von Boden aus kann nur eine kleinere Fläche abgetastet werden, dafür mit erhöhter Genauigkeit, um einzelne Bäume genau zu analysieren @terrestriallidar. Aus der Luft können größere Flächen erfasst werden, wodurch Waldstücke aufgenommen werden können, aber die Datenmenge pro Baum ist geringer @forestscan.
+Punktwolken können mit unterschiedlichen Lidar Scanverfahren aufgenommen werden. Aufnahmen vom Boden oder aus der Luft bieten dabei verschiedene Vor- und Nachteile @scantech. Bei einem Scan von Boden aus, kann nur eine kleinere Fläche abgetastet werden, dafür mit erhöhter Genauigkeit, um einzelne Bäume genau zu analysieren @terrestriallidar. Aus der Luft können größere Flächen erfasst werden, wodurch Waldstücke aufgenommen werden können, aber die Datenmenge pro Baum ist geringer @forestscan.
 
-Nach der Datenerfassung können relevante Informationen aus den Punkten bestimmt werden, dazu gehört eine Segmentierung in einzelne Bäume @treeseg, Bestimmung von Baumhöhe oder Kronenhöhe @forestscan.
+Nach der Datenerfassung können relevante Informationen aus den Punkten bestimmt werden, dazu gehört eine Segmentierung in einzelne Bäume @treeseg und die Berechnung von Baumhöhe oder Kronenhöhe @forestscan.
 
 Ein häufiges Format für Lidar-Daten ist das LAS Dateiformat @las. Bei diesem werden die Messpunkte mit den bekannten Punkteigenschaften gespeichert. Je nach Messtechnologie können unterschiedliche Daten bei unterschiedlichen Punktwolken bekannt sein, aber die Position der Punkte ist immer gegeben. Aufgrund der großen Datenmengen werden LAS Dateien häufig im komprimierten LASzip Format @laz gespeichert. Die Kompression ist Verlustfrei und ermöglicht eine Kompressionsrate zwischen $5$ und $15$ je nach Eingabedaten.
 
@@ -87,7 +89,7 @@ Im Folgenden ist eine Auflistung der momentanen Ziele. Während der Entwicklung 
 
 #box(height: 22.5em, columns(2)[
 	+ Datensatz in Bäume unterteilen
-		- Boden oder andere Obekte filtern
+		- Boden oder andere Objekte filtern
 	+ Bestimmung von Eigenschaften
 		- Baum- und Kronenhöhe
 		- Stamm- und Kronendurchmesser
@@ -127,7 +129,7 @@ Für die technische Umsetzung wird die Programmiersprache Rust und die Grafikkar
 
 == Testdaten
 
-Der benutze Datensatz @data beinhaltet $12$ Hektar Waldfläche in Deutschland, Baden-Württemberg. Die Daten sind mit Laserscans aufgenommen, wobei die Scans von Flugzeugen, Drohnen und vom Boden aus durchgeführt wurde. Dabei entstehen 3D-Punktwolken, welche im komprimiert LAS Dateiformat gegeben sind.
+Der benutze Datensatz @data beinhaltet $12$ Hektar Waldfläche in Deutschland, Baden-Württemberg. Die Daten sind mit Laserscans aufgenommen, wobei die Scans von Flugzeugen, Drohnen und vom Boden aus durchgeführt wurden. Dabei entstehen 3D-Punktwolken, welche im komprimiert LAS Dateiformat gegeben sind.
 
 Der Datensatz ist bereits in einzelne Bäume unterteilt. Zusätzlich wurden für $6$ Hektar die Baumart, Höhe, Stammdurchmesser auf Brusthöhe und Anfangshöhe und Durchmesser der Krone gemessen. Mit den bereits bestimmten Eigenschaften können automatisch berechnete Ergebnisse validiert werden.
 
