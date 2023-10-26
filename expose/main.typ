@@ -50,7 +50,7 @@
 		[Datum:],          datetime.today().display("[day].[month].[year]"),
 	)
 	v(2fr)
-	image(width: 70%, "images/logo_tui.svg")
+	image(width: 70%, "../images/logo_tui.svg")
 
 	pagebreak()
 })
@@ -66,7 +66,7 @@ Durch die Kombination von Analyse und Visualisierung können die gefundenen Eige
 
 #figure(
 	caption: [Visualisierung von einem Waldstück | Datensatz @data, Datei `ALS-on_SP02_2019-07-05_140m.laz`],
-	boxed(image(width: 100%, "images/overview.png")),
+	boxed(image(width: 100%, "../images/overview.png")),
 ) <overview>
 
 

@@ -12,7 +12,7 @@
 				"--rules=${workspaceFolder}/typstls.json"
 			],
 			"runOptions": {
-				"runOn": "folderOpen",
+				"runOn": "folderOpen"
 			},
 			"isBackground": true,
 			"problemMatcher": {
@@ -39,7 +39,7 @@
 			"label": "run server",
 			"command": "java",
 			"runOptions": {
-				"runOn": "folderOpen",
+				"runOn": "folderOpen"
 			},
 			"args": [
 				"-cp",
@@ -55,32 +55,33 @@
 			"label": "watch expose",
 			"command": "typst",
 			"runOptions": {
-				"runOn": "folderOpen",
+				"runOn": "folderOpen"
 			},
 			"args": [
 				"watch",
 				"--diagnostic-format=short",
-				"expose.typ",
+				"--root=${workspaceFolder}",
+				"expose/main.typ",
+				"expose/expose.pdf"
 			],
 			"isBackground": true,
-			// "problemMatcher": {
-			// 	"owner": "typst",
-			// 	"fileLocation": "absolute",
-			// 	"pattern": {
-			// 		"regexp": "^\\\\\\\\\\?\\\\(.*):(\\d+):(\\d+): (warning|info|error): (.*)$",
-			// 		"file": 1,
-			// 		"line": 2,
-			// 		"column": 3,
-			// 		"severity": 4,
-			// 		"message": 5
-			// 	},
-			// 	"background": {
-			// 		"activeOnStart": false,
-			// 		"beginsPattern": "compiled",
-			// 		"endsPattern": "."
-			// 	}
-			// }
-			"problemMatcher": [],
+			"problemMatcher": []
+		},
+		{
+			"label": "watch arbeit",
+			"command": "typst",
+			"runOptions": {
+				"runOn": "folderOpen"
+			},
+			"args": [
+				"watch",
+				"--diagnostic-format=short",
+				"--root=${workspaceFolder}",
+				"arbeit/main.typ",
+				"arbeit/arbeit.pdf"
+			],
+			"isBackground": true,
+			"problemMatcher": []
 		}
 	]
 }
