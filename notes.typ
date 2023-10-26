@@ -55,3 +55,23 @@
 	- unmanned aerial vehicle (Drohne)
 - ALS
 	- airborne laser scanning (Flugzeug)
+
+
+== Notes
+
+- alle gegebenen Eigenschaften übernehmen
+- Arbeit nebenbei
+- fokus: Parameter aus einem einzelnen Baum
+	- Höhe (Stamm und Krone)
+	- Ausdehnung (Baum in Scheiben)
+	- Visualisierung für nur einem Baum
+
+- Wünsch
+	- Waldstück komplett
+	- Auswahl einzelner Baum
+		- nur Baum anzeigen
+		- Eigenschaften für Baum anzeigen
+
+- Zuerst
+	- Analyse von einzelnen Baum
+	- Arbeit anfangen
