@@ -57,7 +57,7 @@
 	- airborne laser scanning (Flugzeug)
 
 
-== Notes
+== Besprechung
 
 - alle gegebenen Eigenschaften übernehmen
 - Arbeit nebenbei
