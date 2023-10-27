@@ -54,9 +54,6 @@
 		{
 			"label": "watch expose",
 			"command": "typst",
-			"runOptions": {
-				"runOn": "folderOpen"
-			},
 			"args": [
 				"watch",
 				"--diagnostic-format=short",
