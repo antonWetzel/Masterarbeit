@@ -20,7 +20,7 @@
 
 	show outline.entry.where(level: PART_LEVEL): it => {
 		v(1.5em, weak: true)
-		strong(it)
+		link(it.element.location(), strong(it.body))
 	}
 
 	show outline: it => { it; PART_COUNTER.update(0); }

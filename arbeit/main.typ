@@ -2,7 +2,9 @@
 
 #show: setup
 
-Masterarbeit
+#align(center, {
+	text(size: 3em, [*Masterarbeit*])
+})
 
 #outline(indent: auto)
 
@@ -11,10 +13,19 @@ Masterarbeit
 #part([Überblick])
 
 
-= Puntkwolke
+= Punktwolke
+
+- Menge von Punkten
+- mindestens Position
 
 
 = Daten
+
+- Waldstücke
+- Deutschland
+- terrestrial und arial
+- zusätzlich manuelle Datenbestimmung
+- nur Position bekannt
 
 
 = ...
@@ -36,10 +47,10 @@ Als Bild
 	- Generierung von Octree
 + Octree + LOD für Visualisierung
 
-Phasen (Phase ist in sich parallelisiert)
-- Laden der Dateien
-- Segmentierung
-- Analyse + Generierung
+getrennte Phasen (Phase ist in sich parallelisiert)
++ Laden der Dateien
++ Segmentierung
++ Analyse + Generierung
 
 
 = Separierung in Bäume
@@ -96,7 +107,22 @@ Phasen (Phase ist in sich parallelisiert)
 + Ausgleichsfaktor?
 
 
+=== Detailstufe
+
++ Grid
+	- Größe abhängig von Leafgröße, wird gröber für größere Blätter
++ Kombination von Punkten
+	- Größe als Fläche addieren
+	- Normale Durchschnitt
+	- Position durchschnitt
+	- Eigenschaften?
+
+
 = Baumart
+
+- ?
+
+#part([Meshing])
 
 - ?
 
@@ -107,8 +133,8 @@ Phasen (Phase ist in sich parallelisiert)
 
 - Rust
 - WebGPU (wgpu)
-- native Window
-- Website?
+- native Window (website?)
+- LAS/LAZ
 
 
 = Punkt
@@ -116,7 +142,7 @@ Phasen (Phase ist in sich parallelisiert)
 - Instancing
 - quad rect
 - Ausdehnung mit Normale
-- Discard mit Distanz
+- Discard mit Distanz für Kreis (Kreisfläche)
 
 
 = Dynamische Eigenschaft
@@ -161,7 +187,7 @@ Phasen (Phase ist in sich parallelisiert)
 == Kostenbudget?
 
 - Anpassung der Genauigkeit
-	- verringerung des Aufwands
+	- Verringerung des Aufwands
 
 
 = Kamera/Projektion
@@ -187,6 +213,6 @@ Phasen (Phase ist in sich parallelisiert)
 === Orthogonal?
 
 
-= Interface
+= Bedienung/Interface
 
 - ?
