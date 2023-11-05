@@ -73,6 +73,12 @@ getrennte Phasen (Phase ist in sich parallelisiert)
 + $c (3 lambda_2) / (lambda_0 + lambda_1 + lambda_2)$
 	- $c in [0, 1]$
 
+#stack(
+	dir: ltr,
+	image("../images/curve.png", height: 40%),
+	image("../images/curve_filter.png", height: 40%),
+)
+
 
 == Punkthöhe
 
@@ -87,6 +93,12 @@ getrennte Phasen (Phase ist in sich parallelisiert)
 + Varianz $v$ berechnen
 + $x = v_i / v_max$
 	- $x in [0, 1]$
+
+#stack(
+	dir: ltr,
+	image("../images/var.png", height: 40%),
+	image("../images/var_filter.png", height: 40%),
+)
 
 
 == ...
