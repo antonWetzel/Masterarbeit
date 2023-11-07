@@ -24,6 +24,7 @@
 	}
 
 	show outline: it => { it; PART_COUNTER.update(0); }
+	set page(numbering: "1")
 
 	show raw: it => text(size: 1.2em, it)
 	document
