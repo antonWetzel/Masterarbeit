@@ -1,3 +1,6 @@
+#import "../packages/todo.typ": *
+#import "../packages/placeholder.typ": *
+
 #let PART_LEVEL = 10;
 
 #let PART_COUNTER = counter("parts")
@@ -24,7 +27,6 @@
 	}
 
 	show outline: it => { it; PART_COUNTER.update(0); }
-	set page(numbering: "1")
 
 	show raw: it => text(size: 1.2em, it)
 	document

@@ -1,0 +1,7 @@
+{
+	"[typst]": {
+		"editor.wordWrap": "on",
+		"editor.semanticHighlighting.enabled": true,
+		"editor.tabSize": 4
+	}
+}

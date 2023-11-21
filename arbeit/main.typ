@@ -6,36 +6,14 @@
 
 #todo-outline()
 
-#align(center, {
-	text(size: 3em, [*Masterarbeit*])
-	todo([Deckblatt])
-	pagebreak()
-})
+#include "deckblatt.typ"
 
 #outline(indent: auto)
 
 #pagebreak()
 
-
-= Glossar
-
-#todo([Glossar])
-
-/ Octree: ...
-/ Leaf: ...
-/ Branch: ...
-/ Root: ...
-
-#todo(prefix: [Note], [Englische Begriffe für die Datenstrukturen])
-
-/ Punktwolke: ...
-/ Punkt: ...
-/ Normale: ...
-/ Arial: ...
-/ Terrestrial: ...
-/ ...: ...
-
-#todo([Akronyme])
+#include "glossar.typ"
+#pagebreak()
 
 #part([Überblick])
 
@@ -56,117 +34,10 @@
 
 #todo([Mehr Überblick])
 
+#include "stand-der-technik.typ"
+#pagebreak()
 
-= Stand der Technik
-
-#todo([Stand der Technik])
-
-#part([Berechnung])
-
-
-= Ablauf
-
-#todo([Ablauf als Bild])
-
-+ Eingabedateien
-	- Dateien laden
-+ Punktmenge
-	- Segmentierung in Bäume, Boden...
-+ Liste von Bäumen
-	- Analyse der Bäume
-+ Liste von analysierten Bäumen
-	- Generierung von Octree
-+ Octree + LOD für Visualisierung
-
-getrennte Phasen (Phase ist in sich parallelisiert)
-+ Laden der Dateien
-+ Segmentierung
-+ Analyse + Generierung
-
-
-= Separierung in Bäume
-
-#todo([Separierung in Bäume])
-
-
-= Baumeigenschaften
-
-
-== Krümmung
-
-+ Hauptkomponentenanalyse
-	- $lambda_i$ mit $i in NN_0^2$ und $lambda_i > lambda_j$ wenn $i > j$
-+ $c (3 lambda_2) / (lambda_0 + lambda_1 + lambda_2)$
-	- $c in [0, 1]$
-
-#stack(
-	dir: ltr,
-	image("../images/curve.png", height: 30%),
-	image("../images/curve_filter.png", height: 30%),
-)
-
-#todo([Background Option für weißen Hintergrund für Bilder])
-
-
-== Punkthöhe
-
-+ $h = (p_y - y_min) / (y_max - y_min)$
-	- $h in [0, 1]$
-
-
-== Varianz in Scheibe
-
-+ 5 cm Scheiben
-+ geometrischen Schwerpunkt berechnen
-+ Varianz $v$ berechnen
-+ $x = v_i / v_max$
-	- $x in [0, 1]$
-
-#stack(
-	dir: ltr,
-	image("../images/var.png", height: 30%),
-	image("../images/var_filter.png", height: 30%),
-)
-
-#todo([Mehr Baumeigenschaften])
-
-
-= Segmentierung von einem Baum
-
-#todo([Baumeigenschaften + ? $->$ Segmente])
-
-
-= Eigenschaften für Visualisierung
-
-
-== Normale
-
-+ Hauptkomponentenanalyse
-+ Eigenvektor für $lambda_2$
-
-
-== Punktgröße
-
-+ Durchschnittliche Abstand zu umliegenden Punkten
-+ Ausgleichsfaktor?
-
-
-=== Detailstufe
-
-+ Grid
-	- Größe abhängig von Leafgröße, wird gröber für größere Blätter
-+ Kombination von Punkten
-	- Größe als Fläche addieren
-	- Normale Durchschnitt
-	- Position durchschnitt
-	- Eigenschaften?
-
-
-= Baumart
-
-#todo([Segmente + Eigenschaften + ? $->$ Klassifizierung?])
-- out of scope?
-- neural?
+#include "berechnung.typ"
 
 #part([Meshing])
 
@@ -199,12 +70,6 @@ getrennte Phasen (Phase ist in sich parallelisiert)
 
 = Subpunktwolken (Bäume)
 
-- Punkte in einem Leaf gehören zum gleichen Segment
-- Raycast durch den Octree zum ersten Leaf
-- Segment vom leaf auswählen
-	- nur nodes anzeigen, die zum Segment gehören
-	- infos für segment anzeigen
-
 #stack(
 	dir: ltr,
 	image("../images/segment_1.png", height: 30%),
@@ -218,8 +83,18 @@ getrennte Phasen (Phase ist in sich parallelisiert)
 
 - von root bis leaf
 - bestimme intersection mit knoten
-- leaf mit geringstem anstand als ergebnis
-	- To-do?: besserer Algorithmus (ist schlecht aber gut genug)
+- wenn leaf mit intersection gefunden
+	- lade Segmente, welche im Leaf liegen
+	- bestimme Abstand Ray-Punkt
+	- wenn kleiner als Radius hit
+	- Segment mit Punkt mit geringstem Abstand Ergebnis
+
+
+== Anzeige
+
+- segmente seperate abgespeichert
+	- keine LOD Stufen, nur Originalpunkte
+	- maxbuffersize?
 
 
 = Eye Dome
@@ -247,6 +122,17 @@ getrennte Phasen (Phase ist in sich parallelisiert)
 + rekursiv von Kindern bis zum Root
 + beim rendern für entferne Punkte nur Lod Stufe verwenden
 	+ je näher so genauere LOD Stufe
+
+
+== Detailstufe
+
++ Grid
+	- Größe abhängig von Leafgröße, wird gröber für größere Blätter
++ Kombination von Punkten
+	- Größe als Fläche addieren
+	- Normale Durchschnitt
+	- Position durchschnitt
+	- Eigenschaften?
 
 
 == Kostenbudget?
@@ -300,3 +186,7 @@ getrennte Phasen (Phase ist in sich parallelisiert)
 #todo([Bedienung/Interface])
 
 #todo([Referenzen])
+
+#pagebreak()
+
+#bibliography("bibliographie.bib")
