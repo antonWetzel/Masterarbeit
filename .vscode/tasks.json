@@ -3,20 +3,20 @@
 	"tasks": [
 		{
 			"label": "watch files",
-			"command": "typst-lt",
+			"command": "typst-hunspell",
 			"args": [
 				"watch",
 				"${workspaceFolder}",
 				"--plain",
 				"--language=de-DE",
-				"--rules=${workspaceFolder}/typstls.json"
+				"--words=${workspaceFolder}/words.txt"
 			],
 			"runOptions": {
 				"runOn": "folderOpen"
 			},
 			"isBackground": true,
 			"problemMatcher": {
-				"owner": "typstlt",
+				"owner": "typst-hunspell",
 				"fileLocation": "absolute",
 				"background": {
 					"activeOnStart": false,
@@ -34,22 +34,6 @@
 					"message": 7
 				}
 			}
-		},
-		{
-			"label": "run server",
-			"command": "java",
-			"runOptions": {
-				"runOn": "folderOpen"
-			},
-			"args": [
-				"-cp",
-				"../LanguageTool-6.2/languagetool-server.jar",
-				"org.languagetool.server.HTTPServer",
-				"--port",
-				"8081",
-				"--allow-origin"
-			],
-			"problemMatcher": []
 		},
 		{
 			"label": "watch expose",

@@ -26,9 +26,9 @@
 / Tree: ist eine Datenstruktur bestehend aus Knoten, welche wiederum Kinderknoten haben können. Die Knoten selber können weitere Informationen enthalten.
 / Octree: ist ein Tree, bei dem ein Knoten acht Kinderknoten haben kann. Mit einem Octree kann ein dreidimensionaler Würfel aufgeteilt werden. Jeder Knoten gehört zu einem Würfel, welcher gleichmäßig mit den Kinderknoten weiter unterteilt wird. #todo([Bild?])
 / Quadtree: ist ein Tree, bei dem ein Knoten vier Kinderknoten haben kann. Statt eines dreidimensionalen Würfels bei einem Octree, kann ein Quadtree ein zweidimensionales Quadrat unterteilen. #todo([Bild?])
-/ Leaf: ist ein Knoten, welcher keine weiteren Kinderknoten hat. Für Puntkwolken gehört jeder Punkt zu genau einem Leaf.
-/ Branch: ist ein Knoten, welcher weitere Kinderknoten hat.
-/ Root: ist der erste Knoten im Tree, alle anderen Knoten sind direkte oder indirekte Kinderknoten vom Root.
+/ Leaf-Knoten: ist ein Knoten, welcher keine weiteren Kinderknoten hat. Für Puntkwolken gehört jeder Punkt zu genau einem Leaf.
+/ Branch-Knoten: ist ein Knoten, welcher weitere Kinderknoten hat.
+/ Root-Knoten: ist der erste Knoten im Tree, alle anderen Knoten sind direkte oder indirekte Kinderknoten vom Root.
 
 
 == Akronyme
