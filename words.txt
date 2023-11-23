@@ -16,3 +16,8 @@ LASzip
 LASTools
 Validierung
 Octree
+
+Voxel
+Voxeln
+Voxels
+Quadtree

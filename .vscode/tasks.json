@@ -7,8 +7,9 @@
 			"args": [
 				"watch",
 				"${workspaceFolder}",
-				"--plain",
-				"--language=de-DE",
+				"--style=plain",
+				"--language=de",
+				"--language=en",
 				"--words=${workspaceFolder}/words.txt"
 			],
 			"runOptions": {

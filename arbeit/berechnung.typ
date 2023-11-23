@@ -2,22 +2,20 @@
 
 #part([Berechnung])
 
-#todo([Voxel statt Würfel verwenden?])
-
 
 = Ablauf
 
 #todo([Ablauf als Bild])
 
 + Diskretisieren
-	- in 5cm große Würfel unterteilen
+	- in 5cm große Voxel unterteilen
 	- kann vollständig im Hauptspeicher sein
 + Segmente bestimmen
 	- Top Down
 	- Quadtree
 	- nearest mit ...m max distance
 + Segmentieren (nochmal)
-	- je nach Würfel zum Segment ordnen
+	- je nach Voxel zum Segment ordnen
 + Segmente analysieren
 	- Beimeigenschaften
 	- Punktgreigenschaften
@@ -32,25 +30,25 @@
 == Diskretisieren
 
 + Punkte laden
-+ Position diskretisieren (5cm) und zugehöriger Würfel berechnen
-+ alle Würfel, welche Punkte enthalten abspeichern
++ Position diskretisieren (5cm) und zugehöriger Voxel berechnen
++ alle Voxel, welche Punkte enthalten abspeichern
 
 
 == Segmente bestimmen
 
 + Boden Bestimmen
-	- tiefster Würfel in ...m #sym.times ...m
+	- tiefster Voxel in ...m #sym.times ...m
 + von oben nach unten in Scheiben segmentieren
-	- für jeden Würfel den nächsten bereits Segmentieren Würfel mit Maximaldistanc ...m bestimmen
-	- wenn kein Würfel gefunden, neues Segment anfangen
-	- wenn Würfel gefunden gleiches Segment verwdenden
+	- für jeden Voxel den nächsten bereits Segmentieren Voxel mit Maximaldistanc ...m bestimmen
+	- wenn kein Voxel gefunden, neues Segment anfangen
+	- wenn Voxel gefunden gleiches Segment verwenden
 
 
 == Segmentieren
 
 + Punkt nochmal laden
-+ Berechnen zu welchen Würfel der Punkt gehört
-+ Segment vom Würfel zum Punkt zuordnen
++ Berechnen zu welchen Voxel der Punkt gehört
++ Segment vom Voxel zum Punkt zuordnen
 + Punkte im gleichem Segment zusammenfassten zu einer Punktwolke
 
 

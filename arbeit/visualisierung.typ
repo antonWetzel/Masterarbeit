@@ -79,7 +79,7 @@ Besonders für weit entfernte Punkt ist es nicht notwendig, alle Punkte genau wi
 
 #todo[Vergleich alle Punkt und vereinfachte Versionen]
 
-Für die gesamte Punktewolke wird ein Octree mit den Punkten erstellt. Der zugehörige Würfel vom Root-Knoten wird so gewählt, dass alle Punkte im Würfel liegen. Rekursiv wird der Würfel in acht Unterwürfel geteilt, solange in einem Würfel noch zu viele Punkte liegen. Bei dem Octree gehört jeder Punkt zu genau einem Leaf-Knoten.
+Für die gesamte Punktewolke wird ein Octree mit den Punkten erstellt. Der zugehörige Voxel vom Root-Knoten wird so gewählt, dass alle Punkte im Voxel liegen. Rekursiv wird der Voxel in acht gleichgroße Voxel geteilt, solange in einem Voxel noch zu viele Punkte liegen. Bei dem Octree gehört jeder Punkt zu genau einem Leaf-Knoten.
 
 Für jeden Branch-Knoten wird eine Punktwolke berechnet, welche als Vereinfachung der Punkte der zugehörigen Kinderknoten verwendet werden kann. Dafür wird de Algorithmus aus @berechnung_detailstufen verwendet.
 
@@ -88,13 +88,13 @@ Beim anzeigen wird vom Root-Knoten aus zuerst geprüft, ob der momentane Knoten 
 
 == Berechnung der Detailstufen <berechnung_detailstufen>
 
-+ Grid
-	- Größe abhängig von Leafgröße, wird gröber für größere Blätter
-+ Kombination von Punkten
-	- Größe als Fläche addieren
-	- Normale Durchschnitt
-	- Position durchschnitt
-	- Eigenschaften?
+#todo[Kopiert vom Fachpraktikum]
+
+Die Detailstufen werden wie bei "Fast Out-of-Core Octree Generation for Massive Point Clouds" @potree_lod von den Blättern des Baumes bis zur Wurzel berechnet. Dabei wird als Eingabe für einen Knoten die Detailstufen der direkten Kinder verwendet. Als Anfang werden alle originalen Punkte in einem Blatt als Eingabe benutzt.
+
+Dadurch haben zwar Berechnungen der gröberen Detailstufen für Knoten näher an der Wurzel nur Zugriff auf bereits vereinfachte Daten, dafür müssen aber auch viel weniger Punkte bei der Berechnung betrachtet werden. Solange die Detailstufen eine gute Vereinfachung der ursprünglichen Punkte sind, kann so der Berechnungsaufwand stark verringert werden.
+
+Der Voxel, welcher zu dem Knoten gehört, wird in gleich große Zellen unterteilt. Für jede Zelle mit Punkten wird ein repräsentativer Punkt bestimmt. Dafür wird für die Zelle die Kombination aller Eingabepunkte, welche in der Zelle liegen berechnet. Die Anzahl der Zellen ist dabei unabhängig von der Größe des ursprünglichen Voxels, wodurch bei gröberen Detailstufen durch den größeren Voxel auch die Zellen größer werden und mehr Punkte zusammengefasst werden.
 
 
 == Auswahl der Detailstufen? <auswahl_detailstufen>
