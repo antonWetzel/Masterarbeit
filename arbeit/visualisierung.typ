@@ -13,12 +13,50 @@
 
 = Punkt
 
-- Instancing
-- quad rect
-- Ausdehnung mit Normale
-- Discard mit Distanz für Kreis (Kreisfläche)
+
+== Dreieck
+
+Als Basis für einen Punkt wird ein Dreieck gerendert. Das Dreieck hat die Eckpunkte $(-1.73, -1)$, $(1.73, -1)$ und $0, 2$, wodurch der Kreis mit Radius $1$ und Zentrum $(0, 0)$ vollständig im Dreieck liegt.
+
+#todo[Warum die Ecken, schöner aufschreiben]
+
+Für jeden Punkt wird mit der Position $p$, Normalen $n$ und Größe $s$ die Position der Eckpunkte vom Dreieck im dreidimensionalen Raum bestimmt. Dafür werden zwei Vektoren bestimmt, welche paarweise zueinander und zur Normalen orthogonal sind.
+
+Für den erste Vektor $a$ wird mit der Normalen $n = (n_x, n_y, n_z)$ das Kreuzprodukt $a = (n_x, n_y, n_z) times (n_y, n_z, -n_x)$ bestimmt. Weil $|n| > 0$ ist, sind $(n_y, n_z, -n_x)$ und $n$ nicht gleich. $a$ muss noch für die weiteren Berechnungen normalisiert werden.
+
+Für den zweiten Vektor $b$ wird das Kreuzprodukt $b = n times a$ bestimmt. Weil das Kreuzprodukt zweier Vektoren orthogonal zu beiden Vektoren ist, sind $n$, $a$ und $b$ paarweise orthogonal.
+
+#todo[Bild Vektoren und Kreuzprodukt]
+
+Die Vektoren $a$ und $b$ spannen eine Ebene auf, welche orthogonal zu $n$ ist. Für den Eckpunkt $i$ vom Dreieck mit den Koordinaten $(x, y)$, wird die Position $p_i = p + a * x * s + b * y * s$ berechnet werden.
+
+
+== Vergleich zu Quad
 
 #todo[Vergleich Quad oder Dreieck als Basis]
+
+- triangle als Basis
+	- weniger Verticies (3 zu 6)
+	- mehr Fragment (4.0 zu 5.19615242270663)
+	- schneller als Quad
+
+
+== Instancing
+
+Weil für alle Punkte das gleiche Dreieck als Basis verwendet wird, muss dieses nur einmal zur Grafikkarte übertragen werden. Mit *Instancing* wird das gleiche Dreieck für alle Punkte verwendet, während nur die Daten spezifisch für einen Punkt sich ändern.
+
+
+== Kreis
+
+Die Grafikpipeline bestimmt alle Pixel, welche im transformierten Dreieck liegen. Für jeden Pixel kann entschieden werden, ob dieser im Ergebnis gespeichert wird. Dafür wird bei den Eckpunkten die untransformierten Koordinaten abgespeichert, dass diese später verfügbar sind. Für jeden Pixel wird von der Pipeline die interpolierten Koordinaten berechnet. Nur wenn der Betrag der interpolierten Koordinaten kleiner $1$ ist, wird der Pixel im Ergebnis abgespeichert.
+
+#stack(
+	dir: ltr,
+	image("../images/point-triangle.png", width: 50%),
+	image("../images/point-circle.png", width: 50%),
+)
+
+#todo[Bilder Crop]
 
 
 = Dynamische Eigenschaft
@@ -102,10 +140,23 @@ Der Voxel, welcher zu dem Knoten gehört, wird in gleich große Zellen unterteil
 
 === Abstand zur Kamera
 
-- kostenbudget
-- Anpassung der Genauigkeit
-	- Verringerung des Aufwands
-- Iteratives anpasssen an das Budget?
+- Schwellwert
+- Abstand zur kleinsten Kugel, die den Voxel inkludiert
+- Abstand mit Größe des Voxels dividieren
+- Wenn Abstand größer als Schwellwert
+	- Knoten rendern
+- sonst
+	- Kinderknoten überprüfen
+
+
+=== Auto
+
+- wie Abstand zur Kamera
+- messen wie lang rendern dauert
+- Dauer kleiner als Mindestdauer
+	- Schwellwert erhöhen
+- Dauer kleiner als Maximaldauer
+	- Schwellwert verringern
 
 
 === Gleichmäßig
@@ -153,12 +204,11 @@ Der Voxel, welcher zu dem Knoten gehört, wird in gleich große Zellen unterteil
 #todo([Orthogonal?])
 
 
+=== Side-by-Side 3D?
+
+
 = Bedienung/Interface
 
 #todo([Bedienung/Interface])
 
 #todo([Referenzen])
-
-#pagebreak()
-
-#bibliography("bibliographie.bib")

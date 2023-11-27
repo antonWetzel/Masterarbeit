@@ -18,24 +18,8 @@
 #include "glossar.typ"
 #pagebreak()
 
-#part([Überblick])
-
-
-= Punktwolke
-
-- Menge von Punkten
-- mindestens Position
-
-
-= Daten
-
-- Waldstücke
-- Deutschland
-- terrestrial und arial
-- zusätzlich manuelle Datenbestimmung
-- nur Position bekannt
-
-#todo([Mehr Überblick])
+#include "überblick.typ"
+#pagebreak()
 
 #include "stand-der-technik.typ"
 #pagebreak()
@@ -47,3 +31,6 @@
 #todo([Meshing])
 
 #include "visualisierung.typ"
+#pagebreak()
+
+#bibliography("bibliographie.bib")

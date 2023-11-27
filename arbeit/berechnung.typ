@@ -3,27 +3,6 @@
 #part([Berechnung])
 
 
-= Ablauf
-
-#todo([Ablauf als Bild])
-
-+ Diskretisieren
-	- in 5cm große Voxel unterteilen
-	- kann vollständig im Hauptspeicher sein
-+ Segmente bestimmen
-	- Top Down
-	- Quadtree
-	- nearest mit ...m max distance
-+ Segmentieren (nochmal)
-	- je nach Voxel zum Segment ordnen
-+ Segmente analysieren
-	- Beimeigenschaften
-	- Punktgreigenschaften
-+ Segmente abspeichern
-+ gemeinsamer Octree erstellen
-	- LOD für Visualisierung
-
-
 = Separierung in Bäume
 
 

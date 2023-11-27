@@ -1,5 +1,6 @@
 #import "../packages/todo.typ": *
 #import "../packages/placeholder.typ": *
+#import "../packages/cetz/src/lib.typ" as cetz
 
 #let PART_LEVEL = 10;
 
