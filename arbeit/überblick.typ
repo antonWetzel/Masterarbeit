@@ -3,12 +3,6 @@
 #part([Überblick])
 
 
-= Punktwolke
-
-- Menge von Punkten
-- mindestens Position
-
-
 = Testdaten
 
 Der benutze Datensatz @data beinhaltet $12$ Hektar Waldfläche in Deutschland, Baden-Württemberg. Die Daten sind mit Laserscans aufgenommen, wobei die Scans von Flugzeugen, Drohnen und vom Boden aus durchgeführt wurden. Dabei entstehen 3D-Punktwolken, welche im komprimiert LAS Dateiformat gegeben sind.
@@ -16,22 +10,45 @@ Der benutze Datensatz @data beinhaltet $12$ Hektar Waldfläche in Deutschland, B
 Der Datensatz ist bereits in einzelne Bäume unterteilt. Zusätzlich wurden für $6$ Hektar die Baumart, Höhe, Stammdurchmesser auf Brusthöhe und Anfangshöhe und Durchmesser der Krone gemessen. Mit den bereits bestimmten Eigenschaften können automatisch berechnete Ergebnisse validiert werden.
 
 
+== Scanner
+
+/ Arial: ...
+/ Terrestrial: ...
+
+
 = Ablauf
 
-+ Diskretisieren
-	- in 5cm große Voxel unterteilen
-	- kann vollständig im Hauptspeicher sein
-+ Segmente bestimmen
-	- Top Down
-	- Quadtree
-	- nearest mit ...m max distance
-+ Segmentieren (nochmal)
-	- je nach Voxel zum Segment ordnen
-+ Segmente analysieren
-	- Beimeigenschaften
-	- Punktgreigenschaften
-+ Segmente abspeichern
-+ gemeinsamer Octree erstellen
-	- LOD für Visualisierung
+Der Import wird in mehreren getrennten Phasen durchgeführt. Dabei wird die Arbeit für eine Phase so weit wie möglich parallelisiert.
+
+#todo[Referenzen zu späteren Abschnitten]
+
+
+== Diskretisierung
+
+Die Eingabedaten können beliebig viele Punkte enthalten. Für die weiteren Phasen wird deshalb eine vereinfachte Version berechnet, bei der alle Punkte in diskrete Voxel unterteilt werden. Die vereinfachte Version kann vollständig im Hauptspeicher geladen sein.
+
+
+== Segmente bestimmen
+
+Für jeden gefüllten Voxel wird bestimmt, zu welchem Segment er gehört. Dafür werden die gefüllten Voxel nach der Höhe geordnet. Von Oben nach Unten werden die Voxel zu einem Segment zugeordnet. Dafür werden Voxel dem gleichen Segment zugeordnet, zu dem nach Voxel gehören.
+
+
+== Segmente unterteilen
+
+Für jeden Punkt wird der zugehörige Voxel bestimmt und das Segment vom Voxel dem Punkt zugeordnet. Die Punkte werden in Segmente unterteilt gespeichert.
+
+
+== Analyse und Speichern
+
+Für jedes Segment werden die benötigten Eigenschaften für die Visualisierung berechnet. Dabei werden Eigenschaften spezifisch für jeden Punkt und Eigenschaften für das Gesamte Segment bestimmt.
+
+Die fertigen Segmente werden einzeln abgespeichert, dass diese separat angezeigt werden können. Zusätzlich wird ein Octree mit allen Segmenten kombiniert erstellt.
+
+
+== Speichern vom Octree
+
+Für alle Branch-Knoten im Octree wird mit den Kinderknoten eine vereinfachte Punktwolke als Detailstufe für das Anzeigen berechnet. Die Baumstruktur und alle Knoten mit den zugehörigen Punkten werden abgespeichert.
 
 #todo([Mehr Überblick])
+
+#include "stand-der-technik.typ"

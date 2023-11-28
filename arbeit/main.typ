@@ -8,10 +8,10 @@
 
 #include "deckblatt.typ"
 
+#outline(indent: auto)
+
 #set page(numbering: "1")
 #counter(page).update(1)
-
-#outline(indent: auto)
 
 #pagebreak()
 
@@ -21,14 +21,12 @@
 #include "überblick.typ"
 #pagebreak()
 
-#include "stand-der-technik.typ"
-#pagebreak()
-
 #include "berechnung.typ"
+#pagebreak()
 
 #part([Meshing])
 
-#todo([Meshing])
+#todo([Meshing]) #pagebreak()
 
 #include "visualisierung.typ"
 #pagebreak()
