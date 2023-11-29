@@ -34,4 +34,5 @@
 	)
 	v(2fr)
 	image(width: 70%, "../images/logo_tui.svg")
+	pagebreak()
 })

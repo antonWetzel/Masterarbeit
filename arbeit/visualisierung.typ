@@ -16,29 +16,149 @@
 
 == Dreieck
 
-Als Basis für einen Punkt wird ein Dreieck gerendert. Das Dreieck hat die Eckpunkte $(-1.73, -1)$, $(1.73, -1)$ und $0, 2$, wodurch der Kreis mit Radius $1$ und Zentrum $(0, 0)$ vollständig im Dreieck liegt.
+Als Basis für einen Punkt wird ein Dreieck gerendert. Das Dreieck muss so gewählt werden, dass der Einheitskreis mit Zentrum $(0, 0)$ vollständig enthalten ist.
 
-#todo[Warum die Ecken, schöner aufschreiben]
+Das kleinste Dreieck ist ein gleichseitiges Dreieck. In @dreieck_größe ist die Konstruktor für die Längen gegeben. Ein mögliches Dreieck hat die Eckpunkte $(-tan(60°), -1)$, $(tan(60°), -1)$ und $(0, 2)$.
+
+#figure(
+	caption: [Längen für das kleinste gleichseitige Dreieck, welches den Einheitskreis enthält.],
+	cetz.canvas(length: 2cm, {
+		import cetz.draw: *
+
+		let triangle() = {
+			line((-1.73, -1), (0, -1), (0, 0), close: true)
+
+			arc((-1.73, -1), start: 0deg, stop: 30deg, anchor: "origin", radius: 0.6)
+			content((-1.45, -0.9), [$30°$], anchor: "left")
+
+			arc((0, -1), start: 90deg, stop: 180deg, anchor: "origin", radius: 0.3)
+			circle((-0.15, -0.85), radius: 0.01, fill: black)
+
+			arc((0, 0), start: 210deg, stop: 270deg, anchor: "origin", radius: 0.5)
+			content((-0.2, -0.2), [$60°$], anchor: "top")
+
+			content((0, -0.5), [$1$], anchor: "left", padding: 0.05)
+		}
+
+		circle((0, 0), radius: 1)
+		line((-1.73, -1), (-0.86, 0.5), (0, 0), close: true)
+		triangle()
+
+		content((-1.73 / 2, -1), [$x$], anchor: "top", padding: 0.1)
+		content(((-1.73, -1), 0.55, (0, 0)), angle: -30deg, [$y$], anchor: "bottom", padding: 0.1)
+
+		set-origin((3, 0))
+
+		triangle()
+
+		content(((-1.73, -0.98), 0.5, (0, 0.02)), angle: -30deg, [$y = 1 / cos(60°) = 2$], anchor: "bottom", padding: 0.1)
+
+		content((-1.73 / 2, -1), [$x = tan(60°) approx 1,73$], anchor: "top", padding: 0.1)
+
+	}),
+) <dreieck_größe>
 
 Für jeden Punkt wird mit der Position $p$, Normalen $n$ und Größe $s$ die Position der Eckpunkte vom Dreieck im dreidimensionalen Raum bestimmt. Dafür werden zwei Vektoren bestimmt, welche paarweise zueinander und zur Normalen orthogonal sind.
 
-Für den erste Vektor $a$ wird mit der Normalen $n = (n_x, n_y, n_z)$ das Kreuzprodukt $a = (n_x, n_y, n_z) times (n_y, n_z, -n_x)$ bestimmt. Weil $|n| > 0$ ist, sind $(n_y, n_z, -n_x)$ und $n$ nicht gleich. $a$ muss noch für die weiteren Berechnungen normalisiert werden.
+Für den erste Vektor $a$ wird mit der Normalen $n = (n_x, n_y, n_z)$ das Kreuzprodukt $a = (n_x, n_y, n_z) times (n_y, n_z, -n_x)$ bestimmt. Weil $|n| > 0$ ist, sind $(n_y, n_z, -n_x)$ und $n$ unterschiedlich. $a$ muss noch für die weiteren Berechnungen normalisiert werden. Ein Beispiel ist in @dreieck_kreuzprodukt gegeben.
 
 Für den zweiten Vektor $b$ wird das Kreuzprodukt $b = n times a$ bestimmt. Weil das Kreuzprodukt zweier Vektoren orthogonal zu beiden Vektoren ist, sind $n$, $a$ und $b$ paarweise orthogonal.
 
-#todo[Bild Vektoren und Kreuzprodukt]
+#figure(
+	caption: [Berechnung von $a$ und $b$ paarweise orthogonal zu $n$.],
+	cetz.canvas(length: 2cm, {
+		import cetz.draw: *
 
-Die Vektoren $a$ und $b$ spannen eine Ebene auf, welche orthogonal zu $n$ ist. Für den Eckpunkt $i$ vom Dreieck mit den Koordinaten $(x, y)$, wird die Position $p_i = p + a * x * s + b * y * s$ berechnet werden.
+		let test((x, y, z), name: "", paint: gray) = {
+			let l = x * x + y * y + z * z
+			let l = calc.sqrt(l) / 2
+			let x = x / l
+			let y = y / l
+			let z = z / l
+
+			line((x, 0, 0), (x, 0, z), (0, 0, z), stroke: (paint: paint, dash: "dashed"))
+			line((x, 0, z), (x, y, z), stroke: (paint: paint, dash: "dashed"))
+			line((0, 0, 0), (x + z / 2, y + z / 2), stroke: paint, mark: (end: ">", fill: paint), name: name)
+		}
+
+		test((-56, -182, 70), name: "b", paint: red)
+		content("b.end", [$b$], anchor: "right", padding: 0.1)
+
+		test((-28, 14, 14), name: "a", paint: green)
+		content("a.end", [$a$], anchor: "right", padding: 0.1)
+
+		test((3, 1, 5), name: "n", paint: black)
+		content("n.end", [$n$], anchor: "left", padding: 0.1)
+
+		line((-2, 0, 0), (2, 0, 0), stroke: gray + 2pt, mark: (end: ">", fill: gray), name: "x")
+		line((0, -2, 0), (0, 2, 0), stroke: gray + 2pt, mark: (end: ">", fill: gray), name: "y")
+		line((-1, -1), (1, 1, 0), stroke: gray + 2pt, mark: (end: ">", fill: gray), name: "z")
+		content("x.end", [$x$], anchor: "top", padding: 0.1)
+		content("y.end", [$y$], anchor: "left", padding: 0.1)
+		content("z.end", [$z$], anchor: "left", padding: 0.1)
+
+		test((1, 5, -3), name: "n_m", paint: blue)
+		content("n_m.end", [$(n_y, n_z, -n_x)$], anchor: "bottom", padding: 0.1)
+	}),
+) <dreieck_kreuzprodukt>
+
+Die Vektoren $a$ und $b$ spannen eine Ebene auf, welche orthogonal zu $n$ ist. Für den Eckpunkt $i$ vom Dreieck mit den Koordinaten $(x_i, y_i)$, wird die Position $p_i = p + a * x_i * s + b * y_i * s$ berechnet werden. In @dreieck_eckpunkt ist die Berechnung dargestellt.
+
+#figure(
+	caption: [Berechnung von einem Eckpunkt.],
+	cetz.canvas(length: 2cm, {
+		import cetz.draw: *
+
+		line((0, 0, 0), (0, 1, 0), mark: (end: ">", fill: black), name: "n")
+		line((0, 0, 0), (2, 0, 0), mark: (end: ">", fill: black), name: "a")
+		line((0, 0), (1, 1), mark: (end: ">", fill: black), name: "b")
+
+		content("n.end", [$n$], padding: 0.1, anchor: "right")
+		content("a.end", [$a$], padding: 0.1, anchor: "top")
+		content("b.end", [$b$], padding: 0.1, anchor: "left")
+
+		line((0, 0, 0), (0, 0, 1.5), stroke: green + 2pt)
+		line((0, 0, 0), (1.5, 0, 0), stroke: red + 2pt)
+		line((0, 0, 1.5), (1.5 + 1.5 / 2, 1.5 / 2), (1.5, 0, 0), stroke: (dash: "dashed"))
+
+		content((1.5 + 1.5 / 2, 1.5 / 2), [$p_i$], padding: 0.1, anchor: "left")
+
+		content((1.5 / 2, 0), [$x_i*s$], anchor: "top", padding: 0.1)
+		content((0.4, 0.4), [$y_i*s$], anchor: "left", padding: 0.1)
+
+		circle((0, 0), fill: black, radius: 0.0)
+		circle((1.5 + 1.5 / 2, 1.5 / 2), fill: black, radius: 0.02)
+
+		content((0, 0), [$p$], anchor: "right", padding: 0.1)
+
+	}),
+) <dreieck_eckpunkt>
 
 
-== Vergleich zu Quad
+== Vergleich zu Quadrat als Basis
 
-#todo[Vergleich Quad oder Dreieck als Basis]
+Als Basis kann ein beliebiges Polygon gewählt werden, solange der Einheitskreis vollständig enthalten ist. Je mehr Ecken das Polygon hat, desto kleiner ist der Bereich vom Polygon, der nicht zum Kreis gehört. Für jede Ecke vom Polygon muss aber die Position berechnet werden.
 
-- triangle als Basis
-	- weniger Verticies (3 zu 6)
-	- mehr Fragment (4.0 zu 5.19615242270663)
-	- schneller als Quad
+Ein Dreieck kann mit einem Dreieck dargestellt werden, für eine Quadrat werden zwei benötigt. Für das Dreieck werden dadurch drei Ecken und eine Fläche von $(w * h) / 2 = (tan(60°) * 2 * 2) / 2 = tan(60°) * 2 approx 3.46s$ benötigt. Für das Quadrat werden sechs Ecken und eine Fläche von $w * h = 2 * 2 = 4$ benötigt. In @dreieck_oder_quadrat ist ein graphischer Vergleich.
+
+#figure(
+	caption: [Quadrat und Dreieck, welche den gleichen Kreis enthalten.],
+	cetz.canvas({
+		import cetz.draw: *
+
+		line((-1, -1), (-1, 1), (1, 1), (1, -1), close: true, fill: red)
+		circle((0, 0), radius: 1, fill: white)
+
+		set-origin((5, 0))
+
+		line((-1.73, -1), (1.73, -1), (0, 2), close: true, fill: red)
+		circle((0, 0), radius: 1, fill: white)
+	}),
+) <dreieck_oder_quadrat>
+
+#todo[Triangle Strip für Quadrat]
+
+#todo[Messwerte]
 
 
 == Instancing
