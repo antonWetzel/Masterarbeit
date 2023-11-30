@@ -2,14 +2,13 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "watch files",
+			"label": "spellcheck",
 			"command": "typst-hunspell",
 			"args": [
 				"watch",
 				"${workspaceFolder}",
 				"--style=plain",
 				"--language=de",
-				"--language=en",
 				"--words=${workspaceFolder}/words.txt"
 			],
 			"runOptions": {

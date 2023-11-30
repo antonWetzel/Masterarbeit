@@ -65,7 +65,7 @@ Für den erste Vektor $a$ wird mit der Normalen $n = (n_x, n_y, n_z)$ das Kreuzp
 Für den zweiten Vektor $b$ wird das Kreuzprodukt $b = n times a$ bestimmt. Weil das Kreuzprodukt zweier Vektoren orthogonal zu beiden Vektoren ist, sind $n$, $a$ und $b$ paarweise orthogonal.
 
 #figure(
-	caption: [Berechnung von $a$ und $b$ paarweise orthogonal zu $n$.],
+	caption: [Beispiel für die Berechnung von $a$ und $b$ paarweise orthogonal zu $n$.],
 	cetz.canvas(length: 2cm, {
 		import cetz.draw: *
 
@@ -196,22 +196,20 @@ Die Grafikpipeline bestimmt alle Pixel, welche im transformierten Dreieck liegen
 #todo(prefix: [Note], [Oben/Unten Teilung in 2 Segmente für Debug])
 
 
-== Selektion (Raycast)
+== Auswahl
 
-- von root bis leaf
-- bestimme intersection mit knoten
-- wenn leaf mit intersection gefunden
-	- lade Segmente, welche im Leaf liegen
-	- bestimme Abstand Ray-Punkt
-	- wenn kleiner als Radius hit
-	- Segment mit Punkt mit geringstem Abstand Ergebnis
+Um ein bestimmtes Segment auszuwählen, wird das momentan sichtbare Segment bei der Mausposition berechnet. Als erstes werden die Koordinaten der Maus mit der Kamera in dreidimensionalen Position und Richtung umgewandelt. Die Position und Richtung bilden zusammen einen Strahl.
+
+Im Octree wird vom Root-Knoten aus die Blatt-Knoten gefunden, welche den Strahl enthalten. Dabei werden die Knoten näher an der Position der Kamera bevorzugt. Für den Blattknoten sind die Segmente bekannt, welche Punkte in diesem Knoten haben. Für jedes mögliche Segment wird für jeden Punkt überprüft, ob er entlang des Strahls liegt.
+
+Sobald ein Punkt gefunden ist, müssen nur noch Knoten überprüft werden, die näher an der Kamera liegen, weil alle Punkte in weiter entfernten Knoten weiter als der momentan beste gefunden Punkt liegen.
 
 
 == Anzeige
 
-- segmente seperate abgespeichert
-	- keine LOD Stufen, nur Originalpunkte
-	- maxbuffersize?
+Im Octree kann zu den Punkten in einem Leaf-Knoten mehrere Segmente gehören. Um die Segmente einzeln anzuzeigen wird jedes Segment separat abgespeichert. Sobald ein einzelnes Segment ausgewählt wurde, wird dieses geladen und anstatt des Octrees angezeigt. Dabei werden alle Punkte des Segments ohne vereinfachte Detailstufen verwendet.
+
+Die momentan geladenen Knoten vom Octree bleiben dabei geladen, um einen schnellen Wechsel zu ermöglichen.
 
 
 = Eye-Dome-Lighting

@@ -21,3 +21,6 @@ Voxel
 Voxeln
 Voxels
 Quadtree
+Root
+Branch
+Leaf

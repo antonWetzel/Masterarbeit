@@ -3,8 +3,6 @@
 
 = Glossar
 
-#todo([Glossar])
-
 
 == Punktwolken
 
