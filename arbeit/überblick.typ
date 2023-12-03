@@ -9,11 +9,10 @@ Der benutze Datensatz @data beinhaltet $12$ Hektar Waldfläche in Deutschland, B
 
 Der Datensatz ist bereits in einzelne Bäume unterteilt. Zusätzlich wurden für $6$ Hektar die Baumart, Höhe, Stammdurchmesser auf Brusthöhe und Anfangshöhe und Durchmesser der Krone gemessen. Mit den bereits bestimmten Eigenschaften können automatisch berechnete Ergebnisse validiert werden.
 
+// == Scanner
 
-== Scanner
-
-/ Arial: ...
-/ Terrestrial: ...
+// / Arial: ...
+// / Terrestrial: ...
 
 
 = Ablauf

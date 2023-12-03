@@ -21,6 +21,7 @@
 / Leaf-Knoten: ist ein Knoten, welcher keine weiteren Kinderknoten hat. Für Punktwolken gehört jeder Punkt zu genau einem Leaf-Knoten.
 / Branch-Knoten: ist ein Knoten, welcher weitere Kinderknoten hat.
 / Root-Knoten: ist der erste Knoten im Tree, alle anderen Knoten sind direkte oder indirekte Kinderknoten vom Root-Knoten.
+/ $k$-dimensionaler-Baum: ist eine Datenstruktur, um im $k$-dimensionalen Raum für eine Position die nächsten Punkte zu bestimmen.
 
 #figure(
 	caption: [Unterschiedliche Stufen von einem Octree.],
