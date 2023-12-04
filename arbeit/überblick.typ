@@ -32,6 +32,7 @@ Die Eingabedaten können beliebig viele Punkte enthalten. Für die weiteren Phas
 Für jeden gefüllten Voxel wird bestimmt, zu welchem Segment er gehört. Dafür werden die gefüllten Voxel nach der Höhe geordnet. Von Oben nach Unten werden die Voxel zu einem Segment zugeordnet. Dafür werden Voxel dem gleichen Segment zugeordnet, zu dem nach Voxel gehören.
 
 
+
 == Segmente unterteilen
 
 Für jeden Punkt wird der zugehörige Voxel bestimmt und das Segment vom Voxel dem Punkt zugeordnet. Die Punkte werden in Segmente unterteilt gespeichert.

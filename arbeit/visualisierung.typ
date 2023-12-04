@@ -5,16 +5,15 @@
 
 = Technik
 
-- Rust
-- WebGPU (wgpu)
-- native Window (website?)
-- LAS/LAZ
+Das Projekt ist unter #link("https://github.com/antonWetzel/treee") verfügbar. Für die technische Umsetzung wird die Programmiersprache Rust und die Grafikkartenschnittstelle WebGPU verwendet. Rust ist eine performante Programmiersprache mit einfacher Integration für WebGPU. WebGPU bildet eine Abstraktionsebene über der nativen Grafikkartenschnittstelle, dadurch ist die Implementierung unabhängig von den Systemeigenschaften.
+
+Als Eingabeformat werden Dateien im LASZip-Format verwendet. Dieses wird häufig für Punktwolken verwendet. Weiter Formate können einfach eingebunden werden, solange eine Rust verfügbar ist.
 
 
 = Punkt
 
 
-== Dreieck
+== Basis
 
 Als Basis für einen Punkt wird ein Dreieck gerendert. Das Dreieck muss so gewählt werden, dass der Einheitskreis mit Zentrum $(0, 0)$ vollständig enthalten ist.
 
@@ -179,21 +178,12 @@ Die Grafikpipeline bestimmt alle Pixel, welche im transformierten Dreieck liegen
 #todo[Bilder Crop]
 
 
-= Dynamische Eigenschaft
+= Eigenschaft
 
-- eigenschaften als $32$ bit unsigned integer
-- look up table für farbe basierend auf eigenschaftwert
+Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei kann die ausgewählte Eigenschaft geändert werden, ohne die anderen Informationen über die Punkte neu zu laden. Die Eigenschaften sind separat als `32 bit uint` gespeichert und werden mit einer Farbpalette in ein Farbverlauf umgewandelt. Auch die Farbpalette kann unabhängig ausgewählt werden.
 
 
 = Subpunktwolken (Bäume)
-
-#stack(
-	dir: ltr,
-	image("../images/segment_1.png", height: 30%),
-	image("../images/segment_2.png", height: 30%),
-)
-
-#todo(prefix: [Note], [Oben/Unten Teilung in 2 Segmente für Debug])
 
 
 == Auswahl
@@ -210,6 +200,14 @@ Sobald ein Punkt gefunden ist, müssen nur noch Knoten überprüft werden, die n
 Im Octree kann zu den Punkten in einem Leaf-Knoten mehrere Segmente gehören. Um die Segmente einzeln anzuzeigen wird jedes Segment separat abgespeichert. Sobald ein einzelnes Segment ausgewählt wurde, wird dieses geladen und anstatt des Octrees angezeigt. Dabei werden alle Punkte des Segments ohne vereinfachte Detailstufen verwendet.
 
 Die momentan geladenen Knoten vom Octree bleiben dabei geladen, um einen schnellen Wechsel zu ermöglichen.
+
+#stack(
+	dir: ltr,
+	image("../images/segment_1.png", height: 30%),
+	image("../images/segment_2.png", height: 30%),
+)
+
+#todo(prefix: [Note], [Oben/Unten Teilung in 2 Segmente für Debug])
 
 
 = Eye-Dome-Lighting
