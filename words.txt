@@ -1,3 +1,4 @@
+2D
 3D
 Rust
 WebGPU
@@ -24,3 +25,4 @@ Quadtree
 Root
 Branch
 Leaf
+Pivot

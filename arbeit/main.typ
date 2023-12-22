@@ -4,6 +4,12 @@
 
 #show: setup
 
+#set document(
+	author: "Anton Wetzel",
+	title: "Berechnung charakteristischen Eigenschaften von botanischen Bäumen mithilfe von 3D-Punktwolken.",
+	keywords: ("Punktwolken", "botanische Bäume", "Rust", "WebGPU", "Visualisierung"),
+)
+
 #todo-outline()
 
 #include "deckblatt.typ"
@@ -24,10 +30,13 @@
 #include "berechnung.typ"
 #pagebreak()
 
-#include "meshing.typ"
+#include "triangulierung.typ"
 #pagebreak()
 
 #include "visualisierung.typ"
+#pagebreak()
+
+#include "ergebnisse.typ"
 #pagebreak()
 
 #bibliography("bibliographie.bib")

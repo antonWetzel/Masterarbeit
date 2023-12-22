@@ -30,5 +30,38 @@
 	show outline: it => { it; PART_COUNTER.update(0); }
 
 	show raw: it => text(size: 1.2em, it)
+
+	show figure: it => {
+		v(1em)
+		box({
+			align(center + horizon)[#it.body]
+			align(center + horizon, {
+				set align(left)
+				set par(hanging-indent: 0.5cm, justify: true)
+				pad(left: 0.5cm, right: 1cm)[#it.supplement #it.counter.display(it.numbering): #it.caption]
+				v(1em)
+			})
+		})
+		v(1em)
+	}
+
 	document
+}
+
+#let side-caption(amount: 1fr, content) = {
+	show figure: it => {
+		v(1em)
+		grid(
+			columns: (1fr, amount * 1fr),
+			align(center + horizon)[#it.body],
+			align(center + horizon, {
+				set align(left)
+				set par(hanging-indent: 0.5cm, justify: true)
+				pad(left: 0.5cm, right: 1cm)[#it.supplement #it.counter.display(it.numbering): #it.caption]
+				v(1em)
+			}),
+		)
+		v(1em)
+	}
+	content
 }

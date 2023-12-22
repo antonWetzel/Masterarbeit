@@ -17,10 +17,10 @@ Als Eingabeformat werden Dateien im LASZip-Format verwendet. Dieses wird häufig
 
 Als Basis für einen Punkt wird ein Dreieck gerendert. Das Dreieck muss so gewählt werden, dass der Einheitskreis mit Zentrum $(0, 0)$ vollständig enthalten ist.
 
-Das kleinste Dreieck ist ein gleichseitiges Dreieck. In @dreieck_größe ist die Konstruktor für die Längen gegeben. Ein mögliches Dreieck hat die Eckpunkte $(-tan(60°), -1)$, $(tan(60°), -1)$ und $(0, 2)$.
+Das kleinste Dreieck ist ein gleichseitiges Dreieck. In @dreieck_größe ist die Konstruktor für die Seitenlänge gegeben. Ein mögliches Dreieck hat die Eckpunkte $(-tan(60°), -1)$, $(tan(60°), -1)$ und $(0, 2)$.
 
 #figure(
-	caption: [Längen für das kleinste gleichseitige Dreieck, welches den Einheitskreis enthält.],
+	caption: [Seitenlänge für das kleinste gleichseitige Dreieck, welches den Einheitskreis enthält.],
 	cetz.canvas(length: 2cm, {
 		import cetz.draw: *
 

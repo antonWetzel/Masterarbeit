@@ -1,4 +1,4 @@
-#import "setup.typ": *;
+#import "setup.typ": *
 
 #part([Berechnung])
 
