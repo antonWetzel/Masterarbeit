@@ -1,10 +1,10 @@
 2D
 3D
+KD
 Rust
 WebGPU
 Anton
 anton
-Wetzel
 wetzel
 Tristan
 Nauber
@@ -26,3 +26,5 @@ Root
 Branch
 Leaf
 Pivot
+Pivoting
+Median

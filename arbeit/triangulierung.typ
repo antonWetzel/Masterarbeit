@@ -5,15 +5,15 @@
 
 = Ziel
 
-Eine Triangulierung ermöglicht eine Rekonstruktion der ursprünglichen gescannten Oberfläche, um diese weiterzuverarbeiten oder anzuzeigen. Die meisten Programme und Hardware sind auf das Anzeigen von Dreiecken spezialisiert, und können diese effizienter als Punkte darstellen. Die Triangulierung wird für ein Segment bestimmt.
+Eine Triangulierung ermöglicht eine Rekonstruktion der ursprünglichen Oberfläche vom eingescannten Bereich, welche weiterverarbeitet oder anzuzeigen werden kann. Die meisten Programme und Hardware sind auf das Anzeigen von Dreiecken spezialisiert, und können diese effizienter als Punkte darstellen. Die Triangulierung wird dabei für die Segmente getrennt bestimmt.
 
 
 = Ball-Pivoting-Algorithmus
 
 
-== Bedingung
+== Überblick
 
-Beim Ball-Pivoting-Algorithmus werden die Dreiecke der Oberfläche bestimmt, welche von einer Kugel mit Radius $alpha$ ($alpha$-Kugel) erreicht werden. Dabei berührt die Kugel die drei Eckpunkte vom Dreieck und kein weiterer Punkt aus der Punktwolke liegt in der Kugel.
+Beim Ball-Pivoting-Algorithmus werden die Dreiecke der Oberfläche bestimmt, welche von einer Kugel mit Radius $alpha$ ($alpha$-Kugel) erreicht werden können. Dabei berührt die Kugel die drei Eckpunkte vom Dreieck und kein weiterer Punkt aus der Punktwolke liegt in der Kugel.
 
 In @ball_pivoting_überblick ist ein Beispiel in 2D gegeben. Dabei werden die Linien gesucht, dass der zugehörige Kreis keine weiteren Punkte enthält.
 
@@ -68,15 +68,55 @@ In @ball_pivoting_überblick ist ein Beispiel in 2D gegeben. Dabei werden die Li
 	}),
 ) <ball_pivoting_überblick>]
 
+Die gefundenen Dreiecke bilden eine Hülle, welche alle Punkte beinhaltet. Je kleiner $alpha$ ist, desto genauer ist die Hülle um die Punkte und Details werden besser wiedergegeben. Dafür werden mehr Dreiecke benötigt und Lücken im Datensatz sind auch in der Hülle vorhanden.
+
 
 == Hilfsmittel
 
 
 === KD-Baum
 
-Für die Punkte wird zuerst ein KD-Baum bestimmt. Mit diesem kann effizient bestimmt werden, welche Punkte innerhalb einer Kugel mit beliebigen Position und Radius sind.
+Für die Punkte wird zuerst ein KD-Baum bestimmt. Mit diesem kann effizient bestimmt werden, welche Punkte innerhalb einer Kugel mit beliebigen Position und Radius sind. Die Konstruktion und Verwendung vom KD-Baum sind in @appendix_kd_baum weiter ausgeführt.
 
-#todo[Bild: 2D-KD-Baum für Punkte]
+#side-caption(amount: 1)[#figure(
+	caption: [
+		KD-Baum für Punkte in 2D. Für jede Unterteilung ist die Trenngerade gepunkteter gezeichnet. Weil der rote Kreis vollständig auf einer Seite der ersten Unterteilung ist, müssen die Punkte auf der anderen Seite nicht betrachtet werden.
+	],
+	cetz.canvas(length: 2cm, {
+		import cetz.draw: *
+
+		for pos in positions {
+			circle(pos, radius: 0.1, fill: black)
+		}
+		circle((1.7, 0), radius: 0.1, fill: black)
+
+		let x0 = positions.at(3).at(0)
+		line((x0, 1.5), (x0, -1), stroke: black + 2pt)
+		let y1 = positions.at(0).at(1)
+		line((-0.5, y1), (x0, y1), stroke: (dash: "densely-dotted", thickness: 2pt))
+		let x2 = positions.at(1).at(0)
+		line((x2, 1.5), (x2, y1), stroke: (dash: "dotted", thickness: 2pt))
+		let y3 = positions.at(2).at(1)
+		line((x2, y3), (x0, y3), stroke: (dash: "loosely-dotted", thickness: 2pt))
+		let x2 = positions.at(9).at(0)
+		line((x2, y1), (x2, -1), stroke: (dash: "dotted", thickness: 2pt))
+		let y3 = positions.at(8).at(1)
+		line((x2, y3), (x0, y3), stroke: (dash: "loosely-dotted", thickness: 2pt))
+
+		let y1 = 0
+		line((x0, y1), (2.5, y1), stroke: (dash: "densely-dotted", thickness: 2pt))
+		let x2 = positions.at(4).at(0)
+		line((x2, 1.5), (x2, y1), stroke: (dash: "dotted", thickness: 2pt))
+		let y3 = positions.at(5).at(1)
+		line((x2, y3), (2.5, y3), stroke: (dash: "loosely-dotted", thickness: 2pt))
+		let x2 = positions.at(7).at(0)
+		line((x2, y1), (x2, -1), stroke: (dash: "dotted", thickness: 2pt))
+		let y3 = positions.at(6).at(1)
+		line((x2, y3), (2.5, y3), stroke: (dash: "loosely-dotted", thickness: 2pt))
+
+		circle((0.8, 0.1), radius: 0.4, stroke: red)
+	}),
+) <ball_pivoting_kd_tree>]
 
 
 === $alpha$-Kugel für ein Dreieck
@@ -261,6 +301,6 @@ Wenn es keine weiteren äußeren Kanten gibt, muss ein neues Startdreieck gefund
 - Klein genug für gute Laufzeit
 
 
-== Ergebnisse
+= Ergebnisse
 
 #todo[Ergebnisse]

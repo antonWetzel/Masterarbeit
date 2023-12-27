@@ -39,4 +39,7 @@
 #include "ergebnisse.typ"
 #pagebreak()
 
+#include "appendix.typ"
+#pagebreak()
+
 #bibliography("bibliographie.bib")
