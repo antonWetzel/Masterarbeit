@@ -129,7 +129,6 @@ Die Vektoren $a$ und $b$ spannen eine Ebene auf, welche orthogonal zu $n$ ist. F
 		circle((1.5 + 1.5 / 2, 1.5 / 2), fill: black, radius: 0.02)
 
 		content((0, 0), [$p$], anchor: "right", padding: 0.1)
-
 	}),
 ) <dreieck_eckpunkt>
 

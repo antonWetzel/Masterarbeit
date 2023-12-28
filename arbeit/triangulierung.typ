@@ -290,7 +290,7 @@ Das neu gefundene Dreieck mit den Eckpunkten $(p_1, p_2, p_3)$ wird zur Triangul
 
 == Komplettes Segment triangulieren
 
-Solange es noch äußere Kanten gibt, kann von diesen aus die Triangulierung erweitert werden. Dabei muss beachtet werden, dass durch Ungenauigkeiten bei der Berechung und malformierten Daten eine Kante mehrfach gefunden werden kann. Um eine erneute Triangulierung von bereits triangulierten Bereichen zu verhindern, werden alle inneren Kanten gespeichert und neue Kanten nur zu den äußeren Kanten hinzugefügt, wenn diese noch nicht in den inneren Kanten vorhanden sind. Bei der Erweiterung wird die ausgwählte äußere Kante zu den inneren Kanten hinzugefügt.
+Solange es noch äußere Kanten gibt, kann von diesen aus die Triangulierung erweitert werden. Dabei muss beachtet werden, dass durch Ungenauigkeiten bei der Berechnung und malformierten Daten eine Kante mehrfach gefunden werden kann. Um eine erneute Triangulierung von bereits triangulierten Bereichen zu verhindern, werden alle inneren Kanten gespeichert und neue Kanten nur zu den äußeren Kanten hinzugefügt, wenn diese noch nicht in den inneren Kanten vorhanden sind. Bei der Erweiterung wird die ausgewählte äußere Kante zu den inneren Kanten hinzugefügt.
 
 Wenn es keine weiteren äußeren Kanten gibt, muss ein neues Startdreieck gefunden werden. Dabei werden nur die Punkte in betracht gezogen, welche zu noch keinem Dreieck gehören. Wenn kein Startdreieck gefunden werden kann, ist das Segment vollständig trianguliert.
 
@@ -304,3 +304,25 @@ Wenn es keine weiteren äußeren Kanten gibt, muss ein neues Startdreieck gefund
 = Ergebnisse
 
 #todo[Ergebnisse]
+
+#todo[Vergleich $alpha$]
+
+#figure(
+	caption: [Beispiel für eine Triangulierung. ...],
+	stack(
+		dir: ltr,
+		spacing: 1em,
+		subfigure(caption: [Punkte], width: 30%, box(
+			clip: true,
+			image("../images/triangulation_input.png", width: 400%),
+		)),
+		subfigure(caption: [Dreiecke umrandet], width: 30%, box(
+			clip: true,
+			image("../images/triangulation_outline.png", width: 400%),
+		)),
+		subfigure(caption: [Dreiecke ausgefüllt], width: 30%, box(
+			clip: true,
+			image("../images/triangulation_filled.png", width: 400%),
+		)),
+	),
+)

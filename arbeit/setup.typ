@@ -1,5 +1,6 @@
 #import "../packages/todo.typ": *
 #import "../packages/placeholder.typ": *
+#import "../packages/subfigure.typ": *
 #import "../packages/cetz/src/lib.typ" as cetz
 
 #let PART_LEVEL = 10;
@@ -33,15 +34,15 @@
 
 	show figure: it => {
 		v(1em)
-		box({
-			align(center + horizon)[#it.body]
+		align(center, box({
+			align(center + horizon, it.body)
 			align(center + horizon, {
 				set align(left)
 				set par(hanging-indent: 0.5cm, justify: true)
-				pad(left: 0.5cm, right: 1cm)[#it.supplement #it.counter.display(it.numbering): #it.caption]
+				pad(left: 0.5cm, right: 1cm, it.caption)
 				v(1em)
 			})
-		})
+		}))
 		v(1em)
 	}
 
