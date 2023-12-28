@@ -1,19 +1,20 @@
 #import "setup.typ": *
 
-#part([Visualisierung])
+
+= Visualisierung
 
 
-= Technik
+== Technik
 
 Das Projekt ist unter #link("https://github.com/antonWetzel/treee") verfügbar. Für die technische Umsetzung wird die Programmiersprache Rust und die Grafikkartenschnittstelle WebGPU verwendet. Rust ist eine performante Programmiersprache mit einfacher Integration für WebGPU. WebGPU bildet eine Abstraktionsebene über der nativen Grafikkartenschnittstelle, dadurch ist die Implementierung unabhängig von den Systemeigenschaften.
 
 Als Eingabeformat werden Dateien im LASZip-Format verwendet. Dieses wird häufig für Punktwolken verwendet. Weiter Formate können einfach eingebunden werden, solange eine Rust verfügbar ist.
 
 
-= Punkt
+== Punkt
 
 
-== Basis
+=== Basis
 
 Als Basis für einen Punkt wird ein Dreieck gerendert. Das Dreieck muss so gewählt werden, dass der Einheitskreis mit Zentrum $(0, 0)$ vollständig enthalten ist.
 
@@ -133,7 +134,7 @@ Die Vektoren $a$ und $b$ spannen eine Ebene auf, welche orthogonal zu $n$ ist. F
 ) <dreieck_eckpunkt>
 
 
-== Vergleich zu Quadrat als Basis
+=== Vergleich zu Quadrat als Basis
 
 Als Basis kann ein beliebiges Polygon gewählt werden, solange der Einheitskreis vollständig enthalten ist. Je mehr Ecken das Polygon hat, desto kleiner ist der Bereich vom Polygon, der nicht zum Kreis gehört. Für jede Ecke vom Polygon muss aber die Position berechnet werden.
 
@@ -159,12 +160,12 @@ Ein Dreieck kann mit einem Dreieck dargestellt werden, für eine Quadrat werden 
 #todo[Messwerte]
 
 
-== Instancing
+=== Instancing
 
 Weil für alle Punkte das gleiche Dreieck als Basis verwendet wird, muss dieses nur einmal zur Grafikkarte übertragen werden. Mit *Instancing* wird das gleiche Dreieck für alle Punkte verwendet, während nur die Daten spezifisch für einen Punkt sich ändern.
 
 
-== Kreis
+=== Kreis
 
 Die Grafikpipeline bestimmt alle Pixel, welche im transformierten Dreieck liegen. Für jeden Pixel kann entschieden werden, ob dieser im Ergebnis gespeichert wird. Dafür wird bei den Eckpunkten die untransformierten Koordinaten abgespeichert, dass diese später verfügbar sind. Für jeden Pixel wird von der Pipeline die interpolierten Koordinaten berechnet. Nur wenn der Betrag der interpolierten Koordinaten kleiner $1$ ist, wird der Pixel im Ergebnis abgespeichert.
 
@@ -177,24 +178,24 @@ Die Grafikpipeline bestimmt alle Pixel, welche im transformierten Dreieck liegen
 #todo[Bilder Crop]
 
 
-= Eigenschaft
+== Eigenschaft
 
 Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei kann die ausgewählte Eigenschaft geändert werden, ohne die anderen Informationen über die Punkte neu zu laden. Die Eigenschaften sind separat als `32 bit uint` gespeichert und werden mit einer Farbpalette in ein Farbverlauf umgewandelt. Auch die Farbpalette kann unabhängig ausgewählt werden.
 
 
-= Subpunktwolken (Bäume)
+== Subpunktwolken (Bäume)
 
 
-== Auswahl
+=== Auswahl
 
 Um ein bestimmtes Segment auszuwählen, wird das momentan sichtbare Segment bei der Mausposition berechnet. Als erstes werden die Koordinaten der Maus mit der Kamera in dreidimensionalen Position und Richtung umgewandelt. Die Position und Richtung bilden zusammen einen Strahl.
 
 Im Octree wird vom Root-Knoten aus die Blatt-Knoten gefunden, welche den Strahl enthalten. Dabei werden die Knoten näher an der Position der Kamera bevorzugt. Für den Blattknoten sind die Segmente bekannt, welche Punkte in diesem Knoten haben. Für jedes mögliche Segment wird für jeden Punkt überprüft, ob er entlang des Strahls liegt.
 
-Sobald ein Punkt gefunden ist, müssen nur noch Knoten überprüft werden, die näher an der Kamera liegen, weil alle Punkte in weiter entfernten Knoten weiter als der momentan beste gefunden Punkt liegen.
+Sobald ein Punkt gefunden ist, müssen nur noch Knoten überprüft werden, die näher an der Kamera liegen, weil alle Punkte in weiter entfernten Knoten weiter als der momentan beste gefundene Punkt liegen.
 
 
-== Anzeige
+=== Anzeige
 
 Im Octree kann zu den Punkten in einem Leaf-Knoten mehrere Segmente gehören. Um die Segmente einzeln anzuzeigen wird jedes Segment separat abgespeichert. Sobald ein einzelnes Segment ausgewählt wurde, wird dieses geladen und anstatt des Octrees angezeigt. Dabei werden alle Punkte des Segments ohne vereinfachte Detailstufen verwendet.
 
@@ -209,22 +210,33 @@ Die momentan geladenen Knoten vom Octree bleiben dabei geladen, um einen schnell
 #todo(prefix: [Note], [Oben/Unten Teilung in 2 Segmente für Debug])
 
 
-= Eye-Dome-Lighting
+== Eye-Dome-Lighting
 
-Um die Punktwolke auf Anzuzeigen, werden die Punkte aus dem dreidimensionalen Raum auf den zweidimensionalen Monitor projiziert. Dabei gehen die Tiefeninformationen verloren. Mit der Rendertechnik *Eye-Dome-Lighting* werden die Kanten von Punkten hervorgehoben, bei denen die Tiefe sich stark ändert.
+Um die Punktwolke auf Anzuzeigen, werden die Punkte aus dem dreidimensionalen Raum auf den zweidimensionalen Monitor projiziert. Dabei gehen die Tiefeninformationen verloren. Mit der Rendertechnik *Eye-Dome-Lighting* werden die Kanten von Punkten hervorgehoben, bei denen die Tiefe sich stark ändert. Ein Veranschaulichung ist in @eye_dome_example> gegeben.
 
-#todo[Vergleichsbild]
+#let boxed(p, caption: []) = subfigure(box(image(p), fill: rgb(35%, 49%, 58%), stroke: 1pt), caption: caption)
 
-Beim Rendern von 3D-Scenen wird für jeden Pixel die momentane Tiefe vom Polygon an dieser Stelle gespeichert. Das wird benötigt, dass bei überlappenden Polygonen das nähere Polygon an der Kamera angezeigt wird. Nachdem die Scene gerendert ist, wird mit den Tiefeninformationen für jeden Pixel der Tiefenunterschied zu den umliegenden Pixeln bestimmt.
+#figure(
+	caption: [Waldstück mit und ohne Eye-Dome-Lighting. Die Punkte sind zusätzlich in weiß angezeigt, um den Effekt hervorzuheben.],
+	grid(
+		columns: 2,
+		gutter: 1em,
+		boxed("../images/eye_dome_with.png", caption: [Ohne Eye-Dome-Lighting]),                 boxed("../images/eye_dome_without.png", caption: [Mit Eye-Dome-Lighting]),
+		boxed("../images/eye_dome_white_with.png", caption: [Einfarbig ohne Eye-Dome-Lighting]), boxed("../images/eye_dome_white_without.png", caption: [Einfarbig mit Eye-Dome-Lighting]),
+	),
+) <eye_dome_example>
 
-#todo[Farb- und Tiefenbild]
+Beim Rendern von 3D-Scenen wird für jeden Pixel die momentane Tiefe vom Polygon an dieser Stelle gespeichert. Das wird benötigt, dass bei überlappenden Polygonen das nähere Polygon an der Kamera angezeigt wird. Nachdem die Szene gerendert ist, wird mit den Tiefeninformationen für jeden Pixel der Tiefenunterschied zu den umliegenden Pixeln bestimmt. Das Tiefenbild für die Veranschaulichung ist in @eye_dome_depth gegeben.
 
-Je größer der Unterschied ist, desto stärker wird der Pixel im Ergebnisbild eingefärbt. Dadurch werden Kanten hervorgehoben, je nachdem wie groß der Tiefenunterschied ist. Für den Effekt kann die Stärke und die Farbe angepasst werden.
+Je größer der Unterschied ist, desto stärker wird der Pixel im Ergebnisbild eingefärbt. Dadurch werden Kanten hervorgehoben, je nachdem wie groß der Tiefenunterschied ist.
 
-#todo[Stark und Schwache Effekt Bild]
+#figure(
+	caption: [Tiefenbild nach dem render der Szene. Je heller eine Position ist, desto weiter ist das Polygon zugehörig zur Koordinate von der Kamera entfernt.],
+	box(image("../images/eye_dome_depth_edited.png", width: 80%), stroke: 1pt),
+) <eye_dome_depth>
 
 
-= Detailstufen
+== Detailstufen
 
 Je nach Scannertechnologie und Größe des abgetasteten Gebietes kann die Punktwolke unterschiedlich viele Punkte beinhalten. Durch Hardwarelimitierungen ist es nicht immer möglich alle Punkte gleichzeitig anzuzeigen, während eine interaktive Wiedergabe gewährleistet ist.
 
@@ -239,7 +251,7 @@ Für jeden Branch-Knoten wird eine Punktwolke berechnet, welche als Vereinfachun
 Beim anzeigen wird vom Root-Knoten aus zuerst geprüft, ob der momentane Knoten von der Kamera aus sichtbar ist. Für die Knoten wird mit den Algorithmen aus @auswahl_detailstufen entschieden, ob die zugehörige vereinfachte Punktwolke gerendert oder der gleiche Algorithmus wird für die Kinderknoten wiederholt wird.
 
 
-== Berechnung der Detailstufen <berechnung_detailstufen>
+=== Berechnung der Detailstufen <berechnung_detailstufen>
 
 #todo[Kopiert vom Fachpraktikum]
 
@@ -250,10 +262,10 @@ Dadurch haben zwar Berechnungen der gröberen Detailstufen für Knoten näher an
 Der Voxel, welcher zu dem Knoten gehört, wird in gleich große Zellen unterteilt. Für jede Zelle mit Punkten wird ein repräsentativer Punkt bestimmt. Dafür wird für die Zelle die Kombination aller Eingabepunkte, welche in der Zelle liegen berechnet. Die Anzahl der Zellen ist dabei unabhängig von der Größe des ursprünglichen Voxels, wodurch bei gröberen Detailstufen durch den größeren Voxel auch die Zellen größer werden und mehr Punkte zusammengefasst werden.
 
 
-== Auswahl der Detailstufen? <auswahl_detailstufen>
+=== Auswahl der Detailstufen? <auswahl_detailstufen>
 
 
-=== Abstand zur Kamera
+==== Abstand zur Kamera
 
 - Schwellwert
 - Abstand zur kleinsten Kugel, die den Voxel inkludiert
@@ -264,7 +276,7 @@ Der Voxel, welcher zu dem Knoten gehört, wird in gleich große Zellen unterteil
 	- Kinderknoten überprüfen
 
 
-=== Auto
+==== Auto
 
 - wie Abstand zur Kamera
 - messen wie lang rendern dauert
@@ -274,22 +286,22 @@ Der Voxel, welcher zu dem Knoten gehört, wird in gleich große Zellen unterteil
 	- Schwellwert verringern
 
 
-=== Gleichmäßig
+==== Gleichmäßig
 
 - gleich für alle Knoten
 - auswahl der Stufe
 
 
-= Kamera/Projektion
+== Kamera/Projektion
 
 
-== Kontroller
+=== Kontroller
 
 - bewegt Kamera
 - kann gewechselt werden, ohne die Kameraposition zu ändern
 
 
-=== Orbital
+==== Orbital
 
 - rotieren um einem Punkt im Raum
 - Kamera fokussiert zum Punkt
@@ -298,7 +310,7 @@ Der Voxel, welcher zu dem Knoten gehört, wird in gleich große Zellen unterteil
 - To-do: Oben-Unten Bewegung
 
 
-=== First person
+==== First person
 
 - rotieren um die Kamera Position
 - Bewegung zur momentanen Blickrichtung
@@ -306,23 +318,23 @@ Der Voxel, welcher zu dem Knoten gehört, wird in gleich große Zellen unterteil
 - To-do: Oben-Unten Bewegung
 
 
-== Projektion
+=== Projektion
 
 
-=== Perspektive
+==== Perspektive
 
 - Projektion mit Field of View Kegel
 
 
-=== Orthogonal?
+==== Orthogonal?
 
 #todo([Orthogonal?])
 
 
-=== Side-by-Side 3D?
+==== Side-by-Side 3D?
 
 
-= Bedienung/Interface
+== Bedienung/Interface
 
 #todo([Bedienung/Interface])
 

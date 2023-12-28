@@ -14,14 +14,11 @@
 
 #include "deckblatt.typ"
 
-#outline(indent: auto)
+#outline(depth: 3)
 
 #set page(numbering: "1")
 #counter(page).update(1)
 
-#pagebreak()
-
-#include "glossar.typ"
 #pagebreak()
 
 #include "überblick.typ"
@@ -40,6 +37,9 @@
 #pagebreak()
 
 #include "appendix.typ"
+#pagebreak()
+
+#include "glossar.typ"
 #pagebreak()
 
 #bibliography("bibliographie.bib")

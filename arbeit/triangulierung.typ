@@ -1,17 +1,18 @@
 #import "setup.typ": *
 
-#part([Triangulierung])
+
+= Triangulierung <triangulierung>
 
 
-= Ziel
+== Ziel
 
 Eine Triangulierung ermöglicht eine Rekonstruktion der ursprünglichen Oberfläche vom eingescannten Bereich, welche weiterverarbeitet oder anzuzeigen werden kann. Die meisten Programme und Hardware sind auf das Anzeigen von Dreiecken spezialisiert, und können diese effizienter als Punkte darstellen. Die Triangulierung wird dabei für die Segmente getrennt bestimmt.
 
 
-= Ball-Pivoting-Algorithmus
+== Ball-Pivoting-Algorithmus
 
 
-== Überblick
+=== Überblick
 
 Beim Ball-Pivoting-Algorithmus werden die Dreiecke der Oberfläche bestimmt, welche von einer Kugel mit Radius $alpha$ ($alpha$-Kugel) erreicht werden können. Dabei berührt die Kugel die drei Eckpunkte vom Dreieck und kein weiterer Punkt aus der Punktwolke liegt in der Kugel.
 
@@ -71,54 +72,6 @@ In @ball_pivoting_überblick ist ein Beispiel in 2D gegeben. Dabei werden die Li
 Die gefundenen Dreiecke bilden eine Hülle, welche alle Punkte beinhaltet. Je kleiner $alpha$ ist, desto genauer ist die Hülle um die Punkte und Details werden besser wiedergegeben. Dafür werden mehr Dreiecke benötigt und Lücken im Datensatz sind auch in der Hülle vorhanden.
 
 
-== Hilfsmittel
-
-
-=== KD-Baum
-
-Für die Punkte wird zuerst ein KD-Baum bestimmt. Mit diesem kann effizient bestimmt werden, welche Punkte innerhalb einer Kugel mit beliebigen Position und Radius sind. Die Konstruktion und Verwendung vom KD-Baum sind in @appendix_kd_baum weiter ausgeführt.
-
-#side-caption(amount: 1)[#figure(
-	caption: [
-		KD-Baum für Punkte in 2D. Für jede Unterteilung ist die Trenngerade gepunkteter gezeichnet. Weil der rote Kreis vollständig auf einer Seite der ersten Unterteilung ist, müssen die Punkte auf der anderen Seite nicht betrachtet werden.
-	],
-	cetz.canvas(length: 2cm, {
-		import cetz.draw: *
-
-		for pos in positions {
-			circle(pos, radius: 0.1, fill: black)
-		}
-		circle((1.7, 0), radius: 0.1, fill: black)
-
-		let x0 = positions.at(3).at(0)
-		line((x0, 1.5), (x0, -1), stroke: black + 2pt)
-		let y1 = positions.at(0).at(1)
-		line((-0.5, y1), (x0, y1), stroke: (dash: "densely-dotted", thickness: 2pt))
-		let x2 = positions.at(1).at(0)
-		line((x2, 1.5), (x2, y1), stroke: (dash: "dotted", thickness: 2pt))
-		let y3 = positions.at(2).at(1)
-		line((x2, y3), (x0, y3), stroke: (dash: "loosely-dotted", thickness: 2pt))
-		let x2 = positions.at(9).at(0)
-		line((x2, y1), (x2, -1), stroke: (dash: "dotted", thickness: 2pt))
-		let y3 = positions.at(8).at(1)
-		line((x2, y3), (x0, y3), stroke: (dash: "loosely-dotted", thickness: 2pt))
-
-		let y1 = 0
-		line((x0, y1), (2.5, y1), stroke: (dash: "densely-dotted", thickness: 2pt))
-		let x2 = positions.at(4).at(0)
-		line((x2, 1.5), (x2, y1), stroke: (dash: "dotted", thickness: 2pt))
-		let y3 = positions.at(5).at(1)
-		line((x2, y3), (2.5, y3), stroke: (dash: "loosely-dotted", thickness: 2pt))
-		let x2 = positions.at(7).at(0)
-		line((x2, y1), (x2, -1), stroke: (dash: "dotted", thickness: 2pt))
-		let y3 = positions.at(6).at(1)
-		line((x2, y3), (2.5, y3), stroke: (dash: "loosely-dotted", thickness: 2pt))
-
-		circle((0.8, 0.1), radius: 0.4, stroke: red)
-	}),
-) <ball_pivoting_kd_tree>]
-
-
 === $alpha$-Kugel für ein Dreieck
 
 Für ein Dreieck $(p_1, p_2, P-3)$ wird die Position der zugehörigen $alpha$-Kugel benötigt. Dafür wird ... #todo[Kugel für Dreieck]
@@ -126,10 +79,10 @@ Für ein Dreieck $(p_1, p_2, P-3)$ wird die Position der zugehörigen $alpha$-Ku
 Dabei ist die Reihenfolge der Punkte relevant. Vertauschen von zwei Punkten berechnet die $alpha$-Kugel auf der anderen Seite des Dreiecks.
 
 
-== Ablauf
+=== Ablauf
 
 
-== Startdreieck bestimmen
+=== Startdreieck bestimmen
 
 Als Anfang wird ein Dreieck mit zugehöriger $alpha$-Kugel benötigt, dass keine weiteren Punkte innerhalb der Kugel liegen. Dafür werden alle Punkte iteriert.
 
@@ -140,7 +93,7 @@ Mit dem momentanen Punkt und alle möglichen Kombination von zwei Punkten aus de
 Wenn ein Dreieck mit zugehöriger $alpha$-Kugel gefunden wurde, welche keine weiteren Punkte enthält, kann dieses Dreieck als Startdreieck verwendet werden. Das Dreieck wird zur Triangulierung hinzugefügt und die drei zugehörigen Kanten bilden die momentanen äußeren Kanten, von denen aus die Triangulierung berechnet wird.
 
 
-== Triangulierten Bereich erweitern
+=== Triangulierten Bereich erweitern
 
 Solange es noch eine äußere Kante $(p_1, p_2)$ gibt, kann die Triangulierung erweitert werden. Für die Kante ist bereits ein Dreieck und die zugehörige $alpha$-Kugel mit Zentrum $c$ bekannt. Die Kante dient nun als Pivot, um welches die $alpha$-Kugel gerollt wird. Der erste Punkt $p$, welcher von der Kugel berührt wird, bildet mit $p_1$ und $p_2$ ein neues Dreieck.
 
@@ -192,7 +145,7 @@ In @ball_pivoting_erweiterung ist ein Beispiel für die Erweiterung in 2D gegebe
 ) <ball_pivoting_erweiterung>]
 
 
-=== Kandidaten bestimmen
+==== Kandidaten bestimmen
 
 Um den ersten Punkt $p$ zu finden, werden zuerst alle möglichen Punkte bestimmt, welche von der Kugel bei der kompletten Rotation berührt werden können. Dafür wird der Mittelpunkt $m p = (p_1 + p_2) / 2$ der Kante und der Abstand $d = |p_(1, 2)-m p|$ berechnet. Der Abstand zwischen dem Zentrum der Kugel und den Endpunkten von der Kante ist immer $alpha$, dadurch ist der Abstand vom Zentrum zum Mittelpunkt $x = sqrt(alpha^2 - d^2)$. In @triangulierung_abstand_kugel ist die Berechnung veranschaulicht.
 
@@ -233,7 +186,7 @@ Die möglichen Punkte sind vom Zentrum der Kugel $c$ maximal $alpha$ entfernt un
 #todo[Bild?: Fancy 3d Torus von Pivot Kugleln und gesuchte Kugel mit Radius $alpha + x$]
 
 
-=== Besten Kandidaten bestimmen
+==== Besten Kandidaten bestimmen
 
 Für jeden Kandidaten $p$ wird berechnet, wie weit die Kugel um die Kante gerollt werden muss, bis die Kugel den Kandidaten berührt. Dafür wird zuerst das Zentrum $c_p$ der $alpha$-Kugel bestimmt, welche $p_1$, $p_2$ und $p$ berührt. Die Kugel wird dabei wie in @triangulierung_kugel_seite bestimmt, dass die Kugel auf der korrekten Seite vom potentiellen Dreieck liegt. $p$ kann so liegen, dass es keine zugehörige $alpha$-Kugel gibt, in diesem Fall wird $p$ nicht weiter betrachtet. Für jeden Kandidat wird der Winkel $phi$ berechnet, wie weit um die Kante die Kugel gerollt wurde.
 
@@ -283,25 +236,25 @@ Mit $m p$, $c$ und $c_p$ wird der Winkel $phi$ bestimmt. Dafür werden die Vekto
 Es muss nicht kontrolliert werden, ob ein Punkt in der $alpha$-Kugel von $(p_1, p_2, p_3)$ liegt, weil diese immer leer ist. Würde ein weiterer Punkt in der Kugel liegen, so würde der zugehörige Winkel $phi$ von diesem Punkt kleiner sein, weil der Punkt beim rollen um die Kante früher von der Kugel berührt wird. Weil $p_3$ aber zum kleinsten Winkel gehört, kann das nicht sein. Dies gilt aber nur, wenn die Kugel zum Start bereits leer ist.
 
 
-=== Triangulierung erweitern
+==== Triangulierung erweitern
 
 Das neu gefundene Dreieck mit den Eckpunkten $(p_1, p_2, p_3)$ wird zur Triangulierung hinzugefügt. Die Kante ($p_1, p_2$) wird von den äußeren Kanten entfernt, dafür werden die Kanten zwischen $(p_1, p_3)$ und $(p_3, p_2)$ hinzugefügt. Wenn eine neue Kante in den äußeren Kanten bereits vorhanden ist, wird diese nicht hinzugefügt, sondern entfernt, weil das zugehörige zweite Dreieck bereits gefunden wurde.
 
 
-== Komplettes Segment triangulieren
+=== Komplettes Segment triangulieren
 
 Solange es noch äußere Kanten gibt, kann von diesen aus die Triangulierung erweitert werden. Dabei muss beachtet werden, dass durch Ungenauigkeiten bei der Berechnung und malformierten Daten eine Kante mehrfach gefunden werden kann. Um eine erneute Triangulierung von bereits triangulierten Bereichen zu verhindern, werden alle inneren Kanten gespeichert und neue Kanten nur zu den äußeren Kanten hinzugefügt, wenn diese noch nicht in den inneren Kanten vorhanden sind. Bei der Erweiterung wird die ausgewählte äußere Kante zu den inneren Kanten hinzugefügt.
 
 Wenn es keine weiteren äußeren Kanten gibt, muss ein neues Startdreieck gefunden werden. Dabei werden nur die Punkte in betracht gezogen, welche zu noch keinem Dreieck gehören. Wenn kein Startdreieck gefunden werden kann, ist das Segment vollständig trianguliert.
 
 
-== Auswahl von $alpha$
+=== Auswahl von $alpha$
 
 - Groß genug für keine Lücken
 - Klein genug für gute Laufzeit
 
 
-= Ergebnisse
+== Ergebnisse
 
 #todo[Ergebnisse]
 
