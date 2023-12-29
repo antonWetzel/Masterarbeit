@@ -59,7 +59,7 @@
 }
 
 #let side-caption(amount: 1fr, content) = {
-	show figure: it => {
+	show figure: it => box({
 		v(1em)
 		grid(
 			columns: (1fr, amount * 1fr),
@@ -72,6 +72,6 @@
 			}),
 		)
 		v(1em)
-	}
+	})
 	content
 }

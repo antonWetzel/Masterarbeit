@@ -167,15 +167,18 @@ Weil für alle Punkte das gleiche Dreieck als Basis verwendet wird, muss dieses 
 
 === Kreis
 
-Die Grafikpipeline bestimmt alle Pixel, welche im transformierten Dreieck liegen. Für jeden Pixel kann entschieden werden, ob dieser im Ergebnis gespeichert wird. Dafür wird bei den Eckpunkten die untransformierten Koordinaten abgespeichert, dass diese später verfügbar sind. Für jeden Pixel wird von der Pipeline die interpolierten Koordinaten berechnet. Nur wenn der Betrag der interpolierten Koordinaten kleiner $1$ ist, wird der Pixel im Ergebnis abgespeichert.
+Die Grafikpipeline bestimmt alle Pixel, welche im transformierten Dreieck liegen. Für jeden Pixel kann entschieden werden, ob dieser im Ergebnis gespeichert wird. Dafür wird bei den Eckpunkten die untransformierten Koordinaten abgespeichert, dass diese später verfügbar sind. Für jeden Pixel wird von der Pipeline die interpolierten Koordinaten berechnet. Nur wenn der Betrag der interpolierten Koordinaten kleiner als eins ist, wird der Pixel im Ergebnis abgespeichert.
 
-#stack(
-	dir: ltr,
-	image("../images/point-triangle.png", width: 50%),
-	image("../images/point-circle.png", width: 50%),
+#let boxed(p, caption: []) = subfigure(box(image(p), stroke: 1pt, clip: true), caption: caption)
+
+#figure(
+	caption: [Unterschiedliche Formen für das Anzeigen der Punkte.],
+	grid(
+		columns: 3,
+		gutter: 1em,
+		boxed("../images/point_triangle-crop.png", caption: [Dreiecke]), boxed("../images/point_quad-crop.png", caption: [Quadrate]), boxed("../images/point_circle-crop.png", caption: [Kreise]),
+	),
 )
-
-#todo[Bilder Crop]
 
 
 == Eigenschaft
@@ -197,17 +200,30 @@ Sobald ein Punkt gefunden ist, müssen nur noch Knoten überprüft werden, die n
 
 === Anzeige
 
-Im Octree kann zu den Punkten in einem Leaf-Knoten mehrere Segmente gehören. Um die Segmente einzeln anzuzeigen wird jedes Segment separat abgespeichert. Sobald ein einzelnes Segment ausgewählt wurde, wird dieses geladen und anstatt des Octrees angezeigt. Dabei werden alle Punkte des Segments ohne vereinfachte Detailstufen verwendet.
+Im Octree kann zu den Punkten in einem Leaf-Knoten mehrere Segmente gehören. Um die Segmente einzeln anzuzeigen wird jedes Segment separat abgespeichert. Sobald ein einzelnes Segment ausgewählt wurde, wird dieses geladen und anstatt des Octrees angezeigt. Dabei werden alle Punkte des Segments ohne vereinfachte Detailstufen verwendet. Beispiele sind in @segment_example gegeben.
 
 Die momentan geladenen Knoten vom Octree bleiben dabei geladen, um einen schnellen Wechsel zu ermöglichen.
 
-#stack(
+#let overlay_image(p) = stack(
 	dir: ltr,
-	image("../images/segment_1.png", height: 30%),
-	image("../images/segment_2.png", height: 30%),
+	spacing: -100%,
+	image("../images/segment_full_edited.png"),
+	image(p),
 )
 
-#todo(prefix: [Note], [Oben/Unten Teilung in 2 Segmente für Debug])
+#figure(
+	caption: [Waldstück mit ausgewählten Segmenten.],
+	grid(
+		columns: 1,
+		gutter: 1em,
+		subfigure(box(image("../images/segment_full.png"), stroke: 1pt, clip: true), caption: [Alle Segmente]),
+		grid(
+			columns: 2,
+			gutter: 1em,
+			subfigure(box(overlay_image("../images/segment_1.png"), stroke: 1pt, clip: true), caption: [Einzelnes Segment]), subfigure(box(overlay_image("../images/segment_2.png"), stroke: 1pt, clip: true), caption: [Einzelnes Segment]),
+		),
+	),
+) <segment_example>
 
 
 == Eye-Dome-Lighting
@@ -242,7 +258,19 @@ Je nach Scannertechnologie und Größe des abgetasteten Gebietes kann die Punktw
 
 Besonders für weit entfernte Punkt ist es nicht notwendig, alle Punkte genau wiederzugeben. Deshalb wird für weit entfernte Punkte eine vereinfachte Version angezeigt. Diese besteht aus weniger Punkten und benötigt dadurch weniger Ressourcen, bietet aber eine gute Approximation der ursprünglichen Daten.
 
-#todo[Vergleich alle Punkt und vereinfachte Versionen]
+#figure(
+	caption: [Waldstück mit unterschiedlichen Detailstufen unabhängig von der Entfernung zur Kamera. Je höher die Detailstufe, desto mehr Punkte werden gerendert.],
+	box(width: 80%, grid(
+		columns: 1,
+		gutter: 1em,
+		grid(
+			columns: 2,
+			gutter: 1em,
+			boxed("../images/lod_low.png", caption: [$35 space.thin 767$ Punkte]), boxed("../images/lod_middle.png", caption: [$668 space.thin 061$ Punkte]),
+		),
+		boxed("../images/lod_high.png", caption: [$16 space.thin 564 space.thin 209$ Punkte]),
+	)),
+)
 
 Für die gesamte Punktewolke wird ein Octree mit den Punkten erstellt. Der zugehörige Voxel vom Root-Knoten wird so gewählt, dass alle Punkte im Voxel liegen. Rekursiv wird der Voxel in acht gleichgroße Voxel geteilt, solange in einem Voxel noch zu viele Punkte liegen. Bei dem Octree gehört jeder Punkt zu genau einem Leaf-Knoten.
 
@@ -259,7 +287,7 @@ Die Detailstufen werden wie bei "Fast Out-of-Core Octree Generation for Massive 
 
 Dadurch haben zwar Berechnungen der gröberen Detailstufen für Knoten näher an der Wurzel nur Zugriff auf bereits vereinfachte Daten, dafür müssen aber auch viel weniger Punkte bei der Berechnung betrachtet werden. Solange die Detailstufen eine gute Vereinfachung der ursprünglichen Punkte sind, kann so der Berechnungsaufwand stark verringert werden.
 
-Der Voxel, welcher zu dem Knoten gehört, wird in gleich große Zellen unterteilt. Für jede Zelle mit Punkten wird ein repräsentativer Punkt bestimmt. Dafür wird für die Zelle die Kombination aller Eingabepunkte, welche in der Zelle liegen berechnet. Die Anzahl der Zellen ist dabei unabhängig von der Größe des ursprünglichen Voxels, wodurch bei gröberen Detailstufen durch den größeren Voxel auch die Zellen größer werden und mehr Punkte zusammengefasst werden.
+Der Voxel, welcher zu dem Knoten gehört, wird in eine feste Anzahl von gleichgroßen Teilvoxel unterteilt. Für jeden Teilvoxel werden alle Punkte kombiniert, die im Teilvoxel liegen. Aus den Punkte im Teilvoxel wird ein repräsentativer Punkt bestimmt. Weil die Anzahl der Teilvoxel unabhängig von der Größe vom Voxel ist, sind die Teilvoxel für gröbere Detailstufen größer und mehr Punkte werden kombinert.
 
 
 === Auswahl der Detailstufen? <auswahl_detailstufen>
