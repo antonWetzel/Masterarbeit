@@ -183,8 +183,6 @@ Um den ersten Punkt $p$ zu finden, werden zuerst alle möglichen Punkte bestimmt
 
 Die möglichen Punkte sind vom Zentrum der Kugel $c$ maximal $alpha$ entfernt und $c$ ist vom Mittelpunkt $m p$ $x$ entfernt. Deshalb werden die Punkte in der Kugel mit Zentrum $m p$ und Radius $alpha + x$ bestimmt.
 
-#todo[Bild?: Fancy 3d Torus von Pivot Kugleln und gesuchte Kugel mit Radius $alpha + x$]
-
 
 ==== Besten Kandidaten bestimmen
 
@@ -238,7 +236,18 @@ Es muss nicht kontrolliert werden, ob ein Punkt in der $alpha$-Kugel von $(p_1, 
 
 ==== Triangulierung erweitern
 
-Das neu gefundene Dreieck mit den Eckpunkten $(p_1, p_2, p_3)$ wird zur Triangulierung hinzugefügt. Die Kante ($p_1, p_2$) wird von den äußeren Kanten entfernt, dafür werden die Kanten zwischen $(p_1, p_3)$ und $(p_3, p_2)$ hinzugefügt. Wenn eine neue Kante in den äußeren Kanten bereits vorhanden ist, wird diese nicht hinzugefügt, sondern entfernt, weil das zugehörige zweite Dreieck bereits gefunden wurde.
+Das neu gefundene Dreieck mit den Eckpunkten $(p_1, p_2, p_3)$ wird zur Triangulierung hinzugefügt. Die Kante ($p_1, p_2$) wird von den äußeren Kanten entfernt, dafür werden die Kanten zwischen $(p_1, p_3)$ und $(p_3, p_2)$ hinzugefügt. Wenn eine neue Kante in den äußeren Kanten bereits vorhanden ist, wird diese nicht hinzugefügt, sondern entfernt, weil das zugehörige zweite Dreieck bereits gefunden wurde. Ein Veranschaulichung ist in @triangulierung_erweiterung gegeben.
+
+#figure(
+	caption: [Erweiterung der Triangulierung in 3D.],
+	box(width: 80%, grid(
+		columns: 2,
+		column-gutter: 5em,
+		row-gutter: 1em,
+		subfigure(image("../images/pivot_0.png"), caption: [Kante mit zugehörigem Dreieck, Kugel und Ring mit Radius $x$]), subfigure(image("../images/pivot_1.png"), caption: [Kugel mit Radius $alpha + x$, welche alle Kanditaten enthält]),
+		subfigure(image("../images/pivot_2.png"), caption: [Erster Punkt, welcher entlang der Rotation die Kugel berührt]), subfigure(image("../images/pivot_3.png"), caption: [Triangulierung, mit dem neuen Dreieck hinzugefügt]),
+	)),
+) <triangulierung_erweiterung>
 
 
 === Komplettes Segment triangulieren
@@ -253,6 +262,8 @@ Wenn es keine weiteren äußeren Kanten gibt, muss ein neues Startdreieck gefund
 - Groß genug für keine Lücken
 - Klein genug für gute Laufzeit
 
+#todo[Auswahl $alpha$]
+
 
 == Ergebnisse
 
@@ -261,7 +272,7 @@ Wenn es keine weiteren äußeren Kanten gibt, muss ein neues Startdreieck gefund
 #todo[Vergleich $alpha$]
 
 #figure(
-	caption: [Beispiel für eine Triangulierung. ...],
+	caption: [Beispiel für eine Triangulierung von einem Baum.],
 	stack(
 		dir: ltr,
 		spacing: 1em,

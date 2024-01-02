@@ -1,6 +1,12 @@
+#import "setup.typ": *
+
 #set heading(numbering: none)
 
+#align(center)[
 
-= Abstrakt
 
-...
+	= Abstrakt
+
+	#todo[Abstrakt]
+
+]

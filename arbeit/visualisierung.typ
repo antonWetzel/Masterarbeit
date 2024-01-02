@@ -181,12 +181,12 @@ Die Grafikpipeline bestimmt alle Pixel, welche im transformierten Dreieck liegen
 )
 
 
-== Eigenschaft
+== Ausgewählte Eigenschaft
 
 Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei kann die ausgewählte Eigenschaft geändert werden, ohne die anderen Informationen über die Punkte neu zu laden. Die Eigenschaften sind separat als `32 bit uint` gespeichert und werden mit einer Farbpalette in ein Farbverlauf umgewandelt. Auch die Farbpalette kann unabhängig ausgewählt werden.
 
 
-== Subpunktwolken (Bäume)
+== Segmente
 
 
 === Auswahl
@@ -292,6 +292,8 @@ Der Voxel, welcher zu dem Knoten gehört, wird in eine feste Anzahl von gleichgr
 
 === Auswahl der Detailstufen? <auswahl_detailstufen>
 
+#todo[Auswahl der Detailstufen]
+
 
 ==== Abstand zur Kamera
 
@@ -320,6 +322,21 @@ Der Voxel, welcher zu dem Knoten gehört, wird in eine feste Anzahl von gleichgr
 - auswahl der Stufe
 
 
+== Filtern mit dem Kamerafrustrum
+
+#todo[Frustrum-Culling]
+
+#figure(
+	caption: [Unterschiedliche Detailstufen mit den unterschiedlichen sichtbaren Knoten.],
+	grid(
+		columns: 3,
+		gutter: 1em,
+		box(image("../images/culling_0.png"), stroke: 1pt), box(image("../images/culling_1.png"), stroke: 1pt), box(image("../images/culling_2.png"), stroke: 1pt),
+		box(image("../images/culling_3.png"), stroke: 1pt), box(image("../images/culling_4.png"), stroke: 1pt), box(image("../images/culling_5.png"), stroke: 1pt),
+	),
+)
+
+
 == Kamera/Projektion
 
 
@@ -344,26 +361,3 @@ Der Voxel, welcher zu dem Knoten gehört, wird in eine feste Anzahl von gleichgr
 - Bewegung zur momentanen Blickrichtung
 - Bewegungsgeschwindigkeit variabel
 - To-do: Oben-Unten Bewegung
-
-
-=== Projektion
-
-
-==== Perspektive
-
-- Projektion mit Field of View Kegel
-
-
-==== Orthogonal?
-
-#todo([Orthogonal?])
-
-
-==== Side-by-Side 3D?
-
-
-== Bedienung/Interface
-
-#todo([Bedienung/Interface])
-
-#todo([Referenzen])

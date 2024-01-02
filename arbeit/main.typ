@@ -40,6 +40,9 @@
 #include "ergebnisse.typ"
 #pagebreak()
 
+#include "fazit.typ"
+#pagebreak()
+
 #include "appendix.typ"
 #pagebreak()
 

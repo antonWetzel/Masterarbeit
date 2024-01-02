@@ -26,8 +26,3 @@ Der Datensatz ist bereits in einzelne Bäume unterteilt. Zusätzlich wurden für
 == Visualisierung
 
 #todo[Visualisierung Ergebnisse]
-
-
-== Fazit
-
-#todo[Fazit]

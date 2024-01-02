@@ -6,6 +6,8 @@
 
 == Separierung in Segmente <seperierung_in_segmente>
 
+#todo[Bilder]
+
 
 === Diskretisieren
 
