@@ -2,8 +2,6 @@
 #import "../packages/todo.typ": *
 #import "../packages/placeholder.typ": *
 
-#show: setup
-
 #set document(
 	author: "Anton Wetzel",
 	title: "Berechnung charakteristischen Eigenschaften von botanischen Bäumen mithilfe von 3D-Punktwolken.",
@@ -11,6 +9,8 @@
 )
 
 #todo-outline()
+
+#show: setup
 
 #include "deckblatt.typ"
 #pagebreak()

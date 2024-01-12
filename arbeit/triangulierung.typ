@@ -257,6 +257,13 @@ Solange es noch äußere Kanten gibt, kann von diesen aus die Triangulierung erw
 Wenn es keine weiteren äußeren Kanten gibt, muss ein neues Startdreieck gefunden werden. Dabei werden nur die Punkte in betracht gezogen, welche zu noch keinem Dreieck gehören. Wenn kein Startdreieck gefunden werden kann, ist das Segment vollständig trianguliert.
 
 
+=== Vorauswahl
+
+Vor der Triangulierung wird mit dem Mindestabstand $d$ die Anzahl der Punkte und deformierte Dreiecke verringert. Dafür wird ein Subset der Punkte bestimmt, das die Punkte paarweise mindestens den Mindestabstand voneinander entfernt sind.
+
+Für die Berechnung wird ein Greedy-Algorithmus verwendet. Am Anfang werden alle Punkte zum Set hinzugefügt und danach werden alle Punkte im Set iteriert. Für jeden Punkt werden mit dem KD-Baum die Punkte in der Nachbarschaft bestimmt, welche näher als der Mindestabstand zum momentanen Punkt liegen. Die Punkte werden aus dem Set entfernt und der nächste Punkt, der noch im Set ist, wird betrachtet.
+
+
 === Auswahl von $alpha$
 
 - Groß genug für keine Lücken

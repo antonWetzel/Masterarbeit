@@ -58,7 +58,7 @@
 	document
 }
 
-#let side-caption(amount: 1fr, content) = {
+#let side-caption(amount: 1.0, content) = {
 	show figure: it => box({
 		v(1em)
 		grid(

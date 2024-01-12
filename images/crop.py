@@ -1,6 +1,9 @@
 # (left top right bottom)
 patterns = [
 	("point_", (700, 400, 900, 0)),
+	("var_", (600, 0, 500, 0)),
+	("curve_", (600, 0, 500, 0)),
+	("height", (600, 0, 500, 0)),
 ]
 
 from PIL import Image
