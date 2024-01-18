@@ -60,7 +60,7 @@ Das kleinste Dreieck ist ein gleichseitiges Dreieck. In @dreieck_größe ist die
 
 Für jeden Punkt wird mit der Position $p$, Normalen $n$ und Größe $s$ die Position der Eckpunkte vom Dreieck im dreidimensionalen Raum bestimmt. Dafür werden zwei Vektoren bestimmt, welche paarweise zueinander und zur Normalen orthogonal sind.
 
-Für den erste Vektor $a$ wird mit der Normalen $n = (n_x, n_y, n_z)$ das Kreuzprodukt $a = (n_x, n_y, n_z) times (n_y, n_z, -n_x)$ bestimmt. Weil $|n| > 0$ ist, sind $(n_y, n_z, -n_x)$ und $n$ unterschiedlich. $a$ muss noch für die weiteren Berechnungen normalisiert werden. Ein Beispiel ist in @dreieck_kreuzprodukt gegeben.
+Für den ersten Vektor $a$ wird mit der Normalen $n = (n_x, n_y, n_z)$ das Kreuzprodukt $a = (n_x, n_y, n_z) times (n_y, n_z, -n_x)$ bestimmt. Weil $|n| > 0$ ist, sind $(n_y, n_z, -n_x)$ und $n$ unterschiedlich. $a$ muss noch für die weiteren Berechnungen normalisiert werden. Ein Beispiel ist in @dreieck_kreuzprodukt gegeben.
 
 Für den zweiten Vektor $b$ wird das Kreuzprodukt $b = n times a$ bestimmt. Weil das Kreuzprodukt zweier Vektoren orthogonal zu beiden Vektoren ist, sind $n$, $a$ und $b$ paarweise orthogonal.
 
@@ -102,7 +102,7 @@ Für den zweiten Vektor $b$ wird das Kreuzprodukt $b = n times a$ bestimmt. Weil
 	}),
 ) <dreieck_kreuzprodukt>
 
-Die Vektoren $a$ und $b$ spannen eine Ebene auf, welche orthogonal zu $n$ ist. Für den Eckpunkt $i$ vom Dreieck mit den Koordinaten $(x_i, y_i)$, wird die Position $p_i = p + a * x_i * s + b * y_i * s$ berechnet werden. In @dreieck_eckpunkt ist die Berechnung dargestellt.
+Die Vektoren $a$ und $b$ spannen eine Ebene auf, welche orthogonal zu $n$ ist. Für den Eckpunkt $i$ vom Dreieck, mit den Koordinaten $(x_i, y_i)$, wird die Position $p_i = p + a * x_i * s + b * y_i * s$ berechnet werden. In @dreieck_eckpunkt ist die Berechnung dargestellt.
 
 #figure(
 	caption: [Berechnung von einem Eckpunkt.],
@@ -138,7 +138,7 @@ Die Vektoren $a$ und $b$ spannen eine Ebene auf, welche orthogonal zu $n$ ist. F
 
 Als Basis kann ein beliebiges Polygon gewählt werden, solange der Einheitskreis vollständig enthalten ist. Je mehr Ecken das Polygon hat, desto kleiner ist der Bereich vom Polygon, der nicht zum Kreis gehört. Für jede Ecke vom Polygon muss aber die Position berechnet werden.
 
-Ein Dreieck kann mit einem Dreieck dargestellt werden, für eine Quadrat werden zwei benötigt. Für das Dreieck werden dadurch drei Ecken und eine Fläche von $(w * h) / 2 = (tan(60°) * 2 * 2) / 2 = tan(60°) * 2 approx 3.46s$ benötigt. Für das Quadrat werden sechs Ecken und eine Fläche von $w * h = 2 * 2 = 4$ benötigt. In @dreieck_oder_quadrat ist ein graphischer Vergleich.
+Ein Dreieck kann mit nur einem Dreieck dargestellt werden, für ein Quadrat werden zwei Dreiecke benötigt. Für das Dreieck werden dadurch drei Ecken und eine Fläche von $(w * h) / 2 = (tan(60°) * 2 * 2) / 2 = tan(60°) * 2 approx 3.46s$ benötigt. Für das Quadrat werden sechs Ecken und eine Fläche von $w * h = 2 * 2 = 4$ benötigt. In @dreieck_oder_quadrat ist ein grafischer Vergleich.
 
 #figure(
 	caption: [Quadrat und Dreieck, welche den gleichen Kreis enthalten.],
@@ -167,7 +167,7 @@ Weil für alle Punkte das gleiche Dreieck als Basis verwendet wird, muss dieses 
 
 === Kreis
 
-Die Grafikpipeline bestimmt alle Pixel, welche im transformierten Dreieck liegen. Für jeden Pixel kann entschieden werden, ob dieser im Ergebnis gespeichert wird. Dafür wird bei den Eckpunkten die untransformierten Koordinaten abgespeichert, dass diese später verfügbar sind. Für jeden Pixel wird von der Pipeline die interpolierten Koordinaten berechnet. Nur wenn der Betrag der interpolierten Koordinaten kleiner als eins ist, wird der Pixel im Ergebnis abgespeichert.
+Die Grafikpipeline bestimmt alle Pixel, welche im transformierten Dreieck liegen. Für jedes Pixel kann entschieden werden, ob dieser im Ergebnis gespeichert wird. Dafür wird bei den Eckpunkten die untransformierten Koordinaten abgespeichert, dass diese später verfügbar sind. Für jedes Pixel wird von der Pipeline die interpolierten Koordinaten berechnet. Nur wenn der Betrag der interpolierten Koordinaten kleiner als eins ist, wird der Pixel im Ergebnis abgespeichert.
 
 #let boxed(p, caption: []) = subfigure(box(image(p), stroke: 1pt, clip: true), caption: caption)
 
@@ -183,7 +183,7 @@ Die Grafikpipeline bestimmt alle Pixel, welche im transformierten Dreieck liegen
 
 == Ausgewählte Eigenschaft
 
-Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei kann die ausgewählte Eigenschaft geändert werden, ohne die anderen Informationen über die Punkte neu zu laden. Die Eigenschaften sind separat als `32 bit uint` gespeichert und werden mit einer Farbpalette in ein Farbverlauf umgewandelt. Auch die Farbpalette kann unabhängig ausgewählt werden.
+Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei kann die ausgewählte Eigenschaft geändert werden, ohne die anderen Informationen über die Punkte neu zu laden. Die Eigenschaften sind separat als `32 bit uint` gespeichert und werden mit einer Farbpalette in einen Farbverlauf umgewandelt. Auch die Farbpalette kann unabhängig ausgewählt werden.
 
 
 == Segmente
@@ -191,16 +191,16 @@ Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei 
 
 === Auswahl
 
-Um ein bestimmtes Segment auszuwählen, wird das momentan sichtbare Segment bei der Mausposition berechnet. Als erstes werden die Koordinaten der Maus mit der Kamera in dreidimensionalen Position und Richtung umgewandelt. Die Position und Richtung bilden zusammen einen Strahl.
+Um ein bestimmtes Segment auszuwählen, wird das momentan sichtbare Segment bei der Mausposition berechnet. Als Erstes werden die Koordinaten der Maus mit der Kamera in dreidimensionalen Position und Richtung umgewandelt. Die Position und Richtung bilden zusammen einen Strahl.
 
-Im Octree wird vom Root-Knoten aus die Blatt-Knoten gefunden, welche den Strahl enthalten. Dabei werden die Knoten näher an der Position der Kamera bevorzugt. Für den Blattknoten sind die Segmente bekannt, welche Punkte in diesem Knoten haben. Für jedes mögliche Segment wird für jeden Punkt überprüft, ob er entlang des Strahls liegt.
+Im Octree wird vom Root-Knoten aus die Leaf-Knoten gefunden, welche den Strahl enthalten. Dabei werden die Knoten näher an der Position der Kamera bevorzugt. Für den Leaf-Knoten sind die Segmente bekannt, welche Punkte in diesem Knoten haben. Für jedes mögliche Segment wird für jeden Punkt überprüft, ob er entlang des Strahls liegt.
 
 Sobald ein Punkt gefunden ist, müssen nur noch Knoten überprüft werden, die näher an der Kamera liegen, weil alle Punkte in weiter entfernten Knoten weiter als der momentan beste gefundene Punkt liegen.
 
 
 === Anzeige
 
-Im Octree kann zu den Punkten in einem Leaf-Knoten mehrere Segmente gehören. Um die Segmente einzeln anzuzeigen wird jedes Segment separat abgespeichert. Sobald ein einzelnes Segment ausgewählt wurde, wird dieses geladen und anstatt des Octrees angezeigt. Dabei werden alle Punkte des Segments ohne vereinfachte Detailstufen verwendet. Beispiele sind in @segment_example gegeben.
+Im Octree kann zu den Punkten in einem Leaf-Knoten mehrere Segmente gehören. Um die Segmente einzeln anzuzeigen, wird jedes Segment separat abgespeichert. Sobald ein einzelnes Segment ausgewählt wurde, wird dieses geladen und anstatt des Octrees angezeigt. Dabei werden alle Punkte des Segments ohne vereinfachte Detailstufen verwendet. Beispiele sind in @segment_example gegeben.
 
 Die momentan geladenen Knoten vom Octree bleiben dabei geladen, um einen schnellen Wechsel zu ermöglichen.
 
@@ -228,12 +228,12 @@ Die momentan geladenen Knoten vom Octree bleiben dabei geladen, um einen schnell
 
 == Eye-Dome-Lighting
 
-Um die Punktwolke auf Anzuzeigen, werden die Punkte aus dem dreidimensionalen Raum auf den zweidimensionalen Monitor projiziert. Dabei gehen die Tiefeninformationen verloren. Mit der Rendertechnik *Eye-Dome-Lighting* werden die Kanten von Punkten hervorgehoben, bei denen die Tiefe sich stark ändert. Ein Veranschaulichung ist in @eye_dome_example> gegeben.
+Um die Punktwolke anzuzeigen, werden die Punkte aus dem dreidimensionalen Raum auf den zweidimensionalen Monitor projiziert. Dabei gehen die Tiefeninformationen verloren. Mit der Rendertechnik *Eye-Dome-Lighting* werden die Kanten von Punkten hervorgehoben, bei denen die Tiefe sich stark ändert. Ein Veranschaulichung ist in @eye_dome_example> gegeben.
 
 #let boxed(p, caption: []) = subfigure(box(image(p), fill: rgb(35%, 49%, 58%), stroke: 1pt), caption: caption)
 
 #figure(
-	caption: [Waldstück mit und ohne Eye-Dome-Lighting. Die Punkte sind zusätzlich in weiß angezeigt, um den Effekt hervorzuheben.],
+	caption: [Waldstück mit und ohne Eye-Dome-Lighting. Die Punkte sind zusätzlich in Weiß angezeigt, um den Effekt hervorzuheben.],
 	grid(
 		columns: 2,
 		gutter: 1em,
@@ -242,7 +242,7 @@ Um die Punktwolke auf Anzuzeigen, werden die Punkte aus dem dreidimensionalen Ra
 	),
 ) <eye_dome_example>
 
-Beim Rendern von 3D-Scenen wird für jeden Pixel die momentane Tiefe vom Polygon an dieser Stelle gespeichert. Das wird benötigt, dass bei überlappenden Polygonen das nähere Polygon an der Kamera angezeigt wird. Nachdem die Szene gerendert ist, wird mit den Tiefeninformationen für jeden Pixel der Tiefenunterschied zu den umliegenden Pixeln bestimmt. Das Tiefenbild für die Veranschaulichung ist in @eye_dome_depth gegeben.
+Beim Rendern von 3D-Scenen wird für jedes Pixel die momentane Tiefe vom Polygon an dieser Stelle gespeichert. Das wird benötigt, dass bei überlappenden Polygonen das nähere Polygon an der Kamera angezeigt wird. Nachdem die Szene gerendert ist, wird mit den Tiefeninformationen für jedes Pixel der Tiefenunterschied zu den umliegenden Pixeln bestimmt. Das Tiefenbild für die Veranschaulichung ist in @eye_dome_depth gegeben.
 
 Je größer der Unterschied ist, desto stärker wird der Pixel im Ergebnisbild eingefärbt. Dadurch werden Kanten hervorgehoben, je nachdem wie groß der Tiefenunterschied ist.
 
@@ -254,12 +254,12 @@ Je größer der Unterschied ist, desto stärker wird der Pixel im Ergebnisbild e
 
 == Detailstufen
 
-Je nach Scannertechnologie und Größe des abgetasteten Gebietes kann die Punktwolke unterschiedlich viele Punkte beinhalten. Durch Hardwarelimitierungen ist es nicht immer möglich alle Punkte gleichzeitig anzuzeigen, während eine interaktive Wiedergabe gewährleistet ist.
+Je nach Scannertechnologie und Größe des abgetasteten Gebietes kann die Punktwolke unterschiedlich viele Punkte beinhalten. Durch Hardwarelimitierungen ist es nicht immer möglich, alle Punkte gleichzeitig anzuzeigen, während eine interaktive Wiedergabe gewährleistet ist.
 
 Besonders für weit entfernte Punkt ist es nicht notwendig, alle Punkte genau wiederzugeben. Deshalb wird für weit entfernte Punkte eine vereinfachte Version angezeigt. Diese besteht aus weniger Punkten und benötigt dadurch weniger Ressourcen, bietet aber eine gute Approximation der ursprünglichen Daten.
 
 #figure(
-	caption: [Waldstück mit unterschiedlichen Detailstufen unabhängig von der Entfernung zur Kamera. Je höher die Detailstufe, desto mehr Punkte werden gerendert.],
+	caption: [Waldstück mit unterschiedlichen Detailstufen, unabhängig von der Entfernung zur Kamera. Je höher die Detailstufe, desto mehr Punkte werden gerendert.],
 	box(width: 80%, grid(
 		columns: 1,
 		gutter: 1em,
@@ -274,9 +274,9 @@ Besonders für weit entfernte Punkt ist es nicht notwendig, alle Punkte genau wi
 
 Für die gesamte Punktewolke wird ein Octree mit den Punkten erstellt. Der zugehörige Voxel vom Root-Knoten wird so gewählt, dass alle Punkte im Voxel liegen. Rekursiv wird der Voxel in acht gleichgroße Voxel geteilt, solange in einem Voxel noch zu viele Punkte liegen. Bei dem Octree gehört jeder Punkt zu genau einem Leaf-Knoten.
 
-Für jeden Branch-Knoten wird eine Punktwolke berechnet, welche als Vereinfachung der Punkte der zugehörigen Kinderknoten verwendet werden kann. Dafür wird de Algorithmus aus @berechnung_detailstufen verwendet.
+Für jeden Branch-Knoten wird eine Punktwolke berechnet, welche als Vereinfachung der Punkte der zugehörigen Kinderknoten verwendet werden kann. Dafür wird der Algorithmus aus @berechnung_detailstufen verwendet.
 
-Beim anzeigen wird vom Root-Knoten aus zuerst geprüft, ob der momentane Knoten von der Kamera aus sichtbar ist. Für die Knoten wird mit den Algorithmen aus @auswahl_detailstufen entschieden, ob die zugehörige vereinfachte Punktwolke gerendert oder der gleiche Algorithmus wird für die Kinderknoten wiederholt wird.
+Beim Anzeigen wird vom Root-Knoten aus zuerst geprüft, ob der momentane Knoten von der Kamera aus sichtbar ist. Für die Knoten wird mit den Algorithmen aus @auswahl_detailstufen entschieden, ob die zugehörige vereinfachte Punktwolke gerendert werdne soll oder rekursiv die Kinderknoten betrachtet werden sollen.
 
 
 === Berechnung der Detailstufen <berechnung_detailstufen>
@@ -287,7 +287,7 @@ Die Detailstufen werden wie bei "Fast Out-of-Core Octree Generation for Massive 
 
 Dadurch haben zwar Berechnungen der gröberen Detailstufen für Knoten näher an der Wurzel nur Zugriff auf bereits vereinfachte Daten, dafür müssen aber auch viel weniger Punkte bei der Berechnung betrachtet werden. Solange die Detailstufen eine gute Vereinfachung der ursprünglichen Punkte sind, kann so der Berechnungsaufwand stark verringert werden.
 
-Der Voxel, welcher zu dem Knoten gehört, wird in eine feste Anzahl von gleichgroßen Teilvoxel unterteilt. Für jeden Teilvoxel werden alle Punkte kombiniert, die im Teilvoxel liegen. Aus den Punkte im Teilvoxel wird ein repräsentativer Punkt bestimmt. Weil die Anzahl der Teilvoxel unabhängig von der Größe vom Voxel ist, sind die Teilvoxel für gröbere Detailstufen größer und mehr Punkte werden kombinert.
+Der Voxel, welcher zu dem Knoten gehört, wird in eine feste Anzahl von gleichgroßen Teilvoxel unterteilt. Für jeden Teilvoxel werden alle Punkte kombiniert, die im Teilvoxel liegen. Aus den Punkten im Teilvoxel wird ein repräsentativer Punkt bestimmt. Weil die Anzahl der Teilvoxel unabhängig von der Größe vom Voxel ist, sind die Teilvoxel für gröbere Detailstufen größer und mehr Punkte werden kombinert.
 
 
 === Auswahl der Detailstufen? <auswahl_detailstufen>
@@ -300,7 +300,7 @@ Der Voxel, welcher zu dem Knoten gehört, wird in eine feste Anzahl von gleichgr
 - Schwellwert
 - Abstand zur kleinsten Kugel, die den Voxel inkludiert
 - Abstand mit Größe des Voxels dividieren
-- Wenn Abstand größer als Schwellwert
+- wenn Abstand größer als Schwellwert
 	- Knoten rendern
 - sonst
 	- Kinderknoten überprüfen
@@ -309,10 +309,10 @@ Der Voxel, welcher zu dem Knoten gehört, wird in eine feste Anzahl von gleichgr
 ==== Auto
 
 - wie Abstand zur Kamera
-- messen wie lang rendern dauert
+- messen, wie lang rendern dauert
 - Dauer kleiner als Mindestdauer
 	- Schwellwert erhöhen
-- Dauer kleiner als Maximaldauer
+- Dauer kleiner als die Maximaldauer
 	- Schwellwert verringern
 
 
@@ -348,7 +348,7 @@ Der Voxel, welcher zu dem Knoten gehört, wird in eine feste Anzahl von gleichgr
 
 ==== Orbital
 
-- rotieren um einem Punkt im Raum
+- rotieren um einen Punkt im Raum
 - Kamera fokussiert zum Punkt
 - Entfernung der Kamera zum Punkt variabel
 - Punkt entlang der horizontalen Ebene bewegbar
@@ -357,7 +357,7 @@ Der Voxel, welcher zu dem Knoten gehört, wird in eine feste Anzahl von gleichgr
 
 ==== First person
 
-- rotieren um die Kamera Position
+- rotieren um die Kameraposition
 - Bewegung zur momentanen Blickrichtung
 - Bewegungsgeschwindigkeit variabel
 - To-do: Oben-Unten Bewegung

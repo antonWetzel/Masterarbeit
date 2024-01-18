@@ -3,13 +3,17 @@
 	"tasks": [
 		{
 			"label": "spellcheck",
-			"command": "typst-hunspell",
+			"command": "typst-lt",
 			"args": [
 				"watch",
 				"${workspaceFolder}",
-				"--style=plain",
+				"--plain",
 				"--language=de",
-				"--words=${workspaceFolder}/words.txt"
+				// "--use-official-api",
+				"--host=https://api.languagetoolplus.com",
+				"--port=",
+				"--max-request-length=750",
+				// "--words=${workspaceFolder}/words.txt"
 			],
 			"runOptions": {
 				"runOn": "folderOpen"

@@ -28,7 +28,10 @@
 #include "überblick.typ"
 #pagebreak()
 
-#include "berechnung.typ"
+#include "segmentierung.typ"
+#pagebreak()
+
+#include "analyse.typ"
 #pagebreak()
 
 #include "triangulierung.typ"

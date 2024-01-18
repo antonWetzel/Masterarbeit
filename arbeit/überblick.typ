@@ -20,7 +20,7 @@ Der Import wird in mehreren getrennten Phasen durchgeführt. Dabei wird die Arbe
 
 === Separierung in Segmente
 
-Für jeden Punkte wird bestimmt, zu welchem Segment er gehört. Dafür werden die Punkte in Voxel unterteilt, die Voxel in unterschiedliche Segmente unterteilt und für jeden Punkte das Segment von zugehörigen Voxel zugeordnet. Der vollständige Ablauf ist in @seperierung_in_segmente gegeben.
+Für jeden Punkt wird bestimmt, zu welchem Segment er gehört. Dafür werden die Punkte in horizontale Scheiben unterteilt und von Oben nach Untern die Scheiben in Bereiche unterteil. Die Punkte in den Bereichen werden dann den Segmenten zugeordnet. Der vollständige Ablauf ist in @seperierung_in_segmente gegeben.
 
 
 === Segmente verarbeiten

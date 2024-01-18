@@ -6,7 +6,7 @@
 
 == KD-Baum
 
-Für eine Menge von Punkten kann ein KD-Baum bestimmt werden. Mit diesem kann effizient bestimmt werden, welche Punkte innerhalb einer Kugel mit beliebigen Position und Radius liegen. Ein Beispiel für einem KD-Baum ist in @appendix_kd_baum gegeben.
+Für eine Menge von Punkten kann ein KD-Baum bestimmt werden. Mit diesem kann effizient bestimmt werden, welche Punkte innerhalb einer Kugel mit beliebiger Position und Radius liegen. Ein Beispiel für einen KD-Baum ist in @appendix_kd_baum gegeben.
 
 #side-caption(amount: 1)[#figure(
 	caption: [
@@ -54,11 +54,11 @@ Für eine Menge von Punkten kann ein KD-Baum bestimmt werden. Mit diesem kann ef
 
 Für die Konstruktion von einem KD-Baum werden nur die Positionen der Punkte benötigt.
 
-Zuerst wird für die Punkte entlang der ersten Dimension der Median bestimmt. Dabei wird der _Quickselect_-Algorithmus @quickselect verwendet. Der Median hat als Index die halbe Anzahl der Punkte. Ist die Anzahl der Punkte ungerade, so kann der Index auf- oder abgerundet werden, solange bei der Suche die gleiche Strategie verwendet wird. Wie beim _Quicksort_-Algorithmus wird ein beliebiges Pivot-Element ausgewählt, mit diesem die Positionen entlang der Dimension unterteilt werden. Die Positionen werden einmal iteriert und kleinere Positionen vor dem Pivot und größere Positionen nach dem Pivot verschoben. Der Pivot ist am Index, wo es in der sortierten List wäre. Um den Median zu finden, wird nur der Teil von den Punkten betrachtet, welcher den zugehörigen Index beinhaltet. Die Unterteilung wird solange wiederholt, bis der Median bekannt ist.
+Zuerst wird für die Punkte entlang der ersten Dimension der Median bestimmt. Dabei wird der _Quickselect_-Algorithmus @quickselect verwendet. Der Median hat als Index die halbe Anzahl der Punkte. Ist die Anzahl der Punkte ungerade, so kann der Index auf- oder abgerundet werden, solange bei der Suche die gleiche Strategie verwendet wird. Wie beim _Quicksort_-Algorithmus wird ein beliebiges Pivot-Element ausgewählt, mit diesem die Positionen entlang der Dimension unterteilt werden. Die Positionen werden einmal iteriert und kleinere Positionen vor dem Pivot und größere Positionen nach dem Pivot verschoben. Der Pivot ist am Index, wo es in der sortierten List wäre. Um den Median zu finden, wird nur der Teil von den Punkten betrachtet, welcher den zugehörigen Index beinhaltet. Die Unterteilung wird so lange wiederholt, bis der Median bekannt ist.
 
-Durch den _Quickselect_-Algorithmus sind die Positionen nach der Bestimmung vom Median in kleine und größere Positionen unterteilt. Die Ebene durch den Punkt teilt dabei den Raum und alle Punkte mit kleineren Index liegen auf der anderen Seite als die Punkte mit größerem Index. Die beiden Hälften werden in der gleichen Weise unterteilt. Dabei wird die nächste, beziehungsweise für die letzte Dimension wieder die erste Dimension verwendet.
+Durch den _Quickselect_-Algorithmus sind die Positionen nach der Bestimmung vom Median in kleine und größere Positionen unterteilt. Die Ebene durch den Punkt teilt dabei den Raum und alle Punkte mit kleinerem Index liegen auf der anderen Seite als die Punkte mit größerem Index. Die beiden Hälften werden in der gleichen Weise unterteilt. Dabei wird die nächste, beziehungsweise für die letzte Dimension wieder die erste Dimension verwendet.
 
-Die zugehörige Binärbaum muss nicht gespeichert werden, da diese implizit entsteht. Für jede Unterteilung wird die Position vom Median gespeichert, das diese für die Suchanfragen benötigt werden.
+Der zugehörige Binärbaum muss nicht gespeichert werden, da diese implizit entsteht. Für jede Unterteilung wird die Position vom Median gespeichert, dass diese für die Suchanfragen benötigt werden.
 
 
 === Suche mit festem Radius
@@ -72,7 +72,7 @@ Mit der gleichen Methode kann effizient bestimmt werden, ob eine Kugel leer ist.
 
 === Suche mit fester Anzahl
 
-Bei dieser Suchanfrage wird für eine feste Anzahl $k$ die $k$-nächsten Punkte für eine bestimmtes Zentrum gesucht. Dafür werden die momentan $k$-nächsten Punkte gespeichert und nach Entfernung sortiert. Die Entfernung zum $k$-ten Punkt wird als Maximaldistanz verwendet. Solange noch nicht $k$ Punkte gefunden sind, kann $oo$ oder ein beliebiger Wert als Maximalabstand verwendet werden.
+Bei dieser Suchanfrage wird für eine feste Anzahl $k$ die $k$-nächsten Punkte für ein bestimmtes Zentrum gesucht. Dafür werden die momentan $k$-nächsten Punkte gespeichert und nach Entfernung sortiert. Die Entfernung zum $k$-ten Punkt wird als Maximaldistanz verwendet. Solange noch nicht $k$ Punkte gefunden sind, kann $oo$ oder ein beliebiger Wert als Maximalabstand verwendet werden.
 
 Es wird wieder von der Wurzel aus der Baum durchsucht. Bei jeder Unterteilung wird zuerst in der Hälfte vom Baum weiter gesucht, die das Zentrum enthält. Dabei werden die Punkte zu den besten Punkten hinzugefügt, die näher am Zentrum als die Maximaldistanz liegen. Sobald $k$ Punkte gefunden sind, wird dadurch die Maximaldistanz kleiner, weil der Punkte mit der alten Maximaldistanz nicht mehr zu den $k$-nächsten Punkten gehört.
 
@@ -81,7 +81,7 @@ Nachdem ein Teilbaum vollständig durchsucht ist, wird überprüft, ob Punkte au
 
 === Schnelle Suche
 
-Sobald ein Teilbaum nur noch wenige Punkte beinhaltet, ist es langsamer zu Überprüfen, welche Punkte näher sein können, als alle Punkte zu betrachten. Deshalb wird für Teilbäume mit weniger als $32$ Punkte die Punkte linear iteriert, wodurch Rekursion vermieden wird.
+Sobald ein Teilbaum nur noch wenige Punkte beinhaltet, ist es langsamer zu überprüfen, welche Punkte näher sein können, als alle Punkte zu betrachten. Deshalb wird für Teilbäume mit weniger als $32$ Punkte die Punkte linear iteriert, wodurch Rekursion vermieden wird.
 
 
 == Baum (Datenstruktur)
@@ -180,4 +180,4 @@ In @quadtree und @octree sind Beispiele in 2D und 3D gegeben.
 
 === Suchanfrage
 
-Bei einer Suchanfrage wird vom Root-Knoten aus der Leaf-Knoten gesucht, welche die gesuchte Position enthält. Dafür wird solange der momentane Knoten ein Branch-Knoten ist berechnet, welcher der Kinderknoten die Position enthält und vom diesem aus weiter gesucht.
+Bei einer Suchanfrage wird vom Root-Knoten aus der Leaf-Knoten gesucht, welche die gesuchte Position enthält. Dafür wird so lange der momentane Knoten ein Branch-Knoten ist berechnet, welcher der Kinderknoten die Position enthält und von diesem aus weiter gesucht.

@@ -46,7 +46,7 @@ In @ball_pivoting_überblick ist ein Beispiel in 2D gegeben. Dabei werden die Li
 
 #side-caption(amount: 1)[#figure(
 	caption: [
-		Ball-Pivoting-Algorithmus in 2D. Für die äußeren Punkte in schwarz wird eine Oberfläche gefunden. Für den inneren Punkt in rot kann kein Nachbar gefunden werden, weil alle zugehörigen Kreise weitere Punkte enthalten würden.
+		Ball-Pivoting-Algorithmus in 2D. Für die äußeren Punkte in Schwarz wird eine Oberfläche gefunden. Für den inneren Punkt in Rot kann kein Nachbar gefunden werden, weil alle zugehörigen Kreise weitere Punkte enthalten würden.
 	],
 	cetz.canvas(length: 2cm, {
 		import cetz.draw: *
@@ -86,7 +86,7 @@ Dabei ist die Reihenfolge der Punkte relevant. Vertauschen von zwei Punkten bere
 
 Als Anfang wird ein Dreieck mit zugehöriger $alpha$-Kugel benötigt, dass keine weiteren Punkte innerhalb der Kugel liegen. Dafür werden alle Punkte iteriert.
 
-Für den momentanen Punkt werden die umliegenden Punkt mit einem Abstand von $2 alpha$ oder weniger bestimmt. Für weiter entfernte Punkte gibt es keine $alpha$-Kugel, welche beide Punkte berühren würde.
+Für den momentanen Punkt werden die umliegenden Punkte mit einem Abstand von $2 alpha$ oder weniger bestimmt. Für weiter entfernte Punkte gibt es keine $alpha$-Kugel, welche beide Punkte berühren würde.
 
 Mit dem momentanen Punkt und alle möglichen Kombination von zwei Punkten aus den umliegenden Punkten wird ein Dreieck gebildet. Für das Dreieck werden nun die zwei möglichen $alpha$-Kugeln bestimmt, welche zum Dreieck gehören.
 
@@ -101,7 +101,7 @@ In @ball_pivoting_erweiterung ist ein Beispiel für die Erweiterung in 2D gegebe
 
 #side-caption(amount: 1.5)[#figure(
 	caption: [
-		Erweiterung der gefundenen Oberfläche in 2D. Die vorherige Kante und der momentane Pivot-Punkt sind in schwarz. Der $alpha$-Kreis rollt entlang der markierten Richtung. In grün ist der erste Punkt und zugehörigen Kreis, welche berührt werden. Die weiteren Punkte in Rot sind Kandidaten, liegen aber weiter in der Rotation, weshalb die grüne Kante zur Oberfläche hinzugefügt wird.
+		Erweiterung der gefundenen Oberfläche in 2D. Die vorherige Kante und der momentane Pivot-Punkt sind in Schwarz. Der $alpha$-Kreis rollt entlang der markierten Richtung. In Grün ist der erste Punkt und zugehörigen Kreis, welche berührt werden. Die weiteren Punkte in Rot sind Kandidaten, liegen aber weiter in der Rotation, weshalb die grüne Kante zur Oberfläche hinzugefügt wird.
 
 	],
 	cetz.canvas(length: 2cm, {
@@ -186,7 +186,7 @@ Die möglichen Punkte sind vom Zentrum der Kugel $c$ maximal $alpha$ entfernt un
 
 ==== Besten Kandidaten bestimmen
 
-Für jeden Kandidaten $p$ wird berechnet, wie weit die Kugel um die Kante gerollt werden muss, bis die Kugel den Kandidaten berührt. Dafür wird zuerst das Zentrum $c_p$ der $alpha$-Kugel bestimmt, welche $p_1$, $p_2$ und $p$ berührt. Die Kugel wird dabei wie in @triangulierung_kugel_seite bestimmt, dass die Kugel auf der korrekten Seite vom potentiellen Dreieck liegt. $p$ kann so liegen, dass es keine zugehörige $alpha$-Kugel gibt, in diesem Fall wird $p$ nicht weiter betrachtet. Für jeden Kandidat wird der Winkel $phi$ berechnet, wie weit um die Kante die Kugel gerollt wurde.
+Für jeden Kandidaten $p$ wird berechnet, wie weit die Kugel um die Kante gerollt werden muss, bis die Kugel den Kandidaten berührt. Dafür wird zuerst das Zentrum $c_p$ der $alpha$-Kugel bestimmt, welche $p_1$, $p_2$ und $p$ berührt. Die Kugel wird dabei wie in @triangulierung_kugel_seite bestimmt, dass die Kugel auf der korrekten Seite vom potenziellen Dreieck liegt. $p$ kann so liegen, dass es keine zugehörige $alpha$-Kugel gibt, in diesem Fall wird $p$ nicht weiter betrachtet. Für jeden Kandidaten wird der Winkel $phi$ berechnet, wie weit um die Kante die Kugel gerollt wurde.
 
 #figure(
 	caption: [Berechnung von Zentrum der $alpha$-Kugel und zugehöriger Winkel für einen Kandidatenpunkt],
@@ -231,7 +231,7 @@ Mit $m p$, $c$ und $c_p$ wird der Winkel $phi$ bestimmt. Dafür werden die Vekto
 		tau - arccos(s) & "falls" & k < 0,
 	) $ berechnet wird. Von allen Kandidaten wird der Punkt $p_3$ ausgewählt, für den $phi$ am kleinsten ist.
 
-Es muss nicht kontrolliert werden, ob ein Punkt in der $alpha$-Kugel von $(p_1, p_2, p_3)$ liegt, weil diese immer leer ist. Würde ein weiterer Punkt in der Kugel liegen, so würde der zugehörige Winkel $phi$ von diesem Punkt kleiner sein, weil der Punkt beim rollen um die Kante früher von der Kugel berührt wird. Weil $p_3$ aber zum kleinsten Winkel gehört, kann das nicht sein. Dies gilt aber nur, wenn die Kugel zum Start bereits leer ist.
+Es muss nicht kontrolliert werden, ob ein Punkt in der $alpha$-Kugel von $(p_1, p_2, p_3)$ liegt, weil diese immer leer ist. Würde ein weiterer Punkt in der Kugel liegen, so würde der zugehörige Winkel $phi$ von diesem Punkt kleiner sein, weil der Punkt beim Rollen um die Kante früher von der Kugel berührt wird. Weil $p_3$ aber zum kleinsten Winkel gehört, kann das nicht sein. Dies gilt aber nur, wenn die Kugel zum Start bereits leer ist.
 
 
 ==== Triangulierung erweitern
@@ -259,7 +259,7 @@ Wenn es keine weiteren äußeren Kanten gibt, muss ein neues Startdreieck gefund
 
 === Vorauswahl
 
-Vor der Triangulierung wird mit dem Mindestabstand $d$ die Anzahl der Punkte und deformierte Dreiecke verringert. Dafür wird ein Subset der Punkte bestimmt, das die Punkte paarweise mindestens den Mindestabstand voneinander entfernt sind.
+Vor der Triangulierung wird mit dem Mindestabstand $d$ die Anzahl der Punkte und deformierte Dreiecke verringert. Dafür wird ein Subset der Punkte bestimmt, dass die Punkte paarweise mindestens den Mindestabstand voneinander entfernt sind.
 
 Für die Berechnung wird ein Greedy-Algorithmus verwendet. Am Anfang werden alle Punkte zum Set hinzugefügt und danach werden alle Punkte im Set iteriert. Für jeden Punkt werden mit dem KD-Baum die Punkte in der Nachbarschaft bestimmt, welche näher als der Mindestabstand zum momentanen Punkt liegen. Die Punkte werden aus dem Set entfernt und der nächste Punkt, der noch im Set ist, wird betrachtet.
 
