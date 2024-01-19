@@ -1,7 +1,7 @@
 #import "../packages/todo.typ": *
 #import "../packages/placeholder.typ": *
 #import "../packages/subfigure.typ": *
-#import "../packages/cetz/src/lib.typ" as cetz
+#import "@local/cetz:0.2.0" as cetz
 
 #let setup(document) = {
 	set text(lang: "de", font: "Noto Sans", region: "DE", size: 11pt, weight: 400, fallback: false)
@@ -58,16 +58,16 @@
 	document
 }
 
-#let side-caption(amount: 1.0, content) = {
+#let side-caption(amount: (1fr, 1fr), content) = {
 	show figure: it => box({
 		v(1em)
 		grid(
-			columns: (1fr, amount * 1fr),
+			columns: amount,
 			align(center + horizon)[#it.body],
 			align(center + horizon, {
 				set align(left)
 				set par(hanging-indent: 0.5cm, justify: true)
-				pad(left: 0.5cm, right: 1cm)[#it.supplement #it.counter.display(it.numbering): #it.caption]
+				pad(left: 0.5cm, right: 1cm, it.caption)
 				v(1em)
 			}),
 		)

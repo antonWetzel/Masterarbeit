@@ -153,15 +153,15 @@ In @quadtree und @octree sind Beispiele in 2D und 3D gegeben.
 		cube((0, 0, 0), 2, fill: blue)
 
 		set-origin((5, 0))
-		background((0, 0, 0), 2, fill: none, stroke: gray)
+		background((0, 0, 0), 2, fill: auto, stroke: gray)
 		cube((0, 0, 1), 1, fill: blue)
 		cube((0, 0, 0), 1, fill: blue)
 		cube((0, 1, 1), 1, fill: blue)
 		cube((1, 1, 1), 1, fill: blue)
-		frontal((0, 0, 0), 2, fill: none, stroke: gray)
+		frontal((0, 0, 0), 2, fill: auto, stroke: gray)
 
 		set-origin((5, 0))
-		background((0, 0, 0), 2, fill: none, stroke: gray)
+		background((0, 0, 0), 2, fill: auto, stroke: gray)
 		cube((0, 0, 1.5), 0.5, fill: blue)
 		cube((0, 0.5, 1.5), 0.5, fill: blue)
 		cube((0, 1.0, 1.5), 0.5, fill: blue)
@@ -173,7 +173,7 @@ In @quadtree und @octree sind Beispiele in 2D und 3D gegeben.
 		cube((0, 0, 0.5), 0.5, fill: blue)
 		cube((0.5, 0, 0.5), 0.5, fill: blue)
 		cube((0, 0, 0), 0.5, fill: blue)
-		frontal((0, 0, 0), 2, fill: none, stroke: gray)
+		frontal((0, 0, 0), 2, fill: auto, stroke: gray)
 	}),
 ) <octree>
 

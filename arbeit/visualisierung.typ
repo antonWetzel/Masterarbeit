@@ -29,31 +29,31 @@ Das kleinste Dreieck ist ein gleichseitiges Dreieck. In @dreieck_größe ist die
 			line((-1.73, -1), (0, -1), (0, 0), close: true)
 
 			arc((-1.73, -1), start: 0deg, stop: 30deg, anchor: "origin", radius: 0.6)
-			content((-1.45, -0.9), [$30°$], anchor: "left")
+			content((-1.45, -0.9), [$30°$], anchor: "west")
 
 			arc((0, -1), start: 90deg, stop: 180deg, anchor: "origin", radius: 0.3)
 			circle((-0.15, -0.85), radius: 0.01, fill: black)
 
 			arc((0, 0), start: 210deg, stop: 270deg, anchor: "origin", radius: 0.5)
-			content((-0.2, -0.2), [$60°$], anchor: "top")
+			content((-0.2, -0.2), [$60°$], anchor: "north")
 
-			content((0, -0.5), [$1$], anchor: "left", padding: 0.05)
+			content((0, -0.5), [$1$], anchor: "west", padding: 0.05)
 		}
 
 		circle((0, 0), radius: 1)
 		line((-1.73, -1), (-0.86, 0.5), (0, 0), close: true)
 		triangle()
 
-		content((-1.73 / 2, -1), [$x$], anchor: "top", padding: 0.1)
-		content(((-1.73, -1), 0.55, (0, 0)), angle: -30deg, [$y$], anchor: "bottom", padding: 0.1)
+		content((-1.73 / 2, -1), [$x$], anchor: "north", padding: 0.1)
+		content(((-1.73, -1), 0.9, (0, 0)), angle: 30deg, [$y$], anchor: "south", padding: 0.1)
 
 		set-origin((3, 0))
 
 		triangle()
 
-		content(((-1.73, -0.98), 0.5, (0, 0.02)), angle: -30deg, [$y = 1 / cos(60°) = 2$], anchor: "bottom", padding: 0.1)
+		content(((-1.73, -0.98), 1.0, (0, 0.02)), angle: 30deg, [$y = 1 / cos(60°) = 2$], anchor: "south", padding: 0.1)
 
-		content((-1.73 / 2, -1), [$x = tan(60°) approx 1,73$], anchor: "top", padding: 0.1)
+		content((-1.73 / 2, -1), [$x = tan(60°) approx 1,73$], anchor: "north", padding: 0.1)
 
 	}),
 ) <dreieck_größe>
@@ -82,23 +82,23 @@ Für den zweiten Vektor $b$ wird das Kreuzprodukt $b = n times a$ bestimmt. Weil
 		}
 
 		test((-56, -182, 70), name: "b", paint: red)
-		content("b.end", [$b$], anchor: "right", padding: 0.1)
+		content("b.end", [$b$], anchor: "east", padding: 0.1)
 
 		test((-28, 14, 14), name: "a", paint: green)
-		content("a.end", [$a$], anchor: "right", padding: 0.1)
+		content("a.end", [$a$], anchor: "east", padding: 0.1)
 
 		test((3, 1, 5), name: "n", paint: black)
-		content("n.end", [$n$], anchor: "left", padding: 0.1)
+		content("n.end", [$n$], anchor: "west", padding: 0.1)
 
 		line((-2, 0, 0), (2, 0, 0), stroke: gray + 2pt, mark: (end: ">", fill: gray), name: "x")
 		line((0, -2, 0), (0, 2, 0), stroke: gray + 2pt, mark: (end: ">", fill: gray), name: "y")
 		line((-1, -1), (1, 1, 0), stroke: gray + 2pt, mark: (end: ">", fill: gray), name: "z")
-		content("x.end", [$x$], anchor: "top", padding: 0.1)
-		content("y.end", [$y$], anchor: "left", padding: 0.1)
-		content("z.end", [$z$], anchor: "left", padding: 0.1)
+		content("x.end", [$x$], anchor: "north", padding: 0.1)
+		content("y.end", [$y$], anchor: "west", padding: 0.1)
+		content("z.end", [$z$], anchor: "west", padding: 0.1)
 
 		test((1, 5, -3), name: "n_m", paint: blue)
-		content("n_m.end", [$(n_y, n_z, -n_x)$], anchor: "bottom", padding: 0.1)
+		content("n_m.end", [$(n_y, n_z, -n_x)$], anchor: "south", padding: 0.1)
 	}),
 ) <dreieck_kreuzprodukt>
 
@@ -113,23 +113,23 @@ Die Vektoren $a$ und $b$ spannen eine Ebene auf, welche orthogonal zu $n$ ist. F
 		line((0, 0, 0), (2, 0, 0), mark: (end: ">", fill: black), name: "a")
 		line((0, 0), (1, 1), mark: (end: ">", fill: black), name: "b")
 
-		content("n.end", [$n$], padding: 0.1, anchor: "right")
-		content("a.end", [$a$], padding: 0.1, anchor: "top")
-		content("b.end", [$b$], padding: 0.1, anchor: "left")
+		content("n.end", [$n$], padding: 0.1, anchor: "east")
+		content("a.end", [$a$], padding: 0.1, anchor: "north")
+		content("b.end", [$b$], padding: 0.1, anchor: "west")
 
 		line((0, 0, 0), (0, 0, 1.5), stroke: green + 2pt)
 		line((0, 0, 0), (1.5, 0, 0), stroke: red + 2pt)
 		line((0, 0, 1.5), (1.5 + 1.5 / 2, 1.5 / 2), (1.5, 0, 0), stroke: (dash: "dashed"))
 
-		content((1.5 + 1.5 / 2, 1.5 / 2), [$p_i$], padding: 0.1, anchor: "left")
+		content((1.5 + 1.5 / 2, 1.5 / 2), [$p_i$], padding: 0.1, anchor: "west")
 
-		content((1.5 / 2, 0), [$x_i*s$], anchor: "top", padding: 0.1)
-		content((0.4, 0.4), [$y_i*s$], anchor: "left", padding: 0.1)
+		content((1.5 / 2, 0), [$x_i*s$], anchor: "north", padding: 0.1)
+		content((0.4, 0.4), [$y_i*s$], anchor: "west", padding: 0.1)
 
 		circle((0, 0), fill: black, radius: 0.0)
 		circle((1.5 + 1.5 / 2, 1.5 / 2), fill: black, radius: 0.02)
 
-		content((0, 0), [$p$], anchor: "right", padding: 0.1)
+		content((0, 0), [$p$], anchor: "east", padding: 0.1)
 	}),
 ) <dreieck_eckpunkt>
 
@@ -271,6 +271,8 @@ Besonders für weit entfernte Punkt ist es nicht notwendig, alle Punkte genau wi
 		boxed("../images/lod_high.png", caption: [$16 space.thin 564 space.thin 209$ Punkte]),
 	)),
 )
+
+#todo[Bilder mit Voxels]
 
 Für die gesamte Punktewolke wird ein Octree mit den Punkten erstellt. Der zugehörige Voxel vom Root-Knoten wird so gewählt, dass alle Punkte im Voxel liegen. Rekursiv wird der Voxel in acht gleichgroße Voxel geteilt, solange in einem Voxel noch zu viele Punkte liegen. Bei dem Octree gehört jeder Punkt zu genau einem Leaf-Knoten.
 

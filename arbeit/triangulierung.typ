@@ -99,7 +99,7 @@ Solange es noch eine äußere Kante $(p_1, p_2)$ gibt, kann die Triangulierung e
 
 In @ball_pivoting_erweiterung ist ein Beispiel für die Erweiterung in 2D gegeben. Es werden Kanten als Oberfläche gesucht und Punkte werden als Pivot-Element verwendet.
 
-#side-caption(amount: 1.5)[#figure(
+#side-caption(amount: (2fr, 3fr))[#figure(
 	caption: [
 		Erweiterung der gefundenen Oberfläche in 2D. Die vorherige Kante und der momentane Pivot-Punkt sind in Schwarz. Der $alpha$-Kreis rollt entlang der markierten Richtung. In Grün ist der erste Punkt und zugehörigen Kreis, welche berührt werden. Die weiteren Punkte in Rot sind Kandidaten, liegen aber weiter in der Rotation, weshalb die grüne Kante zur Oberfläche hinzugefügt wird.
 
@@ -135,11 +135,12 @@ In @ball_pivoting_erweiterung ist ein Beispiel für die Erweiterung in 2D gegebe
 		circle(positions.at(8), radius: 0.1, fill: red, stroke: none)
 		circle(positions.at(9), radius: 0.1, fill: black)
 
-		arc(b, start: -17deg, delta: -180deg, anchor: "origin", radius: 0.3, name: "arc")
+		arc(b, start: -17deg, delta: -200deg, anchor: "origin", radius: 0.3, name: "arc")
 
 		let m-x = b.at(0) - 0.295
 		let m-y = b.at(1) + 0.05
-		mark((m-x, m-y), (m-x + 0.06, m-y + 0.2), symbol: ">", fill: black, stroke: none)
+
+		mark((-1, -3), "arc.end", symbol: ">", fill: black)
 
 	}),
 ) <ball_pivoting_erweiterung>]
@@ -156,25 +157,25 @@ Um den ersten Punkt $p$ zu finden, werden zuerst alle möglichen Punkte bestimmt
 		arc((4, 3), start: 10deg, delta: -200deg, anchor: "origin", radius: 5, stroke: gray)
 
 		circle((0, 0), radius: 0.1, fill: black)
-		content((0, 0), $p_1$, anchor: "top", padding: 0.15)
+		content((0, 0), $p_1$, anchor: "north", padding: 0.15)
 
 		circle((4, 0), radius: 0.1, fill: black)
-		content((4, 0), $m p$, anchor: "top", padding: 0.15)
+		content((4, 0), $m p$, anchor: "north", padding: 0.15)
 
 		circle((8, 0), radius: 0.1, fill: black)
-		content((8, 0), $p_2$, anchor: "top", padding: 0.15)
+		content((8, 0), $p_2$, anchor: "north", padding: 0.15)
 
 		line((4, 0), (4, 3))
 		line((0, 0), (4, 3), (8, 0))
 		line((0, 0), (8, 0))
 
 		circle((4, 3), radius: 0.1, fill: black)
-		content((4, 3), $c$, anchor: "bottom", padding: 0.15)
+		content((4, 3), $c$, anchor: "south", padding: 0.15)
 
-		content(((0, 0), 0.5, (4, 3)), angle: -30deg, [$alpha$], anchor: "bottom", padding: 0.15)
-		content(((4, 3), 0.5, (8, 0)), angle: 30deg, [$alpha$], anchor: "bottom", padding: 0.15)
-		content(((4, 0), 0.5, (4, 3)), [$x$], anchor: "left", padding: 0.15)
-		content(((0, 0), 0.5, (4, 0)), [$d$], anchor: "top", padding: 0.15)
+		content(((0, 0), 2.5, (4, 3)), angle: 30deg, [$alpha$], anchor: "south", padding: 0.15)
+		content(((4, 3), 2.5, (8, 0)), angle: -30deg, [$alpha$], anchor: "south", padding: 0.15)
+		content(((4, 0), 0.5, (4, 3)), [$x$], anchor: "west", padding: 0.15)
+		content(((0, 0), 2.0, (4, 0)), [$d$], anchor: "north", padding: 0.15)
 
 		arc((4, 0), start: 90deg, stop: 180deg, anchor: "origin", radius: 1)
 		circle((3.5, 0.5), radius: 0.05, fill: black)
@@ -200,28 +201,28 @@ Für jeden Kandidaten $p$ wird berechnet, wie weit die Kugel um die Kante geroll
 		line((1, -0.5, 1), (1.7, 1.3, 1), name: "cp", stroke: gray)
 
 		circle((-1.9, 0.5), radius: 0.03, fill: black)
-		content((0, 0, 0), $p_1$, anchor: "top", padding: 0.15)
+		content((0, 0, 0), $p_1$, anchor: "north", padding: 0.15)
 		circle((0, 0, 0), radius: 0.03, fill: black)
-		content((1, 1), $p_2$, anchor: "bottom", padding: 0.15)
+		content((1, 1), $p_2$, anchor: "south", padding: 0.15)
 		circle((1, 1), radius: 0.03, fill: black)
-		content((2.9, -0.7), $p$, anchor: "left", padding: 0.15)
+		content((2.9, -0.7), $p$, anchor: "west", padding: 0.15)
 		circle((2.9, -0.7), radius: 0.03, fill: black)
 
-		content((-0.5, 2.5), $c$, anchor: "bottom", padding: 0.15)
+		content((-0.5, 2.5), $c$, anchor: "south", padding: 0.15)
 		circle((-0.5, 2.5), radius: 0.03, fill: black)
-		content((2.2, 1.8), $c_p$, anchor: "bottom", padding: 0.15)
+		content((2.2, 1.8), $c_p$, anchor: "south", padding: 0.15)
 		circle((2.2, 1.8), radius: 0.03, fill: black)
 
 		arc((-1, 0, 1), start: 0deg, delta: 90deg, anchor: "origin", radius: 0.3, stroke: gray)
 		arc((1, -0.5, 1), start: 70deg, delta: 90deg, anchor: "origin", radius: 0.3, stroke: gray)
 
-		content((0.5, 0.5), $m p$, anchor: "left", padding: 0.15)
+		content((0.5, 0.5), $m p$, anchor: "west", padding: 0.15)
 		circle((0.5, 0.5), radius: 0.03, fill: black)
 
 		line((-0.5, 2.5), (0.5, 0.5), (2.2, 1.8))
 
 		arc((0.5, 0.5), start: 37.5deg, delta: 79deg, anchor: "origin", radius: 1.2, stroke: gray)
-		content((0.6, 1.3), $phi$, anchor: "bottom", padding: 0.15)
+		content((0.6, 1.3), $phi$, anchor: "south", padding: 0.15)
 
 	}),
 ) <triangulierung_kugel_seite>

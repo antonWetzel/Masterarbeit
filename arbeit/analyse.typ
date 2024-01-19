@@ -39,7 +39,7 @@ Wenn die Eigenwerte $lambda_i$ mit $i in NN_0^2$ absteigend nach größer sortie
 Für jeden Punkt wird die relative Höhe im Segment bestimmt. Dafür wird die Mindesthöhe $y_min$ und die Maximalhöhe $y_max$ im Segment benötigt. Die relative Höhe $h$ für den Punkt mit der Höhe $p_y$ kann mit $h = (p_y - y_min) / (y_max - y_min)$ berechnet werden. Die relative Höhe liegt dabei im Bereich $[0; 1]$.
 
 #align(center, box(width: 80%, side-caption(
-	amount: 1.5,
+	amount: (2fr, 3fr),
 	figure(
 		caption: [Punktwolke mit Höhe markiert.],
 		box(image("../images/height-crop.png"), stroke: 1pt + gray),
