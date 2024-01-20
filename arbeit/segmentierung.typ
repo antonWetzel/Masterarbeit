@@ -172,3 +172,8 @@ Mit den Mittelpunkten wird das Voronoi-Diagramm berechnet, welches den Raum in B
 }))
 
 #todo[Bild veraltet mit Zentrum von Bereichen.]
+
+
+== Ergebnisse
+
+#todo[Ergebnisse Segmentierung]
