@@ -13,7 +13,7 @@
 				"--host=https://api.languagetoolplus.com",
 				"--port=",
 				"--max-request-length=750",
-				// "--words=${workspaceFolder}/words.txt"
+				"--dictionary=${workspaceFolder}/words.txt"
 			],
 			"runOptions": {
 				"runOn": "folderOpen"

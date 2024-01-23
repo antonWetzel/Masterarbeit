@@ -88,7 +88,7 @@ Die Bereiche sind als Liste gespeichert, wobei für jeden Bereich die Eckpunkte 
 Um die Distanz von einem Punkt zu einem Bereich zu berechnen, wird der größte Abstand mit Vorzeichen vom Punkt zu allen Kanten berechnet. Für jede Kante mit den Eckpunkten $a = (a_x, a_y)$ und $b = (b_x, b_y)$ wird zuerst der Vektor $d = (d_x, d_y) = b - a$ berechnet. Der normalisierte Vektor $o = (d_y, -d_x) / (|d|)$ ist orthogonal zu $d$ und zeigt aus dem Bereich hinaus, solange $a$ im Uhrzeigersinn vor $b$ auf der Umrandung liegt. Für den Punkt $p$ kann nun der Abstand zur Kante mit dem Skalarprodukt $o dot (p - a)$ berechnet werden. Der Abstand ist dabei negative, wenn der Punkt im Bereich liegt.
 
 #side-caption(amount: (2fr, 3fr), figure(
-	caption: [Berechnung vom Abstand vom Punkt $p$ zur Kange zwischen $a$ und $b$.],
+	caption: [Berechnung vom Abstand vom Punkt $p$ zur Kante zwischen $a$ und $b$.],
 	cetz.canvas(length: 1cm, {
 		import cetz.draw: *
 
@@ -156,7 +156,56 @@ Mit den Bereichen und den Mittelpunkten aus der vorherigen Scheibe werden die Mi
 
 Wenn keine Mittelpunkte in dem Bereich liegt, so fängt der Bereich ein neues Segment an. Als Mittelpunkt wird der geometrische Schwerpunkt vom Bereich verwendet.
 
-#todo[Berechnung vom Schwerpunkt?]
+Für die Berechnung vom Schwerpunkt wird der Bereich in Dreiecke unterteilt und der gewichtete Durchschnitt der Schwerpunkte der Dreiecke berechnet. Weil der Bereich konvex ist, kann ein beliebiger Punkt ausgewählt werden und alle Dreiecke mit dem Punkt und den zwei Punkten von einer Kante ohne den Punkt, bilden ein Dreieck. Das Gewicht für ein Dreieck ist der relative Anteil der Fläche vom Dreieck zur Gesamtfläche vom Bereich. Ein Beispiel ist in @segmentierung_schwerpunkt gegeben.
+
+#figure(
+	caption: [Unterteilung von einem Bereich in Dreiecke. Die Schwerpunkte der Dreiecke sind in Grau und vom gesamten Bereich in Rot.],
+	cetz.canvas(length: 3cm, {
+		import cetz.draw: *
+
+		let points = (
+			(0.0, 0.0),
+			(1.0, 0.0),
+			(1.5, 0.6),
+			(1.2, 0.8),
+			(0.2, 0.8),
+			(-0.1, 0.7),
+			(-0.5, 0.5),
+			(-0.5, 0.3),
+			(-0.4, 0.1),
+		)
+		let center = (0.0, 0.0);
+		let total_area = 0.0;
+		for i in range(1, points.len() - 1) {
+			let a = points.at(0)
+			let b = points.at(i)
+			let c = points.at(i + 1)
+
+			let c = ((a.at(0) + b.at(0) + c.at(0)) / 3.0, (a.at(1) + b.at(1) + c.at(1)) / 3.0)
+			let area = (b.at(0) * c.at(1) - b.at(1) * c.at(0)) / 2.0;
+			circle(c, fill: gray, stroke: none, radius: 0.1cm)
+
+			total_area += area;
+			center = (center.at(0) + c.at(0) * area, center.at(1) + c.at(1) * area)
+		}
+		let center = (center.at(0) / total_area, center.at(1) / total_area)
+
+		for i in range(0, points.len() - 1) {
+			line(points.at(i), points.at(i + 1))
+		}
+		line(points.last(), points.at(0))
+
+		for i in range(2, points.len() - 1) {
+			line(points.at(0), points.at(i), stroke: gray)
+		}
+
+		for p in points {
+			circle(p, fill: black, stroke: none, radius: 0.1cm)
+		}
+
+		circle(center, fill: red, stroke: none, radius: 0.1cm)
+	}),
+) <segmentierung_schwerpunkt>
 
 Liegt genau ein vorheriger Mittelpunkt in Bereich, wird wieder der Schwerpunkt als neuer Mittelpunkt verwendet, aber der Mittelpunkt gehört zum gleichen Segment, zu dem der Mittelpunkt aus der vorherigen Scheibe gehört.
 
@@ -165,11 +214,14 @@ Wenn mehrere Mittelpunkte im Bereich liegen, so werden die Mittelpunkte mit den 
 
 == Punkte zuordnen
 
-Mit den Mittelpunkten wird das Voronoi-Diagramm berechnet, welches den Raum in Bereiche unterteilt, dass alle Punkte in einem Bereich für einen Mittelpunkt am nächsten an diesem Mittelpunkt liegen. Für jeden Punkt wird nun der zugehörige Bereich im Voronoi-Diagramm bestimmt und der Punkt zum Segment von dem Mittelpunkt vom Bereich zugeordnet.
+Mit den Mittelpunkten wird das Voronoi-Diagramm berechnet, welches den Raum in Bereiche unterteilt, dass alle Punkte in einem Bereich für einen Mittelpunkt am nächsten an diesem Mittelpunkt liegen. Für jeden Punkt wird nun der zugehörige Bereich im Voronoi-Diagramm bestimmt und der Punkt zum zugehörigen Segment zugeordnet. Ein Beispiel für eine Unterteilung ist in @segmentierung_voronoi zu sehen.
 
-#figure(caption: [Berechnete Mittelpunkte für die Punkte mit zugehörigen Bereichen und Voronoi-Diagramm.], box(clip: true, width: 100%, height: 30%, {
-	rect(image("../images/segmente_punkte.svg", width: 500%), stroke: black, inset: 0pt)
-}))
+#figure(
+	caption: [Berechnete Mittelpunkte für die Punkte mit zugehörigen Bereichen und Voronoi-Diagramm.],
+	box(clip: true, width: 100%, height: 30%, {
+		rect(image("../images/segmente_punkte.svg", width: 500%), stroke: black, inset: 0pt)
+	}),
+) <segmentierung_voronoi>
 
 #todo[Bild veraltet mit Zentrum von Bereichen.]
 

@@ -4,6 +4,7 @@ patterns = [
 	("var_", (600, 0, 500, 0)),
 	("curve_", (600, 0, 500, 0)),
 	("height", (600, 0, 500, 0)),
+	("segments", (200, 0, 0, 0)),
 ]
 
 from PIL import Image
@@ -23,3 +24,4 @@ for pattern in patterns:
 		img = Image.open(file)
 		img = img.crop((amount[0], amount[1], img.width - amount[2], img.height - amount[3]))
 		img.save(file[:-4] + "-crop.png")
+		print("crop " + file)

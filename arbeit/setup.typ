@@ -1,7 +1,7 @@
 #import "../packages/todo.typ": *
 #import "../packages/placeholder.typ": *
 #import "../packages/subfigure.typ": *
-#import "@local/cetz:0.2.0" as cetz
+#import "@preview/cetz:0.2.0" as cetz
 
 #let setup(document) = {
 	set text(lang: "de", font: "Noto Sans", region: "DE", size: 11pt, weight: 400, fallback: false)
@@ -37,22 +37,27 @@
 		align(center, box({
 			align(center + horizon, it.body)
 			align(center + horizon, {
-				set align(left)
-				set par(hanging-indent: 0.5cm, justify: true)
-				pad(left: 0.5cm, right: 1cm, it.caption)
-				v(1em)
+				box({
+					set align(left)
+					set par(hanging-indent: 0.5cm, justify: true)
+					pad(left: 0.5cm, right: 1cm, it.caption)
+				})
 			})
 		}))
 		v(1em)
 	}
 
-	show outline.entry.where(): it => {
-		h((it.level - 2) * 2em) + link(it.element.location(), it.body)
-	}
+	show heading.where(level: 1): it => pad(top: 0.7cm, it, bottom: 0.1cm)
+	show heading.where(level: 2): it => pad(top: 0.5cm, it, bottom: 0.1cm)
+	show heading.where(level: 3): it => pad(top: 0.3cm, it, bottom: 0.1cm)
 
-	show outline.entry.where(level: 1): it => {
-		v(2em, weak: true)
-		link(it.element.location(), strong(it.body))
+	show outline.entry: it => {
+		if it.level == 1 {
+			v(2em, weak: true) + strong(it)
+
+		} else {
+			h((it.level - 2) * 2em, weak: false) + it
+		}
 	}
 
 	document
