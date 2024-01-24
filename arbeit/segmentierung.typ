@@ -79,7 +79,7 @@ Für jede Scheibe werden konvexe zusammenhängende Bereiche bestimmt, dass die P
 #figure(
 	caption: [Beispiel für berechnete Segmente. Größere Bereiche gehören zu mehreren Bäumen.],
 	box(clip: true, width: 100%, height: 30%, {
-		rect(image("../images/segmente.svg", width: 500%), stroke: black, inset: 0pt)
+		rect(image("../images/k09_15_only_areas.svg", width: 500%), stroke: black, inset: 0pt)
 	}),
 )
 
@@ -219,13 +219,18 @@ Mit den Mittelpunkten wird das Voronoi-Diagramm berechnet, welches den Raum in B
 #figure(
 	caption: [Berechnete Mittelpunkte für die Punkte mit zugehörigen Bereichen und Voronoi-Diagramm.],
 	box(clip: true, width: 100%, height: 30%, {
-		rect(image("../images/segmente_punkte.svg", width: 500%), stroke: black, inset: 0pt)
+		rect(image("../images/k09_15.svg", width: 500%), stroke: black, inset: 0pt)
 	}),
 ) <segmentierung_voronoi>
 
-#todo[Bild veraltet mit Zentrum von Bereichen.]
 
+== Ergebnis
 
-== Ergebnisse
+Ein Beispiel für eine Segmentierung ist in @segmentierung_ergebnis gegeben. Die meisten Bäume werden korrekt erkannt und zu unterschiedlichen Segmenten zugeordnet. Je weiter die Spitzen der Bäume voneinander getrennt sind, desto besser können die Bäume voneinander getrennt werden.
 
-#todo[Ergebnisse Segmentierung]
+#figure(
+	caption: [Segmentierung von einer Punktwolke.],
+	image("../images/segments-crop.png"),
+) <segmentierung_ergebnis>
+
+Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeordnet. Bei frei stehenden Flächen entstehen seperate Segmente und unter Bäumen werden die Punkte zum Baum zugorndet.

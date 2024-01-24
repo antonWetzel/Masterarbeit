@@ -155,9 +155,7 @@ Ein Dreieck kann mit nur einem Dreieck dargestellt werden, für ein Quadrat werd
 	}),
 ) <dreieck_oder_quadrat>
 
-#todo[Triangle Strip für Quadrat]
-
-#todo[Messwerte]
+Durch die hohe Anzahl und kleine Fläche der Punkte, kann die Punktwolke mit dem Dreieck als Basis schneller angezeigt werden.
 
 
 === Instancing
@@ -259,20 +257,21 @@ Je nach Scannertechnologie und Größe des abgetasteten Gebietes kann die Punktw
 Besonders für weit entfernte Punkt ist es nicht notwendig, alle Punkte genau wiederzugeben. Deshalb wird für weit entfernte Punkte eine vereinfachte Version angezeigt. Diese besteht aus weniger Punkten und benötigt dadurch weniger Ressourcen, bietet aber eine gute Approximation der ursprünglichen Daten.
 
 #figure(
-	caption: [Waldstück mit unterschiedlichen Detailstufen, unabhängig von der Entfernung zur Kamera. Je höher die Detailstufe, desto mehr Punkte werden gerendert.],
-	box(width: 80%, grid(
-		columns: 1,
+	caption: [Unterschiedliche Stuffen der Unterteilung. Jeder Würfel entählt bis zu $32768$ Punkte.],
+	grid(
+		columns: (3),
 		gutter: 1em,
-		grid(
-			columns: 2,
-			gutter: 1em,
-			boxed("../images/lod_low.png", caption: [$35 space.thin 767$ Punkte]), boxed("../images/lod_middle.png", caption: [$668 space.thin 061$ Punkte]),
-		),
-		boxed("../images/lod_high.png", caption: [$16 space.thin 564 space.thin 209$ Punkte]),
-	)),
+		subfigure(image("../images/lod_0-crop.png"), caption: [Stuffe 0]),
+		subfigure(image("../images/lod_1-crop.png"), caption: [Stuffe 1]),
+		subfigure(image("../images/lod_2-crop.png"), caption: [Stuffe 2]),
+		subfigure(image("../images/lod_3-crop.png"), caption: [Stuffe 3]),
+		subfigure(image("../images/lod_4-crop.png"), caption: [Stuffe 4]),
+		subfigure(image("../images/lod_5-crop.png"), caption: [Stuffe 5]),
+		subfigure(image("../images/lod_6-crop.png"), caption: [Stuffe 6]),
+		subfigure(image("../images/lod_7-crop.png"), caption: [Stuffe 7]),
+		subfigure(image("../images/lod_8-crop.png"), caption: [Stuffe 8]),
+	),
 )
-
-#todo[Bilder mit Voxels]
 
 Für die gesamte Punktewolke wird ein Octree mit den Punkten erstellt. Der zugehörige Voxel vom Root-Knoten wird so gewählt, dass alle Punkte im Voxel liegen. Rekursiv wird der Voxel in acht gleichgroße Voxel geteilt, solange in einem Voxel noch zu viele Punkte liegen. Bei dem Octree gehört jeder Punkt zu genau einem Leaf-Knoten.
 

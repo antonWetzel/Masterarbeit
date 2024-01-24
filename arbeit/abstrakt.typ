@@ -2,9 +2,9 @@
 
 #set heading(numbering: none)
 
-#align(center, box(width: 80%, [
+#v(1fr)
 
-	#v(1fr)
+#align(center, box(width: 80%, [
 
 
 	= Abstrakt
@@ -17,9 +17,10 @@
 		Die Visualisierung wird durch spezialisierte Software für das Projekt ermöglicht, wodurch diese an die besonderen Daten der Waldstücke angepasst werden kann.
 	]
 
-	#v(1fr)
-
-	#rect(image("../images/segments-crop.png"), inset: 0.5pt)
-
-	#v(1fr)
 ]))
+
+#v(1fr)
+
+#image("../images/segments-crop.png")
+
+#v(1fr)

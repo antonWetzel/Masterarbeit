@@ -1,5 +1,5 @@
 #let subfigure_counter = counter("subfigures")
-#let subfigure_current_figure = counter("subfigure_current_figure")
+#let subfigure_current_figure = state("subfigure_current_figure")
 
 #let subfigure = (
 	content,
@@ -10,11 +10,13 @@
 	numbering: "(a)",
 	caption: none,
 ) => locate(loc => {
+	let prev_figure = subfigure_current_figure.at(loc)
 	let current_figure = counter(figure).at(loc)
-	if (current_figure != subfigure_current_figure.at(loc)) {
-		subfigure_current_figure.update(current_figure)
+	if (prev_figure != current_figure) {
 		subfigure_counter.update(0)
+		subfigure_current_figure.update(current_figure)
 	}
+
 	box(width: width, align(center, {
 		content
 		if caption != none {

@@ -74,9 +74,9 @@ Die gefundenen Dreiecke bilden eine Hülle, welche alle Punkte beinhaltet. Je kl
 
 === $alpha$-Kugel für ein Dreieck
 
-Für ein Dreieck $(p_1, p_2, P-3)$ wird die Position der zugehörigen $alpha$-Kugel benötigt. Dafür wird ... #todo[Kugel für Dreieck]
+Für ein Dreieck $(p_1, p_2, P-3)$ wird die Position der zugehörigen $alpha$-Kugel benötigt. Dafür wird zuerst das Zentrum $c$ vom Umkreis vom Dreieck bestimmt. Von diesem sind alle Eckpunkte gleich weit entfernt. Ist der Abstand $d_c$ vom Zentrum zu den Ecken größer als $alpha$, so gibt es keine zugehörige $alpha$-Kugel. Für Abstände kleiner gleich $alpha$ ist das Zentrum der Kugel $d = sqrt(alpha^2 - d_c^2)$ vom Zentrum vom Unkreis entfernt. Der Vektor $o = (p_2 - p_1) times (p_3 - p_1)$ ist orthogonal zum Dreieck, womit die Position vom Zentrum der $alpha$-Kugel mit $c + d dot o / (|o|)$ berechnet werden kann.
 
-Dabei ist die Reihenfolge der Punkte relevant. Vertauschen von zwei Punkten berechnet die $alpha$-Kugel auf der anderen Seite des Dreiecks.
+Durch die Berechnung von $o$ ist die Reihenfolge der Punkte relevant. Vertauschen von zwei Punkten berechnet die $alpha$-Kugel auf der anderen Seite des Dreiecks.
 
 
 === Ablauf

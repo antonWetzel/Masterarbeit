@@ -64,7 +64,7 @@ Die größte Varianz von allen Scheiben wird verwendet, um die Varianzen auf den
 	),
 )
 
-Die Ausdehnung eignet sich zur Unterscheidung von Stamm und Krone. Beim Stamm sind die Punkte
+Die Ausdehnung eignet sich zur Unterscheidung von Stamm und Krone. Beim Stamm sind die Punkte näher einanander, während bei der Krone die Punkte weiter verteit sind.
 
 #todo([Mehr Baumeigenschaften])
 
