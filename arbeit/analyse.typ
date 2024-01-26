@@ -1,20 +1,20 @@
 #import "setup.typ": *
 
 
-= Analyse von Segmenten
+== Analyse von Segmenten
 
 
-== Eigenschaften <berechnung_eigenschaften>
+=== Eigenschaften <berechnung_eigenschaften>
 
 Die Baumeigenschaften werden für jedes Segment einzeln berechnet. Dabei sind alle Punkte im Segment verfügbar.
 
 
-=== Nachbarschaft
+==== Nachbarschaft
 
 Um relevante Eigenschaften für einen Punkt zu bestimmen, werden die umliegenden Punkte benötigt. Dafür wird für alle Punkte ein *KD-Baum* erstellt. Mit diesem können effizient für einen Punkt die $k$-nächsten Punkte bestimmt werden.
 
 
-=== Krümmung <krümmung>
+==== Krümmung <krümmung>
 
 Die Krümmung der Oberfläche wird für jeden Punkt geschätzt. Dafür werden die Positionen der Punkte in der Nachbarschaft betrachtet. Zuerst wird der geometrische Schwerpunkt bestimmt, dass die Positionen der Punkte um diesen verschoben werden können. Ohne die Verschiebung würde die globale Position der Punkte das Ergebnis verfälschen. Mit den Positionen der Punkte kann die Kovarianzmatrix bestimmt werden.
 
@@ -34,7 +34,7 @@ Wenn die Eigenwerte $lambda_i$ mit $i in NN_0^2$ absteigend nach größer sortie
 )
 
 
-=== Punkthöhe
+==== Punkthöhe
 
 Für jeden Punkt wird die relative Höhe im Segment bestimmt. Dafür wird die Mindesthöhe $y_min$ und die Maximalhöhe $y_max$ im Segment benötigt. Die relative Höhe $h$ für den Punkt mit der Höhe $p_y$ kann mit $h = (p_y - y_min) / (y_max - y_min)$ berechnet werden. Die relative Höhe liegt dabei im Bereich $[0; 1]$.
 
@@ -47,7 +47,7 @@ Für jeden Punkt wird die relative Höhe im Segment bestimmt. Dafür wird die Mi
 )))
 
 
-=== Ausdehnung
+==== Ausdehnung
 
 Der Baum wird entlang der Horizontalen in gleichhohe Scheiben unterteilt. Die Breite der Scheiben ist dabei einstellbar. Die Ausdehnung wird für jede Scheibe berechnet. Zuerst wird der geometrische Schwerpunkt der Positionen berechnet, womit die durchschnittliche Standartabweichung entlang der Horizontalen bestimmt wird.
 
@@ -69,27 +69,27 @@ Die Ausdehnung eignet sich zur Unterscheidung von Stamm und Krone. Beim Stamm si
 #todo([Mehr Baumeigenschaften])
 
 
-== Segmentierung von einem Baum
+=== Segmentierung von einem Baum
 
 #link("https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13144")
 
 #todo([Baumeigenschaften + ? $->$ Segmente])
 
 
-== Eigenschaften für Visualisierung <eigenschaften_visualisierung>
+=== Eigenschaften für Visualisierung <eigenschaften_visualisierung>
 
 
-=== Normale
+==== Normale
 
 Mit den Eigenvektoren aus @krümmung wird die Normale für die Umgebung bestimmt. Der Eigenvektor, welcher zum kleinsten Eigenwert gehört, ist orthogonal zur Ebene mit der größten Ausdehnung.
 
 
-=== Punktgröße
+==== Punktgröße
 
 Für die Punktgröße wird der durchschnittliche Abstand zu den umliegenden Punkten bestimmt.
 
 
-== Baumart
+=== Baumart
 
 #todo([Segmente + Eigenschaften + ? $->$ Klassifizierung?])
 - out of scope?

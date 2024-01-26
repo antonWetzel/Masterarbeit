@@ -1,13 +1,13 @@
 #import "setup.typ": *
 
-#set heading(numbering: none)
+#set heading(numbering: none, outlined: false)
 
 #v(1fr)
 
 #align(center, box(width: 80%, [
 
 
-	= Abstrakt
+	== Abstrakt
 
 	#align(left)[
 		Diese Arbeit beschäftigt sich mit der Verarbeitung und Visualisierung von Punktwolken von Waldstücken. Dabei wird der komplette Ablauf von den initialen Daten mit den Positionen der Punkte vom gesamten Waldstück bis zur Visualisierung der einzelnen Bäume mit relevanten Informationen durchgeführt.
@@ -19,7 +19,7 @@
 
 ]))
 
-#v(1fr)
+#v(2fr)
 
 #image("../images/segments-crop.png")
 

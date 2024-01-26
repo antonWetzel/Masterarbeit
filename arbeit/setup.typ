@@ -4,7 +4,10 @@
 #import "@preview/cetz:0.2.0" as cetz
 
 #let setup(document) = {
-	set text(lang: "de", font: "Noto Sans", region: "DE", size: 11pt, weight: 400, fallback: false)
+	let font = "Noto Serif"
+	let font = "Noto Sans"
+
+	set text(lang: "de", font: font, region: "DE", size: 11pt, weight: 400, fallback: false)
 	show math.equation: set text(font: "Noto Sans Math", weight: 600, fallback: false)
 	set par(justify: true)
 
@@ -27,7 +30,6 @@
 		}
 		let body = el.supplement + [ ] + numbering("I-1.1", ..counter(el.func()).at(el.location()))
 		link(el.location(), body)
-
 	}
 
 	show raw: it => text(size: 1.2em, it)
@@ -47,8 +49,16 @@
 		v(1em)
 	}
 
-	show heading.where(level: 1): it => pad(top: 0.7cm, it, bottom: 0.1cm)
-	show heading.where(level: 2): it => pad(top: 0.5cm, it, bottom: 0.1cm)
+	show heading.where(level: 1): it => {
+		pagebreak(weak: true)
+		pad(top: 0.7cm, it, bottom: 0.1cm)
+	}
+	show heading.where(level: 2): it => {
+		// if counter(heading).at(it.location()).at(1, default: 0) > 1 {
+		// 	pagebreak()
+		// }
+		pad(top: 0.5cm, it, bottom: 0.1cm)
+	}
 	show heading.where(level: 3): it => pad(top: 0.3cm, it, bottom: 0.1cm)
 
 	show outline.entry: it => {

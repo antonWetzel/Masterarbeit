@@ -1,15 +1,15 @@
 #import "setup.typ": *
 
 
-= Segmentierung in Bäume <seperierung_in_segmente>
+== Segmentierung in Bäume <seperierung_in_segmente>
 
 
-== Ablauf
+=== Ablauf
 
 Die Punkte werden in gleichbreite parallele Scheiben entlang der Höhe unterteilt. Danach werden die Scheiben von Oben nach Unten einzeln verarbeitet, um die Segmente zu bestimmen. Dafür werden die Punkte in einer Scheibe zu Bereichen zusammengefasst. Für die Bereiche werden die zugehörigen Mittelpunkte bestimmt und jeder Punkte wird zum nächsten Mittelpunkt zugeordnet.
 
 
-== Bereiche bestimmen
+=== Bereiche bestimmen
 
 #let points = (
 	(0, 1.9),
@@ -150,7 +150,7 @@ Um einen Punkt zu einem Bereich hinzuzufügen, werden alle Kanten entfernt, bei 
 Nachdem alle Punkte zu den Bereichen hinzugefügt würden, können Bereiche so gewachsen sein, dass Bereiche sich überlappen. Um diese zu verbinden wird wiederholt überlappende Bereiche gesucht und alle Punkte von einem Bereich zum anderen hinzugefügt. Um zu überprüfen, ob Bereiche sich überlappen, wird für einen der Bereiche alle Kanten überprüft, ob der andere Bereich vollständig außerhalb der Kante liegt. Wenn alle Punkte vom anderen Bereich außerhalb der Kante liegen, trennt die Kante die Bereiche. Wenn keine trennende Kante existiert, so überlappen sich die Bereiche.
 
 
-== Mittelpunkte bestimmen
+=== Mittelpunkte bestimmen
 
 Mit den Bereichen und den Mittelpunkten aus der vorherigen Scheibe werden die Mittelpunkte für die momentane Scheibe berechnet. Für die erste Scheibe wird die leere Menge als vorherigen Mittelpunkte verwendet. Für jeden Bereich werden dann die Mittelpunkte aus der vorherigen Scheibe gesucht, die im Bereich liegen.
 
@@ -159,7 +159,7 @@ Wenn keine Mittelpunkte in dem Bereich liegt, so fängt der Bereich ein neues Se
 Für die Berechnung vom Schwerpunkt wird der Bereich in Dreiecke unterteilt und der gewichtete Durchschnitt der Schwerpunkte der Dreiecke berechnet. Weil der Bereich konvex ist, kann ein beliebiger Punkt ausgewählt werden und alle Dreiecke mit dem Punkt und den zwei Punkten von einer Kante ohne den Punkt, bilden ein Dreieck. Das Gewicht für ein Dreieck ist der relative Anteil der Fläche vom Dreieck zur Gesamtfläche vom Bereich. Ein Beispiel ist in @segmentierung_schwerpunkt gegeben.
 
 #figure(
-	caption: [Unterteilung von einem Bereich in Dreiecke. Die Schwerpunkte der Dreiecke sind in Grau und vom gesamten Bereich in Rot.],
+	caption: [Unterteilung von einem Bereich in Dreiecke. Die Schwerpunkte der Dreiecke sind in Grau und vom gesamten Bereich in Grün. Die durchschnittliche Position der Eckpunkte ist in Rot.],
 	cetz.canvas(length: 3cm, {
 		import cetz.draw: *
 
@@ -174,15 +174,15 @@ Für die Berechnung vom Schwerpunkt wird der Bereich in Dreiecke unterteilt und 
 			(-0.5, 0.3),
 			(-0.4, 0.1),
 		)
-		let center = (0.0, 0.0);
-		let total_area = 0.0;
+		let center = (0.0, 0.0)
+		let total_area = 0.0
 		for i in range(1, points.len() - 1) {
 			let a = points.at(0)
 			let b = points.at(i)
 			let c = points.at(i + 1)
 
 			let c = ((a.at(0) + b.at(0) + c.at(0)) / 3.0, (a.at(1) + b.at(1) + c.at(1)) / 3.0)
-			let area = (b.at(0) * c.at(1) - b.at(1) * c.at(0)) / 2.0;
+			let area = (b.at(0) * c.at(1) - b.at(1) * c.at(0)) / 2.0
 			circle(c, fill: gray, stroke: none, radius: 0.1cm)
 
 			total_area += area;
@@ -203,7 +203,14 @@ Für die Berechnung vom Schwerpunkt wird der Bereich in Dreiecke unterteilt und 
 			circle(p, fill: black, stroke: none, radius: 0.1cm)
 		}
 
-		circle(center, fill: red, stroke: none, radius: 0.1cm)
+		circle(center, fill: green, stroke: none, radius: 0.1cm)
+
+		let fake_center = (0.0, 0.0)
+		for point in points {
+			fake_center = (fake_center.at(0) + point.at(0), fake_center.at(1) + point.at(1))
+		}
+		fake_center = (fake_center.at(0) / points.len(), fake_center.at(1) / points.len())
+		circle(fake_center, fill: red, stroke: none, radius: 0.1cm)
 	}),
 ) <segmentierung_schwerpunkt>
 
@@ -212,7 +219,7 @@ Liegt genau ein vorheriger Mittelpunkt in Bereich, wird wieder der Schwerpunkt a
 Wenn mehrere Mittelpunkte im Bereich liegen, so werden die Mittelpunkte mit den zugehörigen Segmenten für die momentane Scheibe übernommen.
 
 
-== Punkte zuordnen
+=== Punkte zuordnen
 
 Mit den Mittelpunkten wird das Voronoi-Diagramm berechnet, welches den Raum in Bereiche unterteilt, dass alle Punkte in einem Bereich für einen Mittelpunkt am nächsten an diesem Mittelpunkt liegen. Für jeden Punkt wird nun der zugehörige Bereich im Voronoi-Diagramm bestimmt und der Punkt zum zugehörigen Segment zugeordnet. Ein Beispiel für eine Unterteilung ist in @segmentierung_voronoi zu sehen.
 
@@ -222,15 +229,3 @@ Mit den Mittelpunkten wird das Voronoi-Diagramm berechnet, welches den Raum in B
 		rect(image("../images/k09_15.svg", width: 500%), stroke: black, inset: 0pt)
 	}),
 ) <segmentierung_voronoi>
-
-
-== Ergebnis
-
-Ein Beispiel für eine Segmentierung ist in @segmentierung_ergebnis gegeben. Die meisten Bäume werden korrekt erkannt und zu unterschiedlichen Segmenten zugeordnet. Je weiter die Spitzen der Bäume voneinander getrennt sind, desto besser können die Bäume voneinander getrennt werden.
-
-#figure(
-	caption: [Segmentierung von einer Punktwolke.],
-	image("../images/segments-crop.png"),
-) <segmentierung_ergebnis>
-
-Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeordnet. Bei frei stehenden Flächen entstehen seperate Segmente und unter Bäumen werden die Punkte zum Baum zugorndet.

@@ -13,43 +13,37 @@
 #show: setup
 
 #include "deckblatt.typ"
-#pagebreak()
 
 #include "abstrakt.typ"
-#pagebreak()
 
 #outline(depth: 3)
 
 #set page(numbering: "1")
 #counter(page).update(1)
 
-#pagebreak()
+#include "einleitung.typ"
 
-#include "überblick.typ"
-#pagebreak()
+#include "stand_der_technik.typ"
 
-#include "segmentierung.typ"
-#pagebreak()
 
-#include "analyse.typ"
-#pagebreak()
+= Methodik
 
-#include "triangulierung.typ"
-#pagebreak()
+#{
+	include "segmentierung.typ"
 
-#include "visualisierung.typ"
-#pagebreak()
+	include "analyse.typ"
 
-#include "ergebnisse.typ"
-#pagebreak()
+	include "triangulierung.typ"
 
-#include "fazit.typ"
-#pagebreak()
+	include "visualisierung.typ"
+}
+
+#include "implementierung.typ"
+
+#include "auswertung.typ"
 
 #include "appendix.typ"
-#pagebreak()
 
 #include "glossar.typ"
-#pagebreak()
 
 #bibliography("bibliographie.bib")
