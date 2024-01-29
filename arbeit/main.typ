@@ -26,7 +26,7 @@
 #include "stand_der_technik.typ"
 
 
-= Methodik
+= Methodik <methodik>
 
 #{
 	include "segmentierung.typ"

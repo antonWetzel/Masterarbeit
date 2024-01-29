@@ -229,3 +229,24 @@ Mit den Mittelpunkten wird das Voronoi-Diagramm berechnet, welches den Raum in B
 		rect(image("../images/k09_15.svg", width: 500%), stroke: black, inset: 0pt)
 	}),
 ) <segmentierung_voronoi>
+
+#let overlay_image(p) = stack(
+	dir: ltr,
+	spacing: -100%,
+	image("../images/segment_full_edited.png"),
+	image(p),
+)
+
+#figure(
+	caption: [Waldstück mit ausgewählten Segmenten überlagert. ],
+	grid(
+		columns: 1,
+		gutter: 1em,
+		subfigure(box(image("../images/segment_full.png"), stroke: 1pt, clip: true), caption: [Alle Segmente]),
+		grid(
+			columns: 2,
+			gutter: 1em,
+			subfigure(box(overlay_image("../images/segment_1.png"), stroke: 1pt, clip: true), caption: [Einzelnes Segment]), subfigure(box(overlay_image("../images/segment_2.png"), stroke: 1pt, clip: true), caption: [Einzelnes Segment]),
+		),
+	),
+) <segment_example>

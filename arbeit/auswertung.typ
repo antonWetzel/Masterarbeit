@@ -1,7 +1,7 @@
 #import "setup.typ": *
 
 
-= Auswertung
+= Auswertung <auswertung>
 
 #todo[Ergebnisse]
 
@@ -23,6 +23,11 @@ Ein Beispiel für eine Segmentierung ist in @segmentierung_ergebnis gegeben. Die
 ) <segmentierung_ergebnis>
 
 Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeordnet. Bei frei stehenden Flächen entstehen seperate Segmente und unter Bäumen werden die Punkte zum Baum zugorndet.
+
+
+== Analyse von Segmenten
+
+#todo[Berechnung Ergebnisse]
 
 
 == Triangulierung
@@ -52,11 +57,6 @@ Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeord
 )
 
 
-== Berechnung
-
-#todo[Berechnung Ergebnisse]
-
-
 == Visualisierung
 
 #todo[Visualisierung Ergebnisse]
@@ -67,7 +67,7 @@ Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeord
 #todo[Fazit]
 
 
-== Disskusion
+== Diskussion
 
 
 == Ausblick

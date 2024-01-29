@@ -9,10 +9,7 @@
 				"${workspaceFolder}",
 				"--plain",
 				"--language=de",
-				// "--use-official-api",
-				"--host=https://api.languagetoolplus.com",
-				"--port=",
-				"--max-request-length=750",
+				"--max-request-length=1000",
 				"--dictionary=${workspaceFolder}/words.txt"
 			],
 			"runOptions": {
@@ -67,6 +64,15 @@
 			],
 			"isBackground": true,
 			"problemMatcher": []
-		}
+		},
+		{
+			"label": "start languagetool",
+			"command": "languagetool.cmd",
+			"runOptions": {
+				"runOn": "folderOpen"
+			},
+			"isBackground": true,
+			"problemMatcher": []
+		},
 	]
 }
