@@ -49,7 +49,7 @@ Für jeden Punkt wird die relative Höhe im Segment bestimmt. Dafür wird die Mi
 
 ==== Ausdehnung
 
-Der Baum wird entlang der Horizontalen in gleichhohe Scheiben unterteilt. Die Breite der Scheiben ist dabei einstellbar. Die Ausdehnung wird für jede Scheibe berechnet. Zuerst wird der geometrische Schwerpunkt der Positionen berechnet, womit die durchschnittliche Standartabweichung entlang der Horizontalen bestimmt wird.
+Der Baum wird entlang der Horizontalen in gleich hohe Scheiben unterteilt. Die Breite der Scheiben ist dabei einstellbar. Die Ausdehnung wird für jede Scheibe berechnet. Zuerst wird der geometrische Schwerpunkt der Positionen berechnet, womit die durchschnittliche Standardabweichung entlang der Horizontalen bestimmt wird.
 
 Die größte Varianz von allen Scheiben wird verwendet, um die Varianzen auf den Bereich $[0; 1]$ zu normieren. Für jeden Punkt wird die Varianz der zugehörigen Scheibe zugeordnet.
 
@@ -64,7 +64,7 @@ Die größte Varianz von allen Scheiben wird verwendet, um die Varianzen auf den
 	),
 )
 
-Die Ausdehnung eignet sich zur Unterscheidung von Stamm und Krone. Beim Stamm sind die Punkte näher einanander, während bei der Krone die Punkte weiter verteit sind.
+Die Ausdehnung eignet sich zur Unterscheidung von Stamm und Krone. Beim Stamm sind die Punkte näher einander, während bei der Krone die Punkte weiter verteilt sind.
 
 #todo([Mehr Baumeigenschaften])
 

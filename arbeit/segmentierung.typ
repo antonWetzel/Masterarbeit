@@ -6,7 +6,7 @@
 
 === Ablauf
 
-Die Punkte werden in gleichbreite parallele Scheiben entlang der Höhe unterteilt. Danach werden die Scheiben von Oben nach Unten einzeln verarbeitet, um die Segmente zu bestimmen. Dafür werden die Punkte in einer Scheibe zu Bereichen zusammengefasst. Für die Bereiche werden die zugehörigen Mittelpunkte bestimmt und jeder Punkte wird zum nächsten Mittelpunkt zugeordnet.
+Die Punkte werden in gleich breite parallele Scheiben entlang der Höhe unterteilt. Danach werden die Scheiben von Oben nach Unten einzeln verarbeitet, um die Segmente zu bestimmen. Dafür werden die Punkte in einer Scheibe zu Bereichen zusammengefasst. Für die Bereiche werden die zugehörigen Mittelpunkte bestimmt und jeder Punkte wird zum nächsten Mittelpunkt zugeordnet.
 
 
 === Bereiche bestimmen

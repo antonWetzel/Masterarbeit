@@ -8,8 +8,7 @@
 				"watch",
 				"${workspaceFolder}",
 				"--plain",
-				"--language=de",
-				"--max-request-length=1000",
+				"--language=de-DE",
 				"--dictionary=${workspaceFolder}/words.txt"
 			],
 			"runOptions": {

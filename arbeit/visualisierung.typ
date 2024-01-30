@@ -209,7 +209,7 @@ Besonders für weit entfernte Punkt ist es nicht notwendig, alle Punkte genau wi
 	),
 )
 
-Für die gesamte Punktewolke wird ein Octree mit den Punkten erstellt. Der zugehörige Voxel vom Root-Knoten wird so gewählt, dass alle Punkte im Voxel liegen. Rekursiv wird der Voxel in acht gleichgroße Voxel geteilt, solange in einem Voxel noch zu viele Punkte liegen. Nach der Unterteilung gehört jeder Punkt im Datensatz zu genau einem Leaf-Knoten.
+Für die gesamte Punktewolke wird ein Octree mit den Punkten erstellt. Der zugehörige Voxel vom Root-Knoten wird so gewählt, dass alle Punkte im Voxel liegen. Rekursiv wird der Voxel in acht gleich große Voxel geteilt, solange in einem Voxel noch zu viele Punkte liegen. Nach der Unterteilung gehört jeder Punkt im Datensatz zu genau einem Leaf-Knoten.
 
 Für jeden Branch-Knoten wird eine Punktwolke berechnet, welche als Vereinfachung der Punkte der zugehörigen Kinderknoten verwendet werden kann.
 
@@ -222,7 +222,7 @@ Die Detailstufen werden wie bei "Fast Out-of-Core Octree Generation for Massive 
 
 Dadurch haben zwar Berechnungen der gröberen Detailstufen für Knoten näher an der Wurzel nur Zugriff auf bereits vereinfachte Daten, dafür müssen aber auch viel weniger Punkte bei der Berechnung betrachtet werden. Solange die Detailstufen eine gute Vereinfachung der ursprünglichen Punkte sind, kann so der Berechnungsaufwand stark verringert werden.
 
-Der Voxel, welcher zu dem Knoten gehört, wird in eine feste Anzahl von gleichgroßen Teilvoxel unterteilt. Für jeden Teilvoxel werden alle Punkte kombiniert, die im Teilvoxel liegen. Aus den Punkten im Teilvoxel wird ein repräsentativer Punkt bestimmt. Weil die Anzahl der Teilvoxel unabhängig von der Größe vom Voxel ist, sind die Teilvoxel für gröbere Detailstufen größer und mehr Punkte werden kombinert.
+Der Voxel, welcher zu dem Knoten gehört, wird in eine feste Anzahl von gleich großen Teilvoxel unterteilt. Für jeden Teilvoxel werden alle Punkte kombiniert, die im Teilvoxel liegen. Aus den Punkten im Teilvoxel wird ein repräsentativer Punkt bestimmt. Weil die Anzahl der Teilvoxel unabhängig von der Größe vom Voxel ist, sind die Teilvoxel für gröbere Detailstufen größer und mehr Punkte werden kombiniert.
 
 
 === Eye-Dome-Lighting
@@ -234,11 +234,11 @@ Beim Rendern von 3D-Scenen wird für jedes Pixel die momentane Tiefe vom Polygon
 Je größer der Unterschied ist, desto stärker wird der Pixel im Ergebnisbild eingefärbt. Dadurch werden Kanten hervorgehoben, je nachdem wie groß der Tiefenunterschied ist.
 
 #figure(
-	caption: [Tiefenbild nach dem render der Szene. Je heller eine Position ist, desto weiter ist das Polygon zugehörig zur Koordinate von der Kamera entfernt.],
+	caption: [Tiefenbild nach dem Rendern der Szene. Je heller eine Position ist, desto weiter ist das Polygon zugehörig zur Koordinate von der Kamera entfernt.],
 	box(image("../images/eye_dome_depth_edited.png", width: 80%), stroke: 1pt),
 ) <eye_dome_depth>
 
-Der Effekt entsteht dadurch, dass für jedes Pixel der maximale Tiefenunterschied zu den umliegendenen Pixels bestimmt wird. Je größer der Unterschied, desto mehr wird das zugehörige Pixel verdunktelt. Ein Veranschaulichung ist in @eye_dome_example gegeben.
+Der Effekt entsteht dadurch, dass für jedes Pixel der maximale Tiefenunterschied zu den umliegenden Pixeln bestimmt wird. Je größer der Unterschied, desto mehr wird das zugehörige Pixel verdunkelt. Ein Veranschaulichung ist in @eye_dome_example gegeben.
 
 #let boxed(p, caption: []) = subfigure(box(image(p), fill: rgb(35%, 49%, 58%), stroke: 1pt), caption: caption)
 

@@ -22,7 +22,7 @@ Ein Beispiel für eine Segmentierung ist in @segmentierung_ergebnis gegeben. Die
 	image("../images/segments-crop.png"),
 ) <segmentierung_ergebnis>
 
-Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeordnet. Bei frei stehenden Flächen entstehen seperate Segmente und unter Bäumen werden die Punkte zum Baum zugorndet.
+Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeordnet. Bei frei stehenden Flächen entstehen separate Segmente und unter Bäumen werden die Punkte zum Baum zugeordnet.
 
 
 == Analyse von Segmenten
