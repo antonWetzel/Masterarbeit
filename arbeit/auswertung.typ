@@ -24,6 +24,8 @@ Ein Beispiel für eine Segmentierung ist in @segmentierung_ergebnis gegeben. Die
 
 Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeordnet. Bei frei stehenden Flächen entstehen separate Segmente und unter Bäumen werden die Punkte zum Baum zugeordnet.
 
+#todo[Fehler wenn spitze gerade so in scheibe]
+
 
 == Analyse von Segmenten
 

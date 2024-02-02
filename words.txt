@@ -1,1 +1,6 @@
 Normalen
+Voronoi-Diagramm
+LASzip
+LASzip-Format
+Octree
+Quadtree
