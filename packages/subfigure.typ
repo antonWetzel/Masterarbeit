@@ -24,5 +24,6 @@
 			v(10pt, weak: true)
 			subfigure_counter.display(numbering) + [ ] + caption
 		}
+		v(10pt)
 	}))
 })

@@ -12,6 +12,21 @@
 	]
 }
 
+#let todo-inline(body) = {
+	set text(size: 0pt)
+	box({
+		set text(size: 0pt)
+		figure(kind: "todo", supplement: "", outlined: true, caption: body, rect(
+			fill: orange,
+			height: auto,
+			inset: 1pt,
+			radius: 1pt,
+			stroke: black,
+			text(size: 11pt, body),
+		))
+	})
+}
+
 #let todo-outline = () => locate(loc => {
 	let x = query(figure.where(kind: "todo"), loc)
 	if x != () {

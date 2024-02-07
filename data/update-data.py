@@ -4,7 +4,7 @@ import json
 
 import pygsheets
 
-PATH = "../../treee/cwd/"
+PATH = "../../treee/cwd/auto/"
 
 KEYS = ["source_points", "leaf_points", "branch_points", "segments"]
 TIMES = ["import", "segment", "calculate", "lods"]
@@ -33,6 +33,6 @@ for file in os.listdir(PATH):
         row.append(data["times"][time])
     table.append(row)
 
-
+print(table)
 
 wks.update_values("D3", table)

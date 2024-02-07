@@ -181,3 +181,28 @@ In @quadtree und @octree sind Beispiele in 2D und 3D gegeben.
 === Suchanfrage
 
 Bei einer Suchanfrage wird vom Root-Knoten aus der Leaf-Knoten gesucht, welche die gesuchte Position enthält. Dafür wird so lange der momentane Knoten ein Branch-Knoten ist berechnet, welcher der Kinderknoten die Position enthält und von diesem aus weiter gesucht.
+
+
+== Messwerte vom Import <messwerte>
+
+#let data = csv("../data/werte.tsv", delimiter: "\t")
+#figure(
+	table(
+		align: (x, y) => if y == 0 { center } else { (left, left, right, right, right).at(x) },
+		columns: 5,
+		[#box(width: 2.2cm)[*Datensatz*]], [*Datei*], [*Daten#linebreak()Punkte*], [*Segment#linebreak()Punkte*], [*Detailstufen#linebreak()Punkte*],
+		..data.slice(1).flatten(),
+	),
+	caption: [Messwerte (1).],
+) <messwerte_1>
+
+#let data = csv("../data/werte_2.tsv", delimiter: "\t")
+#figure(
+	table(
+		align: (x, y) => if y == 0 { center } else { (left, right, right, right, right, right).at(x) },
+		columns: 6,
+		[#box(width: 2.2cm)[*Datensatz*]], [*Segmente*], [*Punkte#linebreak()Laden*], [*Segmentierung*], [*Berechnungen*], [*Detailstufen*],
+		..data.slice(1).flatten(),
+	),
+	caption: [Messwerte (2).],
+) <messwerte_2>

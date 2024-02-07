@@ -8,8 +8,6 @@
 
 Das Projekt ist unter #link("https://github.com/antonWetzel/treee") verfügbar. Als Programmiersprache wird Rust und als Grafikkartenschnittstelle WebGPU verwendet. Rust ist eine performante Programmiersprache mit einfacher Integration für WebGPU. WebGPU bildet eine Abstraktionsebene über der nativen Grafikkartenschnittstelle, dadurch ist die Implementierung unabhängig vom Betriebssystem. Alle verwendeten Bibliotheken sind in @implementierung_bilbiotheken gelistet.
 
-Als Eingabeformat werden Dateien im LASzip-Format verwendet. Dieses wird häufig für Punktwolken verwendet. Weiter Formate können einfach eingebunden werden, solange eine Rust-Bibliothek existiert, welche das Format einlesen kann.
-
 #figure(
 	caption: [Benutzte Bibliotheken],
 	table(
@@ -35,23 +33,35 @@ Als Eingabeformat werden Dateien im LASzip-Format verwendet. Dieses wird häufig
 		`tempfile`,      `3.8.1`,     [Temporäre Dateien erstellen],
 		`rayon`,         `1.8.0`,     [Multithreading],
 		`termsize`,      `0.1`,       [Größe vom Terminal bestimmen],
-		`egui`,          `todo`,      [Benutzerinterface],
-		`egui-winit`,    `todo`,      [Systemereignisse zum Interface weiterleiten],
-		`egui-wgpu`,     `todo`,      [Interface anzeigen],
+		`egui`,          `0.26`,      [Benutzerinterface],
+		`egui-winit`,    `0.26`,      [Systemereignisse zum Interface weiterleiten],
+		`egui-wgpu`,     `0.26`,      [Interface rendern],
 		`clap`,          `4.4`,       [Kommandozeilenargumente verarbeiten],
 		`voronator`,     `0.2.1`,     [Voronoi-Diagramm bestimmen],
 	),
 ) <implementierung_bilbiotheken>
 
+Als Eingabeformat werden Dateien im LASzip-Format verwendet. Dieses wird häufig für Punktwolken verwendet. Weiter Formate können einfach eingebunden werden, solange eine Rust-Bibliothek existiert, welche das Format einlesen kann.
+
+#todo[Benutzung aus dem Readme hier?]
+
 
 == Ablauf
 
-Um einen Datensatz zu analysieren, muss dieser zuerst importiert werden, bevor er von der Visualisierung angezeigt werden kann.
+
+=== Installation
+
+Für den Import und die Visualisierung wird das kompilierte Programm benötigt. Dieses kann mit dem Quelltext selber kompiliert werden oder bereits kompilierte Versionen können von #todo-inline[GitHub-Release] heruntergeladen werden. Die Schritte zum selber kompilieren sind im #link("https://github.com/antonWetzel/treee?tab=readme-ov-file#treee", [Readme])#footnote(`https://github.com/antonWetzel/treee?tab=readme-ov-file#treee`) verfügbar.
+
+
+=== Benutzung
+
+#todo[Benutzung aus dem Readme]
 
 
 === Import
 
-Der Import wird in mehreren getrennten Phasen durchgeführt. Dabei wird der Berechnungsaufwand für eine Phase so weit wie möglich parallelisiert. Die Phasen sind:
+Um einen Datensatz zu analysieren, muss dieser zuerst importiert werden, bevor er von der Visualisierung angezeigt werden kann. Der Import wird in mehreren getrennten Phasen durchgeführt. Dabei wird der Berechnungsaufwand für eine Phase so weit wie möglich parallelisiert. Die Phasen sind:
 
 + Daten laden
 + Segmente bestimmen
@@ -96,57 +106,96 @@ Der zugehörige Datenfluss ist in @überblick_datenfluss zu sehen. Nach der erst
 	}),
 ) <überblick_datenfluss>
 
-#todo[Messwerte wie lange die Phasen für die einzelen Punkte]
-
-#todo[Messwerte wie groß die Datenmengen]
-
-#let data = {
-	let data = json("../data/br01.json")
-	let mapped = ()
-	for (name, value) in data {
-		if name == "times" {
-			for (name, value) in value {
-				mapped.push((name, value))
-			}
-		} else {
-			mapped.push((name, value))
-		}
-	}
-	mapped
-}
-
-#cetz.canvas({
-	import cetz.draw: *
-	cetz.chart.barchart(
-		size: (10, 4),
-		mode: "stacked",
-		value-key: (0, 0),
-		(("test", 1), ("test", 2)),
-	)
-})
-
 
 === Visualisierung
 
-Bei der Visualisierung wird ein Projekt geöffnet. Das Projekt besteht dabei aus der Struktur vom Octree und Informationen über die Segmente. Die Daten für die einzelnen Punkte werden zuerst nicht geladen.
+Bei der Visualisierung wird ein Projekt geöffnet. Das Projekt besteht dabei aus der Struktur vom Octree und Informationen über die Segmente. Die Daten für die einzelnen Punkte werden zuerst nicht geladen. In @implementierung_ui ist das Benutzerinterface erklärt.
 
 Je nach Position der Kamera werden die benötigten Punkte geladen, welche momentan sichtbar sind. Dadurch können auch Punktwolken angezeigt werden, die mehr Punkte enthalten als gleichzeitig interaktiv anzeigbar. Auch bei den Segmenten wird nur das Segment geladen, welches ausgewählt wurde.
 
-#todo[Messwertel laden Projekt?]
+#figure(
+	caption: [Benutzerinterface mit allen Optionen. ],
+	grid(
+		gutter: 3em,
+		columns: 1 * (1fr, 2fr),
+		rect(image("../images/ui.png"), radius: 4pt, inset: 2pt, stroke: rgb(27, 27, 27) + 4pt),
+		align(left)[
+			- *Load Project*
+				- Projekt
+			- *Property*
+				- Eigenschaft zum Anzeigen ändern
+			- *Segment*
+				- Informationen über das ausgewählte Segment
+				- Triangulation starten und anzeigen
+				- Punkte speichern
+			- *Visual*
+				- Punktegröße ändern
+				- Punkte basierend auf der ausgewählten Eigenschaft filtern
+				- Farbpalette und Hintergrund ändern
+				- Screenshot speichern
+				- Knoten für Detailstufen anzeigen
+			- *Eye Dome*
+				- Farbe und Stärke vom Eye-Dome-Lighting ändern
+			- *Level of Detail*
+				- Algorithmus und Qualität der Detailstufen anpassen
+			- *Camera*
+				- Bewegung der Kamera ändern
+				- Kameraposition speichern
+
+		],
+	),
+) <implementierung_ui>
 
 
 == Punkte
 
 Die benötigten Daten für einen Punkt sind das Polygon als Basis, Position, Normale, Größe und ausgewählte Eigenschaft. Das Polygon ist gleich für alle Punkte und muss deshalb nur einmal zur Grafikkarte übertragen werden und wird für alle Punkte wiederverwendet.
 
-Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei kann die ausgewählte Eigenschaft geändert werden, ohne die anderen Informationen über die Punkte neu zu laden. Die Eigenschaften sind separat als Wert zwischen $0$ und $2^(32)-1$ gespeichert und werden mit einer Farbpalette in einen Farbverlauf umgewandelt. Dabei kann die Farbpalette umgewandelt werden.
+Für die Grafikpipeline wird das Polygon in Dreiecke zerlegt. In @implementierung_polygon_zerlegung sind die getesteten Varianten gegeben. Die Dreiecke werden dann projiziert und es werden alle Pixel bestimmt, welche in den Dreiecken liegen. Für jedes Pixel kann entschieden werden, ob dieser im Ergebnis gespeichert wird. Dafür wird bei den Eckpunkten die untransformierten Koordinaten abgespeichert, dass diese später verfügbar sind. Für jedes Pixel wird von der Pipeline die interpolierten Koordinaten berechnet. Nur wenn der Betrag der interpolierten Koordinaten kleiner als eins ist, wird der Pixel im Ergebnis abgespeichert.
 
+#figure(
+	caption: [Zerlegung von unterschiedlichen Polygonen in Dreiecke.],
+	cetz.canvas(length: 1cm, {
+		import cetz.draw: *
 
-=== Kreis
+		let x = calc.tan(60deg);
+		circle((0, 0), radius: 1, stroke: none, fill: gray)
+		line((-x, -1), (x, -1), (0, 2), close: true)
 
-Die Grafikpipeline bestimmt alle Pixel, welche im transformierten Polygon liegen. Für jedes Pixel kann entschieden werden, ob dieser im Ergebnis gespeichert wird. Dafür wird bei den Eckpunkten die untransformierten Koordinaten abgespeichert, dass diese später verfügbar sind. Für jedes Pixel wird von der Pipeline die interpolierten Koordinaten berechnet. Nur wenn der Betrag der interpolierten Koordinaten kleiner als eins ist, wird der Pixel im Ergebnis abgespeichert.
+		translate(x: 3.0)
 
-#todo[Performancevergleich Dreieck und Quadrat]
+		circle((0, 0), radius: 1, stroke: none, fill: gray)
+		line((-1, -1), (1, -1), (1, 1), (-1, 1), close: true)
+		line((1, 1), (-1, -1))
+
+		translate(x: 3.0)
+
+		let x = calc.tan(22.5deg);
+		circle((0, 0), radius: 1, stroke: none, fill: gray)
+		line((x, -1), (-x, -1), (-1, -x), (-1, x), (-x, 1), (x, 1), (1, x), (1, -x), close: true)
+		line((x, -1), (-1, -x), (1, -x), (-1, x), (1, x), (-x, 1))
+	}),
+) <implementierung_polygon_zerlegung>
+
+In @implementierung_polygon sind die Renderzeiten für unterschiedliche Polygone als Basis gegeben. Die beste Option ist das Dreieck als Polygon. Für die Zerlegung vom Polygon mit $n$ Ecken in Dreiecke werden $n-2$ Dreiecke und somit $3n-6$ Ecken benötigt. Der benötigte Aufwand entsteht größtenteils durch die Ecken, wodurch das Quadrat circa doppelt und das Achteck sechsmal so lange zum Rendern benötigen.
+
+#figure(
+	caption: [Renderzeit bei unterschiedlichen Polygonen als Basis in Sekunden abhängig von der Anzahl der Punkte.],
+	image("../data/polygon.svg"),
+) <implementierung_polygon>
+
+Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei kann die ausgewählte Eigenschaft geändert werden, ohne die anderen Informationen über die Punkte neu zu laden. Die Eigenschaften sind separat als Wert zwischen $0$ und $2^(32)-1$ gespeichert und werden mit einer Farbpalette in einen Farbverlauf umgewandelt. Dabei kann die Farbpalette unabhängig von den Daten ausgewählt werden. Die verfügbaren Farbpaletten sind in @implementierung_farbpaletten zu sehen.
+
+#figure(
+	caption: [Verfügbare Farbpaletten.],
+	grid(
+		columns: 1,
+		gutter: 0.5em,
+		rect(image("../images/grad_warm.png"), inset: 0pt),
+		rect(image("../images/grad_cold.png"), inset: 0pt),
+		rect(image("../images/grad_turbo.png"), inset: 0pt),
+	),
+) <implementierung_farbpaletten>
 
 
 == Segmente
@@ -160,66 +209,31 @@ Im Octree wird vom Root-Knoten aus die Leaf-Knoten gefunden, welche den Strahl e
 
 Sobald ein Punkt gefunden ist, müssen nur noch Knoten überprüft werden, die näher an der Kamera liegen, weil alle Punkte in weiter entfernten Knoten weiter als der momentan beste gefundene Punkt liegen.
 
-#todo[Messung Laufzeit]
 
+=== Visualisierung
 
-=== Anzeige
-
-Im Octree kann zu den Punkten in einem Leaf-Knoten mehrere Segmente gehören. Um die Segmente einzeln anzuzeigen, wird jedes Segment separat abgespeichert. Sobald ein einzelnes Segment ausgewählt wurde, wird dieses geladen und anstatt des Octrees angezeigt. Dabei werden alle Punkte des Segments ohne vereinfachte Detailstufen verwendet. Beispiele sind in @segment_example gegeben.
+Im Octree kann zu den Punkten in einem Leaf-Knoten mehrere Segmente gehören. Um die Segmente einzeln anzuzeigen, wird jedes Segment separat abgespeichert. Sobald ein einzelnes Segment ausgewählt wurde, wird dieses geladen und anstatt des Octrees angezeigt. Dabei werden alle Punkte des Segments ohne vereinfachte Detailstufen verwendet.
 
 Die momentan geladenen Knoten vom Octree bleiben dabei geladen, um einen schnellen Wechsel zu ermöglichen.
 
 
-== Eye-Dome-Lighting
+=== Exportieren
 
-#todo[Messung (viele und wenige Punkte gleich weil Screen space effect)]
+#todo[Implementierung Segment export]
+
+// == Eye-Dome-Lighting
+
+// #todo[Messung (viele und wenige Punkte gleich weil Screen space effect)]
 
 
 == Detailstufen
 
-Beim Anzeigen wird vom Root-Knoten aus zuerst geprüft, ob der momentane Knoten von der Kamera aus sichtbar ist. Für die Knoten entschieden, ob die zugehörige vereinfachte Punktwolke gerendert werden soll oder rekursiv die Kinderknoten betrachtet werden sollen.
-
-#todo[Auswahl der Detailstufen]
-
-
-=== Abstand zur Kamera
-
-
-==== Normal
-
-- Schwellwert
-- Abstand zur kleinsten Kugel, die den Voxel inkludiert
-- Abstand mit Größe des Voxels dividieren
-- wenn Abstand größer als Schwellwert
-	- Knoten rendern
-- sonst
-	- Kinderknoten überprüfen
-
-
-==== Auto
-
-- wie Abstand zur Kamera
-- messen, wie lang rendern dauert
-- Dauer kleiner als Mindestdauer
-	- Schwellwert erhöhen
-- Dauer kleiner als die Maximaldauer
-	- Schwellwert verringern
-
-
-==== Gleichmäßig
-
-- gleich für alle Knoten
-- auswahl der Stufe
-
-
-=== Filtern mit dem Kamerafrustrum
-
-#todo[Frustrum-Culling]
+Beim Anzeigen wird vom Root-Knoten aus zuerst geprüft, ob der momentane Knoten von der Kamera aus sichtbar ist. In @implementierung_culling ist ein Beispiel für das Filtern bei unterschiedlichen Detailstufen gegeben.
 
 #figure(
-	caption: [Unterschiedliche Detailstufen mit den unterschiedlichen sichtbaren Knoten.],
+	caption: [Sichtbare Knoten für unterschiedliche Detailstufen. Ein Knoten wird gerendert, solange ein Teil vom Knoten im Kamerafrustrum enthalten ist.],
 	grid(
-		columns: 1 * 3,
+		columns: 1 * 2,
 		gutter: 1em,
 		box(image("../images/culling_0.png"), stroke: 1pt),
 		box(image("../images/culling_1.png"), stroke: 1pt),
@@ -228,10 +242,6 @@ Beim Anzeigen wird vom Root-Knoten aus zuerst geprüft, ob der momentane Knoten 
 		box(image("../images/culling_4.png"), stroke: 1pt),
 		box(image("../images/culling_5.png"), stroke: 1pt),
 	),
-)
+) <implementierung_culling>
 
-#todo[
-	Messwerte
-	- detailstufen ja nein bild und zeit
-	- culling ja nein bild(?) und zeit
-]
+Die Auswahl der Detailstufen kann dabei geändert werden. Im Normalfall wird die gewünschte Detailstufe abhängig vom Abstand zur Kamera ausgewählt. Dadurch wird in der Nähe der Kamera genauere Detailstufen oder die unvereinfachten Punkte angezeigt und weit von der Kamera entfernt immer weiter vereinfachte Versionen. Eine andere Option ist es, die gleiche Detailstufe für alle Knoten zu verwenden.

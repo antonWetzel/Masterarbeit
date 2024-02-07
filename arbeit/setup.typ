@@ -55,12 +55,11 @@
 		pad(top: 0.7cm, it, bottom: 0.1cm)
 	}
 	show heading.where(level: 2): it => {
-		// if counter(heading).at(it.location()).at(1, default: 0) > 1 {
-		// 	pagebreak()
-		// }
 		pad(top: 0.5cm, it, bottom: 0.1cm)
 	}
 	show heading.where(level: 3): it => pad(top: 0.3cm, it, bottom: 0.1cm)
+
+	show link: it => text(fill: blue, it)
 
 	show outline.entry: it => {
 		if it.level == 1 {
