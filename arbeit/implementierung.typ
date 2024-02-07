@@ -38,6 +38,7 @@ Das Projekt ist unter #link("https://github.com/antonWetzel/treee") verfügbar. 
 		`egui-wgpu`,     `0.26`,      [Interface rendern],
 		`clap`,          `4.4`,       [Kommandozeilenargumente verarbeiten],
 		`voronator`,     `0.2.1`,     [Voronoi-Diagramm bestimmen],
+		`cfg-if`,        `1.0.0`,     [Konditionales Kompilieren von Quelltext],
 	),
 ) <implementierung_bilbiotheken>
 

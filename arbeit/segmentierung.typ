@@ -34,56 +34,18 @@ Die Punkte werden in gleich breite parallele Scheiben entlang der Höhe untertei
 	(-0.5, -1.8),
 )
 
-Für jede Scheibe werden konvexe zusammenhängende Bereiche bestimmt, dass die Punkte in unterschiedlichen Bereichen einen Mindestabstand voneinander entfernt sind. Dafür wird mit einer leeren Menge von Bereichen gestartet und jeder Punkt zu der Menge hinzugefügt. Wenn ein Punkt in einem Bereich ist, ändert der Punkt nicht den Bereich. Ist der Punkt näher als den Mindestabstand zu einem der Bereiche, so wird der Bereich erweitert. Ist der Punkt von allen bisherigen Bereichen entfernt, so wird ein neuer Bereich angefangen.
+Für jede Scheibe werden konvexe zusammenhängende Bereiche bestimmt, dass die Punkte in unterschiedlichen Bereichen einen Mindestabstand voneinander entfernt sind. Dafür wird mit einer leeren Menge von Bereichen gestartet und jeder Punkt zu der Menge hinzugefügt. Wenn ein Punkt vollständig in einem Bereich enthalten ist, wird der Bereich nicht erweitert. Ist der Punkt außerhalb, aber näher als den Mindestabstand zu einem der Bereiche, so wird der Bereich erweitert. Ist der Punkt von allen bisherigen Bereichen weiter entfernt, so wird ein neuer Bereich angefangen.
 
-// #figure(
-// 	caption: [Todo.],
-// 	cetz.canvas(length: 1cm, {
-// 		import cetz.draw: *
-
-// 		line(
-// 			points.at(1),
-// 			points.at(2),
-// 			points.at(3),
-// 			points.at(4),
-// 			points.at(5),
-// 			points.at(6),
-// 			close: true,
-// 			fill: gray,
-// 		)
-
-// 		line(
-// 			points.at(7),
-// 			points.at(9),
-// 			points.at(12),
-// 			points.at(11),
-// 			points.at(10),
-// 			close: true,
-// 			fill: gray,
-// 		)
-
-// 		line(
-// 			points.at(13),
-// 			points.at(14),
-// 			points.at(16),
-// 			points.at(17),
-// 			close: true,
-// 			fill: gray,
-// 		)
-
-// 		for p in points {
-// 			circle(p, radius: 0.1, fill: black, stroke: none)
-// 		}
-// 	}),
-// )
+// BR06-ALS
 #figure(
-	caption: [Beispiel für berechnete Segmente. Größere Bereiche gehören zu mehreren Bäumen.],
-	box(clip: true, width: 100%, height: 30%, {
-		rect(image("../images/k09_15_only_areas.svg", width: 500%), stroke: black, inset: 0pt)
-	}),
+	caption: [Beispiel für berechnete Segmente für zwei Scheiben. Größere Bereiche gehören zu mehreren Bäumen.],
+	grid(
+		columns: 1 * 2,
+		gutter: 1em,
+		subfigure(rect(image("../images/test_5-areas.svg"), inset: 0pt), caption: [obere Scheibe]),
+		subfigure(rect(image("../images/test_6-areas.svg"), inset: 0pt), caption: [untere Scheibe]),
+	),
 )
-
-#todo[Bilder mal wieder veraltet]
 
 Die Bereiche sind als Liste gespeichert, wobei für jeden Bereich die Eckpunkte als Liste gegeben sind. Die Eckpunkte sind dabei sortiert, dass für einen Eckpunkt der nächste Punkt entlang der Umrandung der nächste Punkt in der Liste ist. Für den letzten Punkt ist der erste Punkt in der Liste der nächste Punkt.
 
@@ -150,6 +112,8 @@ Um einen Punkt zu einem Bereich hinzuzufügen, werden alle Kanten entfernt, bei 
 ))
 
 Nachdem alle Punkte zu den Bereichen hinzugefügt würden, werden kleine Bereiche entfernt. Dafür werden alle Bereiche entfernt, deren Fläche kleiner als ein Schwellwert ist. Weil die Bereiche konvex sind, können diese trivial in Dreiecke wie in @segmentierung_schwerpunkt unterteilt werden und dann die Flächen der Dreiecke summiert werden.
+
+Weil die konvexe Hülle von allen Punkten in einem Bereich gebildet wird, können Bereiche sich Überscheiden, obwohl die Punkte der Bereiche voneinander entfernt sind. Bei dem Hinzuzufügen von neuen Punkten werden die Bereiche sequentiell iteriert. Dabei wird bei überschneidenden Bereichen das erste präferiert, wodurch dieses weiter wächst. Um den anderen Bereich zu entfernen, werden Bereiche entfernt, deren Zentren in einem anderen Bereich liegen.
 
 
 === Koordinaten bestimmen
@@ -219,32 +183,19 @@ Für die Berechnung vom Schwerpunkt wird der Bereich in Dreiecke unterteilt und 
 
 === Punkte zuordnen
 
-Mit den Koordinaten wird das Voronoi-Diagramm berechnet, welches den Raum in Bereiche unterteilt, dass alle Punkte in einem Bereich für einen Koordinate am nächsten an diesem Koordinate liegen. Für jeden Punkt wird nun der zugehörige Bereich im Voronoi-Diagramm bestimmt und der Punkt zum zugehörigen Segment zugeordnet. Ein Beispiel für eine Unterteilung ist in @segmentierung_voronoi zu sehen.
+Mit den Koordinaten wird das Voronoi-Diagramm berechnet, welches den Raum in Bereiche unterteilt, dass alle Punkte in einem Bereich für eine Koordinate am nächsten an dieser Koordinate liegen. Für jeden Punkt wird nun der zugehörige Bereich im Voronoi-Diagramm bestimmt und der Punkt zum zugehörigen Segment zugeordnet. Ein Beispiel für eine Unterteilung ist in @segmentierung_voronoi zu sehen.
 
 #figure(
 	caption: [Berechnete Koordinaten für die Punkte mit zugehörigen Bereichen und Voronoi-Diagramm.],
-	box(clip: true, width: 100%, height: 30%, {
-		rect(image("../images/k09_15.svg", width: 500%), stroke: black, inset: 0pt)
-	}),
+	grid(
+		columns: 1 * 2,
+		gutter: 1em,
+		subfigure(rect(image("../images/test_5-moved.svg"), inset: 0pt), caption: [obere Scheibe]),
+		subfigure(rect(image("../images/test_6-moved.svg"), inset: 0pt), caption: [untere Scheibe]),
+	),
 ) <segmentierung_voronoi>
 
-#let overlay_image(p) = stack(
-	dir: ltr,
-	spacing: -100%,
-	image("../images/segment_full_edited.png"),
-	image(p),
-)
-
 #figure(
-	caption: [Waldstück mit ausgewählten Segmenten überlagert.],
-	grid(
-		columns: 1,
-		gutter: 1em,
-		subfigure(box(image("../images/segment_full.png"), stroke: 1pt, clip: true), caption: [Alle Segmente]),
-		grid(
-			columns: 2,
-			gutter: 1em,
-			subfigure(box(overlay_image("../images/segment_1.png"), stroke: 1pt, clip: true), caption: [Einzelnes Segment]), subfigure(box(overlay_image("../images/segment_2.png"), stroke: 1pt, clip: true), caption: [Einzelnes Segment]),
-		),
-	),
+	caption: [Segmentierung von einem Waldstück.],
+	image("../images/segments-br06-als-crop.png"),
 ) <segment_example>
