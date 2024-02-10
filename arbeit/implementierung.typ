@@ -11,7 +11,7 @@ Das Projekt ist unter #link("https://github.com/antonWetzel/treee") verfügbar. 
 #figure(
 	caption: [Benutzte Bibliotheken],
 	table(
-		columns: 3,
+		columns: (auto, auto, 1fr),
 		align: (x, y) => if y == 0 { center } else { (left, right, left).at(x) },
 		[*Name*],        [*Version*], [*Funktionalität*],
 		`pollster`,      `0.3`,       [Auf asynchrone Ergebnisse warten],
@@ -209,6 +209,8 @@ Um ein bestimmtes Segment auszuwählen, wird das momentan sichtbare Segment bei 
 Im Octree wird vom Root-Knoten aus die Leaf-Knoten gefunden, welche den Strahl enthalten. Dabei werden die Knoten näher an der Position der Kamera bevorzugt. Für den Leaf-Knoten sind die Segmente bekannt, welche Punkte in diesem Knoten haben. Für jedes mögliche Segment wird für jeden Punkt überprüft, ob er entlang des Strahls liegt.
 
 Sobald ein Punkt gefunden ist, müssen nur noch Knoten überprüft werden, die näher an der Kamera liegen, weil alle Punkte in weiter entfernten Knoten weiter als der momentan beste gefundene Punkt liegen.
+
+#todo[Voxel Distance? | Point on ray?]
 
 
 === Visualisierung

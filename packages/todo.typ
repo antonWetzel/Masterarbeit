@@ -12,7 +12,7 @@
 	]
 }
 
-#let todo-inline(body) = {
+#let todo-inline(body, prefix: [To-do]) = {
 	set text(size: 0pt)
 	box({
 		set text(size: 0pt)
@@ -22,7 +22,7 @@
 			inset: 1pt,
 			radius: 1pt,
 			stroke: black,
-			text(size: 11pt, body),
+			text(size: 11pt, prefix + [: ] + body),
 		))
 	})
 }

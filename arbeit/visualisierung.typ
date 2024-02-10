@@ -193,7 +193,7 @@ Je nach Scannertechnologie und Größe des abgetasteten Gebietes kann die Punktw
 Besonders für weit entfernte Punkt ist es nicht notwendig, alle Punkte genau wiederzugeben. Deshalb wird für weit entfernte Punkte eine vereinfachte Version angezeigt. Diese besteht aus weniger Punkten und benötigt dadurch weniger Ressourcen, bietet aber eine gute Approximation der ursprünglichen Daten.
 
 #figure(
-	caption: [Unterschiedliche Stuffen der Unterteilung. Jeder Würfel entählt bis zu $32768$ Punkte. In der letzen höchsten Stuffe werden alle Punkte im Datensatz angezeigt.],
+	caption: [Unterschiedliche Stuffen der Unterteilung. Jeder Würfel entählt bis zu $32768$ Punkte. In der höchsten Stuffe werden alle Punkte im Datensatz angezeigt.],
 	grid(
 		columns: (3),
 		gutter: 1em,
@@ -216,13 +216,13 @@ Für jeden Branch-Knoten wird eine Punktwolke berechnet, welche als Vereinfachun
 
 ==== Berechnung der Detailstufen
 
-#todo[Kopiert vom Fachpraktikum]
+Die Detailstufen werden wie bei "Fast Out-of-Core Octree Generation for Massive Point Clouds" @potree_lod von den Blättern des Baumes bis zur Wurzel berechnet. Dabei wird mit den Detailstufen der Kinderknoten die Detailstufe für den momentanen Knoten berechnet.
 
-Die Detailstufen werden wie bei "Fast Out-of-Core Octree Generation for Massive Point Clouds" @potree_lod von den Blättern des Baumes bis zur Wurzel berechnet. Dabei wird als Eingabe für einen Knoten die Detailstufen der direkten Kinder verwendet. Als Anfang werden alle originalen Punkte in einem Blatt als Eingabe benutzt.
+Dadurch haben zwar Berechnungen der gröberen Detailstufen für Knoten näher an der Wurzel nur Zugriff auf bereits vereinfachte Daten, aber die Anzahl der Punkte, mit denen die Detailstufe berechnet wird, ist nach oben beschränkt. Solange die Detailstufen eine gute Vereinfachung der ursprünglichen Punkte sind, kann so der Berechnungsaufwand stark verringert werden.
 
-Dadurch haben zwar Berechnungen der gröberen Detailstufen für Knoten näher an der Wurzel nur Zugriff auf bereits vereinfachte Daten, dafür müssen aber auch viel weniger Punkte bei der Berechnung betrachtet werden. Solange die Detailstufen eine gute Vereinfachung der ursprünglichen Punkte sind, kann so der Berechnungsaufwand stark verringert werden.
+Für die Berechnung einer Detailstufe wird der Voxel, welcher zu dem Knoten gehört, in eine feste Anzahl von gleich großen Teilvoxeln unterteilt. Für jeden Teilvoxel wird ein repräsentativer Punkt bestimmt. Dafür werden zuerst alle Punkt aus den Kinderknoten bestimmt, welche im Teilvoxel liegen. Liegt kein Punkt im Teilvoxel, so wird dieser übersprungen. Aus den Punkten wird ein repräsentativer Punkt für den ganzen Voxel bestimmt. Dafür werden Position, Normale und Größe gemittelt und die Eigenschaften von einem der Punkte übernommen.
 
-Der Voxel, welcher zu dem Knoten gehört, wird in eine feste Anzahl von gleich großen Teilvoxel unterteilt. Für jeden Teilvoxel werden alle Punkte kombiniert, die im Teilvoxel liegen. Aus den Punkten im Teilvoxel wird ein repräsentativer Punkt bestimmt. Weil die Anzahl der Teilvoxel unabhängig von der Größe vom Voxel ist, sind die Teilvoxel für gröbere Detailstufen größer und mehr Punkte werden kombiniert.
+Bei der nächsten gröberen Detailstufe sind auch die zugehörigen Voxel von den Knoten größer. Durch die feste Anzahl der Teilvoxel sind diese deshalb größer, wodurch die Punkte weiter vereinfacht werden.
 
 
 === Eye-Dome-Lighting

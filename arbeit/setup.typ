@@ -90,3 +90,8 @@
 	})
 	content
 }
+
+#let link-footnote(_link, _body) = {
+	link(_link, _body)
+	footnote(raw(_link))
+}

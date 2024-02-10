@@ -3,6 +3,8 @@
 
 = Appendix
 
+#todo[Sinnvolle Ordnung]
+
 
 == KD-Baum
 
@@ -206,3 +208,98 @@ Bei einer Suchanfrage wird vom Root-Knoten aus der Leaf-Knoten gesucht, welche d
 	),
 	caption: [Messwerte (2).],
 ) <messwerte_2>
+
+
+== Format für ein Projekt
+
+Die Struktur von einem Projekt ist in der `project.epc` gespeichert. Dazu gehören die verfügbaren Eigenschaften und der Octree. Der benötigten Daten für `project.epc` werden in #link-footnote("https://github.com/antonWetzel/treee/blob/main/project/src/lib.rs", `project/src/lib.rs`) definiert.
+
+
+=== Daten
+
+In separaten Dateien werden die Daten für alle Punkte für zum Anzeigen der Punkte oder eine spezifische Eigenschaft gespeichert. Das Dateiformat ermöglicht es, die Datei inkrementell zu erstellen. Am Anfang wird nur benötigt, wie viele Einträge die Datei speichern kann. Danach können die Einträge in beliebiger Reihenfolge abgespeichert werden.
+
+Die Struktur ist in @appendix_datafile gegeben. Am Anfang der Datei wird für jeden Eintrag die Startposition $s_i$ und die Länge $l_i$ vom zugehörigen Datensegment gespeichert. Danach folgen die Datensegmente $d_(pi(i))$ in beliebiger Reihenfolge $pi$.
+
+#figure(
+	caption: [Struktur einer Datei zum Speichern von Daten.],
+	tablex(
+		align: center + horizon,
+		columns: 11 *(1fr, ),
+		colspanx(7)[*Informationen*],
+		colspanx(4)[*Daten*],
+		$s_0$,
+		$l_0$,
+		$s_1$,
+		$l_1$,
+		[...],
+		$s_(n-1)$,
+		$l_(n-1)$,
+		$d_(pi(0))$,
+		$d_(pi(1))$,
+		[...],
+		$d_(pi(n-1))$
+	),
+) <appendix_datafile>
+
+Um den Eintrag $i$ mit den Daten $d$ zur Datei hinzufügen, wird zuerst $s_i$ auf das momentane Ende der Datei und $d_i$ auf die Länge von $d$ gesetzt. Danach wird $d$ am Ende der Datei hinzugefügt. Um die Daten für den Eintrag $i$ zu lesen, wird zuerst $s_i$ und $l_i$ ausgelesen und danach der zugehörige Bereich gelesen.
+
+
+== Quelltextstruktur
+
+#todo[Getrennte Namen für Projekt (importierte Punktwolke) und Projekt (Quelltext)]
+
+#figure(
+	caption: todo-inline[Beschreibung],
+	table(
+		columns: (auto, 1fr),
+		align: (x, y) => if y == 0 { center } else { (left, left).at(x) },
+		[*Name*],        [*Funktionalität*],
+		`math`,          [Funktionen für Vektoren, Matrizes, Projektionen und Winkel],
+		`project`,       [Format für ein Projekt und Daten],
+		`k-nearest`,     [Nachbarschaftssuche mit KD-Bäumen],
+		`input`,         [Maus- und Tastatureingaben verarbeiten],
+		`triangulation`, [Triangulation von Punktwolken],
+		`render`,        [Rendern von Punktwolken, Linien und Meshes mit `wgpu`],
+		`importer`,      [Import von Punktwolken],
+		`viewer`,        [Visualisierung von Projekten],
+		`treee`,         [Gemeinsames Interface für `importer` und `viewer`],
+	),
+) <appendix_crates>
+
+#figure(
+	caption: todo-inline[Beschreibung],
+	cetz.canvas(length: 1.0cm, {
+		import cetz.draw: *
+
+		let box(x, y, name) = {
+			rect((x, y), (x + 3, y + 1), name: name)
+			content(name, raw(name))
+		}
+		set-style(mark: (end: ">", fill: black))
+
+		box(0, 0, "math")
+		box(4, 0, "project")
+		box(4, -2, "k-nearest")
+		box(4, 2, "input")
+		box(8, 0, "triangulation")
+		box(8, 2, "render")
+		box(8, -2, "importer")
+		box(12, 1, "viewer")
+		box(12, -1, "treee")
+
+		line("math.east", "k-nearest.west")
+		line("math.east", "project.west")
+		line("math.east", "input.west")
+		line("k-nearest.east", "triangulation.west")
+		line("project.east", "render.west")
+		line("input.east", "render.west")
+		line("render.east", "viewer.west")
+		line("triangulation.east", "viewer.west")
+		line("k-nearest.east", "importer.west")
+		line("project.east", "importer.west")
+
+		line("importer.east", "treee.west")
+		line("viewer.south", "treee.north")
+	}),
+) <appendix_crates_abhängigkeiten>
