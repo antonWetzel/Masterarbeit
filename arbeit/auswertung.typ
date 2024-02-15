@@ -21,14 +21,14 @@ Der Datensatz ist bereits in einzelne Bäume unterteilt. Zusätzlich wurden für
 
 == Import
 
-Für den Import sind in @messwerte die Messdaten für unterschiedliche Datensätze gegeben. In @auswertung_import_geschwindigkeit ist der Durchsatz beim Import angegeben. Dabei wird eine Importgeschwindigkeit von $100 space.thin 000$ Punkte pro Sekunde für die meisten Datensätze erreicht.
+Für den Import sind in @messwerte die Messdaten für unterschiedliche Datensätze gegeben. In @auswertung_import_geschwindigkeit ist der Durchsatz beim Import angegeben. Dabei wird eine Importgeschwindigkeit von circa $400 space.thin 000$ Punkte pro Sekunde für die meisten Datensätze erreicht.
 
 #figure(
 	caption: [Geschwindigkeit vom Import in Punkte pro Sekunde.],
 	image("../data/punkte_pro_sekunde.svg"),
 ) <auswertung_import_geschwindigkeit>
 
-In @auswertung_import_phasen ist die Dauer für die einzelnen Phasen vom Import aufgeschlüsselt. Die größte Schwankung bei der Dauer ist in der Segmentierungsphase. Diese dauert bei einer größeren Anzahl an Datenpunkten länger pro Punkt, weil der Arbeitsaufwand für mehr Punkte mehr als linear zunimmt.
+In @auswertung_import_phasen ist die Dauer für die einzelnen Phasen vom Import aufgeschlüsselt. // Die größte Schwankung bei der Dauer ist in der Segmentierungsphase. Diese dauert bei einer größeren Anzahl an Datenpunkten länger pro Punkt, weil der Arbeitsaufwand für mehr Punkte mehr als linear zunimmt.
 
 #figure(
 	caption: [Dauer für die einzelnen Importphasen in $mu s$ pro Punkt.],

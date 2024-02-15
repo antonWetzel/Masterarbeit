@@ -14,7 +14,7 @@
 
 		Dafür werden die Punkte in einzelne Bäume segmentiert, relevante Informationen für die Bäume und die einzelnen Punkte berechnet und alle Daten für die Visualisierung in Echtzeit vorbereitet.
 
-		Die Visualisierung wird durch spezialisierte Software für das Projekt ermöglicht, wodurch diese an die besonderen Daten der Waldstücke angepasst werden kann.
+		Im zugehörigen Softwareprojekt sind die Algorithmen und Visualisierung umgesetzt, wodurch diese an die besonderen Daten der Waldstücke angepasst werden können.
 	]
 
 ]))

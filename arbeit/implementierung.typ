@@ -13,41 +13,40 @@ Das Projekt ist unter #link("https://github.com/antonWetzel/treee") verfügbar. 
 	table(
 		columns: (auto, auto, 1fr),
 		align: (x, y) => if y == 0 { center } else { (left, right, left).at(x) },
-		[*Name*],        [*Version*], [*Funktionalität*],
-		`pollster`,      `0.3`,       [Auf asynchrone Ergebnisse warten],
-		`rfd`,           `0.13`,      [Dialogfenster zum Öffnen und Speichern von Dateien],
-		`crossbeam`,     `0.8`,       [Synchronisierung zwischen Threads],
-		`log`,           `0.4`,       [Logs erzeugen],
-		`simple_logger`, `4.3`,       [Wiedergabe von Logs],
-		`image`,         `0.24`,      [Laden und Speichern von Bildern],
-		`wgpu`,          `0.19`,      [WebGPU Implementierung],
-		`winit`,         `0.29`,      [Fenstermanagement],
-		`bytemuck`,      `1.14`,      [Konversation von Daten zu Bytes],
-		`serde`,         `1.0`,       [Serialisierung von Datentypen],
-		`bincode`,       `1.3.3`,     [Serialisierung als Binary],
-		`serde_json`,    `1.0.113`,   [Serialisierung als JSON],
-		`rand`,          `0.8`,       [Generierung von Zufallszahlen],
-		`num_cpus`,      `1.15`,      [Prozessoranzahl bestimmen],
-		`las`,           `0.8`,       [Einlesen von LAS und LASzip Dateien],
-		`thiserror`,     `1.0`,       [Fehlermanagement],
-		`tempfile`,      `3.8.1`,     [Temporäre Dateien erstellen],
-		`rayon`,         `1.8.0`,     [Multithreading],
-		`termsize`,      `0.1`,       [Größe vom Terminal bestimmen],
-		`egui`,          `0.26`,      [Benutzerinterface],
-		`egui-winit`,    `0.26`,      [Systemereignisse zum Interface weiterleiten],
-		`egui-wgpu`,     `0.26`,      [Interface rendern],
-		`clap`,          `4.4`,       [Kommandozeilenargumente verarbeiten],
-		`voronator`,     `0.2.1`,     [Voronoi-Diagramm bestimmen],
-		`cfg-if`,        `1.0.0`,     [Konditionales Kompilieren von Quelltext],
+		[*Name*],            [*Version*], [*Funktionalität*],
+		`pollster`,          `0.3`,       [Auf asynchrone Ergebnisse warten],
+		`rfd`,               `0.13`,      [Dialogfenster zum Öffnen und Speichern von Dateien],
+		`crossbeam`,         `0.8`,       [Synchronisierung zwischen Threads],
+		`log`,               `0.4`,       [Logs erzeugen],
+		`simple_logger`,     `4.3`,       [Wiedergabe von Logs],
+		`image`,             `0.24`,      [Laden und Speichern von Bildern],
+		`wgpu`,              `0.19`,      [WebGPU Implementierung],
+		`winit`,             `0.29`,      [Fenstermanagement],
+		`bytemuck`,          `1.14`,      [Konversation von Daten zu Bytes],
+		`serde`,             `1.0`,       [Serialisierung von Datentypen],
+		`bincode`,           `1.3.3`,     [Serialisierung als Binary],
+		`serde_json`,        `1.0.113`,   [Serialisierung als JSON],
+		`rand`,              `0.8`,       [Generierung von Zufallszahlen],
+		`num_cpus`,          `1.15`,      [Prozessoranzahl bestimmen],
+		`laz`,               `0.8`,       [Dekomprimieren von LASzip Dateien],
+		`thiserror`,         `1.0`,       [Fehlermanagement],
+		`tempfile`,          `3.8.1`,     [Temporäre Dateien erstellen],
+		`rayon`,             `1.8.0`,     [Multithreading],
+		`termsize`,          `0.1`,       [Größe vom Terminal bestimmen],
+		`egui`,              `0.26`,      [Benutzerinterface],
+		`egui-winit`,        `0.26`,      [Systemereignisse zum Interface weiterleiten],
+		`egui-wgpu`,         `0.26`,      [Interface rendern],
+		`clap`,              `4.4`,       [Kommandozeilenargumente verarbeiten],
+		`voronator`,         `0.2.1`,     [Voronoi-Diagramm bestimmen],
+		`cfg-if`,            `1.0.0`,     [Konditionales Kompilieren von Quelltext],
+		`static_assertions`, `1.1.0`,     [Systemeigenschaften überprüfen],
 	),
 ) <implementierung_bilbiotheken>
 
-Als Eingabeformat werden Dateien im LASzip-Format verwendet. Dieses wird häufig für Punktwolken verwendet. Weiter Formate können einfach eingebunden werden, solange eine Rust-Bibliothek existiert, welche das Format einlesen kann.
-
-#todo[Benutzung aus dem Readme hier?]
+Als Datensätze werden Dateien im LASzip-Format verwendet. Dieses Format wird häufig für Punktwolken verwendet. Weitere Formate können einfach eingebunden werden, solange eine Rust-Bibliothek existiert, welche das Format einlesen kann.
 
 
-== Ablauf
+== Benutzung
 
 
 === Installation
@@ -55,12 +54,52 @@ Als Eingabeformat werden Dateien im LASzip-Format verwendet. Dieses wird häufig
 Für den Import und die Visualisierung wird das kompilierte Programm benötigt. Dieses kann mit dem Quelltext selber kompiliert werden oder bereits kompilierte Versionen können von #todo-inline[GitHub-Release] heruntergeladen werden. Die Schritte zum selber kompilieren sind im #link("https://github.com/antonWetzel/treee?tab=readme-ov-file#treee", [Readme])#footnote(`https://github.com/antonWetzel/treee?tab=readme-ov-file#treee`) verfügbar.
 
 
-=== Benutzung
-
-#todo[Benutzung aus dem Readme]
-
-
 === Import
+
+#todo[Benutzung aus dem Readme hier?]
+
+
+=== Visualisierung
+
+Bei der Visualisierung wird eine importierte Punktwolke geöffnet. Die Punktwolke besteht dabei aus der Struktur vom Octree, Informationen über die Segmente und die Punktdaten. Die Daten für die einzelnen Punkte werden zuerst nicht geladen. In @implementierung_ui ist das Benutzerinterface erklärt.
+
+Je nach Position der Kamera werden die benötigten Punkte geladen, welche momentan sichtbar sind. Dadurch können auch Punktwolken angezeigt werden, die mehr Punkte enthalten als gleichzeitig interaktiv anzeigbar. Auch bei den Segmenten wird nur das Segment geladen, welches ausgewählt wurde.
+
+#figure(
+	caption: [Benutzerinterface mit allen Optionen. ],
+	grid(
+		gutter: 3em,
+		columns: 1 * (1fr, 2fr),
+		rect(image("../images/ui.png"), radius: 4pt, inset: 2pt, stroke: rgb(27, 27, 27) + 4pt),
+		align(left)[
+			- *Load Project*
+				- Die geladene Punktwolke ändern
+			- *Property*
+				- Eigenschaft zum Anzeigen ändern
+			- *Segment*
+				- Informationen über das ausgewählte Segment
+				- Triangulation starten und anzeigen
+				- Punkte speichern
+			- *Visual*
+				- Punktegröße ändern
+				- Punkte basierend auf der ausgewählten Eigenschaft filtern
+				- Farbpalette und Hintergrund ändern
+				- Screenshot speichern
+				- Knoten für Detailstufen anzeigen
+			- *Eye Dome*
+				- Farbe und Stärke vom Eye-Dome-Lighting ändern
+			- *Level of Detail*
+				- Algorithmus und Qualität der Detailstufen anpassen
+			- *Camera*
+				- Bewegung der Kamera ändern
+				- Kameraposition speichern
+
+		],
+	),
+) <implementierung_ui>
+
+
+== Import
 
 Um einen Datensatz zu analysieren, muss dieser zuerst importiert werden, bevor er von der Visualisierung angezeigt werden kann. Der Import wird in mehreren getrennten Phasen durchgeführt. Dabei wird der Berechnungsaufwand für eine Phase so weit wie möglich parallelisiert. Die Phasen sind:
 
@@ -69,7 +108,7 @@ Um einen Datensatz zu analysieren, muss dieser zuerst importiert werden, bevor e
 + Segmente analysieren und die Ergebnisse speichern und zum Octree hinzufügen
 + Detailstufen bestimmten und Octree speichern
 
-Der zugehörige Datenfluss ist in @überblick_datenfluss zu sehen. Nach der ersten Phase sind die Segmente bekannt, nach der zweiten Phase analysiert und zum Octree hinzugefügt und nach der dritten Phase ist die Projektdatei und die Detailstufen vom Octree erstellt.
+Der zugehörige Datenfluss ist in @überblick_datenfluss zu sehen. Nach der ersten Phase sind die Segmente bekannt, nach der zweiten Phase analysiert und zum Octree hinzugefügt. Die Stuktur von der Punktwolke ist bereits bekannt. Nach der dritten Phase sind auch die Detailstufen vom Octree erstellt.
 
 #figure(
 	caption: [Datenfluss für den Import.],
@@ -98,54 +137,46 @@ Der zugehörige Datenfluss ist in @überblick_datenfluss zu sehen. Nach der erst
 		line("seg1.east", "octree.west")
 		line("seg2.east", "octree.west")
 
-		rect((10, 1), (14, 2), name: "projekt")
-		content("projekt", [Projekt])
-		line("seg0.east", "projekt.west")
-		line("seg1.east", "projekt.west")
-		line("seg2.east", "projekt.west")
-		line("octree.south", "projekt.north")
+		rect((10, 1), (14, 2), name: "punktwolke")
+		content("punktwolke", [Punktwolke])
+		line("seg0.east", "punktwolke.west")
+		line("seg1.east", "punktwolke.west")
+		line("seg2.east", "punktwolke.west")
+		line("octree.south", "punktwolke.north")
 	}),
 ) <überblick_datenfluss>
 
 
-=== Visualisierung
+=== Parallelisierung
 
-Bei der Visualisierung wird ein Projekt geöffnet. Das Projekt besteht dabei aus der Struktur vom Octree und Informationen über die Segmente. Die Daten für die einzelnen Punkte werden zuerst nicht geladen. In @implementierung_ui ist das Benutzerinterface erklärt.
+Die Punktdaten werden in LASzip-Dateien zu Blöcken zusammengefasst. Jeder Block wird separat komprimiert, wodurch mehrere Blöcke auch parallel dekomprimiert werden können. Ein weiterer Thread sammelt die dekomprimierten Blöcke für die Segmentierung.
 
-Je nach Position der Kamera werden die benötigten Punkte geladen, welche momentan sichtbar sind. Dadurch können auch Punktwolken angezeigt werden, die mehr Punkte enthalten als gleichzeitig interaktiv anzeigbar. Auch bei den Segmenten wird nur das Segment geladen, welches ausgewählt wurde.
+Für die Segmentierung wird über die einzelnen horizontalen Scheiben parallelisiert. Der genaue Ablauf ist in @implementierung_segment_parallel erklärt. Die Segmenter werden wieder von einem weiteren Thread gesammelt.
 
 #figure(
-	caption: [Benutzerinterface mit allen Optionen. ],
+	caption: [
+		Parallelisierung der Segmentierung.
+	],
 	grid(
-		gutter: 3em,
-		columns: 1 * (1fr, 2fr),
-		rect(image("../images/ui.png"), radius: 4pt, inset: 2pt, stroke: rgb(27, 27, 27) + 4pt),
-		align(left)[
-			- *Load Project*
-				- Projekt
-			- *Property*
-				- Eigenschaft zum Anzeigen ändern
-			- *Segment*
-				- Informationen über das ausgewählte Segment
-				- Triangulation starten und anzeigen
-				- Punkte speichern
-			- *Visual*
-				- Punktegröße ändern
-				- Punkte basierend auf der ausgewählten Eigenschaft filtern
-				- Farbpalette und Hintergrund ändern
-				- Screenshot speichern
-				- Knoten für Detailstufen anzeigen
-			- *Eye Dome*
-				- Farbe und Stärke vom Eye-Dome-Lighting ändern
-			- *Level of Detail*
-				- Algorithmus und Qualität der Detailstufen anpassen
-			- *Camera*
-				- Bewegung der Kamera ändern
-				- Kameraposition speichern
+		columns: (1fr, ) + (2fr, ),
+		gutter: 2em,
+		rect(image("../images/segmentierung_parallel.svg"), inset: 0pt, stroke: gray),
+		align(top + left)[
+			Bei der Segmentierung werden die Punkte von oben nach unten in Scheiben verarbeitet. Jede Scheibe wird in den folgenden Stufen verarbeitet.
+			+ Zusammenhängenden Bereiche von den Punkten bestimmen
+			+ Mit den Bereichen und den Koordinaten der vorherigen Scheibe die Koordinaten der Bäume berechnen
+			+ Jeder Punkte zur nächsten Koordinate zugeordnet
 
-		],
+			Dabei wird für die zweite Stufe die Koordinaten aus der vorherigen Scheibe benötigt.
+
+			In der Grafik ist der Arbeitsaufwand abgebildet. Von oben nach unten sind die Scheiben und von links nach rechts die Zeit abgebildet. Die erste Stufe ist in Blau, das Warten auf die vorherige Scheibe in Rot und die dritte Stufe in Orange. Der Berechnungsaufwand der zweiten Stufe ist sehr kurz, wodurch diese nicht in der Grafik sichtbar ist.
+
+			Die Berechnung wurde mit sieben Threads durchgeführt, wodurch bis zu sieben Scheiben in parallel verarbeitet werden können. Durch die Datenabhängigkeit kann aber die zweite Stufe erst gestartet werden, wenn von der vorherigen Scheibe die zweite Stufe beendet ist. Wenn die erste Stufe länger dauert, müssen deshalb andere Threads warten.
+		]
 	),
-) <implementierung_ui>
+) <implementierung_segment_parallel>
+
+Die Analyse der Segmente und die Berechnung der Detailstufen sind trivial parallelisierbar. Die Analyse der Segmente wird für mehrere Segmente parallel durchgeführt, weil keine Abhängigkeiten zwischen den Daten existieren. Bei den Detailstufen können alle Kinderknoten parallel verarbeitet werden.
 
 
 == Punkte
@@ -199,7 +230,7 @@ Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei 
 ) <implementierung_farbpaletten>
 
 
-== Segmente
+== Segmentierung
 
 
 === Auswahl

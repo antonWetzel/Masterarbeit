@@ -209,10 +209,12 @@ Bei einer Suchanfrage wird vom Root-Knoten aus der Leaf-Knoten gesucht, welche d
 	caption: [Messwerte (2).],
 ) <messwerte_2>
 
+#todo[Systemeigenschaften]
 
-== Format für ein Projekt
 
-Die Struktur von einem Projekt ist in der `project.epc` gespeichert. Dazu gehören die verfügbaren Eigenschaften und der Octree. Der benötigten Daten für `project.epc` werden in #link-footnote("https://github.com/antonWetzel/treee/blob/main/project/src/lib.rs", `project/src/lib.rs`) definiert.
+== Punktwolkenformat
+
+Die Struktur von einer Punktwolke ist in der `project.epc` Datek gespeichert. Dazu gehören die verfügbaren Eigenschaften und der Octree. Der benötigten Daten für `project.epc` werden in #link-footnote("https://github.com/antonWetzel/treee/blob/main/project/src/lib.rs", `project/src/lib.rs`) definiert.
 
 
 === Daten
@@ -247,8 +249,6 @@ Um den Eintrag $i$ mit den Daten $d$ zur Datei hinzufügen, wird zuerst $s_i$ au
 
 == Quelltextstruktur
 
-#todo[Getrennte Namen für Projekt (importierte Punktwolke) und Projekt (Quelltext)]
-
 #figure(
 	caption: todo-inline[Beschreibung],
 	table(
@@ -256,13 +256,13 @@ Um den Eintrag $i$ mit den Daten $d$ zur Datei hinzufügen, wird zuerst $s_i$ au
 		align: (x, y) => if y == 0 { center } else { (left, left).at(x) },
 		[*Name*],        [*Funktionalität*],
 		`math`,          [Funktionen für Vektoren, Matrizes, Projektionen und Winkel],
-		`project`,       [Format für ein Projekt und Daten],
+		`project`,       [Format für eine Punktwolke und Daten],
 		`k-nearest`,     [Nachbarschaftssuche mit KD-Bäumen],
 		`input`,         [Maus- und Tastatureingaben verarbeiten],
 		`triangulation`, [Triangulation von Punktwolken],
 		`render`,        [Rendern von Punktwolken, Linien und Meshes mit `wgpu`],
 		`importer`,      [Import von Punktwolken],
-		`viewer`,        [Visualisierung von Projekten],
+		`viewer`,        [Visualisierung von Punktwolken],
 		`treee`,         [Gemeinsames Interface für `importer` und `viewer`],
 	),
 ) <appendix_crates>

@@ -42,8 +42,8 @@ Für jede Scheibe werden konvexe zusammenhängende Bereiche bestimmt, dass die P
 	grid(
 		columns: 1 * 2,
 		gutter: 1em,
-		subfigure(rect(image("../images/test_5-areas.svg"), inset: 0pt), caption: [obere Scheibe]),
-		subfigure(rect(image("../images/test_6-areas.svg"), inset: 0pt), caption: [untere Scheibe]),
+		subfigure(rect(image("../images/test_5-areas.svg"), inset: 0pt), caption: [höhere Scheibe]),
+		subfigure(rect(image("../images/test_6-areas.svg"), inset: 0pt), caption: [tiefere Scheibe]),
 	),
 )
 
@@ -190,8 +190,8 @@ Mit den Koordinaten wird das Voronoi-Diagramm berechnet, welches den Raum in Ber
 	grid(
 		columns: 1 * 2,
 		gutter: 1em,
-		subfigure(rect(image("../images/test_5-moved.svg"), inset: 0pt), caption: [obere Scheibe]),
-		subfigure(rect(image("../images/test_6-moved.svg"), inset: 0pt), caption: [untere Scheibe]),
+		subfigure(rect(image("../images/test_5-moved.svg"), inset: 0pt), caption: [höhere Scheibe]),
+		subfigure(rect(image("../images/test_6-moved.svg"), inset: 0pt), caption: [tiefere Scheibe]),
 	),
 ) <segmentierung_voronoi>
 

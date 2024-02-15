@@ -15,7 +15,6 @@ sh = client.open('Masterarbeit')
 wks = sh.sheet1
 
 table = []
-table.append(["data"] + KEYS + TIMES)
 
 for file in os.listdir(PATH):
     path = PATH + file
@@ -32,6 +31,9 @@ for file in os.listdir(PATH):
     for time in TIMES:
         row.append(data["times"][time])
     table.append(row)
+
+table.sort()
+table.insert(0, ["data"] + KEYS + TIMES)
 
 print(table)
 
