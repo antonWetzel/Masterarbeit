@@ -1,12 +1,15 @@
 #import "setup.typ": *
-#import "../packages/todo.typ": *
-#import "../packages/placeholder.typ": *
+#import "@preview/wordometer:0.1.0": word-count, total-words
 
 #set document(
 	author: "Anton Wetzel",
 	title: "Berechnung charakteristischen Eigenschaften von botanischen Bäumen mithilfe von 3D-Punktwolken.",
 	keywords: ("Punktwolken", "botanische Bäume", "Rust", "WebGPU", "Visualisierung"),
 )
+
+#show: word-count
+
+Wörter: #total-words
 
 #todo-outline()
 
