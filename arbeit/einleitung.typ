@@ -28,6 +28,6 @@ Die Visualisierung präsentiert die berechneten Ergebnisse. Dabei werden die Eig
 
 In @methodik wird die Methodik für die Analyse der Daten erklärt. Dazu gehört die Segmentierung in einzelnen Bäume, Analyse und Triangulierung dieser und die technischen Grundlagen für die Visualisierung der Ergebnisse.
 
-In @implementierung wird die Implementierung der Methoden ausgeführt. Dazu gehört die konkrete technische Umsetzung der Algorithmen und Messung der Ergebnisse.
+Danach wird in @implementierung die Implementierung der Methoden ausgeführt. Dazu gehört die konkrete technische Umsetzung der Algorithmen. Dazu gehört die Benutzung von Softwareprojekt, der Ablauf vom Import, das Anzeigen der Segmente und einzelner Punkte
 
-Die Auswertung der Methodik wird in @auswertung durchgeführt. Dafür werden die benutzen Testdaten vorgestellt und die Ergebnisse der Implementierung analysiert.
+Die Auswertung wird in @auswertung durchgeführt. Dafür werden die benutzen Testdaten vorgestellt und die Ergebnisse der Implementierung analysiert.
