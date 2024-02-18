@@ -214,14 +214,14 @@ Bei einer Suchanfrage wird vom Root-Knoten aus der Leaf-Knoten gesucht, welche d
 
 == Punktwolkenformat
 
-Die Struktur von einer Punktwolke ist in der `project.epc` Datek gespeichert. Dazu gehören die verfügbaren Eigenschaften und der Octree. Der benötigten Daten für `project.epc` werden in #link-footnote("https://github.com/antonWetzel/treee/blob/main/project/src/lib.rs", `project/src/lib.rs`) definiert.
+Die Struktur von einer Punktwolke ist in der `project.epc` Datei gespeichert. Dazu gehören die verfügbaren Eigenschaften und der Octree. Alle benötigten Daten für `project.epc` werden in #link-footnote("https://github.com/antonWetzel/treee/blob/main/project/src/lib.rs", `project/src/lib.rs`) definiert.
 
 
 === Daten
 
-In separaten Dateien werden die Daten für alle Punkte für zum Anzeigen der Punkte oder eine spezifische Eigenschaft gespeichert. Das Dateiformat ermöglicht es, die Datei inkrementell zu erstellen. Am Anfang wird nur benötigt, wie viele Einträge die Datei speichern kann. Danach können die Einträge in beliebiger Reihenfolge abgespeichert werden.
+In separaten Dateien werden die Daten für alle Punkte für zum Anzeigen der Punkte oder eine spezifische Eigenschaft gespeichert. Das Dateiformat ermöglicht es, die Datein inkrementell zu erstellen. Am Anfang wird nur benötigt, wie viele Einträge die Datei speichern kann. Danach können die Einträge in beliebiger Reihenfolge abgespeichert werden.
 
-Die Struktur ist in @appendix_datafile gegeben. Am Anfang der Datei wird für jeden Eintrag die Startposition $s_i$ und die Länge $l_i$ vom zugehörigen Datensegment gespeichert. Danach folgen die Datensegmente $d_(pi(i))$ in beliebiger Reihenfolge $pi$.
+Die Struktur ist in @appendix_datafile gegeben. Am Anfang der Datei wird für jeden Eintrag die Startposition $s_i$ und die Länge $l_i$ vom zugehörigen Datensegment $d_i$ gespeichert. Danach folgen die Datensegmente in beliebiger Reihenfolge $pi$.
 
 #figure(
 	caption: [Struktur einer Datei zum Speichern von Daten.],
@@ -249,14 +249,16 @@ Um den Eintrag $i$ mit den Daten $d$ zur Datei hinzufügen, wird zuerst $s_i$ au
 
 == Quelltextstruktur
 
+Das Projekt ist in mehrere Module unterteilt, um den Quelltext zu strukturieren. In @appendix_crates und @appendix_crates_abhängigkeiten sind die Module mit zughöriger Funktionalität und Abhängigkeiten gelistet. Die wichigsten Module sind `importer` und `viewer`.
+
 #figure(
-	caption: todo-inline[Beschreibung],
+	caption: [Module vom Projekt mit zugehöriger Funktionalität.],
 	table(
 		columns: (auto, 1fr),
 		align: (x, y) => if y == 0 { center } else { (left, left).at(x) },
 		[*Name*],        [*Funktionalität*],
 		`math`,          [Funktionen für Vektoren, Matrizes, Projektionen und Winkel],
-		`project`,       [Format für eine Punktwolke und Daten],
+		`project`,       [Format für eine Punktwolke und zugehörige Daten],
 		`k-nearest`,     [Nachbarschaftssuche mit KD-Bäumen],
 		`input`,         [Maus- und Tastatureingaben verarbeiten],
 		`triangulation`, [Triangulation von Punktwolken],
@@ -268,7 +270,7 @@ Um den Eintrag $i$ mit den Daten $d$ zur Datei hinzufügen, wird zuerst $s_i$ au
 ) <appendix_crates>
 
 #figure(
-	caption: todo-inline[Beschreibung],
+	caption: [Abhängigkeiten der Module untereinander.],
 	cetz.canvas(length: 1.0cm, {
 		import cetz.draw: *
 

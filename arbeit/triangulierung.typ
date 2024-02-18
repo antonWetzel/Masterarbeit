@@ -6,7 +6,7 @@
 
 === Ziel
 
-Eine Triangulierung ermöglicht eine Rekonstruktion der ursprünglichen Oberfläche vom eingescannten Bereich, welche weiterverarbeitet oder anzuzeigen werden kann. Die meisten Programme und Hardware sind auf das Anzeigen von Dreiecken spezialisiert, und können diese effizienter als Punkte darstellen. Die Triangulierung wird dabei für die Segmente getrennt bestimmt.
+Eine Triangulierung ermöglicht eine Approximation der ursprünglichen Oberfläche von den gescannten Bäumen, welche weiterverarbeitet oder angezeigt werden kann. Die meisten Programme und Hardware sind auf das Anzeigen von Dreiecken spezialisiert und können diese effizienter als Punkte darstellen. Die Triangulierung wird dabei für ein Segment bestimmt.
 
 
 === Ball-Pivoting-Algorithmus

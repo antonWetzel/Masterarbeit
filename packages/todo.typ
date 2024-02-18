@@ -27,6 +27,18 @@
 	})
 }
 
+#let todo-image(body: [Bild], height: 20%) = {
+	block(
+		fill: orange,
+		inset: 5pt,
+		radius: 3pt,
+		stroke: black,
+		width: 100%,
+		height: height,
+		body
+	)
+}
+
 #let todo-outline = () => locate(loc => {
 	let x = query(figure.where(kind: "todo"), loc)
 	if x != () {

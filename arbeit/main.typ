@@ -1,5 +1,4 @@
 #import "setup.typ": *
-#import "@preview/wordometer:0.1.0": word-count, total-words
 
 #set document(
 	author: "Anton Wetzel",

@@ -76,17 +76,13 @@ Die Ausdehnung eignet sich zur Unterscheidung von Stamm und Krone. Beim Stamm si
 #todo([Baumeigenschaften + ? $->$ Segmente])
 
 
-=== Eigenschaften für Visualisierung <eigenschaften_visualisierung>
+=== Eigenschaften für die Visualisierung <eigenschaften_visualisierung>
 
+Die Visualisierung werden die Position, Orientierung und Größe von einem Punkte benötigt. Die Position ist in den Eingabedaten gegeben und die anderen Eigenschaften werden mit der lokalen Umgebung vom Punkt berechnet.
 
-==== Normale
+Für die Orientierung wird die Normale bestimmt, welche orthogonal zur geschätzten zugehörigen Oberfläche vom Punkt ist. Dafür werden die Eigenvektoren aus @krümmung verwendet. Der Eigenvektor, welcher zum kleinsten Eigenwert gehört, ist dabei orthogonal zur geschätzten Ebene mit der größten Ausdehnung.
 
-Mit den Eigenvektoren aus @krümmung wird die Normale für die Umgebung bestimmt. Der Eigenvektor, welcher zum kleinsten Eigenwert gehört, ist orthogonal zur Ebene mit der größten Ausdehnung.
-
-
-==== Punktgröße
-
-Für die Punktgröße wird der durchschnittliche Abstand zu den umliegenden Punkten bestimmt.
+Für die Punktgröße wird der durchschnittliche Abstand zu den umliegenden Punkten bestimmt. Dadurch werden die Punkte in Bereichen mit hoher Punktdichte kleiner.
 
 
 === Baumart

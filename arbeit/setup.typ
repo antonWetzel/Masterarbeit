@@ -3,6 +3,7 @@
 #import "../packages/subfigure.typ": *
 #import "@preview/cetz:0.2.0" as cetz
 #import "@preview/tablex:0.0.8": tablex, colspanx, rowspanx
+#import "@preview/wordometer:0.1.0": word-count, total-words
 
 #let setup(document) = {
 	let font = "Noto Serif"

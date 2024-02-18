@@ -25,7 +25,7 @@ Das Projekt ist unter #link("https://github.com/antonWetzel/treee") verfügbar. 
 		`bytemuck`,          `1.14`,      [Konversation von Daten zu Bytes],
 		`serde`,             `1.0`,       [Serialisierung von Datentypen],
 		`bincode`,           `1.3.3`,     [Serialisierung als Binary],
-		`serde_json`,        `1.0.113`,   [Serialisierung als JSON],
+		`serde_json`,        `1.0`,   [Serialisierung als JSON],
 		`rand`,              `0.8`,       [Generierung von Zufallszahlen],
 		`num_cpus`,          `1.15`,      [Prozessoranzahl bestimmen],
 		`laz`,               `0.8`,       [Dekomprimieren von LASzip Dateien],
@@ -53,17 +53,47 @@ Als Datensätze werden Dateien im LASzip-Format verwendet. Dieses Format wird h�
 
 Für den Import und die Visualisierung wird das kompilierte Programm benötigt. Dieses kann mit dem Quelltext selber kompiliert werden oder bereits kompilierte Versionen können von #todo-inline[GitHub-Release] heruntergeladen werden. Die Schritte zum selber kompilieren sind im #link("https://github.com/antonWetzel/treee?tab=readme-ov-file#treee", [Readme])#footnote(`https://github.com/antonWetzel/treee?tab=readme-ov-file#treee`) verfügbar.
 
+=== Ausführen
+
+In @implementierung_befehle sind die die Kommandos gelistet, um den Importer und die Visualisierung zu starten. Für den Import können weitere Optionen angegeben werden, um den Ablauf an den Datensatz anzupassen.
+
+#figure(
+	table(
+		align: (x, y) => if y == 0 { center } else { left},
+		columns: (auto, 1fr),
+		[*Kommando*], [*Funktion*],
+		`treee importer`, [Importer starten],
+		`treee help importer`, [Verfügbare Optionen für den Importer anzeigen],
+		`treee viewer`, [Visualisierung starten],
+	)
+) <implementierung_befehle>
 
 === Import
 
-#todo[Benutzung aus dem Readme hier?]
+Für den Import wird der Datensatz und der Ordner zum Speichern der Ergebnisse benötigt. Beide können über die Befehlszeile angegeben werden oder über ein Dialogfenster ausgewählt werden. Alle weiteren Optione sind in @implementierung_import_optionen gelistet.
 
+#figure(
+	table(
+		align: (x, y) => if y == 0 { top + center } else { top + (left, right, left).at(x)},
+		columns: (auto,  auto, 1fr),
+		[*Flag*], [*Standartwert*], [*Funktion*],
+		`--max-threads`, [unbegrenzt], [Maximal Anzahl an parallel benutzen Threads],
+		`--min-segment-size`, $100$, [Mindestanzahl von Punkten für ein Segment],
+		`--segmenting-slice-width`, $1.0$, [Breite der horizontalen Scheiben für die Segmentierung in Meter],
+		`--segmenting-max-distance`, $1.0$, [Mindestabstand zwischen Bereichen in Meter],
+		`--neighbors-count`, $31$, [Maximale Anzahl der Punkte in der Nachbarschaft von einem Punkt],
+		`--neighbors-max-distance`, $1.0$, [Maximale Distanz vom Punkt zu den Punkten in der Nachbarschaft],
+		`--lod-size-scale`, $0.95$, [Skalierungfaktor für die Fläche der kombinierten Punkte],
+	)
+) <implementierung_import_optionen>
 
 === Visualisierung
 
-Bei der Visualisierung wird eine importierte Punktwolke geöffnet. Die Punktwolke besteht dabei aus der Struktur vom Octree, Informationen über die Segmente und die Punktdaten. Die Daten für die einzelnen Punkte werden zuerst nicht geladen. In @implementierung_ui ist das Benutzerinterface erklärt.
+Um eine Punktewolke zu öffnet wrid die `project.epc` Datei geladen In der Datei ist die Struktur vom Octree und  Informationen über die Segmente enthalten. Die Punktdaten werden noch nicht geladen.
 
 Je nach Position der Kamera werden die benötigten Punkte geladen, welche momentan sichtbar sind. Dadurch können auch Punktwolken angezeigt werden, die mehr Punkte enthalten als gleichzeitig interaktiv anzeigbar. Auch bei den Segmenten wird nur das Segment geladen, welches ausgewählt wurde.
+
+Mit dem Benutzerinterface kann die Visualisierung angepasst werden. Die Optionen sind in @implementierung_ui erklärt.
 
 #figure(
 	caption: [Benutzerinterface mit allen Optionen. ],
@@ -75,7 +105,7 @@ Je nach Position der Kamera werden die benötigten Punkte geladen, welche moment
 			- *Load Project*
 				- Die geladene Punktwolke ändern
 			- *Property*
-				- Eigenschaft zum Anzeigen ändern
+				- Die angezeigte Eigenschaft ändern
 			- *Segment*
 				- Informationen über das ausgewählte Segment
 				- Triangulation starten und anzeigen
@@ -83,16 +113,16 @@ Je nach Position der Kamera werden die benötigten Punkte geladen, welche moment
 			- *Visual*
 				- Punktegröße ändern
 				- Punkte basierend auf der ausgewählten Eigenschaft filtern
-				- Farbpalette und Hintergrund ändern
+				- Farbpalette und Hintergrundfarbe ändern
 				- Screenshot speichern
-				- Knoten für Detailstufen anzeigen
+				- Knoten der momentanen Detailstufen anzeigen
 			- *Eye Dome*
-				- Farbe und Stärke vom Eye-Dome-Lighting ändern
+				- Stärke und Farbe vom Eye-Dome-Lighting ändern
 			- *Level of Detail*
-				- Algorithmus und Qualität der Detailstufen anpassen
+				- Auswahl und Qualität der Detailstufen anpassen
 			- *Camera*
-				- Bewegung der Kamera ändern
-				- Kameraposition speichern
+				- Steuerung der Kamera ändern
+				- Kameraposition speichern oder wiederherstellen
 
 		],
 	),
@@ -237,11 +267,17 @@ Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei 
 
 Um ein bestimmtes Segment auszuwählen, wird das momentan sichtbare Segment bei der Mausposition berechnet. Als Erstes werden die Koordinaten der Maus mit der Kamera in dreidimensionalen Position und Richtung umgewandelt. Die Position und Richtung bilden zusammen einen Strahl.
 
-Im Octree wird vom Root-Knoten aus die Leaf-Knoten gefunden, welche den Strahl enthalten. Dabei werden die Knoten näher an der Position der Kamera bevorzugt. Für den Leaf-Knoten sind die Segmente bekannt, welche Punkte in diesem Knoten haben. Für jedes mögliche Segment wird für jeden Punkt überprüft, ob er entlang des Strahls liegt.
+Im Octree wird vom Root-Knoten aus die Leaf-Knoten gefunden, welche den Strahl enthalten. Dafür wird rekursive bei einem Branch-Knoten die Kinderknoten gesucht, die den Strahl enthalten. Weil der Voxel zugehörig zum Knoten entlang der Achsen vom Koordinatensystem ausgerichtet ist, kann leicht überprüft werden, ob der Strahl den Voxel berührt. @ray_aabb
 
-Sobald ein Punkt gefunden ist, müssen nur noch Knoten überprüft werden, die näher an der Kamera liegen, weil alle Punkte in weiter entfernten Knoten weiter als der momentan beste gefundene Punkt liegen.
+#todo[Bild Ray-AABB Schnitt]
 
-#todo[Voxel Distance? | Point on ray?]
+Die Test kann so angepasst werden, das gegebenfalls der Abstand vom Anfang vom Strahl zum ersten Schnittpunkt bestimmt wird. Für einen Branch-Knoten werden die Kinderknoten nach Abstand aufsteigend überprüft.
+
+Für einen Leaf-Knoten wird der Punkte gesucht, welcher zuerst vom Strahl berührt wird. Dafür wird zuerst die Distanz vom Strahl zum Punkt bestimmt. Wenn die Distanz kleiner als der Radius vom Punkt ist, wird der Abstand zum Ursprung vom Strahl berechnet. Der Punkt mit dem kleinsten Abstand ist der ausgwählte Punkt.
+
+#todo[Bild Abstand Ray-Punkt]
+
+Weil die Knoten nach Distanz sortiert betrachtet werden, kann die Suche abgebrochen werden, sobald ein Punkt gefunden wurde. Alle weiteren Knoten sind weiter entfernt, wodurch die enthaltenen Punkt nicht näher zum Urprung vom Strahl liegen können.
 
 
 === Visualisierung

@@ -19,9 +19,9 @@ Der Datensatz ist bereits in einzelne Bäume unterteilt. Zusätzlich wurden für
 #todo[TLS Daten]
 
 
-== Import
+== Importgeschwindigkeit
 
-Für den Import sind in @messwerte die Messdaten für unterschiedliche Datensätze gegeben. In @auswertung_import_geschwindigkeit ist der Durchsatz beim Import angegeben. Dabei wird eine Importgeschwindigkeit von circa $400 space.thin 000$ Punkte pro Sekunde für die meisten Datensätze erreicht.
+Für den Import sind in @messwerte die Messdaten für unterschiedliche Datensätze gegeben. In @auswertung_import_geschwindigkeit ist der Durchsatz beim Import angegeben. Dabei wird eine Importgeschwindigkeit von circa $400 space.thin 000$ Punkte pro Sekunde für die Datensätze erreicht.
 
 #figure(
 	caption: [Geschwindigkeit vom Import in Punkte pro Sekunde.],
@@ -49,7 +49,12 @@ Ein Beispiel für eine Segmentierung ist in @segmentierung_ergebnis gegeben. Die
 
 Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeordnet. Bei frei stehenden Flächen entstehen separate Segmente und unter Bäumen werden die Punkte zum Baum zugeordnet.
 
-#todo[Fehler wenn spitze gerade so in scheibe]
+Kleine Bereiche werden vor der Zuordnung entfernt. Dadurch wird vermieden, dass ein Baum in mehrere Segmente unterteilt wird. Wenn die Spitze von einem Baum gerade so in einer Scheibe liegt, so ist der zugehörige Bereich klein und wird gefiltert. Dadurch wird kein neues Segment für den Baum erstellt und die Punkte werden den nächsten Baum zugeordent. Der Effekt ist in @auswertung_segmentierung_spitze zu sehen.
+
+#figure(
+	caption: todo-inline[Beschreibung],
+	todo-image(body: [Segment mit Spitze von anderen Segment], height: 30%)
+) <auswertung_segmentierung_spitze>
 
 
 == Analyse von Segmenten
@@ -85,6 +90,8 @@ Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeord
 
 
 == Visualisierung
+
+#todo[Vergleich Zeit und Qualität Detailstufen zu Ohne]
 
 #todo[Visualisierung Ergebnisse]
 
