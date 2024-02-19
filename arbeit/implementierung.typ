@@ -265,17 +265,72 @@ Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei 
 
 === Auswahl
 
-Um ein bestimmtes Segment auszuwählen, wird das momentan sichtbare Segment bei der Mausposition berechnet. Als Erstes werden die Koordinaten der Maus mit der Kamera in dreidimensionalen Position und Richtung umgewandelt. Die Position und Richtung bilden zusammen einen Strahl.
+Um ein bestimmtes Segment auszuwählen, wird das momentan sichtbare Segment bei der Mausposition berechnet. Als Erstes werden die Koordinaten der Maus mit der Kamera in dreidimensionalen Ursprung und Richtung umgewandelt. Der Urprung und die Richtung bilden zusammen einen Strahl.
 
-Im Octree wird vom Root-Knoten aus die Leaf-Knoten gefunden, welche den Strahl enthalten. Dafür wird rekursive bei einem Branch-Knoten die Kinderknoten gesucht, die den Strahl enthalten. Weil der Voxel zugehörig zum Knoten entlang der Achsen vom Koordinatensystem ausgerichtet ist, kann leicht überprüft werden, ob der Strahl den Voxel berührt. @ray_aabb
+Im Octree wird vom Root-Knoten aus die Leaf-Knoten gefunden, welche den Strahl enthalten. Dafür wird rekursive bei einem Branch-Knoten die Kinderknoten gesucht, die den Strahl enthalten. Weil der Voxel zugehörig zum Knoten entlang der Achsen vom Koordinatensystem ausgerichtet ist, kann mit dem Algorithmus in @implementierung_ray_aabb überprüft werden, ob der Strahl den Voxel berührt.
 
-#todo[Bild Ray-AABB Schnitt]
+#side-caption(amount: (1fr, 1fr), [#figure(
+	caption: [
+		Schnittmenge von Strahl und Quadrat in 2D. @ray_aabb\
+		Zuerst wird für jede Achse der Bereich bestimmt, für den der Strahl im Quadrat liegen kann.\
+		Die Schnittmenge ist die Überschneidung von den Bereichen für alle Achsen.
+	],
+	cetz.canvas(length: 0.5cm, {
+		import cetz.draw: *
 
-Die Test kann so angepasst werden, das gegebenfalls der Abstand vom Anfang vom Strahl zum ersten Schnittpunkt bestimmt wird. Für einen Branch-Knoten werden die Kinderknoten nach Abstand aufsteigend überprüft.
+		for i in range(1, 11) {
+			let x = -2.0 + i * 1.0
+			let y = -0.5 + i * 0.5
+			line((x, -0.5), (x, y), stroke: silver)
+			line((-2.0, y), (x, y), stroke: silver)
+		}
+
+		rect((0, 0), (4, 4), stroke: 2pt)
+
+		line((-2.0, -0.5), (8, 4.5), mark: (end: ">", fill: black), stroke: 2pt)
+
+		line((-2.0, -0.5), (8.5, -0.5), mark: (end: ">", fill: black))
+		line((-2.0, -0.5), (-2.0, 5.0), mark: (end: ">", fill: black))
+
+		line((-0.0, -0.5), (-0.0, 0))
+		content((0.0, -0.5), $x_0=2$, anchor: "north", padding: 5pt)
+		line((4.0, -0.5), (4.0, 0))
+		content((4.0, -0.5), $x_1=6$, anchor: "north", padding: 5pt)
+
+		line((-2.0, 0.0), (-0.0, 0))
+		content((-2.0, -0.0), $y_0=1$, anchor: "east", padding: 5pt)
+		line((-2.0, 4.0), (0.0, 4.0))
+		content((-2.0, 4.0), $y_1=9$, anchor: "east", padding: 5pt)
+
+
+
+		translate((-2, -5.0))
+
+		rect((2, 1), (6, -2), stroke: none, fill: gray)
+
+		line((0.0, 0.0), (10.0, 0.0))
+		content((0.0, 0.0), $X$, anchor: "east", padding: 5pt)
+		line((0.0, -1.0), (10.0, -1.0))
+		content((0.0, -1.0), $Y$, anchor: "east", padding: 5pt)
+		line((0.0, 1.0), (0.0, -2.0))
+		content((0.0, 1.0), $0$, anchor: "south", padding: 5pt)
+		line((10.0, 1.0), (10.0, -2.0))
+		content((10.0, 1.0), $10$, anchor: "south", padding: 5pt)
+
+		line((2, 0), (6, 0), stroke: 5pt)
+		line((1, -1), (9, -1), stroke: 5pt)
+
+		line((2.0, 1.0), (2.0, -2.0))
+		content((2.0, 1.0), $s_0 = 2$, anchor: "south", padding: 5pt)
+		line((6.0, 1.0), (6.0, -2.0))
+		content((6.0, 1.0), $s_1 = 6$, anchor: "south", padding: 5pt)
+	}),
+) <implementierung_ray_aabb>])
+
+
+Die Test kann so angepasst werden, dass gegebenfalls der Abstand vom Ursprung zum ersten Schnittpunkt bestimmt wird. Für einen Branch-Knoten werden die Kinderknoten nach Abstand aufsteigend überprüft.
 
 Für einen Leaf-Knoten wird der Punkte gesucht, welcher zuerst vom Strahl berührt wird. Dafür wird zuerst die Distanz vom Strahl zum Punkt bestimmt. Wenn die Distanz kleiner als der Radius vom Punkt ist, wird der Abstand zum Ursprung vom Strahl berechnet. Der Punkt mit dem kleinsten Abstand ist der ausgwählte Punkt.
-
-#todo[Bild Abstand Ray-Punkt]
 
 Weil die Knoten nach Distanz sortiert betrachtet werden, kann die Suche abgebrochen werden, sobald ein Punkt gefunden wurde. Alle weiteren Knoten sind weiter entfernt, wodurch die enthaltenen Punkt nicht näher zum Urprung vom Strahl liegen können.
 
@@ -289,12 +344,7 @@ Die momentan geladenen Knoten vom Octree bleiben dabei geladen, um einen schnell
 
 === Exportieren
 
-#todo[Implementierung Segment export]
-
-// == Eye-Dome-Lighting
-
-// #todo[Messung (viele und wenige Punkte gleich weil Screen space effect)]
-
+Die Segmente können im Stanford Polygon Format (PLY) Format exportiert werden. Die Punkte werden dabei so transformiert, dass diese horizontal entlang der X- und Y-Achse zentiert sind und der tiefste Punkte bei $0$ entlang der Z-Achse liegt.
 
 == Detailstufen
 

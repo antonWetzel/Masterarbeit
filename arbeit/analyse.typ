@@ -66,14 +66,14 @@ Die größte Varianz von allen Scheiben wird verwendet, um die Varianzen auf den
 
 Die Ausdehnung eignet sich zur Unterscheidung von Stamm und Krone. Beim Stamm sind die Punkte näher einander, während bei der Krone die Punkte weiter verteilt sind.
 
-#todo([Mehr Baumeigenschaften])
+// #todo([Mehr Baumeigenschaften])
 
 
-=== Segmentierung von einem Baum
+// === Segmentierung von einem Baum
 
-#link("https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13144")
+// #link("https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13144")
 
-#todo([Baumeigenschaften + ? $->$ Segmente])
+// #todo([Baumeigenschaften + ? $->$ Segmente])
 
 
 === Eigenschaften für die Visualisierung <eigenschaften_visualisierung>
@@ -85,8 +85,8 @@ Für die Orientierung wird die Normale bestimmt, welche orthogonal zur geschätz
 Für die Punktgröße wird der durchschnittliche Abstand zu den umliegenden Punkten bestimmt. Dadurch werden die Punkte in Bereichen mit hoher Punktdichte kleiner.
 
 
-=== Baumart
+// === Baumart
 
-#todo([Segmente + Eigenschaften + ? $->$ Klassifizierung?])
-- out of scope?
-- neural?
+// #todo([Segmente + Eigenschaften + ? $->$ Klassifizierung?])
+// - out of scope?
+// - neural?

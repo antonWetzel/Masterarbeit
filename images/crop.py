@@ -5,6 +5,7 @@ patterns = [
 	("curve_", (600, 0, 500, 0)),
 	("height", (600, 0, 500, 0)),
 	("lod_", (536, 17, 1920 - 1502, 1000 - 985)),
+	("triangulation_", (760, 15, 1920 - 1219, 1000 - 965)),
 ]
 
 from PIL import Image
@@ -28,6 +29,7 @@ for pattern in patterns:
 
 whitespace = [
 	"segments",
+	"br06",
 ]
 
 for name in whitespace:

@@ -267,7 +267,48 @@ Für die Berechnung wird ein Greedy-Algorithmus verwendet. Am Anfang werden alle
 
 ==== Auswahl von $alpha$
 
-- Groß genug für keine Lücken
-- Klein genug für gute Laufzeit
+In @triangulierung_alpha wurde die Triangulation für die gleiche Punktwolke mit unterschiedlichen Werten für $alpha$ berechnet. Mit einem größerem $alpha$ wird das Ergebniss immer weiter vereinfacht. Bei einem kleinen Wert für $alpha$ können Lücken in der Triangulierung entstehen, wenn die Punkte weiter als $2 alpha$ voneinander entfernt sind.
 
-#todo[Auswahl $alpha$]
+#let lines_and_mesh(prec) = {
+	stack(
+		dir: ttb,
+		image("../images/triangulation_mesh_" + prec + "-crop.png"),
+		image("../images/triangulation_lines_" + prec + "-crop.png"),
+	)
+}
+
+#figure(
+	caption: [Triangulation für unterschiedliche $alpha$. Im oberen Bild sind die Dreiecke ausgefühlt und im unteren Bild umrandet.],
+	grid(
+		columns: 1 * 5,
+		subfigure(
+			caption: [$0.2$m],
+			lines_and_mesh("0.2"),
+		),
+		subfigure(
+			caption: [$0.5$m],
+			lines_and_mesh("0.5"),
+		),
+		subfigure(
+			caption: [$1.0$m],
+			lines_and_mesh("1.0"),
+		),
+		subfigure(
+			caption: [$2.0$m],
+			lines_and_mesh("2.0"),
+		),
+		subfigure(
+			caption: [$5.0$m],
+			lines_and_mesh("5.0"),
+		),
+	),
+) <triangulierung_alpha>
+
+Der Bereich für die Suche vom nächsten Kanditation für die Erweiterung von der Triangulierung ist abhängig von $alpha$. Dadurch steigt der Berechnungsaufwand mit größerem $alpha$.
+
+Im Idealfall wird $alpha$ so klein gewählt, dass keine gewünschten Details verloren gehen und so groß, dass keine Lücken in der Triangulierung entstehen.
+
+// #align(center, box(width: 60%, side-caption(amount: (1fr, 2fr), figure(
+// 	caption: [Punktwolke als Basis für die Triangulierung.],
+// 	image("../images/triangulation_points-crop.png"),
+// ))))
