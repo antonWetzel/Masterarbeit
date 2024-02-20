@@ -25,7 +25,7 @@ Das Projekt ist unter #link("https://github.com/antonWetzel/treee") verfügbar. 
 		`bytemuck`,          `1.14`,      [Konversation von Daten zu Bytes],
 		`serde`,             `1.0`,       [Serialisierung von Datentypen],
 		`bincode`,           `1.3.3`,     [Serialisierung als Binary],
-		`serde_json`,        `1.0`,   [Serialisierung als JSON],
+		`serde_json`,        `1.0`,       [Serialisierung als JSON],
 		`rand`,              `0.8`,       [Generierung von Zufallszahlen],
 		`num_cpus`,          `1.15`,      [Prozessoranzahl bestimmen],
 		`laz`,               `0.8`,       [Dekomprimieren von LASzip Dateien],
@@ -53,43 +53,42 @@ Als Datensätze werden Dateien im LASzip-Format verwendet. Dieses Format wird h�
 
 Für den Import und die Visualisierung wird das kompilierte Programm benötigt. Dieses kann mit dem Quelltext selber kompiliert werden oder bereits kompilierte Versionen können von #todo-inline[GitHub-Release] heruntergeladen werden. Die Schritte zum selber kompilieren sind im #link("https://github.com/antonWetzel/treee?tab=readme-ov-file#treee", [Readme])#footnote(`https://github.com/antonWetzel/treee?tab=readme-ov-file#treee`) verfügbar.
 
+
 === Ausführen
 
-In @implementierung_befehle sind die die Kommandos gelistet, um den Importer und die Visualisierung zu starten. Für den Import können weitere Optionen angegeben werden, um den Ablauf an den Datensatz anzupassen.
+In @implementierung_befehle sind die Kommandos gelistet, um den Importer und die Visualisierung zu starten. Für den Import können weitere Optionen angegeben werden, um den Ablauf an den Datensatz anzupassen.
 
-#figure(
-	table(
-		align: (x, y) => if y == 0 { center } else { left},
-		columns: (auto, 1fr),
-		[*Kommando*], [*Funktion*],
-		`treee importer`, [Importer starten],
-		`treee help importer`, [Verfügbare Optionen für den Importer anzeigen],
-		`treee viewer`, [Visualisierung starten],
-	)
-) <implementierung_befehle>
+#figure(table(
+	align: (x, y) => if y == 0 { center } else { left },
+	columns: (auto, 1fr),
+	[*Kommando*],          [*Funktion*],
+	`treee importer`,      [Importer starten],
+	`treee help importer`, [Verfügbare Optionen für den Importer anzeigen],
+	`treee viewer`,        [Visualisierung starten],
+)) <implementierung_befehle>
+
 
 === Import
 
-Für den Import wird der Datensatz und der Ordner zum Speichern der Ergebnisse benötigt. Beide können über die Befehlszeile angegeben werden oder über ein Dialogfenster ausgewählt werden. Alle weiteren Optione sind in @implementierung_import_optionen gelistet.
+Für den Import wird der Datensatz und der Ordner zum Speichern der Ergebnisse benötigt. Beide können über die Befehlszeile angegeben werden oder über ein Dialogfenster ausgewählt werden. Alle weiteren Optionen sind in @implementierung_import_optionen gelistet.
 
-#figure(
-	table(
-		align: (x, y) => if y == 0 { top + center } else { top + (left, right, left).at(x)},
-		columns: (auto,  auto, 1fr),
-		[*Flag*], [*Standartwert*], [*Funktion*],
-		`--max-threads`, [unbegrenzt], [Maximal Anzahl an parallel benutzen Threads],
-		`--min-segment-size`, $100$, [Mindestanzahl von Punkten für ein Segment],
-		`--segmenting-slice-width`, $1.0$, [Breite der horizontalen Scheiben für die Segmentierung in Meter],
-		`--segmenting-max-distance`, $1.0$, [Mindestabstand zwischen Bereichen in Meter],
-		`--neighbors-count`, $31$, [Maximale Anzahl der Punkte in der Nachbarschaft von einem Punkt],
-		`--neighbors-max-distance`, $1.0$, [Maximale Distanz vom Punkt zu den Punkten in der Nachbarschaft],
-		`--lod-size-scale`, $0.95$, [Skalierungfaktor für die Fläche der kombinierten Punkte],
-	)
-) <implementierung_import_optionen>
+#figure(table(
+	align: (x, y) => if y == 0 { top + center } else { top + (left, right, left).at(x) },
+	columns: (auto, auto, 1fr),
+	[*Flag*],                    [*Standardwert*], [*Funktion*],
+	`--max-threads`,             [unbegrenzt],     [Maximale Anzahl an parallel benutzen Threads],
+	`--min-segment-size`,        $100$,            [Mindestanzahl von Punkten für ein Segment],
+	`--segmenting-slice-width`,  $1.0$,            [Breite der horizontalen Scheiben für die Segmentierung in Meter],
+	`--segmenting-max-distance`, $1.0$,            [Mindestabstand zwischen Bereichen in Meter],
+	`--neighbors-count`,         $31$,             [Maximale Anzahl der Punkte in der Nachbarschaft von einem Punkt],
+	`--neighbors-max-distance`,  $1.0$,            [Maximale Distanz vom Punkt zu den Punkten in der Nachbarschaft],
+	`--lod-size-scale`,          $0.95$,           [Skalierungsfaktor für die Fläche der kombinierten Punkte],
+)) <implementierung_import_optionen>
+
 
 === Visualisierung
 
-Um eine Punktewolke zu öffnet wrid die `project.epc` Datei geladen In der Datei ist die Struktur vom Octree und  Informationen über die Segmente enthalten. Die Punktdaten werden noch nicht geladen.
+Um eine Punktewolke zu öffnet wird die `project.epc` Datei geladen. In der Datei ist die Struktur vom Octree und Informationen über die Segmente enthalten. Die Punktdaten werden noch nicht geladen.
 
 Je nach Position der Kamera werden die benötigten Punkte geladen, welche momentan sichtbar sind. Dadurch können auch Punktwolken angezeigt werden, die mehr Punkte enthalten als gleichzeitig interaktiv anzeigbar. Auch bei den Segmenten wird nur das Segment geladen, welches ausgewählt wurde.
 
@@ -138,7 +137,7 @@ Um einen Datensatz zu analysieren, muss dieser zuerst importiert werden, bevor e
 + Segmente analysieren und die Ergebnisse speichern und zum Octree hinzufügen
 + Detailstufen bestimmten und Octree speichern
 
-Der zugehörige Datenfluss ist in @überblick_datenfluss zu sehen. Nach der ersten Phase sind die Segmente bekannt, nach der zweiten Phase analysiert und zum Octree hinzugefügt. Die Stuktur von der Punktwolke ist bereits bekannt. Nach der dritten Phase sind auch die Detailstufen vom Octree erstellt.
+Der zugehörige Datenfluss ist in @überblick_datenfluss zu sehen. Nach der ersten Phase sind die Segmente bekannt, nach der zweiten Phase analysiert und zum Octree hinzugefügt. Die Struktur von der Punktwolke ist bereits bekannt. Nach der dritten Phase sind auch die Detailstufen vom Octree erstellt.
 
 #figure(
 	caption: [Datenfluss für den Import.],
@@ -181,7 +180,7 @@ Der zugehörige Datenfluss ist in @überblick_datenfluss zu sehen. Nach der erst
 
 Die Punktdaten werden in LASzip-Dateien zu Blöcken zusammengefasst. Jeder Block wird separat komprimiert, wodurch mehrere Blöcke auch parallel dekomprimiert werden können. Ein weiterer Thread sammelt die dekomprimierten Blöcke für die Segmentierung.
 
-Für die Segmentierung wird über die einzelnen horizontalen Scheiben parallelisiert. Der genaue Ablauf ist in @implementierung_segment_parallel erklärt. Die Segmenter werden wieder von einem weiteren Thread gesammelt.
+Für die Segmentierung wird über die einzelnen horizontalen Scheiben parallelisiert. Der genaue Ablauf ist in @implementierung_segment_parallel erklärt. Die Segmente werden wieder von einem weiteren Thread gesammelt.
 
 #figure(
 	caption: [
@@ -265,7 +264,7 @@ Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei 
 
 === Auswahl
 
-Um ein bestimmtes Segment auszuwählen, wird das momentan sichtbare Segment bei der Mausposition berechnet. Als Erstes werden die Koordinaten der Maus mit der Kamera in dreidimensionalen Ursprung und Richtung umgewandelt. Der Urprung und die Richtung bilden zusammen einen Strahl.
+Um ein bestimmtes Segment auszuwählen, wird das momentan sichtbare Segment bei der Mausposition berechnet. Als Erstes werden die Koordinaten der Maus mit der Kamera in dreidimensionalen Ursprung und Richtung umgewandelt. Der Ursprung und die Richtung bilden zusammen einen Strahl.
 
 Im Octree wird vom Root-Knoten aus die Leaf-Knoten gefunden, welche den Strahl enthalten. Dafür wird rekursive bei einem Branch-Knoten die Kinderknoten gesucht, die den Strahl enthalten. Weil der Voxel zugehörig zum Knoten entlang der Achsen vom Koordinatensystem ausgerichtet ist, kann mit dem Algorithmus in @implementierung_ray_aabb überprüft werden, ob der Strahl den Voxel berührt.
 
@@ -302,8 +301,6 @@ Im Octree wird vom Root-Knoten aus die Leaf-Knoten gefunden, welche den Strahl e
 		line((-2.0, 4.0), (0.0, 4.0))
 		content((-2.0, 4.0), $y_1=9$, anchor: "east", padding: 5pt)
 
-
-
 		translate((-2, -5.0))
 
 		rect((2, 1), (6, -2), stroke: none, fill: gray)
@@ -327,12 +324,11 @@ Im Octree wird vom Root-Knoten aus die Leaf-Knoten gefunden, welche den Strahl e
 	}),
 ) <implementierung_ray_aabb>])
 
+Der Test kann so angepasst werden, dass gegebenenfalls der Abstand vom Ursprung zum ersten Schnittpunkt bestimmt wird. Für einen Branch-Knoten werden die Kinderknoten nach Abstand aufsteigend überprüft.
 
-Die Test kann so angepasst werden, dass gegebenfalls der Abstand vom Ursprung zum ersten Schnittpunkt bestimmt wird. Für einen Branch-Knoten werden die Kinderknoten nach Abstand aufsteigend überprüft.
+Für einen Leaf-Knoten wird der Punkte gesucht, welcher zuerst vom Strahl berührt wird. Dafür wird zuerst die Distanz vom Strahl zum Punkt bestimmt. Wenn die Distanz kleiner als der Radius vom Punkt ist, wird der Abstand zum Ursprung vom Strahl berechnet. Der Punkt mit dem kleinsten Abstand ist der ausgewählte Punkt.
 
-Für einen Leaf-Knoten wird der Punkte gesucht, welcher zuerst vom Strahl berührt wird. Dafür wird zuerst die Distanz vom Strahl zum Punkt bestimmt. Wenn die Distanz kleiner als der Radius vom Punkt ist, wird der Abstand zum Ursprung vom Strahl berechnet. Der Punkt mit dem kleinsten Abstand ist der ausgwählte Punkt.
-
-Weil die Knoten nach Distanz sortiert betrachtet werden, kann die Suche abgebrochen werden, sobald ein Punkt gefunden wurde. Alle weiteren Knoten sind weiter entfernt, wodurch die enthaltenen Punkt nicht näher zum Urprung vom Strahl liegen können.
+Weil die Knoten nach Distanz sortiert betrachtet werden, kann die Suche abgebrochen werden, sobald ein Punkt gefunden wurde. Alle weiteren Knoten sind weiter entfernt, wodurch die enthaltenen Punkte nicht näher zum Ursprung vom Strahl liegen können.
 
 
 === Visualisierung
@@ -344,7 +340,8 @@ Die momentan geladenen Knoten vom Octree bleiben dabei geladen, um einen schnell
 
 === Exportieren
 
-Die Segmente können im Stanford Polygon Format (PLY) Format exportiert werden. Die Punkte werden dabei so transformiert, dass diese horizontal entlang der X- und Y-Achse zentiert sind und der tiefste Punkte bei $0$ entlang der Z-Achse liegt.
+Die Segmente können im Stanford Polygon Format (PLY) Format exportiert werden. Die Punkte werden dabei so transformiert, dass diese horizontal entlang der x- und y-Achse zentriert sind und der tiefste Punkte bei $0$ entlang der z-Achse liegt.
+
 
 == Detailstufen
 

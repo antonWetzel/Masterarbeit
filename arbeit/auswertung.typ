@@ -51,10 +51,7 @@ Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeord
 
 Kleine Bereiche werden vor der Zuordnung entfernt. Dadurch wird vermieden, dass ein Baum in mehrere Segmente unterteilt wird. Wenn die Spitze von einem Baum gerade so in einer Scheibe liegt, so ist der zugehörige Bereich klein und wird gefiltert. Dadurch wird kein neues Segment für den Baum erstellt und die Punkte werden den nächsten Baum zugeordent. Der Effekt ist in @auswertung_segmentierung_spitze zu sehen.
 
-#figure(
-	caption: todo-inline[Beschreibung],
-	todo-image(body: [Segment mit Spitze von anderen Segment], height: 30%)
-) <auswertung_segmentierung_spitze>
+#figure(caption: todo-inline[Beschreibung], todo-image(body: [Segment mit Spitze von anderen Segment], height: 30%)) <auswertung_segmentierung_spitze>
 
 
 == Analyse von Segmenten
