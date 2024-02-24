@@ -96,3 +96,22 @@
 	link(_link, _body)
 	footnote(raw(_link))
 }
+
+#let number = (number) => {
+	let blocks = ()
+	let current = number
+	while current >= 1000 {
+		blocks.push(calc.rem(number, 1000))
+		current = int(current / 1000)
+	}
+	blocks.push(current)
+	blocks = blocks.rev()
+	blocks = blocks.map((value) => {
+		let res = str(value)
+		// while res.len() < 3 {
+		// res = "0" + res
+		// }
+		return res
+	})
+	return eval("$" + blocks.join(" space.thin ") + "$")
+}

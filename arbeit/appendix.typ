@@ -209,7 +209,55 @@ Bei einer Suchanfrage wird vom Root-Knoten aus der Leaf-Knoten gesucht, welche d
 	caption: [Messwerte (2).],
 ) <messwerte_2>
 
-#todo[Systemeigenschaften]
+
+== Systemeigenschaften <systemeigenschaften>
+
+#figure(
+	caption: [Überblick über die Systemeigenschaften],
+	table(
+		columns: (1fr, 2fr),
+		align: (left, right),
+		[Betriebssystem], [Windows 11],
+		[Prozessor],      [Intel(R) Core(TM) i7-9700KF CPU \@ 3.60 GHz],
+		[RAM],            [2 x G.Skill F4-3200C16-8GIS],
+		[Festplatte],     [SanDisk SSD PLUS 2000GB],
+	),
+)
+
+#figure(
+	caption: [Prozessoreigenschaften],
+	table(
+		columns: (1fr, 2fr),
+		align: (left, right),
+		[Physische Kerne],   [$8$],
+		[Logische Kerne],    [$8$],
+		[Maximale Taktrate], [$4,6 "GHz"$],
+		[L1 Cachegröße],     [$512 "KiB"$],
+		[L2 Cachegröße],     [$2 "MiB"$],
+		[L3 Cachegröße],     [$12 "MiB"$],
+	),
+)
+
+#figure(
+	caption: [RAM-Eigenschaften],
+	table(
+		columns: (1fr, 2fr),
+		align: (left, right),
+		[Größe],    [$2 times 8 "GiB"$],
+		[Taktrate], [$2133 "MHz"$],
+	),
+)
+
+#figure(
+	caption: [Sequenzielle Lese- und Schreibgeschwindigkeit der Festplatte mit $4 "KiB"$ Blöcken für unterschiedliche Dateigrößen.],
+	table(
+		columns: (1fr, 1fr, 1fr, 1fr),
+		align: (left, right, right, right),
+		[*Aktion*],  [*1 GiB*],        [*5 GiB*],        [*10 GiB*],
+		[Lesen],     [$776 "MiB/s"$],  [$384 "MiB/s"$],  [$218 "MiB/s"$],
+		[Schreiben], [$1739 "MiB/s"$], [$1929 "MiB/s"$], [$270 "MiB/s"$],
+	),
+)
 
 
 == Punktwolkenformat

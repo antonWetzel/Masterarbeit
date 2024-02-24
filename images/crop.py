@@ -30,6 +30,7 @@ for pattern in patterns:
 whitespace = [
 	"segments",
 	"br06",
+	"perf",
 ]
 
 for name in whitespace:

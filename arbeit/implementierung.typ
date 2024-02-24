@@ -18,7 +18,7 @@ Das Projekt ist unter #link("https://github.com/antonWetzel/treee") verfügbar. 
 		`rfd`,               `0.13`,      [Dialogfenster zum Öffnen und Speichern von Dateien],
 		`crossbeam`,         `0.8`,       [Synchronisierung zwischen Threads],
 		`log`,               `0.4`,       [Logs erzeugen],
-		`simple_logger`,     `4.3`,       [Wiedergabe von Logs],
+		`env_logger`,        `0.11`,      [Wiedergabe von Logs],
 		`image`,             `0.24`,      [Laden und Speichern von Bildern],
 		`wgpu`,              `0.19`,      [WebGPU Implementierung],
 		`winit`,             `0.29`,      [Fenstermanagement],
