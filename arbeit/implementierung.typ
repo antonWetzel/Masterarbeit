@@ -128,6 +128,66 @@ Mit dem Benutzerinterface kann die Visualisierung angepasst werden. Die Optionen
 ) <implementierung_ui>
 
 
+== Projektstruktur
+
+Das Projekt ist in mehrere Module unterteilt, um den Quelltext zu strukturieren. In @appendix_crates und @appendix_crates_abhängigkeiten sind die Module mit zughöriger Funktionalität und Abhängigkeiten gelistet. Die wichigsten Module sind `importer` und `viewer`.
+
+#figure(
+	caption: [Module vom Projekt mit zugehöriger Funktionalität.],
+	table(
+		columns: (auto, 1fr),
+		align: (x, y) => if y == 0 { center } else { (left, left).at(x) },
+		[*Name*],        [*Funktionalität*],
+		`math`,          [Funktionen für Vektoren, Matrizes, Projektionen und Winkel],
+		`project`,       [Format für eine Punktwolke und zugehörige Daten],
+		`k-nearest`,     [Nachbarschaftssuche mit KD-Bäumen],
+		`input`,         [Maus- und Tastatureingaben verarbeiten],
+		`triangulation`, [Triangulation von Punktwolken],
+		`render`,        [Rendern von Punktwolken, Linien und Meshes mit `wgpu`],
+		`importer`,      [Import von Punktwolken],
+		`viewer`,        [Visualisierung von Punktwolken],
+		`treee`,         [Gemeinsames Interface für `importer` und `viewer`],
+	),
+) <appendix_crates>
+
+#figure(
+	caption: [Abhängigkeiten der Module untereinander.],
+	cetz.canvas(length: 1.0cm, {
+		import cetz.draw: *
+
+		let box(x, y, name) = {
+			rect((x, y), (x + 3, y + 1), name: name)
+			content(name, raw(name))
+		}
+		set-style(mark: (end: ">", fill: black))
+
+		box(0, 0, "math")
+		box(4, 0, "project")
+		box(4, -2, "k-nearest")
+		box(4, 2, "input")
+		box(8, 0, "triangulation")
+		box(8, 2, "render")
+		box(8, -2, "importer")
+		box(12, 1, "viewer")
+		box(12, -1, "treee")
+
+		line("math.east", "k-nearest.west")
+		line("math.east", "project.west")
+		line("math.east", "input.west")
+		line("k-nearest.east", "triangulation.west")
+		line("project.east", "render.west")
+		line("input.east", "render.west")
+		line("render.east", "viewer.west")
+		line("triangulation.east", "viewer.west")
+		line("k-nearest.east", "importer.west")
+		line("project.east", "importer.west")
+
+		line("importer.east", "treee.west")
+		line("viewer.south", "treee.north")
+	}),
+) <appendix_crates_abhängigkeiten>
+
+
 == Import
 
 Um einen Datensatz zu analysieren, muss dieser zuerst importiert werden, bevor er von der Visualisierung angezeigt werden kann. Der Import wird in mehreren getrennten Phasen durchgeführt. Dabei wird der Berechnungsaufwand für eine Phase so weit wie möglich parallelisiert. Die Phasen sind:
@@ -329,6 +389,41 @@ Der Test kann so angepasst werden, dass gegebenenfalls der Abstand vom Ursprung 
 Für einen Leaf-Knoten wird der Punkte gesucht, welcher zuerst vom Strahl berührt wird. Dafür wird zuerst die Distanz vom Strahl zum Punkt bestimmt. Wenn die Distanz kleiner als der Radius vom Punkt ist, wird der Abstand zum Ursprung vom Strahl berechnet. Der Punkt mit dem kleinsten Abstand ist der ausgewählte Punkt.
 
 Weil die Knoten nach Distanz sortiert betrachtet werden, kann die Suche abgebrochen werden, sobald ein Punkt gefunden wurde. Alle weiteren Knoten sind weiter entfernt, wodurch die enthaltenen Punkte nicht näher zum Ursprung vom Strahl liegen können.
+
+
+== Punktwolkenformat
+
+Die Struktur von einer Punktwolke ist in der `project.epc` Datei gespeichert. Dazu gehören die verfügbaren Eigenschaften und der Octree. Alle benötigten Daten für `project.epc` werden in #link-footnote("https://github.com/antonWetzel/treee/blob/main/project/src/lib.rs", `project/src/lib.rs`) definiert.
+
+
+=== Daten
+
+In separaten Dateien werden die Daten für alle Punkte für zum Anzeigen der Punkte oder eine spezifische Eigenschaft gespeichert. Das Dateiformat ermöglicht es, die Datein inkrementell zu erstellen. Am Anfang wird nur benötigt, wie viele Einträge die Datei speichern kann. Danach können die Einträge in beliebiger Reihenfolge abgespeichert werden.
+
+Die Struktur ist in @appendix_datafile gegeben. Am Anfang der Datei wird für jeden Eintrag die Startposition $s_i$ und die Länge $l_i$ vom zugehörigen Datensegment $d_i$ gespeichert. Danach folgen die Datensegmente in beliebiger Reihenfolge $pi$.
+
+#figure(
+	caption: [Struktur einer Datei zum Speichern von Daten.],
+	tablex(
+		align: center + horizon,
+		columns: 11 *(1fr, ),
+		colspanx(7)[*Informationen*],
+		colspanx(4)[*Daten*],
+		$s_0$,
+		$l_0$,
+		$s_1$,
+		$l_1$,
+		[...],
+		$s_(n-1)$,
+		$l_(n-1)$,
+		$d_(pi(0))$,
+		$d_(pi(1))$,
+		[...],
+		$d_(pi(n-1))$
+	),
+) <appendix_datafile>
+
+Um den Eintrag $i$ mit den Daten $d$ zur Datei hinzufügen, wird zuerst $s_i$ auf das momentane Ende der Datei und $d_i$ auf die Länge von $d$ gesetzt. Danach wird $d$ am Ende der Datei hinzugefügt. Um die Daten für den Eintrag $i$ zu lesen, wird zuerst $s_i$ und $l_i$ ausgelesen und danach der zugehörige Bereich gelesen.
 
 
 === Visualisierung

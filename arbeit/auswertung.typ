@@ -86,7 +86,7 @@ Ein Beispiel für die Triangulation ist in @auswertung_triangulierung gegeben. M
 
 == Visualisierung
 
-In @auswertung_vis_time ist die benötigte Renderzeit für die Beispiele in @auswertung_vis_example gegeben.
+In @auswertung_vis_time ist die benötigte Renderzeit für die Beispiele aus @auswertung_vis_example gegeben.
 
 #figure(
 	caption: [Renderzeit in Sekunden für einen Datensatz mit #number(59967504) Punkten.],
@@ -116,6 +116,12 @@ Das Eye-Dome-Lighting ermöglicht eine bessere Wahrnehmung der verlorenen Tiefen
 
 
 == Fazit
+
+- Segmentierung Benutzbar, aber hat Fehler.
+- interaktive Visualisierung möglich
+	- gute Visualisierung der Punkte
+- 
+- ...
 
 #todo[Fazit]
 
