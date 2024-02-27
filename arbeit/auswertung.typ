@@ -14,9 +14,7 @@ Der benutze Datensatz @data beinhaltet $12$ Hektar Waldfläche in Deutschland, B
 
 Für die meisten Waldstücke existiert ein ALS, ULS und TLS. Dabei enthält der ALS die wenigsten und der TLS die meisten Punkte. Bei ALS und ULS sind die Punkte gleichmäßig über das gescannte Gebiet verteilt. Bei TLS wird von einem zentralen Punkt aus gescannt, wodurch die Punktedichte nach außen immer weiter abnimmt.
 
-Der Datensatz ist bereits in einzelne Bäume unterteilt. Zusätzlich wurden für $6$ Hektar die Baumart, Höhe, Stammdurchmesser auf Brusthöhe und Anfangshöhe und Durchmesser der Krone gemessen. Mit den bereits bestimmten Eigenschaften können automatisch berechnete Ergebnisse validiert werden.
-
-#todo[Ergebnisse Validieren]
+// Der Datensatz ist bereits in einzelne Bäume unterteilt. Zusätzlich wurden für $6$ Hektar die Baumart, Höhe, Stammdurchmesser auf Brusthöhe und Anfangshöhe und Durchmesser der Krone gemessen. Mit den bereits bestimmten Eigenschaften können automatisch berechnete Ergebnisse validiert werden.
 
 
 == Importgeschwindigkeit
@@ -49,9 +47,17 @@ Ein Beispiel für eine Segmentierung ist in @segmentierung_ergebnis gegeben. Die
 
 Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeordnet. Bei frei stehenden Flächen entstehen separate Segmente und unter Bäumen werden die Punkte zum Baum zugeordnet.
 
-Kleine Bereiche werden vor der Zuordnung entfernt. Dadurch wird vermieden, dass ein Baum in mehrere Segmente unterteilt wird. Wenn die Spitze von einem Baum gerade so in einer Scheibe liegt, so ist der zugehörige Bereich klein und wird gefiltert. Dadurch wird kein neues Segment für den Baum erstellt und die Punkte werden den nächsten Baum zugeordnet. Der Effekt ist in @auswertung_segmentierung_spitze zu sehen.
+Kleine Bereiche werden vor der Zuordnung entfernt. Dadurch wird vermieden, dass ein Baum in mehrere Segmente unterteilt wird. Wenn die Spitze von einem Baum gerade so in einer Scheibe liegt, so ist der zugehörige Bereich klein und wird gefiltert. Dadurch wird kein neues Segment für den Baum erstellt und die Punkte werden dem nächsten Baum zugeordnet. Der Effekt ist in @auswertung_segmentierung_spitze zu sehen.
 
-#figure(caption: todo-inline[Beschreibung], todo-image(body: [Segment mit Spitze von anderen Segment], height: 30%)) <auswertung_segmentierung_spitze>
+#figure(
+	caption: [Segmentierungsfehler bei Baumspitzen.],
+	grid(
+		columns: 1 * 2,
+		gutter: 1em,
+		subfigure(rect(image("../images/segmentation_top_error_full.png"), inset: 0.5pt), caption: [Alle Segmente]),
+		subfigure(rect(image("../images/segmentation_top_error.png"), inset: 0.5pt), caption: [Segment einzeln]),
+	),
+) <auswertung_segmentierung_spitze>
 
 
 == Analyse von Segmenten
@@ -120,7 +126,7 @@ Das Eye-Dome-Lighting ermöglicht eine bessere Wahrnehmung der verlorenen Tiefen
 - Segmentierung Benutzbar, aber hat Fehler.
 - interaktive Visualisierung möglich
 	- gute Visualisierung der Punkte
-- 
+-
 - ...
 
 #todo[Fazit]

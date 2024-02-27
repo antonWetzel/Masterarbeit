@@ -31,6 +31,7 @@ whitespace = [
 	"segments",
 	"br06",
 	"perf",
+	"segmentation_top"
 ]
 
 for name in whitespace:
