@@ -13,6 +13,7 @@
 		align: (left, right),
 		[Betriebssystem], [Windows 11],
 		[Prozessor],      [Intel(R) Core(TM) i7-9700KF CPU \@ 3.60 GHz],
+		[Grafikkarte],    [NVIDIA GeForce GTX 1660 SUPER],
 		[RAM],            [2 x G.Skill F4-3200C16-8GIS],
 		[Festplatte],     [SanDisk SSD PLUS 2000GB],
 	),
@@ -23,12 +24,22 @@
 	table(
 		columns: (1fr, 2fr),
 		align: (left, right),
-		[Physische Kerne],   [$8$],
-		[Logische Kerne],    [$8$],
-		[Maximale Taktrate], [$4,6 "GHz"$],
-		[L1 Cachegröße],     [$512 "KiB"$],
-		[L2 Cachegröße],     [$2 "MiB"$],
-		[L3 Cachegröße],     [$12 "MiB"$],
+		[Physische Kerne],         $8$,
+		[Logische Kerne],          $8$,
+		[Maximale Taktrate],       $4,6 "GHz"$,
+		[Cachegröße (L1, L2, L3)], [$512 "KiB"$, $2 "MiB"$, $12 "MiB"$],
+	),
+)
+
+#figure(
+	caption: [Grafikkarteneigenschaften],
+	table(
+		columns: (1fr, 2fr),
+		align: (left, right),
+		[Basistaktung],          $1530 "Mhz"$,
+		[Boost-Taktung],         $1785 "Mhz"$,
+		[Speicherkonfiguration], $6 "GB GDDR6"$,
+		[Speicherschnittstelle], $192 "Bit"$,
 	),
 )
 
@@ -37,8 +48,8 @@
 	table(
 		columns: (1fr, 2fr),
 		align: (left, right),
-		[Größe],    [$2 times 8 "GiB"$],
-		[Taktrate], [$2133 "MHz"$],
+		[Größe],    $2 times 8 "GiB"$,
+		[Taktrate], $2133 "MHz"$,
 	),
 )
 
@@ -47,9 +58,9 @@
 	table(
 		columns: (1fr, 1fr, 1fr, 1fr),
 		align: (left, right, right, right),
-		[*Aktion*],  [*1 GiB*],        [*5 GiB*],        [*10 GiB*],
-		[Lesen],     [$776 "MiB/s"$],  [$384 "MiB/s"$],  [$218 "MiB/s"$],
-		[Schreiben], [$1739 "MiB/s"$], [$1929 "MiB/s"$], [$270 "MiB/s"$],
+		[*Aktion*],  [*1 GiB*],      [*5 GiB*],      [*10 GiB*],
+		[Lesen],     $776 "MiB/s"$,  $384 "MiB/s"$,  $218 "MiB/s"$,
+		[Schreiben], $1739 "MiB/s"$, $1929 "MiB/s"$, $270 "MiB/s"$,
 	),
 )
 
@@ -62,7 +73,7 @@
 		align: (x, y) => if y == 0 { center } else { (left, left, right, right, right).at(x) },
 		columns: 5,
 		[#box(width: 2.2cm)[*Datensatz*]], [*Datei*], [*Daten#linebreak()Punkte*], [*Segment#linebreak()Punkte*], [*Detailstufen#linebreak()Punkte*],
-		..data.slice(1).flatten(),
+		..data.flatten(),
 	),
 	caption: [Messwerte (1).],
 ) <messwerte_1>
@@ -72,8 +83,8 @@
 	table(
 		align: (x, y) => if y == 0 { center } else { (left, right, right, right, right, right).at(x) },
 		columns: 6,
-		[#box(width: 2.2cm)[*Datensatz*]], [*Segmente*], [*Punkte#linebreak()Laden*], [*Segmentierung*], [*Berechnungen*], [*Detailstufen*],
-		..data.slice(1).flatten(),
+		[#box(width: 2.2cm)[*Datensatz*]], [*Segmente*], [*Punkte#linebreak()Laden* $(s)$], [*Segmentierung* $(s)$], [*Berechnungen* $(s)$], [*Detailstufen* $(s)$],
+		..data.flatten(),
 	),
 	caption: [Messwerte (2).],
 ) <messwerte_2>

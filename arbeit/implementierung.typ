@@ -40,6 +40,7 @@ Das Projekt ist unter #link("https://github.com/antonWetzel/treee") verfügbar. 
 		`voronator`,         `0.2.1`,     [Voronoi-Diagramm bestimmen],
 		`cfg-if`,            `1.0.0`,     [Konditionales Kompilieren von Quelltext],
 		`static_assertions`, `1.1.0`,     [Systemeigenschaften überprüfen],
+		`colored`,           `2.1.0`,     [Farbiger Text im Terminal],
 	),
 ) <implementierung_bilbiotheken>
 
@@ -51,39 +52,46 @@ Als Datensätze werden Dateien im LASzip-Format verwendet. Dieses Format wird h�
 
 === Installation
 
-Für den Import und die Visualisierung wird das kompilierte Programm benötigt. Dieses kann mit dem Quelltext selber kompiliert werden oder bereits kompilierte Versionen können von #todo-inline[GitHub-Release] heruntergeladen werden. Die Schritte zum selber kompilieren sind im #link("https://github.com/antonWetzel/treee?tab=readme-ov-file#treee", [Readme])#footnote(`https://github.com/antonWetzel/treee?tab=readme-ov-file#treee`) verfügbar.
+Für den Import und die Visualisierung wird das kompilierte Programm benötigt. Dieses kann mit dem Quelltext selber kompiliert werden oder bereits kompilierte Versionen können von #link-footnote("https://github.com/antonWetzel/treee/releases", [GitHub-Release]) heruntergeladen werden. Die Schritte zum selber kompilieren sind im #link-footnote("https://github.com/antonWetzel/treee?tab=readme-ov-file#treee", [Readme]) verfügbar.
 
 
 === Ausführen
 
-In @implementierung_befehle sind die Kommandos gelistet, um den Importer und die Visualisierung zu starten. Für den Import können weitere Optionen angegeben werden, um den Ablauf an den Datensatz anzupassen.
+In @implementierung_befehle sind die Kommandos gelistet, um den Importer und die Visualisierung zu starten. Wenn das Programm ohne Argumente oder direkt ohne Terminal gestartet wird, kann die gewünschte Funktion interaktive ausgewählt werden. Für den Import können weitere Optionen angegeben werden, um den Ablauf an den Datensatz anzupassen.
 
-#figure(table(
-	align: (x, y) => if y == 0 { center } else { left },
-	columns: (auto, 1fr),
-	[*Kommando*],          [*Funktion*],
-	`treee importer`,      [Importer starten],
-	`treee help importer`, [Verfügbare Optionen für den Importer anzeigen],
-	`treee viewer`,        [Visualisierung starten],
-)) <implementierung_befehle>
+#figure(
+	caption: [Mögliche Befehle für das Programm.],
+	table(
+		align: (x, y) => if y == 0 { center } else { left },
+		columns: (auto, 1fr),
+		[*Kommando*],          [*Funktion*],
+		`treee`,               [Interaktive Umgebung starten],
+		`treee importer`,      [Importer starten],
+		`treee help importer`, [Verfügbare Optionen für den Importer anzeigen],
+		`treee viewer`,        [Visualisierung starten],
+	),
+) <implementierung_befehle>
 
 
 === Import
 
 Für den Import wird der Datensatz und der Ordner zum Speichern der Ergebnisse benötigt. Beide können über die Befehlszeile angegeben werden oder über ein Dialogfenster ausgewählt werden. Alle weiteren Optionen sind in @implementierung_import_optionen gelistet.
 
-#figure(table(
-	align: (x, y) => if y == 0 { top + center } else { top + (left, right, left).at(x) },
-	columns: (auto, auto, 1fr),
-	[*Flag*],                    [*Standardwert*], [*Funktion*],
-	`--max-threads`,             [unbegrenzt],     [Maximale Anzahl an parallel benutzen Threads],
-	`--min-segment-size`,        $100$,            [Mindestanzahl von Punkten für ein Segment],
-	`--segmenting-slice-width`,  $1.0$,            [Breite der horizontalen Scheiben für die Segmentierung in Meter],
-	`--segmenting-max-distance`, $1.0$,            [Mindestabstand zwischen Bereichen in Meter],
-	`--neighbors-count`,         $31$,             [Maximale Anzahl der Punkte in der Nachbarschaft von einem Punkt],
-	`--neighbors-max-distance`,  $1.0$,            [Maximale Distanz vom Punkt zu den Punkten in der Nachbarschaft],
-	`--lod-size-scale`,          $0.95$,           [Skalierungsfaktor für die Fläche der kombinierten Punkte],
-)) <implementierung_import_optionen>
+#figure(
+	caption: [Mögliche Optionen für den Import.],
+	table(
+		align: (x, y) => if y == 0 { top + center } else { top + (left, right, left).at(x) },
+		columns: (auto, auto, 1fr),
+		[*Flag*],                    [*Standardwert*], [*Funktion*],
+		`--max-threads`,             [unbegrenzt],     [Maximale Anzahl an parallel benutzen Threads],
+		`--min-segment-size`,        $100$,            [Mindestanzahl von Punkten für ein Segment],
+		`--segmenting-slice-width`,  $1.0$,            [Breite der horizontalen Scheiben für die Segmentierung in Meter],
+		`--segmenting-max-distance`, $1.0$,            [Mindestabstand zwischen Bereichen in Meter],
+		`--neighbors-count`,         $31$,             [Maximale Anzahl der Punkte in der Nachbarschaft von einem Punkt],
+		`--neighbors-max-distance`,  $1.0$,            [Maximale Distanz vom Punkt zu den Punkten in der Nachbarschaft],
+		`--lod-size-scale`,          $0.95$,           [Skalierungsfaktor für die Fläche der kombinierten Punkte],
+	),
+) <implementierung_import_optionen>
 
 
 === Visualisierung

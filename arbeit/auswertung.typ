@@ -121,18 +121,17 @@ Das Eye-Dome-Lighting ermöglicht eine bessere Wahrnehmung der verlorenen Tiefen
 ) <auswertung_vis_lod_memory>
 
 
-== Fazit
+== Diskussion
 
 - Segmentierung Benutzbar, aber hat Fehler.
 - interaktive Visualisierung möglich
 	- gute Visualisierung der Punkte
--
-- ...
-
-#todo[Fazit]
-
-
-== Diskussion
+	- Überblick über Daten mögliche
+- Auswertung der Daten benötigt weitere Analyse
 
 
 == Ausblick
+
+- Benutzung der ermittelten Daten
+	- Neuronale Ansätze
+	- Zurückführung der Ergebnisse von den Bäumen auf das gesamte Waldstück
