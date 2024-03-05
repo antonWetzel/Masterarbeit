@@ -146,7 +146,7 @@ Das Projekt ist in mehrere Module unterteilt, um den Quelltext zu strukturieren.
 		columns: (auto, 1fr),
 		align: (x, y) => if y == 0 { center } else { (left, left).at(x) },
 		[*Name*],        [*Funktionalität*],
-		`math`,          [Funktionen für Vektoren, Matrizes, Projektionen und Winkel],
+		`data-file`,     [Daten zusammengefasst einer Datei speichern],
 		`project`,       [Format für eine Punktwolke und zugehörige Daten],
 		`k-nearest`,     [Nachbarschaftssuche mit KD-Bäumen],
 		`input`,         [Maus- und Tastatureingaben verarbeiten],
@@ -169,29 +169,28 @@ Das Projekt ist in mehrere Module unterteilt, um den Quelltext zu strukturieren.
 		}
 		set-style(mark: (end: ">", fill: black))
 
-		box(0, 0, "math")
-		box(4, 0, "project")
-		box(4, -2, "k-nearest")
-		box(4, 2, "input")
-		box(8, 0, "triangulation")
-		box(8, 2, "render")
-		box(8, -2, "importer")
-		box(12, 1, "viewer")
-		box(12, -1, "treee")
+		box(4, -1, "project")
+		box(4, 1, "data-file")
+		box(4, -3, "k-nearest")
+		box(4, 3, "input")
+		box(9, -1, "triangulation")
+		box(9, 3, "render")
+		box(9, -3, "importer")
+		box(9, 1, "viewer")
+		box(14, -1, "treee")
 
-		line("math.east", "k-nearest.west")
-		line("math.east", "project.west")
-		line("math.east", "input.west")
 		line("k-nearest.east", "triangulation.west")
 		line("project.east", "render.west")
 		line("input.east", "render.west")
-		line("render.east", "viewer.west")
-		line("triangulation.east", "viewer.west")
+		line("data-file.east", "importer.west")
+		line("data-file.east", "viewer.west")
+		line("render.south", "viewer.north")
+		line("triangulation.north", "viewer.south")
 		line("k-nearest.east", "importer.west")
 		line("project.east", "importer.west")
 
 		line("importer.east", "treee.west")
-		line("viewer.south", "treee.north")
+		line("viewer.east", "treee.west")
 	}),
 ) <appendix_crates_abhängigkeiten>
 
@@ -464,4 +463,4 @@ Beim Anzeigen wird vom Root-Knoten aus zuerst geprüft, ob der momentane Knoten 
 	),
 ) <implementierung_culling>
 
-Die Auswahl der Detailstufen kann dabei geändert werden. Im Normalfall wird die gewünschte Detailstufe abhängig vom Abstand zur Kamera ausgewählt. Dadurch wird in der Nähe der Kamera genauere Detailstufen oder die unvereinfachten Punkte angezeigt und weit von der Kamera entfernt immer weiter vereinfachte Versionen. Eine andere Option ist es, die gleiche Detailstufe für alle Knoten zu verwenden.
+Die Auswahl der Detailstufen kann dabei geändert werden. Im Normalfall wird die gewünschte Detailstufe abhängig vom Abstand zur Kamera ausgewählt. Dadurch werden in der Nähe der Kamera genauere Detailstufen oder die originalen Punkte angezeigt und weit von der Kamera entfernt werden die Detailstufen immer weiter vereinfacht. Eine andere Option ist es, die gleiche Detailstufe für alle Knoten zu verwenden.

@@ -15,7 +15,7 @@ Die automatisierte Unterteilung in einzelne Bäume und die Berechnung der charak
 
 Das Ziel dieser Arbeit ist eine Erforschung des Ablaufs von einem Scan von einem Waldstücke bis zur Analyse der Daten mit zugehöriger interaktiven Visualisierung der Ergebnisse. Ein Beispiel für eine Visualisierung ist in @einleitung_beispiel gegeben.
 
-#figure(caption: [Waldstück mit Einfärbung der Punkte nach Höhe.], image("../images/br06-uls-crop.png")) <einleitung_beispiel>
+#figure(caption: [Waldstück mit Einfärbung der Punkte nach Höhe.], image("../images/auto-crop/br06-uls.png")) <einleitung_beispiel>
 
 Als Eingabe wird der Datensatz vom Waldstücke benötigt. Dabei wird davon ausgegangen, dass ein Datensatz eine ungeordnete Menge von Punkten enthält, für die nur die Position im dreidimensionalen Raum bekannt ist. Je nach Scantechnologie können die Punkte im Datensatz entsprechend der räumlichen Verteilung geordnet sein oder weitere Eigenschaften wie die Farbe der Punkte enthalten. Die weiteren Daten werden nicht bei der Analyse betrachtet, damit die Auswertung für alle Datensatze geeignet ist.
 

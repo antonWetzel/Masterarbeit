@@ -35,6 +35,7 @@ for file in os.listdir(PATH):
 table.sort()
 table.insert(0, ["data"] + KEYS + TIMES)
 
+
 print(table)
 
 

@@ -84,9 +84,9 @@ Für Polygone mit mehr Ecken, wird der benötigte Bereich kleiner, es werden abe
 	grid(
 		columns: 1 * 3,
 		gutter: 1em,
-		boxed("../images/point_triangle-crop.png", caption: [Dreiecke]),
-		boxed("../images/point_quad-crop.png", caption: [Quadrate]),
-		boxed("../images/point_circle-crop.png", caption: [Kreise]),
+		boxed("../images/crop/point_triangle.png", caption: [Dreiecke]),
+		boxed("../images/crop/point_quad.png", caption: [Quadrate]),
+		boxed("../images/crop/point_circle.png", caption: [Kreise]),
 	),
 )
 
@@ -197,15 +197,15 @@ Besonders für weit entfernte Punkt ist es nicht notwendig, alle Punkte genau wi
 	grid(
 		columns: (3),
 		gutter: 1em,
-		subfigure(image("../images/lod_0-crop.png"), caption: [Stuffe 0]),
-		subfigure(image("../images/lod_1-crop.png"), caption: [Stuffe 1]),
-		subfigure(image("../images/lod_2-crop.png"), caption: [Stuffe 2]),
-		subfigure(image("../images/lod_3-crop.png"), caption: [Stuffe 3]),
-		subfigure(image("../images/lod_4-crop.png"), caption: [Stuffe 4]),
-		subfigure(image("../images/lod_5-crop.png"), caption: [Stuffe 5]),
-		subfigure(image("../images/lod_6-crop.png"), caption: [Stuffe 6]),
-		subfigure(image("../images/lod_7-crop.png"), caption: [Stuffe 7]),
-		subfigure(image("../images/lod_8-crop.png"), caption: [Stuffe 8]),
+		subfigure(image("../images/crop/lod_0.png"), caption: [Stuffe 0]),
+		subfigure(image("../images/crop/lod_1.png"), caption: [Stuffe 1]),
+		subfigure(image("../images/crop/lod_2.png"), caption: [Stuffe 2]),
+		subfigure(image("../images/crop/lod_3.png"), caption: [Stuffe 3]),
+		subfigure(image("../images/crop/lod_4.png"), caption: [Stuffe 4]),
+		subfigure(image("../images/crop/lod_5.png"), caption: [Stuffe 5]),
+		subfigure(image("../images/crop/lod_6.png"), caption: [Stuffe 6]),
+		subfigure(image("../images/crop/lod_7.png"), caption: [Stuffe 7]),
+		subfigure(image("../images/crop/lod_8.png"), caption: [Stuffe 8]),
 	),
 )
 

@@ -11,6 +11,9 @@ patterns = [
 from PIL import Image
 import os
 
+if not os.path.exists("crop"):
+    os.makedirs("crop")
+
 for pattern in patterns:
 	name = pattern[0]
 	amount = pattern[1]
@@ -24,25 +27,19 @@ for pattern in patterns:
 			continue
 		img = Image.open(file)
 		img = img.crop((amount[0], amount[1], img.width - amount[2], img.height - amount[3]))
-		img.save(file[:-4] + "-crop.png")
+		img.save("./crop/" + file)
 		print("crop " + file)
 
-whitespace = [
-	"segments",
-	"br06",
-	"perf",
-	"segmentation_top"
-]
+if not os.path.exists("auto-crop"):
+    os.makedirs("auto-crop")
 
-for name in whitespace:
-	for file in os.listdir():
-		if "crop" in file:
-			continue
-		if not file.endswith("png"):
-			continue
-		if name not in file:
-			continue
-		img = Image.open(file)
-		img = img.crop(img.getbbox())
-		img.save(file[:-4] + "-crop.png")
-		print("crop " + file)
+
+for file in os.listdir():
+	if "crop" in file:
+		continue
+	if not file.endswith("png"):
+		continue
+	img = Image.open(file)
+	img = img.crop(img.getbbox())
+	img.save("./auto-crop/" + file)
+	print("crop " + file)

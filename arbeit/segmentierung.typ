@@ -118,11 +118,7 @@ Weil die konvexe Hülle von allen Punkten in einem Bereich gebildet wird, könne
 
 === Koordinaten bestimmen
 
-Für die Bäume der momentanen Scheibe werden die Koordinaten gesucht. Die Menge der Koordinaten startet mit der leeren Menge für die höchste Scheibe. Bei jeder Scheibe wird die Menge der Koordinaten mit den gefundenen Bereichen aktualisiert. Dafür werden für alle Bereiche in der momentanen Scheibe die bekannten Koordinaten bestimmt, welche im Bereich liegen.
-
-Wenn keine Koordinate in dem Bereich liegt, so fängt der Bereich ein neues Segment an. Als Koordinate wird der geometrische Schwerpunkt vom Bereich verwendet. Liegen vorherige Koordinaten im Bereich, wird kein neues Segment angefangen. Liegt aber genau eine Koordinate im Bereich, wird die Koordinate mit dem Schwerpunkt vom Bereich aktualisiert.
-
-Für die Berechnung vom Schwerpunkt wird der Bereich in Dreiecke unterteilt und der gewichtete Durchschnitt der Schwerpunkte der Dreiecke berechnet. Weil der Bereich konvex ist, kann ein beliebiger Punkt ausgewählt werden und alle Dreiecke mit dem Punkt und den zwei Punkten von einer Kante ohne den Punkt, bilden ein Dreieck. Das Gewicht für ein Dreieck ist der relative Anteil der Fläche vom Dreieck zur Gesamtfläche vom Bereich. Ein Beispiel ist in @segmentierung_schwerpunkt gegeben.
+Für die Bäume der momentanen Scheibe werden die Koordinaten gesucht. Die Menge der Koordinaten startet mit der leeren Menge für die höchste Scheibe. Bei jeder Scheibe wird die Menge der Koordinaten mit den gefundenen Bereichen aktualisiert. Dafür werden für alle Bereiche in der momentanen Scheibe zuerst die Schwerpunkte wie in @segmentierung_schwerpunkt berechnet.
 
 #figure(
 	caption: [Unterteilung von einem Bereich in Dreiecke. Die Schwerpunkte der Dreiecke sind in Grau und vom gesamten Bereich in Grün. Die durchschnittliche Position der Eckpunkte ist in Rot.],
@@ -180,6 +176,10 @@ Für die Berechnung vom Schwerpunkt wird der Bereich in Dreiecke unterteilt und 
 	}),
 ) <segmentierung_schwerpunkt>
 
+Danach werden die Koordinaten aus den vorherigen Scheiben mit den Schwerpunkten von der momentanen Scheibe aktualisiert. Für jede Koordinate wird der nächste Schwerpunkt näher als eine maximale Distanz bestimmt. Wenn ein naher Schwerpunkt gefunden wurde, wird die Koordinate mit der Position vom Schwerpunkte aktualisiert. Wenn kein naher Schwerpunkt existiert, so bleibt die Position gleich.
+
+Für alle Schwerpunkte, welche nicht nah an einen der vorherigen Koordinaten liegt, wird ein neues Segment angefangen. Dafür wird der Schwerpunkt zur Liste der Koordinaten hinzugefügt.
+
 
 === Punkte zuordnen
 
@@ -197,5 +197,5 @@ Mit den Koordinaten wird das Voronoi-Diagramm berechnet, welches den Raum in Ber
 
 #figure(
 	caption: [Segmentierung von einem Waldstück.],
-	image("../images/segments-br06-als-crop.png"),
+	image("../images/auto-crop/segments-br06-als.png"),
 ) <segment_example>

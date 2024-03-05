@@ -21,6 +21,6 @@
 
 #v(2fr)
 
-#image("../images/segments-crop.png")
+#image("../images/auto-crop/segments.png")
 
 #v(1fr)

@@ -272,8 +272,8 @@ In @triangulierung_alpha wurde die Triangulation für die gleiche Punktwolke mit
 #let lines_and_mesh(prec) = {
 	stack(
 		dir: ttb,
-		image("../images/triangulation_mesh_" + prec + "-crop.png"),
-		image("../images/triangulation_lines_" + prec + "-crop.png"),
+		image("../images/crop/triangulation_mesh_" + prec + ".png"),
+		image("../images/crop/triangulation_lines_" + prec + ".png"),
 	)
 }
 

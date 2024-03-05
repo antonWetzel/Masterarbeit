@@ -28,7 +28,7 @@ In @auswertung_import_geschwindigkeit ist der Durchsatz beim Import angegeben. D
 	image("../data/punkte_pro_sekunde.svg"),
 ) <auswertung_import_geschwindigkeit>
 
-In @auswertung_import_phasen ist die Dauer für die einzelnen Phasen vom Import aufgeschlüsselt. // Die größte Schwankung bei der Dauer ist in der Segmentierungsphase. Diese dauert bei einer größeren Anzahl an Datenpunkten länger pro Punkt, weil der Arbeitsaufwand für mehr Punkte mehr als linear zunimmt.
+In @auswertung_import_phasen ist die Dauer für die einzelnen Phasen vom Import aufgeschlüsselt. Bei jeder Phase wird jeder Punkt betrachtet, aber am längsten wird für die Segmentierung und Berechnungen von Informationen benötigt, weil diese mehr Aufwand pro Punkt benötigen.
 
 #figure(
 	caption: [Dauer für die einzelnen Importphasen in $mu s$ pro Punkt.],
@@ -42,10 +42,15 @@ Ein Beispiel für eine Segmentierung ist in @segmentierung_ergebnis gegeben. Die
 
 #figure(
 	caption: [Segmentierung von einer Punktwolke.],
-	image("../images/segments-br06-als-crop.png"),
+	image("../images/auto-crop/segments-br06-als.png"),
 ) <segmentierung_ergebnis>
 
-Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeordnet. Bei frei stehenden Flächen entstehen separate Segmente und unter Bäumen werden die Punkte zum Baum zugeordnet.
+Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeordnet. Bei Bereichen ohne Bäume entstehen dadurch Segmente wie in @auswertung_segmentierung_keine_bäume. Die Punkte in freien Flächen werden zu eigenen Segmenten zusammengefasst. Wenn die Punkte in der Nähe von einem Baum liegen, werden diese zu dem Baum hinzugefügt.
+
+#figure(
+	caption: [Segmente bei Gebieten ohne Bäume.],
+	rect(image("../images/auto-crop/segmentation_no_trees.png"), inset: 0.5pt),
+) <auswertung_segmentierung_keine_bäume>
 
 Kleine Bereiche werden vor der Zuordnung entfernt. Dadurch wird vermieden, dass ein Baum in mehrere Segmente unterteilt wird. Wenn die Spitze von einem Baum gerade so in einer Scheibe liegt, so ist der zugehörige Bereich klein und wird gefiltert. Dadurch wird kein neues Segment für den Baum erstellt und die Punkte werden dem nächsten Baum zugeordnet. Der Effekt ist in @auswertung_segmentierung_spitze zu sehen.
 
@@ -62,12 +67,38 @@ Kleine Bereiche werden vor der Zuordnung entfernt. Dadurch wird vermieden, dass 
 
 == Analyse von Segmenten
 
-#todo[Berechnung Ergebnisse]
+In @auswertung_curve und @auswertung_var ist ein Segment basierend auf den berechneten Eigenschaften eingefärbt gegeben und zusätzlich mit den größten und kleinste Werte gefiltert.
+
+Die Punkte mit der größten Krümmung gehören zu den Blättern, was eine teilweise Filterung ermöglicht. Die Punkte beim Stamm haben eine geringere Krümmung, aber auch Punkte, die zu den Blättern gehören, können eine geringe Krümmung haben.
+
+Punkte zugehörig zu einer geringen horizontalen Ausdehnung gehören immer zum Stamm oder der Spitze der Krone, wodurch der Stamm identifiziert werden kann.
+
+#figure(
+	caption: [Punktwolke basierend auf der Krümmung eingefärbt.],
+	grid(
+		columns: 1 * 3,
+		gutter: 1em,
+		subfigure(box(image("../images/crop/curve_all.png"), stroke: 1pt + gray), caption: [Alle Punkte]),
+		subfigure(box(image("../images/crop/curve_low.png"), stroke: 1pt + gray), caption: [Geringe Varianz]),
+		subfigure(box(image("../images/crop/curve_high.png"), stroke: 1pt + gray), caption: [Hohe Varianz]),
+	),
+) <auswertung_curve>
+
+#figure(
+	caption: [Punktwolke basierend auf der Ausdehnung eingefärbt.],
+	grid(
+		columns: 1 * 3,
+		gutter: 1em,
+		subfigure(box(image("../images/crop/var_all.png"), stroke: 1pt + gray), caption: [Alle Punkte]),
+		subfigure(box(image("../images/crop/var_trunk.png"), stroke: 1pt + gray), caption: [Geringe Ausdehnung]),
+		subfigure(box(image("../images/crop/var_crown.png"), stroke: 1pt + gray), caption: [Hohe Ausdehnung]),
+	),
+) <auswertung_var>
 
 
 == Triangulierung
 
-Ein Beispiel für die Triangulation ist in @auswertung_triangulierung gegeben. Mit dem Ball-Pivoting-Algorithmus wird eine äußere Hülle für die Punkte bestimmt, wodurch der Algorithmus auch für eine Baumkrone mit Blättern geeignet ist. Beim Baumstamm liegen alle Punkte auf der Oberfläche, welche trianguliert werden kann. Bei der Krone sind die Punkte im Raum verteilt, wodurch diese nicht auf einer eindeutigen Oberfläche liegen.
+Ein Beispiel für die Triangulation ist in @auswertung_triangulierung gegeben. Mit dem Ball-Pivoting-Algorithmus wird eine äußere Hülle für die Punkte bestimmt, wodurch der Algorithmus auch für eine Baumkrone mit Blättern geeignet ist. Beim Baumstamm liegen alle Punkte auf der Oberfläche, wodurch diese problemlos trianguliert werden können. Bei der Krone sind die Punkte im Raum verteilt, wodurch diese nicht auf einer eindeutigen Oberfläche liegen.
 
 #figure(
 	caption: [Beispiel für eine Triangulierung von einem Baum mit $alpha = 1m$.],
@@ -76,15 +107,15 @@ Ein Beispiel für die Triangulation ist in @auswertung_triangulierung gegeben. M
 		spacing: 1em,
 		subfigure(caption: [Punkte], width: 30%, box(
 			clip: true,
-			image("../images/triangulation_big_points-crop.png"),
+			image("../images/crop/triangulation_big_points.png"),
 		)),
 		subfigure(caption: [Dreiecke umrandet], width: 30%, box(
 			clip: true,
-			image("../images/triangulation_big_lines-crop.png"),
+			image("../images/crop/triangulation_big_lines.png"),
 		)),
 		subfigure(caption: [Dreiecke ausgefüllt], width: 30%, box(
 			clip: true,
-			image("../images/triangulation_big_mesh-crop.png"),
+			image("../images/crop/triangulation_big_mesh.png"),
 		)),
 	),
 ) <auswertung_triangulierung>
@@ -104,10 +135,10 @@ In @auswertung_vis_time ist die benötigte Renderzeit für die Beispiele aus @au
 	caption: [Visualisierung von einem Datensatz mit #number(59967504) Punkten.],
 	grid(
 		columns: 1 * 2,
-		subfigure(image("../images/perf_lod_no-crop.png"), caption: [Detailstufen]),
-		subfigure(image("../images/perf_lod_eye-crop.png"), caption: [Detailstufen + Eye-Dome-Lighting]),
-		subfigure(image("../images/perf_full_no-crop.png"), caption: [Alle Punkte]),
-		subfigure(image("../images/perf_full_eye-crop.png"), caption: [Alle Punkte + Eye-Dome-Lighting]),
+		subfigure(image("../images/auto-crop/perf_lod_no.png"), caption: [Detailstufen]),
+		subfigure(image("../images/auto-crop/perf_lod_eye.png"), caption: [Detailstufen + Eye-Dome-Lighting]),
+		subfigure(image("../images/auto-crop/perf_full_no.png"), caption: [Alle Punkte]),
+		subfigure(image("../images/auto-crop/perf_full_eye.png"), caption: [Alle Punkte + Eye-Dome-Lighting]),
 	),
 ) <auswertung_vis_example>
 
