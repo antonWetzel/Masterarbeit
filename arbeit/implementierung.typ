@@ -14,8 +14,9 @@ Das Projekt ist unter #link("https://github.com/antonWetzel/treee") verfügbar. 
 		columns: (auto, auto, 1fr),
 		align: (x, y) => if y == 0 { center } else { (left, right, left).at(x) },
 		[*Name*],            [*Version*], [*Funktionalität*],
+		`nalgebra`,          `0.32.4`,    [Lineare Algebra],
 		`pollster`,          `0.3`,       [Auf asynchrone Ergebnisse warten],
-		`rfd`,               `0.13`,      [Dialogfenster zum Öffnen und Speichern von Dateien],
+		`rfd`,               `0.14`,      [Dialogfenster zum Öffnen und Speichern von Dateien],
 		`crossbeam`,         `0.8`,       [Synchronisierung zwischen Threads],
 		`log`,               `0.4`,       [Logs erzeugen],
 		`env_logger`,        `0.11`,      [Wiedergabe von Logs],
@@ -24,7 +25,6 @@ Das Projekt ist unter #link("https://github.com/antonWetzel/treee") verfügbar. 
 		`winit`,             `0.29`,      [Fenstermanagement],
 		`bytemuck`,          `1.14`,      [Konversation von Daten zu Bytes],
 		`serde`,             `1.0`,       [Serialisierung von Datentypen],
-		`bincode`,           `1.3.3`,     [Serialisierung als Binary],
 		`serde_json`,        `1.0`,       [Serialisierung als JSON],
 		`rand`,              `0.8`,       [Generierung von Zufallszahlen],
 		`num_cpus`,          `1.15`,      [Prozessoranzahl bestimmen],
@@ -80,10 +80,10 @@ Für den Import wird der Datensatz und der Ordner zum Speichern der Ergebnisse b
 #figure(
 	caption: [Mögliche Optionen für den Import.],
 	table(
-		align: (x, y) => if y == 0 { top + center } else { top + (left, right, left).at(x) },
-		columns: (auto, auto, 1fr),
+		align: (x, y) => if y == 0 { horizon + center } else { horizon + (left, right, left).at(x) },
+		columns: (1fr, auto, 2fr),
 		[*Flag*],                    [*Standardwert*], [*Funktion*],
-		`--max-threads`,             [unbegrenzt],     [Maximale Anzahl an parallel benutzen Threads],
+		`--max-threads`,             [unbegrenzt],     [Maximale Anzahl an parallelen Threads],
 		`--min-segment-size`,        $100$,            [Mindestanzahl von Punkten für ein Segment],
 		`--segmenting-slice-width`,  $1.0$,            [Breite der horizontalen Scheiben für die Segmentierung in Meter],
 		`--segmenting-max-distance`, $1.0$,            [Mindestabstand zwischen Bereichen in Meter],
@@ -96,7 +96,7 @@ Für den Import wird der Datensatz und der Ordner zum Speichern der Ergebnisse b
 
 === Visualisierung
 
-Um eine Punktewolke zu öffnet wird die `project.epc` Datei geladen. In der Datei ist die Struktur vom Octree und Informationen über die Segmente enthalten. Die Punktdaten werden noch nicht geladen.
+Um eine Punktewolke zu öffnen, wird die `project.json` Datei geladen. In der Datei ist die Struktur vom Octree und Informationen über die Segmente enthalten. Die Punktdaten werden noch nicht geladen.
 
 Je nach Position der Kamera werden die benötigten Punkte geladen, welche momentan sichtbar sind. Dadurch können auch Punktwolken angezeigt werden, die mehr Punkte enthalten als gleichzeitig interaktiv anzeigbar. Auch bei den Segmenten wird nur das Segment geladen, welches ausgewählt wurde.
 
@@ -108,15 +108,15 @@ Mit dem Benutzerinterface kann die Visualisierung angepasst werden. Die Optionen
 		gutter: 3em,
 		columns: 1 * (1fr, 2fr),
 		rect(image("../images/ui.png"), radius: 4pt, inset: 2pt, stroke: rgb(27, 27, 27) + 4pt),
-		align(left)[
+		align(top + left)[
 			- *Load Project*
 				- Die geladene Punktwolke ändern
 			- *Property*
 				- Die angezeigte Eigenschaft ändern
 			- *Segment*
-				- Informationen über das ausgewählte Segment
 				- Triangulation starten und anzeigen
-				- Punkte speichern
+				- Informationen über das ausgewählte Segment
+				- Segment speichern
 			- *Visual*
 				- Punktegröße ändern
 				- Punkte basierend auf der ausgewählten Eigenschaft filtern
@@ -146,14 +146,14 @@ Das Projekt ist in mehrere Module unterteilt, um den Quelltext zu strukturieren.
 		columns: (auto, 1fr),
 		align: (x, y) => if y == 0 { center } else { (left, left).at(x) },
 		[*Name*],        [*Funktionalität*],
+		`input`,         [Maus- und Tastatureingaben verarbeiten],
 		`data-file`,     [Daten zusammengefasst einer Datei speichern],
 		`project`,       [Format für eine Punktwolke und zugehörige Daten],
 		`k-nearest`,     [Nachbarschaftssuche mit KD-Bäumen],
-		`input`,         [Maus- und Tastatureingaben verarbeiten],
-		`triangulation`, [Triangulation von Punktwolken],
 		`render`,        [Rendern von Punktwolken, Linien und Meshes mit `wgpu`],
-		`importer`,      [Import von Punktwolken],
 		`viewer`,        [Visualisierung von Punktwolken],
+		`triangulation`, [Triangulation von Punktwolken],
+		`importer`,      [Import von Punktwolken],
 		`treee`,         [Gemeinsames Interface für `importer` und `viewer`],
 	),
 ) <appendix_crates>
@@ -400,7 +400,7 @@ Weil die Knoten nach Distanz sortiert betrachtet werden, kann die Suche abgebroc
 
 == Punktwolkenformat
 
-Die Struktur von einer Punktwolke ist in der `project.epc` Datei gespeichert. Dazu gehören die verfügbaren Eigenschaften und der Octree. Alle benötigten Daten für `project.epc` werden in #link-footnote("https://github.com/antonWetzel/treee/blob/main/project/src/lib.rs", `project/src/lib.rs`) definiert.
+Die Struktur von einer Punktwolke ist in der `project.json` Datei gespeichert. Dazu gehören die verfügbaren Eigenschaften und der Octree. Alle benötigten Daten für `project.json` werden in #link-footnote("https://github.com/antonWetzel/treee/blob/main/project/src/lib.rs", `project/src/lib.rs`) definiert.
 
 
 === Daten

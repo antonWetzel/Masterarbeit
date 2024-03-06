@@ -3,10 +3,6 @@
 
 = Auswertung <auswertung>
 
-#todo[Ergebnisse]
-
-#todo[Ausschreiben]
-
 
 == Testdaten
 
@@ -152,17 +148,23 @@ Das Eye-Dome-Lighting ermöglicht eine bessere Wahrnehmung der verlorenen Tiefen
 ) <auswertung_vis_lod_memory>
 
 
-== Diskussion
+== Fazit
 
-- Segmentierung Benutzbar, aber hat Fehler.
-- interaktive Visualisierung möglich
-	- gute Visualisierung der Punkte
-	- Überblick über Daten mögliche
-- Auswertung der Daten benötigt weitere Analyse
+#todo[Mehr]
+
+Die Software ermöglicht den Übergang von den Punktdaten ohne weitere Informationen zu einer interaktiven Visualisierung vom Waldstück. Dadurch kann sich ein Überblick über das gescannte Waldstücke gemacht werden.
+
+Die Segmentierung unterteilt Waldstücke besser, wenn die Kronen der Bäume klar getrennte Spitzen haben. Dadurch werden manche Waldstücke gut segmentiert, aber je näher die Kronen der Bäume zueinander sind, desto wahrscheinlicher werden mehrere Bäume zu einem Segment zusammengefasst.
+
+#todo[Triangulierung]
+
+Die Visualisierung kann die berechneten Daten ohne Probleme visualisieren. Durch die Detailstufen können auch größere Datenmengen interaktive angezeigt werden.
 
 
 == Ausblick
 
-- Benutzung der ermittelten Daten
-	- Neuronale Ansätze
-	- Zurückführung der Ergebnisse von den Bäumen auf das gesamte Waldstück
+#todo[Mehr]
+
+Momentan werden die ermittelten Daten nur für die Visualisierung verwendet. Um die Daten als Basis für weitere Analysen zu verwenden, müssen diese in einem festgelegten Format gespeichert werden.
+
+Vor der Visualisierung müssen die Daten importiert werden. Je größer die Datenmenge, desto länger dauert der Import und während des Imports können die Daten noch nicht inspiziert werden. Die Möglichkeit die Zwischenergebnisse vom Importprozess anzuzeigen würde das Anpassen von Importparametern erleichtern.
