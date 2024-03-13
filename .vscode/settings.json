@@ -3,5 +3,39 @@
 		"editor.wordWrap": "on",
 		"editor.semanticHighlighting.enabled": true,
 		"editor.tabSize": 4
-	}
+	},
+	"generic-lsp.configuration": [
+		{
+			"language": "typst",
+			"lsp": "typst-languagetool-lsp",
+			"options": {
+				"language": "de-DE",
+				"dictionary": [
+					"Normalen",
+					"Voronoi-Diagramm",
+					"LASzip",
+					"LASzip-Format",
+					"Octree",
+					"Quadtree",
+					"Eye-Dome",
+					"Lighting",
+					"Renderzeit",
+					"Ball-Pivoting",
+				],
+				"rules": {
+					"functions": {
+						"number": {
+							"before": "0",
+							"after": "",
+						},
+						"link": {
+							"before": "https://link.com",
+							"after": "",
+						}
+					}
+				},
+				"local_languagetool_folder": "D:/LanguageTool-6.3/",
+			}
+		}
+	]
 }

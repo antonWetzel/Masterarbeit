@@ -225,9 +225,9 @@ Für die Berechnung einer Detailstufe wird der Voxel, welcher zu dem Knoten geh�
 Bei der nächsten gröberen Detailstufe sind auch die zugehörigen Voxel von den Knoten größer. Durch die feste Anzahl der Teilvoxel sind diese deshalb größer, wodurch die Punkte weiter vereinfacht werden.
 
 
-=== Eye-Dome-Lighting
+=== Eye-Dome Lighting
 
-Um die Punktwolke anzuzeigen, werden die Punkte aus dem dreidimensionalen Raum auf den zweidimensionalen Monitor projiziert. Dabei gehen die Tiefeninformationen verloren. Mit der Rendertechnik *Eye-Dome-Lighting* werden die Kanten von Punkten hervorgehoben, bei denen die Tiefe sich stark ändert.
+Um die Punktwolke anzuzeigen, werden die Punkte aus dem dreidimensionalen Raum auf den zweidimensionalen Monitor projiziert. Dabei gehen die Tiefeninformationen verloren. Mit der Rendertechnik *Eye-Dome Lighting* werden die Kanten von Punkten hervorgehoben, bei denen die Tiefe sich stark ändert.
 
 Beim Rendern von 3D-Scenen wird für jedes Pixel die momentane Tiefe vom Polygon an dieser Stelle gespeichert. Das wird benötigt, dass bei überlappenden Polygonen das nähere Polygon an der Kamera angezeigt wird. Nachdem die Szene gerendert ist, wird mit den Tiefeninformationen für jedes Pixel der Tiefenunterschied zu den umliegenden Pixeln bestimmt. Das Tiefenbild für die Veranschaulichung ist in @eye_dome_depth gegeben.
 
@@ -243,13 +243,13 @@ Der Effekt entsteht dadurch, dass für jedes Pixel der maximale Tiefenunterschie
 #let boxed(p, caption: []) = subfigure(box(image(p), fill: rgb(35%, 49%, 58%), stroke: 1pt), caption: caption)
 
 #figure(
-	caption: [Waldstück mit und ohne Eye-Dome-Lighting. Die Punkte sind zusätzlich in Weiß angezeigt, um den Effekt hervorzuheben.],
+	caption: [Waldstück mit und ohne Eye-Dome Lighting. Die Punkte sind zusätzlich in Weiß angezeigt, um den Effekt hervorzuheben.],
 	grid(
 		columns: 2 * 1,
 		gutter: 1em,
-		boxed("../images/eye_dome_without.png", caption: [ohne Eye-Dome-Lighting]),
-		boxed("../images/eye_dome_with.png", caption: [mit Eye-Dome-Lighting]),
-		boxed("../images/eye_dome_white_without.png", caption: [einfarbig ohne Eye-Dome-Lighting]),
-		boxed("../images/eye_dome_white_with.png", caption: [einfarbig mit Eye-Dome-Lighting]),
+		boxed("../images/eye_dome_without.png", caption: [ohne Eye-Dome Lighting]),
+		boxed("../images/eye_dome_with.png", caption: [mit Eye-Dome Lighting]),
+		boxed("../images/eye_dome_white_without.png", caption: [einfarbig ohne Eye-Dome Lighting]),
+		boxed("../images/eye_dome_white_with.png", caption: [einfarbig mit Eye-Dome Lighting]),
 	),
 ) <eye_dome_example>

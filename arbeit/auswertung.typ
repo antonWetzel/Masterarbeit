@@ -94,7 +94,7 @@ Punkte zugehörig zu einer geringen horizontalen Ausdehnung gehören immer zum S
 
 == Triangulierung
 
-Ein Beispiel für die Triangulation ist in @auswertung_triangulierung gegeben. Mit dem Ball-Pivoting-Algorithmus wird eine äußere Hülle für die Punkte bestimmt, wodurch der Algorithmus auch für eine Baumkrone mit Blättern geeignet ist. Beim Baumstamm liegen alle Punkte auf der Oberfläche, wodurch diese problemlos trianguliert werden können. Bei der Krone sind die Punkte im Raum verteilt, wodurch diese nicht auf einer eindeutigen Oberfläche liegen.
+Ein Beispiel für die Triangulation ist in @auswertung_triangulierung gegeben. Mit dem Ball-Pivoting Algorithmus wird eine äußere Hülle für die Punkte bestimmt, wodurch der Algorithmus auch für eine Baumkrone mit Blättern geeignet ist. Beim Baumstamm liegen alle Punkte auf der Oberfläche, wodurch diese problemlos trianguliert werden können. Bei der Krone sind die Punkte im Raum verteilt, wodurch diese nicht auf einer eindeutigen Oberfläche liegen.
 
 #figure(
 	caption: [Beispiel für eine Triangulierung von einem Baum mit $alpha = 1m$.],
@@ -132,15 +132,15 @@ In @auswertung_vis_time ist die benötigte Renderzeit für die Beispiele aus @au
 	grid(
 		columns: 1 * 2,
 		subfigure(image("../images/auto-crop/perf_lod_no.png"), caption: [Detailstufen]),
-		subfigure(image("../images/auto-crop/perf_lod_eye.png"), caption: [Detailstufen + Eye-Dome-Lighting]),
+		subfigure(image("../images/auto-crop/perf_lod_eye.png"), caption: [Detailstufen + Eye-Dome Lighting]),
 		subfigure(image("../images/auto-crop/perf_full_no.png"), caption: [Alle Punkte]),
-		subfigure(image("../images/auto-crop/perf_full_eye.png"), caption: [Alle Punkte + Eye-Dome-Lighting]),
+		subfigure(image("../images/auto-crop/perf_full_eye.png"), caption: [Alle Punkte + Eye-Dome Lighting]),
 	),
 ) <auswertung_vis_example>
 
 Die Detailstufen ermöglichen eine Visualisierung vom kompletten Datensatz in Echtzeit ohne einen sichtbaren Detailverlust. Der zusätzliche Speicherbedarf für die Detailstufen ist in @auswertung_vis_lod_memory gelistet. Für die Detailstufen wird zusätzlich die Hälfte vom Speicherbedarf für die Punkte benötigt.
 
-Das Eye-Dome-Lighting ermöglicht eine bessere Wahrnehmung der verlorenen Tiefeninformationen. Der Berechnungsaufwand ist dabei unabhängig von der Anzahl der sichtbaren Punkte, wodurch der Effekt auch bei einer großen Anzahl von Punkten die Renderzeit nicht beeinflusst.
+Das Eye-Dome Lighting ermöglicht eine bessere Wahrnehmung der verlorenen Tiefeninformationen. Der Berechnungsaufwand ist dabei unabhängig von der Anzahl der sichtbaren Punkte, wodurch der Effekt auch bei einer großen Anzahl von Punkten die Renderzeit nicht beeinflusst.
 
 #figure(
 	caption: [Speicherbedarf für die Punkte und Detailstufen.],
@@ -150,20 +150,18 @@ Das Eye-Dome-Lighting ermöglicht eine bessere Wahrnehmung der verlorenen Tiefen
 
 == Fazit
 
-#todo[Mehr]
+Die Software ermöglicht den Übergang von den Punktdaten ohne weitere Informationen zu einer interaktiven Visualisierung vom Waldstück. Dadurch kann sich ein Überblick über das gescannte Waldstücke gemacht werden, wodurch das gewünschte Ziel erreicht ist. Trotzdem gibt es noch Fehler bei der Methodik und Implementierung, welche ausgebessert werden können.
 
-Die Software ermöglicht den Übergang von den Punktdaten ohne weitere Informationen zu einer interaktiven Visualisierung vom Waldstück. Dadurch kann sich ein Überblick über das gescannte Waldstücke gemacht werden.
+Die Segmentierung unterteilt die Punkte in einzelne Bäume. Wenn die Kronen der Bäume klar getrennte Spitzen haben, werden diese problemlos unterteilt. Dadurch werden manche Waldstücke gut segmentiert, aber je näher die Kronen der Bäume zueinander sind, desto wahrscheinlicher werden mehrere Bäume zu einem Segment zusammengefasst. Vor der Segmentierung muss der Mindestabstand zwischen Segmenten und die Breite der Scheiben festgelegt werden. Die Parameter müssen passend für den Datensatz gewählt werden, was eine Anpassungsmöglichkeit, aber auch eine Fehlerquelle ermöglicht.
 
-Die Segmentierung unterteilt Waldstücke besser, wenn die Kronen der Bäume klar getrennte Spitzen haben. Dadurch werden manche Waldstücke gut segmentiert, aber je näher die Kronen der Bäume zueinander sind, desto wahrscheinlicher werden mehrere Bäume zu einem Segment zusammengefasst.
+Bei der Analyse von einem Baum werden Daten für jeden Punkt im Baum und für den gesamten Baum berechnet. Für die einzelnen Punkte werden Punktgröße, Normale für die Visualisierung und die lokale Krümmung problemlos berechnet. Die Berechnung der Ausdehnung ist funktioniert für die meisten Bereiche vom Baum. Punkte vom Waldboden werden zu den Bäumen zugeordnet, wodurch die Ausdehnung am Boden höher als die Ausdehnung vom eigentlichen Stamm ist.
 
-#todo[Triangulierung]
+Die Triangulierung berechnet ein Mesh für die Segmente. Dabei wird eine äußere Hülle bestimmt, was für Bäume geeignet ist.
 
-Die Visualisierung kann die berechneten Daten ohne Probleme visualisieren. Durch die Detailstufen können auch größere Datenmengen interaktive angezeigt werden.
+Die Visualisierung kann die berechneten Daten ohne Probleme visualisieren. Durch die Detailstufen können auch größere Datenmengen interaktiv angezeigt werden.
 
 
 == Ausblick
-
-#todo[Mehr]
 
 Momentan werden die ermittelten Daten nur für die Visualisierung verwendet. Um die Daten als Basis für weitere Analysen zu verwenden, müssen diese in einem festgelegten Format gespeichert werden.
 

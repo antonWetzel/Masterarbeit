@@ -1,14 +1,16 @@
 #import "setup.typ": *
 
 
-= Einleitung
+= Einleitung <einleitung>
 
 
 == Motivation
 
-Größere Gebiete wie Teile von Wäldern können als 3D-Punktwolken gescannt werden, aber relevante Informationen sind nicht direkt aus den Daten ersichtlich. Eine manuelle Weiterverarbeitung ist durch die großen Datenmengen unrealistisch, weshalb automatisierte Methoden benötigt werden.
+Größere Gebiete wie Teile von Wäldern können mit 3D-Scanners abgetastet werden. Der Scanner ist dabei an einem Flugzeug oder einer Drohne befestigt, womit der gewünschte Bereich abgeflogen wird. Dabei entsteht eine Punktewolke, bei der für jeden Punkt die Position bekannt ist.
 
-Die automatisierte Unterteilung in einzelne Bäume und die Berechnung der charakteristischen Eigenschaften der Bäume bildet dabei eine Grundlage für die Auswertung vom gesamten Waldstück. Mit den berechneten Daten kann eine interaktive Visualisierung ermöglicht werden, welche eine manuelle Auswertung erleichtert.
+Aus den Punkten sind relevante Informationen aber nicht direkt ersichtlich. Eine manuelle Weiterverarbeitung ist durch die großen Datenmengen unrealistisch, weshalb automatisierte Methoden benötigt werden.
+
+Die automatisierte Unterteilung in einzelne Bäume und die Berechnung der charakteristischen Eigenschaften der Bäume bildet dabei eine Grundlage für die Auswertung vom gesamten Waldstück. Durch die interaktive Visualisierung der berechneten Daten können diese intuitiv inspiziert werden.
 
 
 == Themenbeschreibung
@@ -17,9 +19,9 @@ Das Ziel dieser Arbeit ist eine Erforschung des Ablaufs von einem Scan von einem
 
 #figure(caption: [Waldstück mit Einfärbung der Punkte nach Höhe.], image("../images/auto-crop/br06-uls.png")) <einleitung_beispiel>
 
-Als Eingabe wird der Datensatz vom Waldstücke benötigt. Dabei wird davon ausgegangen, dass ein Datensatz eine ungeordnete Menge von Punkten enthält, für die nur die Position im dreidimensionalen Raum bekannt ist. Je nach Scantechnologie können die Punkte im Datensatz entsprechend der räumlichen Verteilung geordnet sein oder weitere Eigenschaften wie die Farbe der Punkte enthalten. Die weiteren Daten werden nicht bei der Analyse betrachtet, damit die Auswertung für alle Datensatze geeignet ist.
+Als Eingabe wird der Datensatz vom Waldstücke benötigt. Dabei wird davon ausgegangen, dass ein Datensatz eine ungeordnete Menge von Punkten enthält, für die nur die Position im dreidimensionalen Raum bekannt ist. Je nach Scannertechnologie können die Punkte im Datensatz entsprechend der räumlichen Verteilung geordnet sein oder weitere Eigenschaften wie die Farbe der Punkte enthalten. Die weiteren Daten werden nicht bei der Analyse betrachtet, wodurch die Auswertung auch für Datensätze ohne die weiteren Daten funktioniert.
 
-Für die Analyse der Daten muss die Menge der Punkte in einzelne Bäume segmentiert werden, dass Punkte vom gleichem Baum zum gleichem Segment gehören. Danach können die einzelnen Bäume ausgewertet werden. Durch die Beschränkung auf Waldstücke kann die Segmentierung und die folgende Auswertung auf Bäume spezialisiert werden.
+Für die Analyse der Daten muss die Menge der Punkte zuerst in einzelne Bäume segmentiert werden, dass Punkte vom gleichem Baum zum gleichem Segment gehören. Danach können die einzelnen Bäume ausgewertet werden. Durch die Beschränkung auf Waldstücke kann die Segmentierung und die folgende Auswertung auf Bäume spezialisiert werden.
 
 Bei der Auswertung werden die charakteristischen Eigenschaften für die Bäume, aber auch für jeden Punkt bestimmt. Für Bäume werden Eigenschaften bestimmt, welche den ganzen Baum beschreiben. Für Punkte werden die Eigenschaften für die lokale Umgebung mit den umliegenden Punkten bestimmt.
 
@@ -28,8 +30,10 @@ Die Visualisierung präsentiert die berechneten Ergebnisse. Dabei werden die Eig
 
 == Struktur der Arbeit
 
-Die Methodik für die Analyse der Daten wird in @methodik erklärt. Dazu gehört die Segmentierung in einzelnen Bäume, Analyse und Triangulierung dieser und die technischen Grundlagen für die Visualisierung der Ergebnisse.
+In @einleitung wird das Theme vorgestellt und @stand_der_technik enthält den zugehörigen Stand der Technik.
 
-Die Methoden dienen als Grundlage für die Implementierung in @implementierung. Das Softwareprojekt mit der technische Umsetzung der Algorithmen wird vorgestellt. Dazu gehört die Benutzung von Softwareprojekt, der Ablauf vom Import, das Anzeigen der Segmente und einzelner Punkte.
+Die Methodik wird in @methodik erklärt. Dazu gehört die Segmentierung in einzelnen Bäume, Analyse und Triangulierung dieser und die technischen Grundlagen für die Visualisierung der Ergebnisse.
 
-Die Auswertung der Methoden wird in @auswertung durchgeführt. Dafür werden die benutzten Datensätze vorgestellt. Mit den Datensätzen und der Implementierung werden dann die Analyse und Visualisierung bewertet.
+Die Methoden dienen als Grundlage für die Implementierung in @implementierung. Das Softwareprojekt mit der technischen Umsetzung der Algorithmen wird vorgestellt. Dafür wird die Bedienung vom Softwareprojekt, der Ablauf vom Import, das Anzeigen aller Punkte und von einzelnen Segmenten erklärt.
+
+Die Auswertung wird in @auswertung durchgeführt. Dafür werden die benutzten Datensätze vorgestellt. Mit den Datensätzen und der Implementierung werden dann die Analyse und Visualisierung bewertet.

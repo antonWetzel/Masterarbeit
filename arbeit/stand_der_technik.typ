@@ -1,7 +1,7 @@
 #import "setup.typ": *
 
 
-= Stand der Technik
+= Stand der Technik <stand_der_technik>
 
 #todo[Stand der Technik]
 

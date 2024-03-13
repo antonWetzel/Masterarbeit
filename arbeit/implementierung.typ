@@ -52,7 +52,7 @@ Als Datensätze werden Dateien im LASzip-Format verwendet. Dieses Format wird h�
 
 === Installation
 
-Für den Import und die Visualisierung wird das kompilierte Programm benötigt. Dieses kann mit dem Quelltext selber kompiliert werden oder bereits kompilierte Versionen können von #link-footnote("https://github.com/antonWetzel/treee/releases", [GitHub-Release]) heruntergeladen werden. Die Schritte zum selber kompilieren sind im #link-footnote("https://github.com/antonWetzel/treee?tab=readme-ov-file#treee", [Readme]) verfügbar.
+Für den Import und die Visualisierung wird das kompilierte Programm benötigt. Dieses kann mit dem Quelltext selber kompiliert werden oder bereits kompilierte Versionen können vom #link-footnote("https://github.com/antonWetzel/treee/releases", [GitHub-Release]) heruntergeladen werden. Die Schritte zum selber kompilieren sind im #link-footnote("https://github.com/antonWetzel/treee?tab=readme-ov-file#treee", [Readme]) verfügbar.
 
 
 === Ausführen
@@ -124,13 +124,12 @@ Mit dem Benutzerinterface kann die Visualisierung angepasst werden. Die Optionen
 				- Screenshot speichern
 				- Knoten der momentanen Detailstufen anzeigen
 			- *Eye Dome*
-				- Stärke und Farbe vom Eye-Dome-Lighting ändern
+				- Stärke und Farbe vom Eye-Dome Lighting ändern
 			- *Level of Detail*
 				- Auswahl und Qualität der Detailstufen anpassen
 			- *Camera*
 				- Steuerung der Kamera ändern
 				- Kameraposition speichern oder wiederherstellen
-
 		],
 	),
 ) <implementierung_ui>
@@ -138,7 +137,7 @@ Mit dem Benutzerinterface kann die Visualisierung angepasst werden. Die Optionen
 
 == Projektstruktur
 
-Das Projekt ist in mehrere Module unterteilt, um den Quelltext zu strukturieren. In @appendix_crates und @appendix_crates_abhängigkeiten sind die Module mit zughöriger Funktionalität und Abhängigkeiten gelistet. Die wichigsten Module sind `importer` und `viewer`.
+Das Projekt ist in mehrere Module unterteilt, um den Quelltext zu strukturieren. In @appendix_crates und @appendix_crates_abhängigkeiten sind die Module mit zugehöriger Funktionalität und Abhängigkeiten gelistet. Die wichtigsten Module sind `importer` und `viewer`.
 
 #figure(
 	caption: [Module vom Projekt mit zugehöriger Funktionalität.],
@@ -259,9 +258,9 @@ Für die Segmentierung wird über die einzelnen horizontalen Scheiben parallelis
 		rect(image("../images/segmentierung_parallel.svg"), inset: 0pt, stroke: gray),
 		align(top + left)[
 			Bei der Segmentierung werden die Punkte von oben nach unten in Scheiben verarbeitet. Jede Scheibe wird in den folgenden Stufen verarbeitet.
-			+ Zusammenhängenden Bereiche von den Punkten bestimmen
-			+ Mit den Bereichen und den Koordinaten der vorherigen Scheibe die Koordinaten der Bäume berechnen
-			+ Jeder Punkte zur nächsten Koordinate zugeordnet
+			+ Zusammenhängenden Bereiche von den Punkten bestimmen.
+			+ Mit den Bereichen und den Koordinaten der vorherigen Scheibe die Koordinaten der Bäume berechnen.
+			+ Jeden Punkt zur nächsten Koordinate zuordnen.
 
 			Dabei wird für die zweite Stufe die Koordinaten aus der vorherigen Scheibe benötigt.
 

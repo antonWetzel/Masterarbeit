@@ -2,40 +2,6 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "spellcheck",
-			"command": "typst-lt",
-			"args": [
-				"watch",
-				"${workspaceFolder}",
-				"--plain",
-				"--language=de-DE",
-				"--dictionary=${workspaceFolder}/words.txt"
-			],
-			"runOptions": {
-				"runOn": "folderOpen"
-			},
-			"isBackground": true,
-			"problemMatcher": {
-				"owner": "typst-hunspell",
-				"fileLocation": "absolute",
-				"background": {
-					"activeOnStart": false,
-					"beginsPattern": "^START$",
-					"endsPattern": "^END$"
-				},
-				"pattern": {
-					"regexp": "^(.*) (\\d+):(\\d+)-(\\d+):(\\d+) (warning|error|info) (.*)$",
-					"file": 1,
-					"line": 2,
-					"column": 3,
-					"endLine": 4,
-					"endColumn": 5,
-					"severity": 6,
-					"message": 7
-				}
-			}
-		},
-		{
 			"label": "watch expose",
 			"command": "typst",
 			"args": [
@@ -61,15 +27,6 @@
 				"arbeit/main.typ",
 				"arbeit/arbeit.pdf"
 			],
-			"isBackground": true,
-			"problemMatcher": []
-		},
-		{
-			"label": "start languagetool",
-			"command": "languagetool.cmd",
-			"runOptions": {
-				"runOn": "folderOpen"
-			},
 			"isBackground": true,
 			"problemMatcher": []
 		},

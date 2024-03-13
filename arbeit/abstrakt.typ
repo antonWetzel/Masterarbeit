@@ -10,17 +10,18 @@
 	== Abstrakt
 
 	#align(left)[
-		Diese Arbeit beschäftigt sich mit der Verarbeitung und Visualisierung von Punktwolken von Waldstücken. Dabei wird der komplette Ablauf von den initialen Daten mit den Positionen der Punkte vom gesamten Waldstück bis zur Visualisierung der einzelnen Bäume mit relevanten Informationen durchgeführt.
+		Diese Arbeit beschäftigt sich mit der Verarbeitung und Visualisierung von Punktwolken von Waldstücken. Dabei wird der komplette Ablauf vom Datensatz bis zur Visualisierung der einzelnen Bäume mit relevanten Informationen durchgeführt.
 
-		Dafür werden die Punkte in einzelne Bäume segmentiert, relevante Informationen für die Bäume und die einzelnen Punkte berechnet und alle Daten für die Visualisierung in Echtzeit vorbereitet.
+		Ein Datensatz ist dabei eine ungeordnete Liste von Punkten, für die nur die Position bekannt ist.
 
-		Im zugehörigen Softwareprojekt sind die Algorithmen und Visualisierung umgesetzt, wodurch diese an die besonderen Daten der Waldstücke angepasst werden können.
+		Die Punkte werden in einzelne Bäume unterteilt, relevante Informationen für die Bäume und die einzelnen Punkte werden berechnet und alle Daten werden für die Visualisierung in Echtzeit vorbereitet.
+
+		Im zugehörigen Softwareprojekt sind die Algorithmen und Visualisierung umgesetzt, wodurch dieses an die besonderen Daten der Waldstücke angepasst werden können.
 	]
-
 ]))
 
 #v(2fr)
 
-#image("../images/auto-crop/segments.png")
+#image("../images/auto-crop/br06-uls.png")
 
 #v(1fr)
