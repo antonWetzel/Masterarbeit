@@ -188,24 +188,24 @@ Die Vektoren $a$ und $b$ spannen eine Ebene auf, welche orthogonal zu $n$ ist. F
 
 === Detailstufen
 
-Je nach Scannertechnologie und Größe des abgetasteten Gebietes kann die Punktwolke unterschiedlich viele Punkte beinhalten. Durch Hardwarelimitierungen ist es nicht immer möglich, alle Punkte gleichzeitig anzuzeigen, während eine interaktive Wiedergabe gewährleistet ist.
+Je nach Scanner und Größe des abgetasteten Gebietes kann die Punktwolke unterschiedlich viele Punkte beinhalten. Durch Hardwarelimitierungen ist es nicht immer möglich, alle Punkte gleichzeitig anzuzeigen, während eine interaktive Wiedergabe gewährleistet ist.
 
 Besonders für weit entfernte Punkt ist es nicht notwendig, alle Punkte genau wiederzugeben. Deshalb wird für weit entfernte Punkte eine vereinfachte Version angezeigt. Diese besteht aus weniger Punkten und benötigt dadurch weniger Ressourcen, bietet aber eine gute Approximation der ursprünglichen Daten.
 
 #figure(
-	caption: [Unterschiedliche Stuffen der Unterteilung. Jeder Würfel entählt bis zu $32768$ Punkte. In der höchsten Stuffe werden alle Punkte im Datensatz angezeigt.],
+	caption: [Unterschiedliche Stufen der Unterteilung. Jeder Würfel enthält bis zu $32768$ Punkte. In der höchsten Stufe werden alle Punkte im Datensatz angezeigt.],
 	grid(
 		columns: (3),
 		gutter: 1em,
-		subfigure(image("../images/crop/lod_0.png"), caption: [Stuffe 0]),
-		subfigure(image("../images/crop/lod_1.png"), caption: [Stuffe 1]),
-		subfigure(image("../images/crop/lod_2.png"), caption: [Stuffe 2]),
-		subfigure(image("../images/crop/lod_3.png"), caption: [Stuffe 3]),
-		subfigure(image("../images/crop/lod_4.png"), caption: [Stuffe 4]),
-		subfigure(image("../images/crop/lod_5.png"), caption: [Stuffe 5]),
-		subfigure(image("../images/crop/lod_6.png"), caption: [Stuffe 6]),
-		subfigure(image("../images/crop/lod_7.png"), caption: [Stuffe 7]),
-		subfigure(image("../images/crop/lod_8.png"), caption: [Stuffe 8]),
+		subfigure(image("../images/crop/lod_0.png"), caption: [Stufe 0]),
+		subfigure(image("../images/crop/lod_1.png"), caption: [Stufe 1]),
+		subfigure(image("../images/crop/lod_2.png"), caption: [Stufe 2]),
+		subfigure(image("../images/crop/lod_3.png"), caption: [Stufe 3]),
+		subfigure(image("../images/crop/lod_4.png"), caption: [Stufe 4]),
+		subfigure(image("../images/crop/lod_5.png"), caption: [Stufe 5]),
+		subfigure(image("../images/crop/lod_6.png"), caption: [Stufe 6]),
+		subfigure(image("../images/crop/lod_7.png"), caption: [Stufe 7]),
+		subfigure(image("../images/crop/lod_8.png"), caption: [Stufe 8]),
 	),
 )
 
@@ -229,16 +229,14 @@ Bei der nächsten gröberen Detailstufe sind auch die zugehörigen Voxel von den
 
 Um die Punktwolke anzuzeigen, werden die Punkte aus dem dreidimensionalen Raum auf den zweidimensionalen Monitor projiziert. Dabei gehen die Tiefeninformationen verloren. Mit der Rendertechnik *Eye-Dome Lighting* werden die Kanten von Punkten hervorgehoben, bei denen die Tiefe sich stark ändert.
 
-Beim Rendern von 3D-Scenen wird für jedes Pixel die momentane Tiefe vom Polygon an dieser Stelle gespeichert. Das wird benötigt, dass bei überlappenden Polygonen das nähere Polygon an der Kamera angezeigt wird. Nachdem die Szene gerendert ist, wird mit den Tiefeninformationen für jedes Pixel der Tiefenunterschied zu den umliegenden Pixeln bestimmt. Das Tiefenbild für die Veranschaulichung ist in @eye_dome_depth gegeben.
-
-Je größer der Unterschied ist, desto stärker wird der Pixel im Ergebnisbild eingefärbt. Dadurch werden Kanten hervorgehoben, je nachdem wie groß der Tiefenunterschied ist.
+Beim Rendern von 3D-Szenen wird für jedes Pixel die momentane Tiefe vom Polygon an dieser Stelle gespeichert. Das wird benötigt, dass bei überlappenden Polygonen das nähere Polygon an der Kamera angezeigt wird. Nachdem die Szene gerendert ist, wird mit den Tiefeninformationen für jedes Pixel der Unterschied zu den umliegenden Pixeln bestimmt. Ein Beispiel für die Tiefeninformationen ist in @eye_dome_depth gegeben.
 
 #figure(
-	caption: [Tiefenbild nach dem Rendern der Szene. Je heller eine Position ist, desto weiter ist das Polygon zugehörig zur Koordinate von der Kamera entfernt.],
+	caption: [Tiefeninformationen nach dem Rendern der Szene. Je heller eine Position ist, desto weiter ist das Polygon zugehörig zur Koordinate von der Kamera entfernt.],
 	box(image("../images/eye_dome_depth_edited.png", width: 80%), stroke: 1pt),
 ) <eye_dome_depth>
 
-Der Effekt entsteht dadurch, dass für jedes Pixel der maximale Tiefenunterschied zu den umliegenden Pixeln bestimmt wird. Je größer der Unterschied, desto mehr wird das zugehörige Pixel verdunkelt. Ein Veranschaulichung ist in @eye_dome_example gegeben.
+Der Effekt entsteht dadurch, dass für jedes Pixel der maximale Unterschied in der Tiefe zu den umliegenden Pixeln bestimmt wird. Je größer der Unterschied, desto mehr wird das zugehörige Pixel verdunkelt. Ein Veranschaulichung ist in @eye_dome_example gegeben.
 
 #let boxed(p, caption: []) = subfigure(box(image(p), fill: rgb(35%, 49%, 58%), stroke: 1pt), caption: caption)
 
@@ -247,9 +245,9 @@ Der Effekt entsteht dadurch, dass für jedes Pixel der maximale Tiefenunterschie
 	grid(
 		columns: 2 * 1,
 		gutter: 1em,
-		boxed("../images/eye_dome_without.png", caption: [ohne Eye-Dome Lighting]),
-		boxed("../images/eye_dome_with.png", caption: [mit Eye-Dome Lighting]),
-		boxed("../images/eye_dome_white_without.png", caption: [einfarbig ohne Eye-Dome Lighting]),
-		boxed("../images/eye_dome_white_with.png", caption: [einfarbig mit Eye-Dome Lighting]),
+		boxed("../images/eye_dome_without.png", caption: [Ohne Eye-Dome Lighting]),
+		boxed("../images/eye_dome_with.png", caption: [Mit Eye-Dome Lighting]),
+		boxed("../images/eye_dome_white_without.png", caption: [Einfarbig ohne Eye-Dome Lighting]),
+		boxed("../images/eye_dome_white_with.png", caption: [Einfarbig mit Eye-Dome Lighting]),
 	),
 ) <eye_dome_example>

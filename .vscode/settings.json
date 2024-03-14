@@ -15,26 +15,65 @@
 					"Voronoi-Diagramm",
 					"LASzip",
 					"LASzip-Format",
+					"LAStools",
 					"Octree",
+					"Octrees",
 					"Quadtree",
 					"Eye-Dome",
 					"Lighting",
 					"Renderzeit",
 					"Ball-Pivoting",
+					"Greedy-Algorithmus",
+					"Out-of-Core",
+					"Voxeln",
+					"Teilvoxel",
+					"Teilvoxeln",
+					"Rendertechnik",
+					"Tree",
+					"Leaf-Knoten",
+					"Root-Knoten",
+					"Branch-Knoten",
+					"Importer",
+					"Flag",
+					"importer",
+					"viewer",
+					"wgpu",
+					"Wetzel",
+					"Nauber",
+					"Mäder",
 				],
 				"rules": {
 					"functions": {
 						"number": {
 							"before": "0",
-							"after": "",
 						},
 						"link": {
 							"before": "https://link.com",
-							"after": "",
+						},
+						"link-footnote": {
+							"before": "https://link.com",
+						},
+						"grid": {
+							"after_argument": "\n\n",
+						},
+						"table": {
+							"after_argument": "\n\n",
+						},
+						"tablex": {
+							"after_argument": "\n\n",
+						},
+						"content": {
+							"before": "\n\n",
+						}
+					},
+					"arguments": {
+						"caption": {
+							"before": "\n\n",
+							"after": "\n\n",
 						}
 					}
 				},
-				"local_languagetool_folder": "D:/LanguageTool-6.3/",
+				"local_languagetool_directory": "D:/LanguageTool-6.3/",
 			}
 		}
 	]

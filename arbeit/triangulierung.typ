@@ -245,7 +245,7 @@ Das neu gefundene Dreieck mit den Eckpunkten $(p_1, p_2, p_3)$ wird zur Triangul
 		columns: 2,
 		column-gutter: 5em,
 		row-gutter: 1em,
-		subfigure(image("../images/pivot_0.png"), caption: [Kante mit zugehörigem Dreieck, Kugel und Ring mit Radius $x$]), subfigure(image("../images/pivot_1.png"), caption: [Kugel mit Radius $alpha + x$, welche alle Kanditaten enthält]),
+		subfigure(image("../images/pivot_0.png"), caption: [Kante mit zugehörigem Dreieck, Kugel und Ring mit Radius $x$]), subfigure(image("../images/pivot_1.png"), caption: [Kugel mit Radius $alpha + x$, welche alle Kandidaten enthält]),
 		subfigure(image("../images/pivot_2.png"), caption: [Erster Punkt, welcher entlang der Rotation die Kugel berührt]), subfigure(image("../images/pivot_3.png"), caption: [Triangulierung, mit dem neuen Dreieck hinzugefügt]),
 	)),
 ) <triangulierung_erweiterung>
@@ -253,9 +253,9 @@ Das neu gefundene Dreieck mit den Eckpunkten $(p_1, p_2, p_3)$ wird zur Triangul
 
 ==== Komplettes Segment triangulieren
 
-Solange es noch äußere Kanten gibt, kann von diesen aus die Triangulierung erweitert werden. Dabei muss beachtet werden, dass durch Ungenauigkeiten bei der Berechnung und malformierten Daten eine Kante mehrfach gefunden werden kann. Um eine erneute Triangulierung von bereits triangulierten Bereichen zu verhindern, werden alle inneren Kanten gespeichert und neue Kanten nur zu den äußeren Kanten hinzugefügt, wenn diese noch nicht in den inneren Kanten vorhanden sind. Bei der Erweiterung wird die ausgewählte äußere Kante zu den inneren Kanten hinzugefügt.
+Solange es noch äußere Kanten gibt, kann von diesen aus die Triangulierung erweitert werden. Dabei muss beachtet werden, dass durch Ungenauigkeiten bei der Berechnung und Punkte mit gleicher Position eine Kante mehrfach gefunden werden kann. Um eine erneute Triangulierung von bereits triangulierten Bereichen zu verhindern, werden alle inneren Kanten gespeichert und neue Kanten nur zu den äußeren Kanten hinzugefügt, wenn diese noch nicht in den inneren Kanten vorhanden sind. Bei der Erweiterung wird die ausgewählte äußere Kante zu den inneren Kanten hinzugefügt.
 
-Wenn es keine weiteren äußeren Kanten gibt, muss ein neues Startdreieck gefunden werden. Dabei werden nur die Punkte in betracht gezogen, welche zu noch keinem Dreieck gehören. Wenn kein Startdreieck gefunden werden kann, ist das Segment vollständig trianguliert.
+Wenn es keine weiteren äußeren Kanten gibt, muss ein neues Startdreieck gefunden werden. Dabei werden nur die Punkte in Betracht gezogen, welche zu noch keinem Dreieck gehören. Wenn kein Startdreieck gefunden werden kann, ist das Segment vollständig trianguliert.
 
 
 ==== Vorauswahl
@@ -267,7 +267,7 @@ Für die Berechnung wird ein Greedy-Algorithmus verwendet. Am Anfang werden alle
 
 ==== Auswahl von $alpha$
 
-In @triangulierung_alpha wurde die Triangulation für die gleiche Punktwolke mit unterschiedlichen Werten für $alpha$ berechnet. Mit einem größerem $alpha$ wird das Ergebniss immer weiter vereinfacht. Bei einem kleinen Wert für $alpha$ können Lücken in der Triangulierung entstehen, wenn die Punkte weiter als $2 alpha$ voneinander entfernt sind.
+In @triangulierung_alpha wurde die Triangulation für die gleiche Punktwolke mit unterschiedlichen Werten für $alpha$ berechnet. Mit einem größerem $alpha$ wird das Ergebnis immer weiter vereinfacht. Bei einem kleinen Wert für $alpha$ können Lücken in der Triangulierung entstehen, wenn die Punkte weiter als $2 alpha$ voneinander entfernt sind.
 
 #let lines_and_mesh(prec) = {
 	stack(
@@ -278,33 +278,33 @@ In @triangulierung_alpha wurde die Triangulation für die gleiche Punktwolke mit
 }
 
 #figure(
-	caption: [Triangulation für unterschiedliche $alpha$. Im oberen Bild sind die Dreiecke ausgefühlt und im unteren Bild umrandet.],
+	caption: [Triangulation für unterschiedliche $alpha$. Im oberen Bild sind die Dreiecke ausgefüllt und im unteren Bild umrandet.],
 	grid(
 		columns: 1 * 5,
 		subfigure(
-			caption: [$0.2$m],
+			caption: [$0.2$ m],
 			lines_and_mesh("0.2"),
 		),
 		subfigure(
-			caption: [$0.5$m],
+			caption: [$0.5$ m],
 			lines_and_mesh("0.5"),
 		),
 		subfigure(
-			caption: [$1.0$m],
+			caption: [$1.0$ m],
 			lines_and_mesh("1.0"),
 		),
 		subfigure(
-			caption: [$2.0$m],
+			caption: [$2.0$ m],
 			lines_and_mesh("2.0"),
 		),
 		subfigure(
-			caption: [$5.0$m],
+			caption: [$5.0$ m],
 			lines_and_mesh("5.0"),
 		),
 	),
 ) <triangulierung_alpha>
 
-Der Bereich für die Suche vom nächsten Kanditation für die Erweiterung von der Triangulierung ist abhängig von $alpha$. Dadurch steigt der Berechnungsaufwand mit größerem $alpha$.
+Der Bereich für die Suche vom nächsten Kandidaten für die Erweiterung von der Triangulierung ist abhängig von $alpha$. Dadurch steigt der Berechnungsaufwand mit größerem $alpha$.
 
 Im Idealfall wird $alpha$ so klein gewählt, dass keine gewünschten Details verloren gehen und so groß, dass keine Lücken in der Triangulierung entstehen.
 

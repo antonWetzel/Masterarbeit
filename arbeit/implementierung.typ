@@ -149,7 +149,7 @@ Das Projekt ist in mehrere Module unterteilt, um den Quelltext zu strukturieren.
 		`data-file`,     [Daten zusammengefasst einer Datei speichern],
 		`project`,       [Format für eine Punktwolke und zugehörige Daten],
 		`k-nearest`,     [Nachbarschaftssuche mit KD-Bäumen],
-		`render`,        [Rendern von Punktwolken, Linien und Meshes mit `wgpu`],
+		`render`,        [Rendern von Punktwolken, Linien und Dreiecken mit `wgpu`],
 		`viewer`,        [Visualisierung von Punktwolken],
 		`triangulation`, [Triangulation von Punktwolken],
 		`importer`,      [Import von Punktwolken],
@@ -244,7 +244,7 @@ Der zugehörige Datenfluss ist in @überblick_datenfluss zu sehen. Nach der erst
 
 === Parallelisierung
 
-Die Punktdaten werden in LASzip-Dateien zu Blöcken zusammengefasst. Jeder Block wird separat komprimiert, wodurch mehrere Blöcke auch parallel dekomprimiert werden können. Ein weiterer Thread sammelt die dekomprimierten Blöcke für die Segmentierung.
+Die Punktdaten werden in LASzip Dateien zu Blöcken zusammengefasst. Jeder Block wird separat komprimiert, wodurch mehrere Blöcke auch parallel dekomprimiert werden können. Ein weiterer Thread sammelt die dekomprimierten Blöcke für die Segmentierung.
 
 Für die Segmentierung wird über die einzelnen horizontalen Scheiben parallelisiert. Der genaue Ablauf ist in @implementierung_segment_parallel erklärt. Die Segmente werden wieder von einem weiteren Thread gesammelt.
 
@@ -278,7 +278,7 @@ Die Analyse der Segmente und die Berechnung der Detailstufen sind trivial parall
 
 Die benötigten Daten für einen Punkt sind das Polygon als Basis, Position, Normale, Größe und ausgewählte Eigenschaft. Das Polygon ist gleich für alle Punkte und muss deshalb nur einmal zur Grafikkarte übertragen werden und wird für alle Punkte wiederverwendet.
 
-Für die Grafikpipeline wird das Polygon in Dreiecke zerlegt. In @implementierung_polygon_zerlegung sind die getesteten Varianten gegeben. Die Dreiecke werden dann projiziert und es werden alle Pixel bestimmt, welche in den Dreiecken liegen. Für jedes Pixel kann entschieden werden, ob dieser im Ergebnis gespeichert wird. Dafür wird bei den Eckpunkten die untransformierten Koordinaten abgespeichert, dass diese später verfügbar sind. Für jedes Pixel wird von der Pipeline die interpolierten Koordinaten berechnet. Nur wenn der Betrag der interpolierten Koordinaten kleiner als eins ist, wird der Pixel im Ergebnis abgespeichert.
+Für die Grafikpipeline wird das Polygon in Dreiecke zerlegt. In @implementierung_polygon_zerlegung sind die getesteten Varianten gegeben. Die Dreiecke werden dann projiziert und es werden alle Pixel bestimmt, welche in den Dreiecken liegen. Für jedes Pixel kann entschieden werden, ob dieser im Ergebnis gespeichert wird. Dafür wird bei den Eckpunkten die Koordinaten ohne die Transformation der Kamera abgespeichert, dass diese später verfügbar sind. Für jedes Pixel wird von der Pipeline die interpolierten Koordinaten berechnet. Nur wenn der Betrag der interpolierten Koordinaten kleiner als eins ist, wird der Pixel im Ergebnis abgespeichert.
 
 #figure(
 	caption: [Zerlegung von unterschiedlichen Polygonen in Dreiecke.],
@@ -304,7 +304,7 @@ Für die Grafikpipeline wird das Polygon in Dreiecke zerlegt. In @implementierun
 	}),
 ) <implementierung_polygon_zerlegung>
 
-In @implementierung_polygon sind die Renderzeiten für unterschiedliche Polygone als Basis gegeben. Die beste Option ist das Dreieck als Polygon. Für die Zerlegung vom Polygon mit $n$ Ecken in Dreiecke werden $n-2$ Dreiecke und somit $3n-6$ Ecken benötigt. Der benötigte Aufwand entsteht größtenteils durch die Ecken, wodurch das Quadrat circa doppelt und das Achteck sechsmal so lange zum Rendern benötigen.
+In @implementierung_polygon sind die Zeiten für das Rendern von unterschiedlichen Polygonen als Basis gegeben. Die beste Option ist das Dreieck als Polygon. Für die Zerlegung vom Polygon mit $n$ Ecken in Dreiecke werden $n-2$ Dreiecke und somit $3n-6$ Ecken benötigt. Der benötigte Aufwand entsteht größtenteils durch die Ecken, wodurch das Quadrat circa doppelt und das Achteck sechsmal so lange zum Rendern benötigen.
 
 #figure(
 	caption: [Renderzeit bei unterschiedlichen Polygonen als Basis in Sekunden abhängig von der Anzahl der Punkte.],
@@ -404,7 +404,7 @@ Die Struktur von einer Punktwolke ist in der `project.json` Datei gespeichert. D
 
 === Daten
 
-In separaten Dateien werden die Daten für alle Punkte für zum Anzeigen der Punkte oder eine spezifische Eigenschaft gespeichert. Das Dateiformat ermöglicht es, die Datein inkrementell zu erstellen. Am Anfang wird nur benötigt, wie viele Einträge die Datei speichern kann. Danach können die Einträge in beliebiger Reihenfolge abgespeichert werden.
+In separaten Dateien werden die Daten für alle Punkte für zum Anzeigen der Punkte oder eine spezifische Eigenschaft gespeichert. Das Dateiformat ermöglicht es, die Dateien inkrementell zu erstellen. Am Anfang wird nur benötigt, wie viele Einträge die Datei speichern kann. Danach können die Einträge in beliebiger Reihenfolge abgespeichert werden.
 
 Die Struktur ist in @appendix_datafile gegeben. Am Anfang der Datei wird für jeden Eintrag die Startposition $s_i$ und die Länge $l_i$ vom zugehörigen Datensegment $d_i$ gespeichert. Danach folgen die Datensegmente in beliebiger Reihenfolge $pi$.
 
@@ -449,7 +449,7 @@ Die Segmente können im Stanford Polygon Format (PLY) Format exportiert werden. 
 Beim Anzeigen wird vom Root-Knoten aus zuerst geprüft, ob der momentane Knoten von der Kamera aus sichtbar ist. In @implementierung_culling ist ein Beispiel für das Filtern bei unterschiedlichen Detailstufen gegeben.
 
 #figure(
-	caption: [Sichtbare Knoten für unterschiedliche Detailstufen. Ein Knoten wird gerendert, solange ein Teil vom Knoten im Kamerafrustrum enthalten ist.],
+	caption: [Sichtbare Knoten für unterschiedliche Detailstufen. Ein Knoten wird gerendert, solange ein Teil vom Knoten im Sichtfeld der Kamera liegt.],
 	grid(
 		columns: 1 * 2,
 		gutter: 1em,
