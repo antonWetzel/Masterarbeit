@@ -30,5 +30,16 @@
 			"isBackground": true,
 			"problemMatcher": []
 		},
+		{
+			"label": "watch arbeit",
+			"command": "codium",
+			"runOptions": {
+				"runOn": "folderOpen"
+			},
+			"args": [
+				"${workspaceFolder}/arbeit/main.typ",
+			],
+			"problemMatcher": []
+		},
 	]
 }

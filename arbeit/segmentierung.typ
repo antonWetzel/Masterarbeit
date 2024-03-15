@@ -6,7 +6,7 @@
 
 === Ablauf
 
-Die Punkte werden in gleich breite parallele Scheiben entlang der Höhe unterteilt. Danach werden die Scheiben von Oben nach Unten einzeln verarbeitet, um die Segmente zu bestimmen. Dafür werden die Punkte in einer Scheibe zu Bereichen zusammengefasst. Für die Bereiche werden die zugehörigen Koordinaten der Bäume bestimmt und jeder Punkte wird zur nächsten Koordinate zugeordnet.
+Für die Segmentierung werden alle Punkte in gleich breite parallele Scheiben entlang der Höhe unterteilt. Danach werden die Scheiben von Oben nach Unten einzeln verarbeitet, um die Segmente zu bestimmen. Dafür werden die Punkte in einer Scheibe zu zusammenhängenden Bereichen zusammengefasst. Mit den Bereichen werden die Koordinaten der Bäume bestimmt, welche in der momentanen Scheibe existieren. Die Punkte in der Scheibe werden dann dem nächsten Baum zugeordnet.
 
 
 === Bereiche bestimmen
@@ -36,24 +36,26 @@ Die Punkte werden in gleich breite parallele Scheiben entlang der Höhe untertei
 
 Für jede Scheibe werden konvexe zusammenhängende Bereiche bestimmt, dass die Punkte in unterschiedlichen Bereichen einen Mindestabstand voneinander entfernt sind. Dafür wird mit einer leeren Menge von Bereichen gestartet und jeder Punkt zu der Menge hinzugefügt. Wenn ein Punkt vollständig in einem Bereich enthalten ist, wird der Bereich nicht erweitert. Ist der Punkt außerhalb, aber näher als den Mindestabstand zu einem der Bereiche, so wird der Bereich erweitert. Ist der Punkt von allen bisherigen Bereichen weiter entfernt, so wird ein neuer Bereich angefangen.
 
+Dadurch entstehen Bereiche wie in @segmentierung_bereiche. Bei einer Baumspitze entsteht ein kleiner Bereich. Wenn mehrere Bäume sich berühren, werden die Bäume zu einem größeren Bereich zusammengefasst.
+
 // BR06-ALS
 #figure(
-	caption: [Beispiel für berechnete Segmente für zwei Scheiben. Größere Bereiche gehören zu mehreren Bäumen.],
+	caption: [Beispiel für berechnete Segmente für zwei aufeinanderfolgende Scheiben.],
 	grid(
 		columns: 1 * 2,
 		gutter: 1em,
 		subfigure(rect(image("../images/test_5-areas.svg"), inset: 0pt), caption: [Höhere Scheibe]),
 		subfigure(rect(image("../images/test_6-areas.svg"), inset: 0pt), caption: [Tiefere Scheibe]),
 	),
-)
+) <segmentierung_bereiche>
 
-Die Bereiche sind als Liste gespeichert, wobei für jeden Bereich die Eckpunkte als Liste gegeben sind. Die Eckpunkte sind dabei sortiert, dass für einen Eckpunkt der nächste Punkt entlang der Umrandung der nächste Punkt in der Liste ist. Für den letzten Punkt ist der erste Punkt in der Liste der nächste Eckpunkt.
+Bei der Berechnung sind alle momentanen Bereiche in einer Liste gespeichert. Ein Bereich ist dabei eine Liste von Eckpunkten. Die Eckpunkte sind dabei sortiert, dass für einen Eckpunkt der nächste Punkt entlang der Umrandung vom Bereich der nächste Punkt in der Liste ist. Für den letzten Punkt ist der erste Punkt in der Liste der nächste Eckpunkt.
 
-Um die Distanz von einem Punkt zu einem Bereich zu berechnen, wird der größte Abstand nach Außen vom Punkt zu allen Kanten berechnet. Für jede Kante mit den Eckpunkten $a = vec(a_x, a_y)$ und $b = vec(b_x, b_y)$ wird zuerst der Vektor $d = vec(d_x, d_y) = b - a$ berechnet. Der normalisierte Vektor $o =1 / (|d|) vec(d_y, -d_x)$ ist orthogonal zu $d$ und zeigt aus dem Bereich hinaus, solange $a$ im Uhrzeigersinn vor $b$ auf der Umrandung liegt. Für den Punkt $p$ kann nun der Abstand zur Kante mit dem Skalarprodukt $o dot (p - a)$ berechnet werden. Wenn der Punkte auf der Innenseite der Kante liegt, ist der Abstand negativ.
+Um die Distanz von einem Punkt zu einem Bereich zu berechnen, wird der größte Abstand nach Außen vom Punkt zu allen Kanten berechnet. Für jede Kante mit den Eckpunkten $a = vec(a_x, a_y)$ und $b = vec(b_x, b_y)$ wird zuerst der Vektor $d = vec(d_x, d_y) = b - a$ berechnet. Der normalisierte Vektor $o =1 / (|d|) vec(d_y, -d_x)$ ist orthogonal zu $d$ und zeigt aus dem Bereich hinaus, solange $a$ im Uhrzeigersinn vor $b$ auf der Umrandung liegt. Für den Punkt $p$ kann nun der Abstand zur Kante mit dem Skalarprodukt $o dot (p - a)$ berechnet werden. Wenn der Punkte auf der Innenseite der Kante liegt, ist der Abstand negativ. In @segmentierung_abstand ist eine Veranschaulichung gegeben.
 
-#side-caption(amount: (2fr, 3fr), figure(
+#side-caption(amount: (2fr, 3fr), [#figure(
 	caption: [Berechnung vom Abstand vom Punkt $p$ zur Kante zwischen $a$ und $b$.],
-	cetz.canvas(length: 1cm, {
+	cetz.canvas(length: 1.2cm, {
 		import cetz.draw: *
 
 		line((-1, -1), (0, 0), (3, 0), (4, -1), close: true, stroke: black, fill: silver)
@@ -80,11 +82,11 @@ Um die Distanz von einem Punkt zu einem Bereich zu berechnen, wird der größte 
 		circle((2, 1.5), fill: black, stroke: none, radius: 0.1)
 		circle("edge.start", fill: black, stroke: none, radius: 0.1)
 	}),
-))
+) <segmentierung_abstand>])
 
-Um einen Punkt zu einem Bereich hinzuzufügen, werden alle Kanten entfernt, bei denen der Punkt außerhalb liegt, und zwei neue Kanten zum Punkt werden hinzugefügt. Dafür werden die beiden Eckpunkte gesucht, bei denen eine zugehörige Kante entfernt wird und die andere nicht. Um die Kanten zwischen den Punkten zu entfernt, werden alle Punkte zwischen den beiden Punkte entfernt und stattdessen der neue Punkt eingefügt, um die beiden neuen Kanten zu ergänzen.
+Um einen Punkt zu einem Bereich hinzuzufügen, werden alle Kanten entfernt, bei denen der Punkt außerhalb liegt, und zwei neue Kanten zum Punkt werden hinzugefügt. Dafür werden die Eckpunkte entfernt, bei denen der neue Punkt außerhalb der beiden angrenzenden Kanten liegt. An der Stelle, wo die Punkte entfernt wurden, wird stattdessen der neue Eckpunkt eingefügt. In @segmentierung_replace ist das Ergebnis vom Austausch zu sehen.
 
-#side-caption(amount: (2fr, 3fr), figure(
+#side-caption(amount: (2fr, 3fr), [#figure(
 	caption: [Hinzufügen vom Punkt $p$ zum Bereich. Die Kanten in Rot werden entfernt und die Kanten in Grün werden hinzugefügt.],
 	cetz.canvas(length: 1cm, {
 		import cetz.draw: *
@@ -109,62 +111,55 @@ Um einen Punkt zu einem Bereich hinzuzufügen, werden alle Kanten entfernt, bei 
 		circle((3, 0), fill: red, stroke: none, radius: 0.1)
 
 	}),
-))
+) <segmentierung_replace>])
 
-Nachdem alle Punkte zu den Bereichen hinzugefügt würden, werden kleine Bereiche entfernt. Dafür werden alle Bereiche entfernt, deren Fläche kleiner als ein Schwellwert ist. Weil die Bereiche konvex sind, können diese trivial in Dreiecke wie in @segmentierung_schwerpunkt unterteilt werden und dann die Flächen der Dreiecke summiert werden.
+Nachdem alle Punkte zu den Bereichen hinzugefügt würden, werden die Bereiche gefiltert. Dafür werden alle Bereiche entfernt, deren Fläche kleiner als ein Schwellwert ist. Weil die Bereiche konvex sind, können diese trivial in Dreiecke wie in @segmentierung_dreiecke unterteilt werden und dann die Flächen der Dreiecke summiert werden.
 
-Weil die konvexe Hülle von allen Punkten in einem Bereich gebildet wird, können Bereiche sich Überscheiden, obwohl die Punkte der Bereiche voneinander entfernt sind. Bei dem Hinzuzufügen von neuen Punkten werden die Bereiche sequentiell iteriert. Dabei wird bei überschneidenden Bereichen das erste präferiert, wodurch dieses weiter wächst. Um den anderen Bereich zu entfernen, werden Bereiche entfernt, deren Zentren in einem anderen Bereich liegen.
+#let area_figure(centers) = {
+	import cetz.draw: *
 
+	let points = (
+		(0.0, 0.0),
+		(1.0, 0.0),
+		(1.5, 0.6),
+		(1.2, 0.8),
+		(0.2, 0.8),
+		(-0.1, 0.7),
+		(-0.5, 0.5),
+		(-0.5, 0.3),
+		(-0.4, 0.1),
+	)
+	let center = (0.0, 0.0)
+	let total_area = 0.0
+	for i in range(1, points.len() - 1) {
+		let a = points.at(0)
+		let b = points.at(i)
+		let c = points.at(i + 1)
 
-=== Koordinaten bestimmen
-
-Für die Bäume der momentanen Scheibe werden die Koordinaten gesucht. Die Menge der Koordinaten startet mit der leeren Menge für die höchste Scheibe. Bei jeder Scheibe wird die Menge der Koordinaten mit den gefundenen Bereichen aktualisiert. Dafür werden für alle Bereiche in der momentanen Scheibe zuerst die Schwerpunkte wie in @segmentierung_schwerpunkt berechnet.
-
-#figure(
-	caption: [Unterteilung von einem Bereich in Dreiecke. Die Schwerpunkte der Dreiecke sind in Grau und vom gesamten Bereich in Grün. Die durchschnittliche Position der Eckpunkte ist in Rot.],
-	cetz.canvas(length: 3cm, {
-		import cetz.draw: *
-
-		let points = (
-			(0.0, 0.0),
-			(1.0, 0.0),
-			(1.5, 0.6),
-			(1.2, 0.8),
-			(0.2, 0.8),
-			(-0.1, 0.7),
-			(-0.5, 0.5),
-			(-0.5, 0.3),
-			(-0.4, 0.1),
-		)
-		let center = (0.0, 0.0)
-		let total_area = 0.0
-		for i in range(1, points.len() - 1) {
-			let a = points.at(0)
-			let b = points.at(i)
-			let c = points.at(i + 1)
-
-			let c = ((a.at(0) + b.at(0) + c.at(0)) / 3.0, (a.at(1) + b.at(1) + c.at(1)) / 3.0)
-			let area = (b.at(0) * c.at(1) - b.at(1) * c.at(0)) / 2.0
+		let c = ((a.at(0) + b.at(0) + c.at(0)) / 3.0, (a.at(1) + b.at(1) + c.at(1)) / 3.0)
+		let area = (b.at(0) * c.at(1) - b.at(1) * c.at(0)) / 2.0
+		if centers {
 			circle(c, fill: gray, stroke: none, radius: 0.1cm)
-
-			total_area += area;
-			center = (center.at(0) + c.at(0) * area, center.at(1) + c.at(1) * area)
-		}
-		let center = (center.at(0) / total_area, center.at(1) / total_area)
-
-		for i in range(0, points.len() - 1) {
-			line(points.at(i), points.at(i + 1))
-		}
-		line(points.last(), points.at(0))
-
-		for i in range(2, points.len() - 1) {
-			line(points.at(0), points.at(i), stroke: gray)
 		}
 
-		for p in points {
-			circle(p, fill: black, stroke: none, radius: 0.1cm)
-		}
+		total_area += area;
+		center = (center.at(0) + c.at(0) * area, center.at(1) + c.at(1) * area)
+	}
+	let center = (center.at(0) / total_area, center.at(1) / total_area)
 
+	for i in range(0, points.len() - 1) {
+		line(points.at(i), points.at(i + 1))
+	}
+	line(points.last(), points.at(0))
+
+	for i in range(2, points.len() - 1) {
+		line(points.at(0), points.at(i), stroke: gray)
+	}
+
+	for p in points {
+		circle(p, fill: black, stroke: none, radius: 0.1cm)
+	}
+	if centers {
 		circle(center, fill: green, stroke: none, radius: 0.1cm)
 
 		let fake_center = (0.0, 0.0)
@@ -173,12 +168,29 @@ Für die Bäume der momentanen Scheibe werden die Koordinaten gesucht. Die Menge
 		}
 		fake_center = (fake_center.at(0) / points.len(), fake_center.at(1) / points.len())
 		circle(fake_center, fill: red, stroke: none, radius: 0.1cm)
-	}),
-) <segmentierung_schwerpunkt>
+	}
+}
+
+#side-caption(amount: (1fr, 2fr), [#figure(
+	caption: [Unterteilung von einem Bereich in Dreiecke. Alle Dreiecke haben einen beliebigen Eckpunkt als ersten Punkt gemeinsam und die beiden anderen Punkte sind die Eckpunkte der Kanten ohne den ersten Punkt.],
+	cetz.canvas(length: 2.5cm, area_figure(false)),
+) <segmentierung_dreiecke>])
+
+Weil die konvexe Hülle von allen Punkten in einem Bereich gebildet wird, können Bereiche sich Überscheiden, obwohl die Punkte der Bereiche voneinander entfernt sind. Bei dem Hinzuzufügen von neuen Punkten werden die Bereiche sequentiell iteriert. Dabei wird bei überschneidenden Bereichen das erste präferiert, wodurch dieses weiter wächst. Um den anderen Bereich zu entfernen, werden Bereiche entfernt, deren Zentren in einem anderen Bereich liegen.
+
+
+=== Koordinaten bestimmen
+
+Für die Bäume der momentanen Scheibe werden die Koordinaten gesucht. Die Menge der Koordinaten startet mit der leeren Menge für die höchste Scheibe. Bei jeder Scheibe wird die Menge der Koordinaten mit den gefundenen Bereichen aktualisiert. Dafür werden für alle Bereiche in der momentanen Scheibe zuerst die Schwerpunkte wie in @segmentierung_schwerpunkt berechnet.
+
+#side-caption(amount: (1fr, 2fr), [#figure(
+	caption: [Berechnung vom Schwerpunkt von einem konvexen Bereich. Der korrekte Schwerpunkt in Grün ist die durchschnittliche Position der Schwerpunkte der Dreiecke nach der Fläche vom Dreieck gewichtet. In Rot ist die durchschnittliche Position der Eckpunkte.],
+	cetz.canvas(length: 2.5cm, area_figure(true)),
+) <segmentierung_schwerpunkt>])
 
 Danach werden die Koordinaten aus den vorherigen Scheiben mit den Schwerpunkten von der momentanen Scheibe aktualisiert. Für jede Koordinate wird der nächste Schwerpunkt näher als eine maximale Distanz bestimmt. Wenn ein naher Schwerpunkt gefunden wurde, wird die Koordinate mit der Position vom Schwerpunkte aktualisiert. Wenn kein naher Schwerpunkt existiert, so bleibt die Position gleich.
 
-Für alle Schwerpunkte, welche nicht nah an einen der vorherigen Koordinaten liegt, wird ein neues Segment angefangen. Dafür wird der Schwerpunkt zur Liste der Koordinaten hinzugefügt.
+Für alle Schwerpunkte, welche nicht nah an einen der vorherigen Koordinaten liegen, wird ein neues Segment angefangen. Dafür wird der Schwerpunkt zur Liste der Koordinaten hinzugefügt.
 
 
 === Punkte zuordnen
@@ -194,6 +206,8 @@ Mit den Koordinaten wird das Voronoi-Diagramm berechnet, welches den Raum in Ber
 		subfigure(rect(image("../images/test_6-moved.svg"), inset: 0pt), caption: [Tiefere Scheibe]),
 	),
 ) <segmentierung_voronoi>
+
+Der Ablauf wird für alle Scheiben durchgeführt, wodurch alle Punkte zu Segmenten zugeordnet werden. Ein Beispiel für eine Segmentierung ist in @segment_example gegeben. Die unterschiedlichen Segmente sind durch unterschiedliche Einfärbung der zugehörigen Punkte markiert.
 
 #figure(
 	caption: [Segmentierung von einem Waldstück.],
