@@ -17,10 +17,14 @@
 		let nums = nums.pos()
 		if nums.len() <= 1 {
 			numbering("I.", ..nums)
-		} else {
+		} else if nums.len() <= 4 {
 			numbering("1.", ..nums.slice(1))
+		} else {
+			none
 		}
 	})
+
+	set heading(supplement: [Kapitel])
 
 	show ref: it => {
 		let el = it.element

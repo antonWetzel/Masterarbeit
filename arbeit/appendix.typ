@@ -90,7 +90,7 @@
 ) <messwerte_2>
 
 
-== KD-Baum
+== KD-Baum <kd_baum>
 
 Für eine Menge von Punkten kann ein KD-Baum bestimmt werden. Mit diesem kann effizient bestimmt werden, welche Punkte innerhalb einer Kugel mit beliebiger Position und Radius liegen. Ein Beispiel für einen KD-Baum ist in @appendix_kd_baum gegeben.
 

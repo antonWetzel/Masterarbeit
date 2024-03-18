@@ -6,21 +6,22 @@
 
 === Eigenschaften <berechnung_eigenschaften>
 
-Die Baumeigenschaften werden für jedes Segment einzeln berechnet. Dabei sind alle Punkte im Segment als Liste der Länge $n$ verfügbar. Für den Punkt $i in NN_0^(n-1)$ ist nur die globale Position $p_i = (p_(i x), p_(i y), p_(i z))$ gegeben.
+Die charakteristischen Eigenschaften werden für jedes Segment einzeln berechnet. Dabei sind alle Punkte im Segment als Liste der Länge $n$ verfügbar. Für den Punkt $i in NN_0^(n-1)$ ist nur die globale Position $p_i = (p_(i x), p_(i y), p_(i z))$ gegeben. Die Punkte sind dabei ungeordnet, wodurch aufeinanderfolgende Punkte in der Liste weit voneinander entfernte Positionen haben können.
 
-
-==== Nachbarschaft
-
-Um relevante Eigenschaften für einen Punkt zu bestimmen, werden die umliegenden Punkte benötigt. Dafür wird für alle Punkte ein *KD-Baum* erstellt. Mit diesem können effizient für einen Punkt die $k$-nächsten Punkte bestimmt werden.
+Um einen Punkt $i$ zu analysieren, wird die zugehörige Nachbarschaft $N_i$ benötigt. Die Nachbarschaft enthält dabei die nächsten Punkte nach Abstand sortiert. Dafür wird für alle Punkte ein KD-Baum erstellt. Mit diesem können effizient für eine Position $p_i$ und ein beliebiges $k in NN$ die $k$-nächsten Punkte bestimmt werden. Die Konstruktion und Verwendung vom KD-Baum wird in @kd_baum erklärt. In der Nachbarschaft ist dann $N_0$ der ursprüngliche Punkt $i$, $N_1$ der nächste Punkt und $N_(k-1)$ der $k-1$ nächste Punkt.
 
 
 ==== Punkthöhe
 
-Für jeden Punkt wird die relative Höhe im Segment bestimmt. Mit den Positionen wird die Mindesthöhe $h_min$ und Maximalhöhe $h_max$ bestimmt.
+Für jeden Punkt wird die relative Höhe im Segment bestimmt. Dafür wird zuerst für alle Positionen die Mindesthöhe $h_min$ und Maximalhöhe $h_max$ bestimmt.
 
 $ h_min = min_(i in NN_0^(n-1))p_(i y) #h(40pt) h_max = max_(i in NN_0^(n-1))p_(i y) $
 
-Die relative Höhe $h_i$ wird mit $h_i = (p_(i y) - h_min) / (h_max - h_min)$ berechnet. Diese liegt dadurch immer im Bereich $[0; 1]$. Ein Beispiel ist in @analyse_height zu sehen.
+Mit der Mindest- und Maximalhöhe kann für den Punkt $i$ die relative Höhe $h_i$ bestimmt werden.
+
+$ h_i = (p_(i y) - h_min) / (h_max - h_min) $
+
+Die relative Höhe liegt immer im Bereich $[0; 1]$ und wird größer, je höher der Punkt liegt. Ein Beispiel ist in @analyse_height zu sehen.
 
 #let example(content) = align(center, box(width: 70%, side-caption(
 	amount: (1fr, 5fr),
@@ -28,16 +29,36 @@ Die relative Höhe $h_i$ wird mit $h_i = (p_(i y) - h_min) / (h_max - h_min)$ be
 )))
 
 #example[#figure(
-	caption: [Punktwolke basierend auf der relativen Höhe der Punkte eingefärbt.],
+	caption: [
+		Punktwolke basierend auf der relativen Höhe der Punkte eingefärbt.\
+		Der Farbverlauf geht von Gelb für den niedrigsten Punkt zu Rot für den höchsten Punkt.
+	],
 	image("../images/auto-crop/height.png"),
 ) <analyse_height>]
 
 
 ==== Krümmung <krümmung>
 
-Die Krümmung der Oberfläche wird für jeden Punkt geschätzt. Dafür werden die Positionen der Punkte in der Nachbarschaft betrachtet. Zuerst wird der geometrische Schwerpunkt bestimmt, dass die Positionen der Punkte um diesen verschoben werden können. Ohne die Verschiebung würde die globale Position der Punkte das Ergebnis verfälschen. Mit den Positionen der Punkte kann die Kovarianzmatrix bestimmt werden.
+Die Krümmung der ursprünglichen abgetasteten Oberfläche wird für jeden Punkt geschätzt. Dafür wird für den Punkte $i$ die Verteilung der Positionen der Punkte in der Nachbarschaft $N_i$ betrachtet. Zuerst wird für die Nachbarschaft der geometrische Schwerpunkt $s_i$ bestimmt.
 
-Die normierten Eigenvektoren der Kovarianzmatrix bilden eine Orthonormalbasis und die Eigenwerte geben die Ausdehnung der Punkte entlang des zugehörigen Basisvektors an. Der kleinste Eigenwert gehört zu Dimension mit der geringsten Ausdehnung. Je kleiner der Eigenwert, desto näher liegen die Punkte in der Nachbarschaft an der Ebene, aufgespannt durch die anderen beiden Eigenvektoren. Ein Beispiel für die Eigenvektoren in 2D ist in @analyse_eigenvektoren gegeben.
+$ s_i = 1 / k * sum_(j in N_i) p_j $
+
+Mit dem Schwerpunkte kann die Kovarianzmatrix $C_i$ bestimmt werden.
+
+// prettypst: disable
+#{
+	set math.mat(column-gap: 0.5cm)
+	$ C_i = 1 / k * sum_(j in N_i) mat(
+		(p_(j x) - s_(i x))^2, (p_(j x) - s_(i x)) * (p_(j y) - s_(i y)), (p_(j x) - s_(i x)) * (p_(j z) - s_(i z)); 
+		(p_(j y) - s_(i y)) * (p_(j x) - s_(i x)), (p_(j y) - s_(i y))^2, (p_(j y) - s_(i y)) * (p_(j z) - s_(i z)); 
+		(p_(j z) - s_(i z)) * (p_(j x) - s_(i x)), (p_(j z) - s_(i z)) * (p_(j y) - s_(i y)), (p_(j z) - s_(i z))^2; 
+	) $
+}
+// prettypst: enable
+
+Ohne die Verschiebung um $s_i$ würde die globale Position der Punkte die Kovarianzmatrix beeinflussen. Von der Kovarianzmatrix werden die Eigenwerte und zugehörige Eigenvektoren bestimmt.
+
+Die normierten Eigenvektoren $v_(i 0)$, $v_(i 1)$ und $v_(i 2)$ bilden eine Orthonormalbasis und der zugehörige Eigenwert $lambda_(i alpha)$ für $v_(i alpha)$ ist die Ausdehnung der Punkte entlang des Basisvektors. Der kleinste Eigenwert gehört zu Dimension mit der geringsten Ausdehnung. Je kleiner der kleinste Eigenwert, desto näher liegen die Punkte in der Nachbarschaft an der Ebene, aufgespannt durch die anderen beiden Eigenvektoren. Ein Beispiel für die Eigenvektoren in 2D ist in @analyse_eigenvektoren gegeben.
 
 #let numbers = (
 	(-0.2365, -0.7597),
@@ -93,7 +114,7 @@ Die normierten Eigenvektoren der Kovarianzmatrix bilden eine Orthonormalbasis un
 )
 
 #side-caption(amount: (1fr, 1.5fr))[#figure(
-	caption: [Eigenvektoren $v_0$ und $v_1$ der Kovarianzmatrix für die Punkte.\
+	caption: [Eigenvektoren $v_0$ und $v_1$ der Kovarianzmatrix für eine Punktmenge.\
 	Die Länge der Vektoren ist anhängig vom zugehörigen Eigenwert.],
 	cetz.canvas(length: 2cm, {
 		import cetz.draw: *;
@@ -123,11 +144,15 @@ Die normierten Eigenvektoren der Kovarianzmatrix bilden eine Orthonormalbasis un
 	}),
 ) <analyse_eigenvektoren>]
 
-Wenn die Eigenwerte $lambda_i$ mit $i in NN_0^2$ absteigend nach größer sortiert sind, dann kann die Krümmung $c$ mit $c = (3 lambda_2) / (lambda_0 + lambda_1 + lambda_2)$ berechnet werden. $c$ liegt dabei im abgeschlossenen Bereich $[0; 1]$, weil $lambda_i >= 0$ ist. In @analyse_curve ist ein Beispiel gegeben.
+Mit den Eigenwerten $lambda_(i alpha)$ absteigend nach größer sortiert wird die Krümmung $c_i$ berechnet.
+
+$ c_i = (3 lambda_(i 2)) / (lambda_(i 0) + lambda_(i 1) + lambda_(i 2)) $
+
+$c_i$ liegt dabei im abgeschlossenen Bereich $[0; 1]$, weil $0 <= lambda_(i 0) <= lambda_(i 1) <= lambda_(i 2)$ ist. In @analyse_curve in ein Beispiel für ein Segment mit den Punkten basierend auf der Krümmung eingefärbt.
 
 #example[#figure(
 	caption: [
-		Punktwolke basierend auf der Krümmung einfärbt.\
+		Punktwolke basierend auf der Krümmung eingefärbt.\
 		Der Farbverlauf geht von Gelb für wenig bis Rot für maximale Krümmung.
 	],
 	image("../images/auto-crop/curve_all.png"),
@@ -136,24 +161,32 @@ Wenn die Eigenwerte $lambda_i$ mit $i in NN_0^2$ absteigend nach größer sortie
 
 ==== Ausdehnung
 
-Der Baum wird entlang der Horizontalen in gleich hohe Scheiben unterteilt. Die Breite der Scheiben ist dabei einstellbar. Die Ausdehnung wird für jede Scheibe berechnet. Zuerst wird der geometrische Schwerpunkt der Positionen berechnet, womit die durchschnittliche Standardabweichung entlang der Horizontalen bestimmt wird.
+Für die Berechnung der horizontalen Ausdehnung wird der Baum entlang der Horizontalen in $5thin$cm breite Scheiben $S_alpha$ unterteilt.
 
-Die größte Varianz von allen Scheiben wird verwendet, um die Varianzen auf den Bereich $[0; 1]$ zu normieren. Für jeden Punkt wird die Varianz der zugehörigen Scheibe zugeordnet.
+$ S_alpha = {i | i in NN_0^(n-1), p_(i y) in [h_min + 0.05 alpha "cm")} $
 
-Die Ausdehnung eignet sich zur Unterscheidung von Stamm und Krone. Beim Stamm sind die Punkte näher einander, während bei der Krone die Punkte weiter verteilt sind.
+Die Ausdehnung wird für jede Scheibe einzeln berechnet. Dafür wird zuerst der geometrische Schwerpunkt $s_alpha$ der Punkte in der Scheibe entlang der x- und z-Achse berechnet.
+
+$ s_alpha = 1 / (|S_alpha|) sum_(i in S_alpha) (p_(i x), p_(i z)) $
+
+Mit dem Schwerpunkt wird die durchschnittliche Varianz $v_alpha$ der Abweichung in der Scheibe berechnet.
+
+$ v_alpha = 1 / (|S_alpha|) sum_(i in S_alpha) |(p_(i x), p_(i z)) - s_alpha| $ Die größte Varianz von allen Scheiben wird verwendet, um die Varianzen auf den Bereich $[0; 1]$ zu normieren. Für jeden Punkt wird die Varianz der zugehörigen Scheibe zugeordnet. In @analyse_var ist ein Segment mit den Punkten basierend der Ausdehnung der zugehörigen Scheibe eingefärbt.
 
 #example[#figure(
 	caption: [
-		Punktwolke basierend auf der Ausdehnung einfärbt.\
+		Punktwolke basierend auf der Ausdehnung eingefärbt.\
 		Der Farbverlauf geht von Gelb für geringe bis Rot für größte Ausdehnung.
 	],
 	image("../images/auto-crop/var_all.png"),
 ) <analyse_var>]
 
+Die Ausdehnung eignet sich zur Unterscheidung von Stamm und Krone. Beim Stamm sind die Punkte näher einander, während bei der Krone die Punkte weiter verteilt sind. Für die Unterteilung wird die erste Scheibe von Unten gesucht, dessen normierte Varianz größer als ein Schwellwert ist.
+
 
 === Eigenschaften für die Visualisierung <eigenschaften_visualisierung>
 
-Die Visualisierung werden die Position, Orientierung und Größe von einem Punkte benötigt. Die Position ist in den Eingabedaten gegeben und die anderen Eigenschaften werden mit der lokalen Umgebung vom Punkt berechnet.
+Für die Visualisierung werden die Position, Orientierung und Größe von einem Punkte benötigt. Die Position ist in den Eingabedaten gegeben und die anderen Eigenschaften werden mit der lokalen Umgebung vom Punkt berechnet.
 
 Für die Orientierung wird die Normale bestimmt, welche orthogonal zur geschätzten zugehörigen Oberfläche vom Punkt ist. Dafür werden die Eigenvektoren aus @krümmung verwendet. Der Eigenvektor, welcher zum kleinsten Eigenwert gehört, ist dabei orthogonal zur geschätzten Ebene mit der größten Ausdehnung. Für die Punktgröße wird der durchschnittliche Abstand zu den umliegenden Punkten bestimmt. Dadurch werden die Punkte in Bereichen mit hoher Punktdichte kleiner. In @analyse_render ist ein Beispiel gegeben.
 
@@ -162,7 +195,7 @@ Für die Orientierung wird die Normale bestimmt, welche orthogonal zur geschätz
 	[#figure(
 		caption: [
 			Ausschnitt von einer Punktwolke.\
-			Die Punkte beim Stamm sind kleiner als die freien Punkte und die Orientierung ändert sich beim Übergang vom Stamm zum Boden.
+			Die Punkte beim Stamm sind kleiner als die umliegenden Punkte und die Orientierung ändert sich beim Übergang vom Stamm zum Boden.
 		],
 		rect(image("../images/auto-crop/properties.png"), inset: 0.5pt),
 	) <analyse_render>],

@@ -8,7 +8,7 @@
 		set align(left)
 		set par(justify: true)
 		align(center, pad(x: 2cm, [
-			*Berechnung charakteristischen Eigenschaften von botanischen Bäumen mithilfe von 3D-Punktwolken.*
+			*Berechnung von charakteristischen Eigenschaften von botanischen Bäumen mithilfe von 3D-Punktwolken.*
 		]))
 	}
 	v(1fr)
