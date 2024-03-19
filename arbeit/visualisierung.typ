@@ -6,12 +6,16 @@
 
 === Punkte
 
-Grafikpipelines können Punkte, Linien oder Dreiecke rendern. Ein Punkt wird dabei mit genau einem Pixel angezeigt, dadurch können Datenpunkte unterschiedlich weit von der Kamera entfernt nicht unterschiedlich groß angezeigt werden. Um einen Datenpunkt anzuzeigen, wird deshalb ein ausgefüllter Kreis verwendet.
+Grafikpipelines haben mehrere primitive Formen, welche gerendert werden können. Die verfügbaren primitiven Formen sind meistens Punkte, Linien und Dreiecke, wobei Dreiecke immer verfügbar sind. Für das Anzeigen von komplizierter Modelle werden mehreren primitiven Formen zusammengesetzt.
 
-Um einen Kreis zu rendern, kann ein beliebiges Polygon gerendert werden, solange der Einheitskreis mit Zentrum $(0, 0)$ vollständig enthalten ist. Die Bereiche, welche außerhalb vom Kreis liegen, werden beim Rendern verworfen, wodurch nur der Kreis übrig bleibt. Je mehr Ecken das Polygon hat, desto kleiner ist der Bereich vom Polygon, der nicht zum Kreis gehört. Jede Ecke und der benötigte Bereich erhöhen den benötigten Arbeitsaufwand.
+Der primitive Punkt hat dabei keine Größe, sondern wird mit genau einem Pixel dargestellt. Um einen Punkt mit einer Größe anzeigen, werden Dreiecke als primitive Form verwendet. Bei einem Dreieck kann beliebige Eckpunkte haben und die Grafikpipeline färbt alle Pixel ein, welche zwischen den Eckpunkten liegen.
+
+Um einen Kreis zu rendern, kann ein beliebiges Polygon gerendert werden, solange der gewünschte Kreis vollständig enthalten ist. Die Pixel, welche außerhalb vom Kreis liegen, werden beim Rendern verworfen, wodurch nur der Kreis übrig bleibt. Je mehr Ecken das Polygon hat, desto kleiner ist der Bereich vom Polygon, der nicht zum Kreis gehört. Jede Ecke und der benötigte Bereich erhöhen den benötigten Arbeitsaufwand.
 
 
 ==== Mögliche Polygone
+
+Zuerst wird ein Kreis mit Position $(0, 0)$ und Radius $1$ benötigt. Mithilfe der Position vom Punkt und der Kamera wird der Kreis transformiert, dass die korrekten Pixel eingefärbt werden.
 
 Das kleinste passende Dreieck ist ein gleichseitiges Dreieck. In @dreieck_größe ist die Konstruktor für die Seitenlänge gegeben. Ein mögliches Dreieck hat die Eckpunkte $(-tan(60°), -1)$, $(tan(60°), -1)$ und $(0, 2)$. Für das Dreieck werden dadurch drei Ecken und eine Fläche von $(w dot h) / 2 = (tan(60°) dot 2 dot 3) / 2 = tan(60°) dot 3 approx 5.2$ benötigt.
 
@@ -75,12 +79,12 @@ Das kleinste mögliche Viereck ist das Quadrat mit Seitenlänge $2$. In @vis_vie
 	}),
 ) <vis_viereck_polygon>
 
-Für Polygone mit mehr Ecken, wird der benötigte Bereich kleiner, es werden aber auch mehr Ecken benötigt.
+In @visualiserung_vergleich_polygon ist ein Vergleich für eine Punktewolke gerendert mit unterschiedlichen Polygonen. Für Polygone mit mehr Ecken, wird der benötigte Bereich kleiner, es werden aber auch mehr Ecken benötigt.
 
 #let boxed(p, caption: []) = subfigure(box(image(p), stroke: 1pt, clip: true), caption: caption)
 
 #figure(
-	caption: [Unterschiedliche Polygone und Kreise für das Anzeigen der Punkte.],
+	caption: [Die gleiche Punktewolke mit unterschiedlichen Polygonen und Kreisen für die Punkte.],
 	grid(
 		columns: 1 * 3,
 		gutter: 1em,
@@ -88,26 +92,7 @@ Für Polygone mit mehr Ecken, wird der benötigte Bereich kleiner, es werden abe
 		boxed("../images/crop/point_quad.png", caption: [Quadrate]),
 		boxed("../images/crop/point_circle.png", caption: [Kreise]),
 	),
-)
-
-// Ein Dreieck kann mit nur einem Dreieck dargestellt werden, für ein Quadrat werden zwei Dreiecke benötigt. benötigt. Für das Quadrat werden sechs Ecken und eine Fläche von $w * h = 2 * 2 = 4$ benötigt. In @dreieck_oder_quadrat ist ein grafischer Vergleich.
-
-// #figure(
-// 	caption: [Quadrat und Dreieck, welche den gleichen Kreis enthalten.],
-// 	cetz.canvas({
-// 		import cetz.draw: *
-
-// 		line((-1, -1), (-1, 1), (1, 1), (1, -1), close: true, fill: red)
-// 		circle((0, 0), radius: 1, fill: white)
-
-// 		set-origin((5, 0))
-
-// 		line((-1.73, -1), (1.73, -1), (0, 2), close: true, fill: red)
-// 		circle((0, 0), radius: 1, fill: white)
-// 	}),
-// ) <dreieck_oder_quadrat>
-
-// Durch die hohe Anzahl und kleine Fläche der Punkte, kann die Punktwolke mit dem Dreieck als Basis schneller angezeigt werden.
+) <visualiserung_vergleich_polygon>
 
 
 ==== Anzeigen im dreidimensionalen Raum
@@ -190,10 +175,14 @@ Die Vektoren $a$ und $b$ spannen eine Ebene auf, welche orthogonal zu $n$ ist. F
 
 Je nach Scanner und Größe des abgetasteten Gebietes kann die Punktwolke unterschiedlich viele Punkte beinhalten. Durch Hardwarelimitierungen ist es nicht immer möglich, alle Punkte gleichzeitig anzuzeigen, während eine interaktive Wiedergabe gewährleistet ist.
 
-Besonders für weit entfernte Punkt ist es nicht notwendig, alle Punkte genau wiederzugeben. Deshalb wird für weit entfernte Punkte eine vereinfachte Version angezeigt. Diese besteht aus weniger Punkten und benötigt dadurch weniger Ressourcen, bietet aber eine gute Approximation der ursprünglichen Daten.
+Besonders für weit von der Kamera entfernte Punkte ist es nicht notwendig, alle Punkte genau anzuzeigen. Deshalb wird für weit entfernte Punkte eine vereinfachte Version berechnet und anstelle der originalen Punkte verwendet. Diese besteht aus weniger Punkten und benötigt dadurch weniger Ressourcen.
+
+Für die gesamte Punktewolke wird ein Octree mit den Punkten erstellt. Am Anfang besteht der Octree aus einem Leaf-Knoten und die Punkte zum Octree hinzugefügt. Dafür wird der Leaf-Knoten bestimmt, der zur Position vom Punkt gehört. Enthält der Leaf-Knoten weniger Punkte als die festgelegte Maximalanzahl, so wird der Punkt zum Knoten hinzugefügt. Wenn der Leaf-Knoten bereits voll ist, so wird dieser unterteilt. Der Leaf-Knoten wird in acht Kinderknoten unterteilt und die Punkte vom Leaf-Knoten werden auf die Kinderknoten verteilt, wodurch der Leaf-Knoten zum Branch-Knoten wird. Für die Unterteilung wird der Knoten entlang der x-, y- und z-Achse in der Mitte geteilt.
+
+Alle Punkte gehören nach der Unterteilung zu einem Leaf-Knoten im Octree. Für jeden Branch-Knoten wird dann eine Punktwolke berechnet, welche als Vereinfachung der Punkte der zugehörigen Kinderknoten verwendet werden kann. In @visualiserung_lods sind die unterschiedlichen Stufen vom Octree mit zugehörigen Detailstufen visualisiert.
 
 #figure(
-	caption: [Unterschiedliche Stufen der Unterteilung. Jeder Würfel enthält bis zu $32768$ Punkte. In der höchsten Stufe werden alle Punkte im Datensatz angezeigt.],
+	caption: [Unterschiedliche Detailstufen. Jeder Würfel enthält bis zu $32768$ Punkte. In der höchsten Stufe werden alle Punkte im Datensatz angezeigt.],
 	grid(
 		columns: (3),
 		gutter: 1em,
@@ -207,27 +196,23 @@ Besonders für weit entfernte Punkt ist es nicht notwendig, alle Punkte genau wi
 		subfigure(image("../images/crop/lod_7.png"), caption: [Stufe 7]),
 		subfigure(image("../images/crop/lod_8.png"), caption: [Stufe 8]),
 	),
-)
-
-Für die gesamte Punktewolke wird ein Octree mit den Punkten erstellt. Der zugehörige Voxel vom Root-Knoten wird so gewählt, dass alle Punkte im Voxel liegen. Rekursiv wird der Voxel in acht gleich große Voxel geteilt, solange in einem Voxel noch zu viele Punkte liegen. Nach der Unterteilung gehört jeder Punkt im Datensatz zu genau einem Leaf-Knoten.
-
-Für jeden Branch-Knoten wird eine Punktwolke berechnet, welche als Vereinfachung der Punkte der zugehörigen Kinderknoten verwendet werden kann.
+) <visualiserung_lods>
 
 
 ==== Berechnung der Detailstufen
 
-Die Detailstufen werden wie bei "Fast Out-of-Core Octree Generation for Massive Point Clouds" @potree_lod von den Blättern des Baumes bis zur Wurzel berechnet. Dabei wird mit den Detailstufen der Kinderknoten die Detailstufe für den momentanen Knoten berechnet.
+Die Detailstufen werden wie bei "Fast Out-of-Core Octree Generation for Massive Point Clouds" @potree_lod von den untersten Branch-Knoten bis zum Root-Knoten berechnet. Dabei wird mit den Detailstufen der Kinderknoten die Detailstufe für den momentanen Knoten berechnet.
 
-Dadurch haben zwar Berechnungen der gröberen Detailstufen für Knoten näher an der Wurzel nur Zugriff auf bereits vereinfachte Daten, aber die Anzahl der Punkte, mit denen die Detailstufe berechnet wird, ist nach oben beschränkt. Solange die Detailstufen eine gute Vereinfachung der ursprünglichen Punkte sind, kann so der Berechnungsaufwand stark verringert werden.
+Dadurch haben zwar Berechnungen der gröberen Detailstufen für Knoten näher an der Wurzel nur Zugriff auf bereits vereinfachte Daten, aber die Anzahl der Punkte, mit denen die Detailstufe berechnet wird, ist viel kleiner. Solange die Detailstufen eine gute Vereinfachung der ursprünglichen Punkte sind, kann so der Berechnungsaufwand stark verringert werden.
 
-Für die Berechnung einer Detailstufe wird der Voxel, welcher zu dem Knoten gehört, in eine feste Anzahl von gleich großen Teilvoxeln unterteilt. Für jeden Teilvoxel wird ein repräsentativer Punkt bestimmt. Dafür werden zuerst alle Punkt aus den Kinderknoten bestimmt, welche im Teilvoxel liegen. Liegt kein Punkt im Teilvoxel, so wird dieser übersprungen. Aus den Punkten wird ein repräsentativer Punkt für den ganzen Voxel bestimmt. Dafür werden Position, Normale und Größe gemittelt und die Eigenschaften von einem der Punkte übernommen.
+Für die Berechnung einer Detailstufe wird der Voxel, welcher zu dem Knoten gehört, in eine feste Anzahl von gleich großen Teilvoxeln unterteilt. Für jeden Teilvoxel werden zuerst alle Punkt aus den Kinderknoten bestimmt, welche im Teilvoxel liegen. Liegt kein Punkt im Teilvoxel, so wird dieser übersprungen. Aus den Punkten im Teilvoxel wird ein repräsentativer Punkt bestimmt. Dafür werden Position, Normale und Größe gemittelt und die Eigenschaften von einem der Punkte übernommen. Die Detailstufe besteht aus allen repräsentativen Punkten für die Teilvoxel, welche nicht leer waren.
 
-Bei der nächsten gröberen Detailstufe sind auch die zugehörigen Voxel von den Knoten größer. Durch die feste Anzahl der Teilvoxel sind diese deshalb größer, wodurch die Punkte weiter vereinfacht werden.
+Bei der nächst gröberen Detailstufe ist der Voxel vom Branch-Knoten doppelt so groß. Durch die feste Anzahl der Teilvoxel verdoppelt sich auch die Größe der Teilvoxel, wodurch die Punkte weiter vereinfacht werden.
 
 
 === Eye-Dome Lighting
 
-Um die Punktwolke anzuzeigen, werden die Punkte aus dem dreidimensionalen Raum auf den zweidimensionalen Monitor projiziert. Dabei gehen die Tiefeninformationen verloren. Mit der Rendertechnik *Eye-Dome Lighting* werden die Kanten von Punkten hervorgehoben, bei denen die Tiefe sich stark ändert.
+Um die Punktwolke anzuzeigen, werden die Punkte aus dem dreidimensionalen Raum auf den zweidimensionalen Monitor projiziert. Dabei gehen die Tiefeninformationen verloren. Mit der Rendertechnik Eye-Dome Lighting werden die Kanten von Punkten hervorgehoben, bei denen die Tiefe sich stark ändert.
 
 Beim Rendern von 3D-Szenen wird für jedes Pixel die momentane Tiefe vom Polygon an dieser Stelle gespeichert. Das wird benötigt, dass bei überlappenden Polygonen das nähere Polygon an der Kamera angezeigt wird. Nachdem die Szene gerendert ist, wird mit den Tiefeninformationen für jedes Pixel der Unterschied zu den umliegenden Pixeln bestimmt. Ein Beispiel für die Tiefeninformationen ist in @eye_dome_depth gegeben.
 
