@@ -79,12 +79,12 @@ Das kleinste mögliche Viereck ist das Quadrat mit Seitenlänge $2$. In @vis_vie
 	}),
 ) <vis_viereck_polygon>
 
-In @visualiserung_vergleich_polygon ist ein Vergleich für eine Punktewolke gerendert mit unterschiedlichen Polygonen. Für Polygone mit mehr Ecken, wird der benötigte Bereich kleiner, es werden aber auch mehr Ecken benötigt.
+In @visualiserung_vergleich_polygon ist ein Vergleich für eine Punktwolke gerendert mit unterschiedlichen Polygonen. Für Polygone mit mehr Ecken, wird der benötigte Bereich kleiner, es werden aber auch mehr Ecken benötigt.
 
 #let boxed(p, caption: []) = subfigure(box(image(p), stroke: 1pt, clip: true), caption: caption)
 
 #figure(
-	caption: [Die gleiche Punktewolke mit unterschiedlichen Polygonen und Kreisen für die Punkte.],
+	caption: [Die gleiche Punktwolke mit unterschiedlichen Polygonen und Kreisen für die Punkte.],
 	grid(
 		columns: 1 * 3,
 		gutter: 1em,
@@ -177,7 +177,7 @@ Je nach Scanner und Größe des abgetasteten Gebietes kann die Punktwolke unters
 
 Besonders für weit von der Kamera entfernte Punkte ist es nicht notwendig, alle Punkte genau anzuzeigen. Deshalb wird für weit entfernte Punkte eine vereinfachte Version berechnet und anstelle der originalen Punkte verwendet. Diese besteht aus weniger Punkten und benötigt dadurch weniger Ressourcen.
 
-Für die gesamte Punktewolke wird ein Octree mit den Punkten erstellt. Am Anfang besteht der Octree aus einem Leaf-Knoten und die Punkte zum Octree hinzugefügt. Dafür wird der Leaf-Knoten bestimmt, der zur Position vom Punkt gehört. Enthält der Leaf-Knoten weniger Punkte als die festgelegte Maximalanzahl, so wird der Punkt zum Knoten hinzugefügt. Wenn der Leaf-Knoten bereits voll ist, so wird dieser unterteilt. Der Leaf-Knoten wird in acht Kinderknoten unterteilt und die Punkte vom Leaf-Knoten werden auf die Kinderknoten verteilt, wodurch der Leaf-Knoten zum Branch-Knoten wird. Für die Unterteilung wird der Knoten entlang der x-, y- und z-Achse in der Mitte geteilt.
+Für die gesamte Punktwolke wird ein Octree mit den Punkten erstellt. Am Anfang besteht der Octree aus einem Leaf-Knoten und die Punkte zum Octree hinzugefügt. Dafür wird der Leaf-Knoten bestimmt, der zur Position vom Punkt gehört. Enthält der Leaf-Knoten weniger Punkte als die festgelegte Maximalanzahl, so wird der Punkt zum Knoten hinzugefügt. Wenn der Leaf-Knoten bereits voll ist, so wird dieser unterteilt. Der Leaf-Knoten wird in acht Kinderknoten unterteilt und die Punkte vom Leaf-Knoten werden auf die Kinderknoten verteilt, wodurch der Leaf-Knoten zum Branch-Knoten wird. Für die Unterteilung wird der Knoten entlang der x-, y- und z-Achse in der Mitte geteilt.
 
 Alle Punkte gehören nach der Unterteilung zu einem Leaf-Knoten im Octree. Für jeden Branch-Knoten wird dann eine Punktwolke berechnet, welche als Vereinfachung der Punkte der zugehörigen Kinderknoten verwendet werden kann. In @visualiserung_lods sind die unterschiedlichen Stufen vom Octree mit zugehörigen Detailstufen visualisiert.
 
@@ -221,7 +221,7 @@ Beim Rendern von 3D-Szenen wird für jedes Pixel die momentane Tiefe vom Polygon
 	box(image("../images/eye_dome_depth_edited.png", width: 80%), stroke: 1pt),
 ) <eye_dome_depth>
 
-Der Effekt entsteht dadurch, dass für jedes Pixel der maximale Unterschied in der Tiefe zu den umliegenden Pixeln bestimmt wird. Je größer der Unterschied, desto mehr wird das zugehörige Pixel verdunkelt. Ein Veranschaulichung ist in @eye_dome_example gegeben.
+Der Effekt entsteht dadurch, dass für jedes Pixel der maximale Unterschied in der Tiefe zu den umliegenden Pixeln bestimmt wird. Je größer der Unterschied, desto mehr wird das zugehörige Pixel verdunkelt. Eine Veranschaulichung ist in @eye_dome_example gegeben.
 
 #let boxed(p, caption: []) = subfigure(box(image(p), fill: rgb(35%, 49%, 58%), stroke: 1pt), caption: caption)
 

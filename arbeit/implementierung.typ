@@ -6,43 +6,46 @@
 
 == Technik
 
-Das Projekt ist unter #link("https://github.com/antonWetzel/treee") verfügbar. Als Programmiersprache wird Rust und als Grafikkartenschnittstelle WebGPU verwendet. Rust ist eine performante Programmiersprache mit einfacher Integration für WebGPU. WebGPU bildet eine Abstraktionsebene über der nativen Grafikkartenschnittstelle, dadurch ist die Implementierung unabhängig vom Betriebssystem. Alle verwendeten Bibliotheken sind in @implementierung_bilbiotheken gelistet.
+Das Softwareprojekt ist auf #link-footnote("https://github.com/antonWetzel/treee", [GitHub]) verfügbar. Als Programmiersprache wird Rust und als Grafikkartenschnittstelle WebGPU verwendet. Rust ist eine performante Programmiersprache mit einfacher Integration für WebGPU. WebGPU bildet eine Abstraktionsebene über der nativen Grafikkartenschnittstelle, dadurch ist die Implementierung unabhängig vom Betriebssystem. Alle verwendeten Bibliotheken sind in @implementierung_bilbiotheken gelistet.
 
-#figure(
-	caption: [Benutzte Bibliotheken],
-	table(
-		columns: (auto, auto, 1fr),
-		align: (x, y) => if y == 0 { center } else { (left, right, left).at(x) },
-		[*Name*],            [*Version*], [*Funktionalität*],
-		`nalgebra`,          `0.32.4`,    [Lineare Algebra],
-		`pollster`,          `0.3`,       [Auf asynchrone Ergebnisse warten],
-		`rfd`,               `0.14`,      [Dialogfenster zum Öffnen und Speichern von Dateien],
-		`crossbeam`,         `0.8`,       [Synchronisierung zwischen Threads],
-		`log`,               `0.4`,       [Logs erzeugen],
-		`env_logger`,        `0.11`,      [Wiedergabe von Logs],
-		`image`,             `0.24`,      [Laden und Speichern von Bildern],
-		`wgpu`,              `0.19`,      [WebGPU Implementierung],
-		`winit`,             `0.29`,      [Fenstermanagement],
-		`bytemuck`,          `1.14`,      [Konversation von Daten zu Bytes],
-		`serde`,             `1.0`,       [Serialisierung von Datentypen],
-		`serde_json`,        `1.0`,       [Serialisierung als JSON],
-		`rand`,              `0.8`,       [Generierung von Zufallszahlen],
-		`num_cpus`,          `1.15`,      [Prozessoranzahl bestimmen],
-		`laz`,               `0.8`,       [Dekomprimieren von LASzip Dateien],
-		`thiserror`,         `1.0`,       [Fehlermanagement],
-		`tempfile`,          `3.8.1`,     [Temporäre Dateien erstellen],
-		`rayon`,             `1.8.0`,     [Multithreading],
-		`termsize`,          `0.1`,       [Größe vom Terminal bestimmen],
-		`egui`,              `0.26`,      [Benutzerinterface],
-		`egui-winit`,        `0.26`,      [Systemereignisse zum Interface weiterleiten],
-		`egui-wgpu`,         `0.26`,      [Interface rendern],
-		`clap`,              `4.4`,       [Kommandozeilenargumente verarbeiten],
-		`voronator`,         `0.2.1`,     [Voronoi-Diagramm bestimmen],
-		`cfg-if`,            `1.0.0`,     [Konditionales Kompilieren von Quelltext],
-		`static_assertions`, `1.1.0`,     [Systemeigenschaften überprüfen],
-		`colored`,           `2.1.0`,     [Farbiger Text im Terminal],
-	),
-) <implementierung_bilbiotheken>
+#{
+	show table.cell: set text(size: 0.8em)
+	[#figure(
+		caption: [Benutzte Bibliotheken],
+		table(
+			columns: (auto, auto, 1fr),
+			align: (x, y) => if y == 0 { center } else { (left, right, left).at(x) },
+			[*Name*],            [*Version*], [*Funktionalität*],
+			`nalgebra`,          `0.32.4`,    [Lineare Algebra],
+			`pollster`,          `0.3`,       [Auf asynchrone Berechnungen warten],
+			`rfd`,               `0.14`,      [Dialogfenster zum Öffnen und Speichern von Dateien],
+			`crossbeam`,         `0.8`,       [Synchronisierung zwischen Threads],
+			`log`,               `0.4`,       [Logs erzeugen],
+			`env_logger`,        `0.11`,      [Wiedergabe von Logs],
+			`image`,             `0.24`,      [Laden und Speichern von Bildern],
+			`wgpu`,              `0.19`,      [WebGPU Implementierung],
+			`winit`,             `0.29`,      [Fenstermanagement],
+			`bytemuck`,          `1.14`,      [Konversation von Daten zu Bytes],
+			`serde`,             `1.0`,       [Serialisierung von Datentypen],
+			`serde_json`,        `1.0`,       [Serialisierung als JSON],
+			`rand`,              `0.8`,       [Generierung von Zufallszahlen],
+			`num_cpus`,          `1.15`,      [Prozessoranzahl bestimmen],
+			`laz`,               `0.8`,       [Dekomprimieren von LASzip Dateien],
+			`thiserror`,         `1.0`,       [Fehlermanagement],
+			`tempfile`,          `3.8.1`,     [Temporäre Dateien erstellen],
+			`rayon`,             `1.8.0`,     [Multithreading],
+			`termsize`,          `0.1`,       [Größe vom Terminal bestimmen],
+			`egui`,              `0.26`,      [Benutzerinterface],
+			`egui-winit`,        `0.26`,      [Systemereignisse zum Interface weiterleiten],
+			`egui-wgpu`,         `0.26`,      [Interface rendern],
+			`clap`,              `4.4`,       [Kommandozeilenargumente verarbeiten],
+			`voronator`,         `0.2.1`,     [Voronoi-Diagramm bestimmen],
+			`cfg-if`,            `1.0.0`,     [Konditionales Kompilieren von Quelltext],
+			`static_assertions`, `1.1.0`,     [Systemeigenschaften überprüfen],
+			`colored`,           `2.1.0`,     [Farbiger Text im Terminal],
+		),
+	) <implementierung_bilbiotheken>]
+}
 
 Als Datensätze werden Dateien im LASzip-Format verwendet. Dieses Format wird häufig für Punktwolken verwendet. Weitere Formate können einfach eingebunden werden, solange eine Rust-Bibliothek existiert, welche das Format einlesen kann.
 
@@ -57,14 +60,14 @@ Für den Import und die Visualisierung wird das kompilierte Programm benötigt. 
 
 === Ausführen
 
-In @implementierung_befehle sind die Kommandos gelistet, um den Importer und die Visualisierung zu starten. Wenn das Programm ohne Argumente oder direkt ohne Terminal gestartet wird, kann die gewünschte Funktion interaktive ausgewählt werden. Für den Import können weitere Optionen angegeben werden, um den Ablauf an den Datensatz anzupassen.
+In @implementierung_befehle sind die Befehle gelistet, um den Importer und die Visualisierung zu starten. Wenn das Programm ohne Argumente oder direkt ohne Terminal gestartet wird, kann die gewünschte Funktion interaktiv ausgewählt werden. Für den Import können weitere Optionen angegeben werden, um den Ablauf an den Datensatz anzupassen.
 
 #figure(
 	caption: [Mögliche Befehle für das Programm.],
 	table(
 		align: (x, y) => if y == 0 { center } else { left },
 		columns: (auto, 1fr),
-		[*Kommando*],          [*Funktion*],
+		[*Befehl*],            [*Funktion*],
 		`treee`,               [Interaktive Umgebung starten],
 		`treee importer`,      [Importer starten],
 		`treee help importer`, [Verfügbare Optionen für den Importer anzeigen],
@@ -75,7 +78,7 @@ In @implementierung_befehle sind die Kommandos gelistet, um den Importer und die
 
 === Import
 
-Für den Import wird der Datensatz und der Ordner zum Speichern der Ergebnisse benötigt. Beide können über die Befehlszeile angegeben werden oder über ein Dialogfenster ausgewählt werden. Alle weiteren Optionen sind in @implementierung_import_optionen gelistet.
+Für den Import wird der Datensatz und der Ordner zum Speichern der Ergebnisse benötigt. Beide können über die Befehlszeile angegeben werden oder über ein Dialogfenster ausgewählt werden. Alle weiteren Optionen sind in @implementierung_import_optionen gelistet. Am Ende vom Import wird im Ordner für die Ergebnisse die `project.json` Datei und zugehörige Daten abgespeichert, welche von der Visualisierung geöffnet werden können.
 
 #figure(
 	caption: [Mögliche Optionen für den Import.],
@@ -96,25 +99,26 @@ Für den Import wird der Datensatz und der Ordner zum Speichern der Ergebnisse b
 
 === Visualisierung
 
-Um eine Punktewolke zu öffnen, wird die `project.json` Datei geladen. In der Datei ist die Struktur vom Octree und Informationen über die Segmente enthalten. Die Punktdaten werden noch nicht geladen.
+Um eine Punktwolke zu öffnen, wird die `project.json` Datei eingelesen. In der Datei ist die Struktur vom Octree und Informationen über die Segmente enthalten. Die Punktdaten sind in separaten Dateien gespeichert und werden noch nicht geladen.
 
-Je nach Position der Kamera werden die benötigten Punkte geladen, welche momentan sichtbar sind. Dadurch können auch Punktwolken angezeigt werden, die mehr Punkte enthalten als gleichzeitig interaktiv anzeigbar. Auch bei den Segmenten wird nur das Segment geladen, welches ausgewählt wurde.
+Je nach Position der Kamera werden die benötigten Punkte geladen, welche momentan sichtbar sind. Dadurch können auch Punktwolken angezeigt werden, die mehr Punkte enthalten als gleichzeitig interaktiv anzeigbar. Auch wenn ein einzelnes Segment angezeigt wird, ist nur das Segment geladen, welches ausgewählt wurde.
 
-Mit dem Benutzerinterface kann die Visualisierung angepasst werden. Die Optionen sind in @implementierung_ui erklärt.
+Mit dem Benutzerinterface kann die Visualisierung angepasst werden und Informationen werden angezeigt. Die Optionen und einsehbaren Informationen sind in @implementierung_ui erklärt.
 
 #figure(
-	caption: [Benutzerinterface mit allen Optionen. ],
+	caption: [Benutzerinterface mit den verfügbaren Optionen und Informationen. ],
 	grid(
 		gutter: 3em,
 		columns: 1 * (1fr, 2fr),
 		rect(image("../images/ui.png"), radius: 4pt, inset: 2pt, stroke: rgb(27, 27, 27) + 4pt),
-		align(top + left)[
+		align(horizon + left)[
 			- *Load Project*
 				- Die geladene Punktwolke ändern
 			- *Property*
 				- Die angezeigte Eigenschaft ändern
 			- *Segment*
-				- Triangulation starten und anzeigen
+				- Triangulation starten
+				- Punkte, Linien oder Dreiecke anzeigen
 				- Informationen über das ausgewählte Segment
 				- Segment speichern
 			- *Visual*
@@ -122,7 +126,7 @@ Mit dem Benutzerinterface kann die Visualisierung angepasst werden. Die Optionen
 				- Punkte basierend auf der ausgewählten Eigenschaft filtern
 				- Farbpalette und Hintergrundfarbe ändern
 				- Screenshot speichern
-				- Knoten der momentanen Detailstufen anzeigen
+				- Knoten für die Detailstufen anzeigen
 			- *Eye Dome*
 				- Stärke und Farbe vom Eye-Dome Lighting ändern
 			- *Level of Detail*
@@ -135,9 +139,9 @@ Mit dem Benutzerinterface kann die Visualisierung angepasst werden. Die Optionen
 ) <implementierung_ui>
 
 
-== Projektstruktur
+== Struktur vom Quelltext
 
-Das Projekt ist in mehrere Module unterteilt, um den Quelltext zu strukturieren. In @appendix_crates und @appendix_crates_abhängigkeiten sind die Module mit zugehöriger Funktionalität und Abhängigkeiten gelistet. Die wichtigsten Module sind `importer` und `viewer`.
+Das Softwareprojekt ist in mehrere Module unterteilt, um den Quelltext zu strukturieren. In @appendix_crates und @appendix_crates_abhängigkeiten sind die Module mit zugehöriger Funktionalität und Abhängigkeiten gelistet. Die wichtigsten Module sind `importer` und `viewer`, welche den Import und die Visualisierung beinhalten. Das Modul `treee` vereint beide zu einem Programm.
 
 #figure(
 	caption: [Module vom Projekt mit zugehöriger Funktionalität.],
@@ -146,7 +150,7 @@ Das Projekt ist in mehrere Module unterteilt, um den Quelltext zu strukturieren.
 		align: (x, y) => if y == 0 { center } else { (left, left).at(x) },
 		[*Name*],        [*Funktionalität*],
 		`input`,         [Maus- und Tastatureingaben verarbeiten],
-		`data-file`,     [Daten zusammengefasst einer Datei speichern],
+		`data-file`,     [Daten zusammengefasst in einer Datei speichern],
 		`project`,       [Format für eine Punktwolke und zugehörige Daten],
 		`k-nearest`,     [Nachbarschaftssuche mit KD-Bäumen],
 		`render`,        [Rendern von Punktwolken, Linien und Dreiecken mit `wgpu`],
@@ -194,19 +198,54 @@ Das Projekt ist in mehrere Module unterteilt, um den Quelltext zu strukturieren.
 ) <appendix_crates_abhängigkeiten>
 
 
+== Format für eine Punktwolke
+
+Die Struktur von einer Punktwolke ist in der `project.json` Datei gespeichert. Dazu gehören die verfügbaren Eigenschaften und der Octree. Alle benötigten Daten für `project.json` werden in #link-footnote("https://github.com/antonWetzel/treee/blob/main/project/src/lib.rs", `project/src/lib.rs`) definiert.
+
+
+=== Daten
+
+In separaten Dateien werden die Daten für die Punkte oder Eigenschaften gespeichert. Das verwendete Dateiformat ermöglicht es, die Dateien inkrementell zu erstellen. Am Anfang wird nur benötigt, wie viele Einträge die Datei speichern kann. Danach können die Einträge in beliebiger Reihenfolge abgespeichert werden.
+
+Die Struktur ist in @implementierung_datafile gegeben. Am Anfang der Datei wird für jeden Eintrag die Startposition $s_i$ und die Länge $l_i$ vom zugehörigen Datensegment $d_i$ gespeichert. Danach folgen die Datensegmente in beliebiger Reihenfolge $pi$.
+
+#figure(
+	caption: [Struktur einer Datei zum Speichern von Daten.],
+	tablex(
+		align: center + horizon,
+		columns: 11 *(1fr, ),
+		colspanx(7)[*Informationen*],
+		colspanx(4)[*Daten*],
+		$s_0$,
+		$l_0$,
+		$s_1$,
+		$l_1$,
+		[...],
+		$s_(n-1)$,
+		$l_(n-1)$,
+		$d_(pi(0))$,
+		$d_(pi(1))$,
+		[...],
+		$d_(pi(n-1))$
+	),
+) <implementierung_datafile>
+
+Um den Eintrag $i$ mit den Daten $d$ zur Datei hinzufügen, wird zuerst $s_i$ auf das momentane Ende der Datei und $l_i$ auf die Länge von $d$ gesetzt. Danach wird $d$ am Ende der Datei hinzugefügt. Um die Daten für den Eintrag $i$ zu lesen, wird zuerst $s_i$ und $l_i$ ausgelesen und danach der zugehörige Bereich geladen.
+
+
 == Import
 
 Um einen Datensatz zu analysieren, muss dieser zuerst importiert werden, bevor er von der Visualisierung angezeigt werden kann. Der Import wird in mehreren getrennten Phasen durchgeführt. Dabei wird der Berechnungsaufwand für eine Phase so weit wie möglich parallelisiert. Die Phasen sind:
 
 + Daten laden
 + Segmente bestimmen
-+ Segmente analysieren und die Ergebnisse speichern und zum Octree hinzufügen
++ Segmente analysieren und den Octree erstellen
 + Detailstufen bestimmten und Octree speichern
 
-Der zugehörige Datenfluss ist in @überblick_datenfluss zu sehen. Nach der ersten Phase sind die Segmente bekannt, nach der zweiten Phase analysiert und zum Octree hinzugefügt. Die Struktur von der Punktwolke ist bereits bekannt. Nach der dritten Phase sind auch die Detailstufen vom Octree erstellt.
+Der zugehörige Datenfluss ist in @überblick_datenfluss zu sehen. Nach der ersten Phase sind die Punktedaten bekannt und nach der zweiten Phase auf die Segmente aufgeteilt. In der dritten Phase werden dann die Segmente verarbeiten und der Octree aufgebaut. Nach der vierten Phase ist auch der Octree vollständig und die Punktwolke wird abgespeichert.
 
 #figure(
-	caption: [Datenfluss für den Import.],
+	caption: [Datenfluss beim Import.],
 	cetz.canvas(length: 1cm, {
 		import cetz.draw: *
 
@@ -259,26 +298,26 @@ Für die Segmentierung wird über die einzelnen horizontalen Scheiben parallelis
 		align(top + left)[
 			Bei der Segmentierung werden die Punkte von oben nach unten in Scheiben verarbeitet. Jede Scheibe wird in den folgenden Stufen verarbeitet.
 			+ Zusammenhängenden Bereiche von den Punkten bestimmen.
-			+ Mit den Bereichen und den Koordinaten der vorherigen Scheibe die Koordinaten der Bäume berechnen.
-			+ Jeden Punkt zur nächsten Koordinate zuordnen.
+			+ Mit den Bereichen und den Koordinaten der vorherigen Scheibe die Koordinaten für die momentane Scheibe berechnen.
+			+ Punkte auf die Koordinaten verteilen.
 
 			Dabei wird für die zweite Stufe die Koordinaten aus der vorherigen Scheibe benötigt.
 
-			In der Grafik ist der Arbeitsaufwand abgebildet. Von oben nach unten sind die Scheiben und von links nach rechts die Zeit abgebildet. Die erste Stufe ist in Blau, das Warten auf die vorherige Scheibe in Rot und die dritte Stufe in Orange. Der Berechnungsaufwand der zweiten Stufe ist sehr kurz, wodurch diese nicht in der Grafik sichtbar ist.
+			In der Grafik ist der Arbeitsaufwand abgebildet. Von oben nach unten sind die Scheiben und von links nach rechts die Zeit abgebildet. Die erste Stufe ist in Blau, das Warten auf die vorherige Scheibe in Rot und die dritte Stufe in Orange. Der Berechnungsaufwand der zweiten Stufe ist sehr kurz, wodurch dieser nicht in der Grafik sichtbar ist.
 
-			Die Berechnung wurde mit sieben Threads durchgeführt, wodurch bis zu sieben Scheiben in parallel verarbeitet werden können. Durch die Datenabhängigkeit kann aber die zweite Stufe erst gestartet werden, wenn von der vorherigen Scheibe die zweite Stufe beendet ist. Wenn die erste Stufe länger dauert, müssen deshalb andere Threads warten.
+			Die Berechnung wurde mit sieben Threads durchgeführt, wodurch bis zu sieben Scheiben in parallel verarbeitet werden können. Durch die Datenabhängigkeit kann aber die zweite Stufe erst verarbeitet werden, wenn von der vorherigen Scheibe die zweite Stufe beendet ist. Wenn die erste Stufe länger dauert, müssen deshalb andere Threads warten.
 		]
 	),
 ) <implementierung_segment_parallel>
 
-Die Analyse der Segmente und die Berechnung der Detailstufen sind trivial parallelisierbar. Die Analyse der Segmente wird für mehrere Segmente parallel durchgeführt, weil keine Abhängigkeiten zwischen den Daten existieren. Bei den Detailstufen können alle Kinderknoten parallel verarbeitet werden.
+Die Analyse der Segmente und die Berechnung der Detailstufen sind trivial parallelisierbar. Die Analyse der Segmente wird für mehrere Segmente parallel durchgeführt, weil keine Abhängigkeiten zwischen den Daten existieren. Bei den Detailstufen können bei einem Knoten die Kinderknoten parallel verarbeitet werden.
 
 
 == Punkte
 
 Die benötigten Daten für einen Punkt sind das Polygon als Basis, Position, Normale, Größe und ausgewählte Eigenschaft. Das Polygon ist gleich für alle Punkte und muss deshalb nur einmal zur Grafikkarte übertragen werden und wird für alle Punkte wiederverwendet.
 
-Für die Grafikpipeline wird das Polygon in Dreiecke zerlegt. In @implementierung_polygon_zerlegung sind die getesteten Varianten gegeben. Die Dreiecke werden dann projiziert und es werden alle Pixel bestimmt, welche in den Dreiecken liegen. Für jedes Pixel kann entschieden werden, ob dieser im Ergebnis gespeichert wird. Dafür wird bei den Eckpunkten die Koordinaten ohne die Transformation der Kamera abgespeichert, dass diese später verfügbar sind. Für jedes Pixel wird von der Pipeline die interpolierten Koordinaten berechnet. Nur wenn der Betrag der interpolierten Koordinaten kleiner als eins ist, wird der Pixel im Ergebnis abgespeichert.
+Für die Grafikpipeline wird das Polygon in Dreiecke zerlegt. In @implementierung_polygon_zerlegung sind die getesteten Varianten gegeben. Die Dreiecke werden dann mit der Kamera projiziert und es werden alle Pixel bestimmt, welche in den Dreiecken liegen. Für jedes Pixel kann entschieden werden, ob dieser im Ergebnis gespeichert wird. Dafür wird bei den Eckpunkten die Koordinaten ohne die Transformation der Kamera abgespeichert, dass diese später verfügbar sind. Für jedes Pixel wird von der Pipeline die interpolierten Koordinaten berechnet. Nur wenn der Betrag der interpolierten Koordinaten kleiner als eins ist, wird der Pixel im Ergebnis abgespeichert.
 
 #figure(
 	caption: [Zerlegung von unterschiedlichen Polygonen in Dreiecke.],
@@ -311,7 +350,7 @@ In @implementierung_polygon sind die Zeiten für das Rendern von unterschiedlich
 	image("../data/polygon.svg"),
 ) <implementierung_polygon>
 
-Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei kann die ausgewählte Eigenschaft geändert werden, ohne die anderen Informationen über die Punkte neu zu laden. Die Eigenschaften sind separat als Wert zwischen $0$ und $2^(32)-1$ gespeichert und werden mit einer Farbpalette in einen Farbverlauf umgewandelt. Dabei kann die Farbpalette unabhängig von den Daten ausgewählt werden. Die verfügbaren Farbpaletten sind in @implementierung_farbpaletten zu sehen.
+Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei kann die ausgewählte Eigenschaft geändert werden, ohne die anderen Informationen über die Punkte neu zu laden. Dafür wird die Eigenschaften separat als Wert zwischen $0$ und $n$ gespeichert und mit einer Farbpalette in einen Farbverlauf umgewandelt. $n$ kann dabei maximal $2^32-1$ sein, weil $32$ Bit verwendet werden. Mit $n$ und einer Farbpalette unabhängig von den Daten wird der Wert in die Farbe für den Punkt umgewandelt. Die verfügbaren Farbpaletten sind in @implementierung_farbpaletten zu sehen.
 
 #figure(
 	caption: [Verfügbare Farbpaletten.],
@@ -325,14 +364,14 @@ Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei 
 ) <implementierung_farbpaletten>
 
 
-== Segmentierung
+== Segmente
 
 
 === Auswahl
 
-Um ein bestimmtes Segment auszuwählen, wird das momentan sichtbare Segment bei der Mausposition berechnet. Als Erstes werden die Koordinaten der Maus mit der Kamera in dreidimensionalen Ursprung und Richtung umgewandelt. Der Ursprung und die Richtung bilden zusammen einen Strahl.
+Um ein bestimmtes Segment auszuwählen, wird das momentan sichtbare Segment bei der Mausposition berechnet. Als Erstes werden die Koordinaten der Maus mit der Position und Orientierung der Kamera in eine dreidimensionale Position und Richtung umgewandelt. Der Ursprung und die Richtung bilden zusammen einen Strahl.
 
-Im Octree wird vom Root-Knoten aus die Leaf-Knoten gefunden, welche den Strahl enthalten. Dafür wird rekursive bei einem Branch-Knoten die Kinderknoten gesucht, die den Strahl enthalten. Weil der Voxel zugehörig zum Knoten entlang der Achsen vom Koordinatensystem ausgerichtet ist, kann mit dem Algorithmus in @implementierung_ray_aabb überprüft werden, ob der Strahl den Voxel berührt.
+Im Octree wird vom Root-Knoten aus die Leaf-Knoten gesucht, welche den Strahl enthalten. Dafür wird bei einem Branch-Knoten die acht Kinderknoten betrachtet. Für jeden Kinderknoten wird überprüft, ob der Strahl den Bereich vom Knoten scheidet und gegebenenfalls wird der Abstand zur Kamera berechnet. Weil der Voxel zugehörig zum Knoten entlang der Achsen vom Koordinatensystem ausgerichtet ist, kann mit dem Algorithmus in @implementierung_ray_aabb überprüft werden, ob der Strahl den Voxel berührt.
 
 #side-caption(amount: (1fr, 1fr), [#figure(
 	caption: [
@@ -390,63 +429,28 @@ Im Octree wird vom Root-Knoten aus die Leaf-Knoten gefunden, welche den Strahl e
 	}),
 ) <implementierung_ray_aabb>])
 
-Der Test kann so angepasst werden, dass gegebenenfalls der Abstand vom Ursprung zum ersten Schnittpunkt bestimmt wird. Für einen Branch-Knoten werden die Kinderknoten nach Abstand aufsteigend überprüft.
+Nachdem alle Kinderknoten gefunden wurden, die den Strahl enthalten, wird in diesen nach Abstand zur Kamera aufsteigend weiter gesucht.
 
-Für einen Leaf-Knoten wird der Punkte gesucht, welcher zuerst vom Strahl berührt wird. Dafür wird zuerst die Distanz vom Strahl zum Punkt bestimmt. Wenn die Distanz kleiner als der Radius vom Punkt ist, wird der Abstand zum Ursprung vom Strahl berechnet. Der Punkt mit dem kleinsten Abstand ist der ausgewählte Punkt.
+Für einen Leaf-Knoten wird der Punkt gesucht, welcher zuerst vom Strahl berührt wird. Dafür werden alle Punkte im Knoten betrachtet. Für jeden Punkt wird zuerst die Distanz vom Strahl bestimmt. Wenn die Distanz kleiner als der Radius vom Punkt ist, wird der Abstand zum Ursprung vom Strahl berechnet. Der Punkt mit dem kleinsten Abstand zum Ursprung ist der ausgewählte Punkt. Wenn kein Punkt gefunden wird, wird der nächste Knoten entlang des Strahls betrachtet.
 
 Weil die Knoten nach Distanz sortiert betrachtet werden, kann die Suche abgebrochen werden, sobald ein Punkt gefunden wurde. Alle weiteren Knoten sind weiter entfernt, wodurch die enthaltenen Punkte nicht näher zum Ursprung vom Strahl liegen können.
 
 
-== Punktwolkenformat
-
-Die Struktur von einer Punktwolke ist in der `project.json` Datei gespeichert. Dazu gehören die verfügbaren Eigenschaften und der Octree. Alle benötigten Daten für `project.json` werden in #link-footnote("https://github.com/antonWetzel/treee/blob/main/project/src/lib.rs", `project/src/lib.rs`) definiert.
-
-
-=== Daten
-
-In separaten Dateien werden die Daten für alle Punkte für zum Anzeigen der Punkte oder eine spezifische Eigenschaft gespeichert. Das Dateiformat ermöglicht es, die Dateien inkrementell zu erstellen. Am Anfang wird nur benötigt, wie viele Einträge die Datei speichern kann. Danach können die Einträge in beliebiger Reihenfolge abgespeichert werden.
-
-Die Struktur ist in @appendix_datafile gegeben. Am Anfang der Datei wird für jeden Eintrag die Startposition $s_i$ und die Länge $l_i$ vom zugehörigen Datensegment $d_i$ gespeichert. Danach folgen die Datensegmente in beliebiger Reihenfolge $pi$.
-
-#figure(
-	caption: [Struktur einer Datei zum Speichern von Daten.],
-	tablex(
-		align: center + horizon,
-		columns: 11 *(1fr, ),
-		colspanx(7)[*Informationen*],
-		colspanx(4)[*Daten*],
-		$s_0$,
-		$l_0$,
-		$s_1$,
-		$l_1$,
-		[...],
-		$s_(n-1)$,
-		$l_(n-1)$,
-		$d_(pi(0))$,
-		$d_(pi(1))$,
-		[...],
-		$d_(pi(n-1))$
-	),
-) <appendix_datafile>
-
-Um den Eintrag $i$ mit den Daten $d$ zur Datei hinzufügen, wird zuerst $s_i$ auf das momentane Ende der Datei und $d_i$ auf die Länge von $d$ gesetzt. Danach wird $d$ am Ende der Datei hinzugefügt. Um die Daten für den Eintrag $i$ zu lesen, wird zuerst $s_i$ und $l_i$ ausgelesen und danach der zugehörige Bereich gelesen.
-
-
 === Visualisierung
 
-Im Octree kann zu den Punkten in einem Leaf-Knoten mehrere Segmente gehören. Um die Segmente einzeln anzuzeigen, wird jedes Segment separat abgespeichert. Sobald ein einzelnes Segment ausgewählt wurde, wird dieses geladen und anstatt des Octrees angezeigt. Dabei werden alle Punkte des Segments ohne vereinfachte Detailstufen verwendet.
+Im Octree kann zu den Punkten in einem Leaf-Knoten mehrere Segmente gehören. Um die Segmente einzeln anzuzeigen, wird jedes Segment zusätzlich separat abgespeichert. Sobald ein Segment ausgewählt wurde, wird dieses geladen und anstatt des Octrees angezeigt. Dabei werden alle Punkte des Segments ohne vereinfachte Detailstufen verwendet.
 
-Die momentan geladenen Knoten vom Octree bleiben dabei geladen, um einen schnellen Wechsel zu ermöglichen.
+Die momentan geladenen Knoten vom Octree bleiben dabei geladen, um einen schnellen Wechsel zurück zur vollständigen Punktwolke zu ermöglichen.
 
 
 === Exportieren
 
-Die Segmente können im Stanford Polygon Format (PLY) Format exportiert werden. Die Punkte werden dabei so transformiert, dass diese horizontal entlang der x- und y-Achse zentriert sind und der tiefste Punkte bei $0$ entlang der z-Achse liegt.
+Die Segmente können im Stanford Polygon Format (PLY) Format exportiert werden. Jeder Punkt wird dabei so transformiert, dass die Höhe entlang der z-Achse mit $0$ für den tiefsten Punkt gespeichert wird. Die horizontale Position der Punkte wird entlang der x- und y-Achse so verschoben, dass die Ausdehnung vom Segment in der positiven und negativen Richtung gleich ist.
 
 
 == Detailstufen
 
-Beim Anzeigen wird vom Root-Knoten aus zuerst geprüft, ob der momentane Knoten von der Kamera aus sichtbar ist. In @implementierung_culling ist ein Beispiel für das Filtern bei unterschiedlichen Detailstufen gegeben.
+Beim Anzeigen wird vom Root-Knoten aus zuerst geprüft, ob der momentane Knoten von der Kamera aus sichtbar ist. Wenn ein Knoten nicht sichtbar ist, so wird dieser nicht geladen und angezeigt. In @implementierung_culling ist ein Beispiel für das Filtern bei unterschiedlichen Detailstufen gegeben. Weil nur ein Teil vom Knoten von der Kamera aus sichtbar sein muss, können bei größeren Knoten der Großteil der Punkte außerhalb der Kamera liegen und werden trotzdem angezeigt.
 
 #figure(
 	caption: [Sichtbare Knoten für unterschiedliche Detailstufen. Ein Knoten wird gerendert, solange ein Teil vom Knoten im Sichtfeld der Kamera liegt.],
