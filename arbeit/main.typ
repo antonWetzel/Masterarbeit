@@ -27,18 +27,13 @@ Wörter: #total-words
 
 #include "stand_der_technik.typ"
 
+#include "segmentierung.typ"
 
-= Methodik <methodik>
+#include "triangulierung.typ"
 
-#{
-	include "segmentierung.typ"
+#include "visualisierung.typ"
 
-	include "analyse.typ"
-
-	include "triangulierung.typ"
-
-	include "visualisierung.typ"
-}
+#include "analyse.typ"
 
 #include "implementierung.typ"
 

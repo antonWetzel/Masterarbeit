@@ -373,7 +373,7 @@ Um ein bestimmtes Segment auszuwählen, wird das momentan sichtbare Segment bei 
 
 Im Octree wird vom Root-Knoten aus die Leaf-Knoten gesucht, welche den Strahl enthalten. Dafür wird bei einem Branch-Knoten die acht Kinderknoten betrachtet. Für jeden Kinderknoten wird überprüft, ob der Strahl den Bereich vom Knoten scheidet und gegebenenfalls wird der Abstand zur Kamera berechnet. Weil der Voxel zugehörig zum Knoten entlang der Achsen vom Koordinatensystem ausgerichtet ist, kann mit dem Algorithmus in @implementierung_ray_aabb überprüft werden, ob der Strahl den Voxel berührt.
 
-#side-caption(amount: (1fr, 1fr), [#figure(
+#figure(
 	caption: [
 		Schnittmenge von Strahl und Quadrat in 2D. @ray_aabb\
 		Zuerst wird für jede Achse der Bereich bestimmt, für den der Strahl im Quadrat liegen kann.\
@@ -427,7 +427,7 @@ Im Octree wird vom Root-Knoten aus die Leaf-Knoten gesucht, welche den Strahl en
 		line((6.0, 1.0), (6.0, -2.0))
 		content((6.0, 1.0), $s_1 = 6$, anchor: "south", padding: 5pt)
 	}),
-) <implementierung_ray_aabb>])
+) <implementierung_ray_aabb>
 
 Nachdem alle Kinderknoten gefunden wurden, die den Strahl enthalten, wird in diesen nach Abstand zur Kamera aufsteigend weiter gesucht.
 

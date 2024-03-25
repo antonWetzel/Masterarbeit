@@ -35,7 +35,7 @@ Die Visualisierung präsentiert die berechneten Ergebnisse. Dabei werden die Eig
 #let section(index, name) = {
 	set heading(numbering: none)
 
-	heading(numbering: none, level: 3, [Abschnitt #numbering("I", index): #name])
+	heading(numbering: none, depth: 3, [Abschnitt #numbering("1.1", index): #name])
 }
 
 #section(1, [Einleitung])
@@ -47,6 +47,8 @@ In der Einleitung wird das Theme und Struktur der Arbeit vorgestellt.
 Der Stand der Technik beschäftigt sich mit zugehörigen wissenschaftlichen und technischen Arbeiten. #todo-inline[Update mit Stand der Technik]
 
 #section(3, [Methodik])
+
+#todo[Update]
 
 Im Abschnitt Methodik werden die benutzen Algorithmen vorgestellt und erforscht. Dazu gehört die Segmentierung in einzelnen Bäume, Analyse und Triangulierung dieser und die technischen Grundlagen für die Visualisierung der Ergebnisse.
 

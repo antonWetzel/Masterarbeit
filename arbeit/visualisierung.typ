@@ -1,10 +1,10 @@
 #import "setup.typ": *
 
 
-== Visualisierung
+= Visualisierung
 
 
-=== Punkte
+== Punkte
 
 Grafikpipelines haben mehrere primitive Formen, welche gerendert werden können. Die verfügbaren primitiven Formen sind meistens Punkte, Linien und Dreiecke, wobei Dreiecke immer verfügbar sind. Für das Anzeigen von komplizierter Modelle werden mehreren primitiven Formen zusammengesetzt.
 
@@ -13,7 +13,7 @@ Der primitive Punkt hat dabei keine Größe, sondern wird mit genau einem Pixel 
 Um einen Kreis zu rendern, kann ein beliebiges Polygon gerendert werden, solange der gewünschte Kreis vollständig enthalten ist. Die Pixel, welche außerhalb vom Kreis liegen, werden beim Rendern verworfen, wodurch nur der Kreis übrig bleibt. Je mehr Ecken das Polygon hat, desto kleiner ist der Bereich vom Polygon, der nicht zum Kreis gehört. Jede Ecke und der benötigte Bereich erhöhen den benötigten Arbeitsaufwand.
 
 
-==== Mögliche Polygone
+=== Mögliche Polygone
 
 Zuerst wird ein Kreis mit Position $(0, 0)$ und Radius $1$ benötigt. Mithilfe der Position vom Punkt und der Kamera wird der Kreis transformiert, dass die korrekten Pixel eingefärbt werden.
 
@@ -95,7 +95,7 @@ In @visualiserung_vergleich_polygon ist ein Vergleich für eine Punktwolke geren
 ) <visualiserung_vergleich_polygon>
 
 
-==== Anzeigen im dreidimensionalen Raum
+=== Anzeigen im dreidimensionalen Raum
 
 Für jeden Punkt wird mit der Position $p$, Normalen $n$ und Größe $s$ die Position der Eckpunkte der Dreiecke im dreidimensionalen Raum bestimmt. Dafür werden zwei Vektoren bestimmt, welche paarweise zueinander und zur Normalen orthogonal sind.
 
@@ -171,7 +171,7 @@ Die Vektoren $a$ und $b$ spannen eine Ebene auf, welche orthogonal zu $n$ ist. F
 ) <dreieck_eckpunkt>
 
 
-=== Detailstufen
+== Detailstufen
 
 Je nach Scanner und Größe des abgetasteten Gebietes kann die Punktwolke unterschiedlich viele Punkte beinhalten. Durch Hardwarelimitierungen ist es nicht immer möglich, alle Punkte gleichzeitig anzuzeigen, während eine interaktive Wiedergabe gewährleistet ist.
 
@@ -199,7 +199,7 @@ Alle Punkte gehören nach der Unterteilung zu einem Leaf-Knoten im Octree. Für 
 ) <visualiserung_lods>
 
 
-==== Berechnung der Detailstufen
+=== Berechnung der Detailstufen
 
 Die Detailstufen werden wie bei "Fast Out-of-Core Octree Generation for Massive Point Clouds" @potree_lod von den untersten Branch-Knoten bis zum Root-Knoten berechnet. Dabei wird mit den Detailstufen der Kinderknoten die Detailstufe für den momentanen Knoten berechnet.
 
@@ -210,7 +210,7 @@ Für die Berechnung einer Detailstufe wird der Voxel, welcher zu dem Knoten geh�
 Bei der nächst gröberen Detailstufe ist der Voxel vom Branch-Knoten doppelt so groß. Durch die feste Anzahl der Teilvoxel verdoppelt sich auch die Größe der Teilvoxel, wodurch die Punkte weiter vereinfacht werden.
 
 
-=== Eye-Dome Lighting
+== Eye-Dome Lighting
 
 Um die Punktwolke anzuzeigen, werden die Punkte aus dem dreidimensionalen Raum auf den zweidimensionalen Monitor projiziert. Dabei gehen die Tiefeninformationen verloren. Mit der Rendertechnik Eye-Dome Lighting werden die Kanten von Punkten hervorgehoben, bei denen die Tiefe sich stark ändert.
 

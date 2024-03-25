@@ -1,15 +1,15 @@
 #import "setup.typ": *
 
 
-== Segmentierung der Punktwolke in Bäume <seperierung_in_segmente>
+= Segmentierung der Punktwolke in Bäume <seperierung_in_segmente>
 
 
-=== Ablauf
+== Ablauf
 
 Für die Segmentierung werden alle Punkte in gleich breite parallele Scheiben entlang der Höhe unterteilt. Danach werden die Scheiben von Oben nach Unten einzeln verarbeitet, um die Segmente zu bestimmen. Dafür werden die Punkte in einer Scheibe zu zusammenhängenden Bereichen zusammengefasst. Mit den Bereichen werden die Koordinaten der Bäume bestimmt, welche in der momentanen Scheibe existieren. Die Punkte in der Scheibe werden dann dem nächsten Baum zugeordnet.
 
 
-=== Bereiche bestimmen
+== Bereiche bestimmen
 
 #let points = (
 	(0, 1.9),
@@ -53,7 +53,7 @@ Bei der Berechnung sind alle momentanen Bereiche in einer Liste gespeichert. Ein
 
 Um die Distanz von einem Punkt zu einem Bereich zu berechnen, wird der größte Abstand nach Außen vom Punkt zu allen Kanten berechnet. Für jede Kante mit den Eckpunkten $a = vec(a_x, a_y)$ und $b = vec(b_x, b_y)$ wird zuerst der Vektor $d = vec(d_x, d_y) = b - a$ berechnet. Der normalisierte Vektor $o =1 / (|d|) vec(d_y, -d_x)$ ist orthogonal zu $d$ und zeigt aus dem Bereich hinaus, solange $a$ im Uhrzeigersinn vor $b$ auf der Umrandung liegt. Für den Punkt $p$ kann nun der Abstand zur Kante mit dem Skalarprodukt $o dot (p - a)$ berechnet werden. Wenn der Punkte auf der Innenseite der Kante liegt, ist der Abstand negativ. In @segmentierung_abstand ist eine Veranschaulichung gegeben.
 
-#side-caption(amount: (2fr, 3fr), [#figure(
+#figure(
 	caption: [Berechnung vom Abstand vom Punkt $p$ zur Kante zwischen $a$ und $b$.],
 	cetz.canvas(length: 1.2cm, {
 		import cetz.draw: *
@@ -82,11 +82,11 @@ Um die Distanz von einem Punkt zu einem Bereich zu berechnen, wird der größte 
 		circle((2, 1.5), fill: black, stroke: none, radius: 0.1)
 		circle("edge.start", fill: black, stroke: none, radius: 0.1)
 	}),
-) <segmentierung_abstand>])
+) <segmentierung_abstand>
 
 Um einen Punkt zu einem Bereich hinzuzufügen, werden alle Kanten entfernt, bei denen der Punkt außerhalb liegt, und zwei neue Kanten zum Punkt werden hinzugefügt. Dafür werden die Eckpunkte entfernt, bei denen der neue Punkt außerhalb der beiden angrenzenden Kanten liegt. An der Stelle, wo die Punkte entfernt wurden, wird stattdessen der neue Eckpunkt eingefügt. In @segmentierung_replace ist das Ergebnis vom Austausch zu sehen.
 
-#side-caption(amount: (2fr, 3fr), [#figure(
+#figure(
 	caption: [Hinzufügen vom Punkt $p$ zum Bereich. Die Kanten in Rot werden entfernt und die Kanten in Grün werden hinzugefügt.],
 	cetz.canvas(length: 1cm, {
 		import cetz.draw: *
@@ -111,7 +111,7 @@ Um einen Punkt zu einem Bereich hinzuzufügen, werden alle Kanten entfernt, bei 
 		circle((3, 0), fill: red, stroke: none, radius: 0.1)
 
 	}),
-) <segmentierung_replace>])
+) <segmentierung_replace>
 
 Nachdem alle Punkte zu den Bereichen hinzugefügt würden, werden die Bereiche gefiltert. Dafür werden alle Bereiche entfernt, deren Fläche kleiner als ein Schwellwert ist. Weil die Bereiche konvex sind, können diese trivial in Dreiecke wie in @segmentierung_dreiecke unterteilt werden und dann die Flächen der Dreiecke summiert werden.
 
@@ -171,29 +171,29 @@ Nachdem alle Punkte zu den Bereichen hinzugefügt würden, werden die Bereiche g
 	}
 }
 
-#side-caption(amount: (1fr, 2fr), [#figure(
+#figure(
 	caption: [Unterteilung von einem Bereich in Dreiecke. Alle Dreiecke haben einen beliebigen Eckpunkt als ersten Punkt gemeinsam und die beiden anderen Punkte sind die Eckpunkte der Kanten ohne den ersten Punkt.],
-	cetz.canvas(length: 2.5cm, area_figure(false)),
-) <segmentierung_dreiecke>])
+	cetz.canvas(length: 3.0cm, area_figure(false)),
+) <segmentierung_dreiecke>
 
 Weil die konvexe Hülle von allen Punkten in einem Bereich gebildet wird, können Bereiche sich Überscheiden, obwohl die Punkte der Bereiche voneinander entfernt sind. Bei dem Hinzuzufügen von neuen Punkten werden die Bereiche sequentiell iteriert. Dabei wird bei überschneidenden Bereichen das erste präferiert, wodurch dieses weiter wächst. Um den anderen Bereich zu entfernen, werden Bereiche entfernt, deren Zentren in einem anderen Bereich liegen.
 
 
-=== Koordinaten bestimmen
+== Koordinaten bestimmen
 
 Für die Bäume der momentanen Scheibe werden die Koordinaten gesucht. Die Menge der Koordinaten startet mit der leeren Menge für die höchste Scheibe. Bei jeder Scheibe wird die Menge der Koordinaten mit den gefundenen Bereichen aktualisiert. Dafür werden für alle Bereiche in der momentanen Scheibe zuerst die Schwerpunkte wie in @segmentierung_schwerpunkt berechnet.
 
-#side-caption(amount: (1fr, 2fr), [#figure(
+#figure(
 	caption: [Berechnung vom Schwerpunkt von einem konvexen Bereich. Der korrekte Schwerpunkt in Grün ist die durchschnittliche Position der Schwerpunkte der Dreiecke nach der Fläche vom Dreieck gewichtet. In Rot ist die durchschnittliche Position der Eckpunkte.],
-	cetz.canvas(length: 2.5cm, area_figure(true)),
-) <segmentierung_schwerpunkt>])
+	cetz.canvas(length: 3.0cm, area_figure(true)),
+) <segmentierung_schwerpunkt>
 
 Danach werden die Koordinaten aus den vorherigen Scheiben mit den Schwerpunkten von der momentanen Scheibe aktualisiert. Für jede Koordinate wird der nächste Schwerpunkt näher als eine maximale Distanz bestimmt. Wenn ein naher Schwerpunkt gefunden wurde, wird die Koordinate mit der Position vom Schwerpunkte aktualisiert. Wenn kein naher Schwerpunkt existiert, so bleibt die Position gleich.
 
 Für alle Schwerpunkte, welche nicht nah an einen der vorherigen Koordinaten liegen, wird ein neues Segment angefangen. Dafür wird der Schwerpunkt zur Liste der Koordinaten hinzugefügt.
 
 
-=== Punkte zuordnen
+== Punkte zuordnen
 
 Mit den Koordinaten wird das Voronoi-Diagramm berechnet, welches den Raum in Bereiche unterteilt, dass alle Punkte in einem Bereich für eine Koordinate am nächsten an dieser Koordinate liegen. Für jeden Punkt wird nun der zugehörige Bereich im Voronoi-Diagramm bestimmt und der Punkt zum zugehörigen Segment zugeordnet. Ein Beispiel für eine Unterteilung ist in @segmentierung_voronoi zu sehen.
 

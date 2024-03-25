@@ -1,19 +1,35 @@
 #import "setup.typ": *
 
 
-== Analyse von Segmenten
+= Analyse von Segmenten
 
+Die charakteristischen Eigenschaften werden für jedes Segment einzeln berechnet. Ein Beispiel für die Ergebnisse sind in @analyse_eigenschaften zu sehen. Für jeden Punkt im Baum wird zuerst die relative Höhe, lokale Krümmung und zugehörige horizontale Ausdehnung bestimmt. Mit diesen Daten wird das eine Klassifikation vom Segment in Boden, Stamm und Krone durchgeführt.
 
-=== Eigenschaften <berechnung_eigenschaften>
+Mit der Klassifikation wird die Bäum-, Stamm- und Kronenhöhe abgeschätzt. Zusätzlich kann mit der Bodenhöhe und den Punkten der Umfang vom Stamm bei $130$ cm Höhe bestimmt werden. Mit den Punkten zugehörig zur Krone wird die zugehörige Projektionsfläche und Volumen berechnet.
 
-Die charakteristischen Eigenschaften werden für jedes Segment einzeln berechnet. Dabei sind alle Punkte im Segment als Liste der Länge $n$ verfügbar. Für den Punkt $i in NN_0^(n-1)$ ist nur die globale Position $p_i = (p_(i x), p_(i y), p_(i z))$ gegeben. Die Punkte sind dabei ungeordnet, wodurch aufeinanderfolgende Punkte in der Liste weit voneinander entfernte Positionen haben können.
+#figure(
+	caption: [Segment basierend auf den berechneten Eigenschaften eingefärbt.],
+	grid(
+		columns: 4,
+		column-gutter: 1em,
+		subfigure(image("../images/auto-crop/height.png"), caption: [Höhe]),
+		subfigure(image("../images/auto-crop/curve_all.png"), caption: [Krümmung]),
+		subfigure(image("../images/auto-crop/var_all.png"), caption: [Ausdehnung]),
+		subfigure(placeholder("classifcation"), caption: [Klassifikation]),
+	)
+) <analyse_eigenschaften>
+
+== Eingabe
+
+Die Punkte im Segment sind als Liste der Länge $n$ verfügbar. Für den Punkt $i in NN_0^(n-1)$ ist nur die globale Position $p_i = (p_(i x), p_(i y), p_(i z))$ gegeben. Die Punkte sind dabei ungeordnet, wodurch aufeinanderfolgende Punkte in der Liste weit voneinander entfernte Positionen haben können.
+
 
 Um einen Punkt $i$ zu analysieren, wird die zugehörige Nachbarschaft $N_i$ benötigt. Die Nachbarschaft enthält dabei die nächsten Punkte nach Abstand sortiert. Dafür wird für alle Punkte ein KD-Baum erstellt. Mit diesem können effizient für eine Position $p_i$ und ein beliebiges $k in NN$ die $k$-nächsten Punkte bestimmt werden. Die Konstruktion und Verwendung vom KD-Baum wird in @kd_baum erklärt. In der Nachbarschaft ist dann $N_0$ der ursprüngliche Punkt $i$, $N_1$ der nächste Punkt und $N_(k-1)$ der $k-1$ nächste Punkt.
 
 
-==== Punkthöhe
+== Punkthöhe
 
-Für jeden Punkt wird die relative Höhe im Segment bestimmt. Dafür wird zuerst für alle Positionen die Mindesthöhe $h_min$ und Maximalhöhe $h_max$ bestimmt.
+Für jeden Punkt wird die relative Höhe im Segment bestimmt. Dafür wird zuerst mit allen Positionen die Mindesthöhe $h_min$ und Maximalhöhe $h_max$ bestimmt.
 
 $ h_min = min_(i in NN_0^(n-1))p_(i y) #h(40pt) h_max = max_(i in NN_0^(n-1))p_(i y) $
 
@@ -21,23 +37,9 @@ Mit der Mindest- und Maximalhöhe kann für den Punkt $i$ die relative Höhe $h_
 
 $ h_i = (p_(i y) - h_min) / (h_max - h_min) $
 
-Die relative Höhe liegt immer im Bereich $[0; 1]$ und wird größer, je höher der Punkt liegt. Ein Beispiel ist in @analyse_height zu sehen.
+Die relative Höhe liegt immer im Bereich $[0; 1]$ und wird größer, je höher der Punkt liegt.
 
-#let example(content) = align(center, box(width: 70%, side-caption(
-	amount: (1fr, 5fr),
-	content,
-)))
-
-#example[#figure(
-	caption: [
-		Punktwolke basierend auf der relativen Höhe der Punkte eingefärbt.\
-		Der Farbverlauf geht von Gelb für den niedrigsten Punkt zu Rot für den höchsten Punkt.
-	],
-	image("../images/auto-crop/height.png"),
-) <analyse_height>]
-
-
-==== Krümmung <krümmung>
+== Krümmung <krümmung>
 
 Die Krümmung der ursprünglichen abgetasteten Oberfläche wird für jeden Punkt geschätzt. Dafür wird für den Punkte $i$ die Verteilung der Positionen der Punkte in der Nachbarschaft $N_i$ betrachtet. Zuerst wird für die Nachbarschaft der geometrische Schwerpunkt $s_i$ bestimmt.
 
@@ -49,9 +51,9 @@ Mit dem Schwerpunkte kann die Kovarianzmatrix $C_i$ bestimmt werden.
 #{
 	set math.mat(column-gap: 0.5cm)
 	$ C_i = 1 / k * sum_(j in N_i) mat(
-		(p_(j x) - s_(i x))^2, (p_(j x) - s_(i x)) * (p_(j y) - s_(i y)), (p_(j x) - s_(i x)) * (p_(j z) - s_(i z)); 
-		(p_(j y) - s_(i y)) * (p_(j x) - s_(i x)), (p_(j y) - s_(i y))^2, (p_(j y) - s_(i y)) * (p_(j z) - s_(i z)); 
-		(p_(j z) - s_(i z)) * (p_(j x) - s_(i x)), (p_(j z) - s_(i z)) * (p_(j y) - s_(i y)), (p_(j z) - s_(i z))^2; 
+		(p_(j x) - s_(i x))^2, (p_(j x) - s_(i x)) * (p_(j y) - s_(i y)), (p_(j x) - s_(i x)) * (p_(j z) - s_(i z));
+		(p_(j y) - s_(i y)) * (p_(j x) - s_(i x)), (p_(j y) - s_(i y))^2, (p_(j y) - s_(i y)) * (p_(j z) - s_(i z));
+		(p_(j z) - s_(i z)) * (p_(j x) - s_(i x)), (p_(j z) - s_(i z)) * (p_(j y) - s_(i y)), (p_(j z) - s_(i z))^2;
 	) $
 }
 // prettypst: enable
@@ -113,7 +115,7 @@ Die normierten Eigenvektoren $v_(i 0)$, $v_(i 1)$ und $v_(i 2)$ bilden eine Orth
 	(0.3843, 0.8612),
 )
 
-#side-caption(amount: (1fr, 1.5fr))[#figure(
+#figure(
 	caption: [Eigenvektoren $v_0$ und $v_1$ der Kovarianzmatrix für eine Punktmenge.\
 	Die Länge der Vektoren ist anhängig vom zugehörigen Eigenwert.],
 	cetz.canvas(length: 2cm, {
@@ -142,24 +144,15 @@ Die normierten Eigenvektoren $v_(i 0)$, $v_(i 1)$ und $v_(i 2)$ bilden eine Orth
 		content(e_0, anchor: "north", padding: 0.1, $v_0$)
 		content(e_1, anchor: "south", padding: 0.1, $v_1$)
 	}),
-) <analyse_eigenvektoren>]
+) <analyse_eigenvektoren>
 
 Mit den Eigenwerten $lambda_(i alpha)$ absteigend nach größer sortiert wird die Krümmung $c_i$ berechnet.
 
 $ c_i = (3 lambda_(i 2)) / (lambda_(i 0) + lambda_(i 1) + lambda_(i 2)) $
 
-$c_i$ liegt dabei im abgeschlossenen Bereich $[0; 1]$, weil $0 <= lambda_(i 0) <= lambda_(i 1) <= lambda_(i 2)$ ist. In @analyse_curve in ein Beispiel für ein Segment mit den Punkten basierend auf der Krümmung eingefärbt.
+$c_i$ liegt dabei im abgeschlossenen Bereich $[0; 1]$, weil $0 <= lambda_(i 0) <= lambda_(i 1) <= lambda_(i 2)$ ist.
 
-#example[#figure(
-	caption: [
-		Punktwolke basierend auf der Krümmung eingefärbt.\
-		Der Farbverlauf geht von Gelb für wenig bis Rot für maximale Krümmung.
-	],
-	image("../images/auto-crop/curve_all.png"),
-) <analyse_curve>]
-
-
-==== Ausdehnung
+== Ausdehnung
 
 Für die Berechnung der horizontalen Ausdehnung wird der Baum entlang der Horizontalen in $5thin$cm breite Scheiben $S_alpha$ unterteilt.
 
@@ -171,35 +164,29 @@ $ s_alpha = 1 / (|S_alpha|) sum_(i in S_alpha) (p_(i x), p_(i z)) $
 
 Mit dem Schwerpunkt wird die durchschnittliche Varianz $v_alpha$ der Abweichung in der Scheibe berechnet.
 
-$ v_alpha = 1 / (|S_alpha|) sum_(i in S_alpha) |(p_(i x), p_(i z)) - s_alpha| $ Die größte Varianz von allen Scheiben wird verwendet, um die Varianzen auf den Bereich $[0; 1]$ zu normieren. Für jeden Punkt wird die Varianz der zugehörigen Scheibe zugeordnet. In @analyse_var ist ein Segment mit den Punkten basierend der Ausdehnung der zugehörigen Scheibe eingefärbt.
+$ v_alpha = 1 / (|S_alpha|) sum_(i in S_alpha) |(p_(i x), p_(i z)) - s_alpha| $ Die größte Varianz von allen Scheiben wird verwendet, um die Varianzen auf den Bereich $[0; 1]$ zu normieren. Für jeden Punkt wird die Varianz der zugehörigen Scheibe zugeordnet.
 
-#example[#figure(
-	caption: [
-		Punktwolke basierend auf der Ausdehnung eingefärbt.\
-		Der Farbverlauf geht von Gelb für geringe bis Rot für größte Ausdehnung.
-	],
-	image("../images/auto-crop/var_all.png"),
-) <analyse_var>]
+== Klassifikation
+
+#todo[Update]
 
 Die Ausdehnung eignet sich zur Unterscheidung von Stamm und Krone. Beim Stamm sind die Punkte näher einander, während bei der Krone die Punkte weiter verteilt sind. Für die Unterteilung wird die erste Scheibe von Unten gesucht, dessen normierte Varianz größer als ein Schwellwert ist.
 
 
-=== Eigenschaften für die Visualisierung <eigenschaften_visualisierung>
+== Eigenschaften für die Visualisierung <eigenschaften_visualisierung>
 
 Für die Visualisierung werden die Position, Orientierung und Größe von einem Punkte benötigt. Die Position ist in den Eingabedaten gegeben und die anderen Eigenschaften werden mit der lokalen Umgebung vom Punkt berechnet.
 
 Für die Orientierung wird die Normale bestimmt, welche orthogonal zur geschätzten zugehörigen Oberfläche vom Punkt ist. Dafür werden die Eigenvektoren aus @krümmung verwendet. Der Eigenvektor, welcher zum kleinsten Eigenwert gehört, ist dabei orthogonal zur geschätzten Ebene mit der größten Ausdehnung. Für die Punktgröße wird der durchschnittliche Abstand zu den umliegenden Punkten bestimmt. Dadurch werden die Punkte in Bereichen mit hoher Punktdichte kleiner. In @analyse_render ist ein Beispiel gegeben.
 
-#align(center, box(width: 70%, side-caption(
-	amount: (1fr, 2fr),
-	[#figure(
-		caption: [
-			Ausschnitt von einer Punktwolke.\
-			Die Punkte beim Stamm sind kleiner als die umliegenden Punkte und die Orientierung ändert sich beim Übergang vom Stamm zum Boden.
-		],
-		rect(image("../images/auto-crop/properties.png"), inset: 0.5pt),
-	) <analyse_render>],
-)))
+
+#figure(
+	caption: [
+		Ausschnitt von einer Punktwolke.\
+		Die Punkte beim Stamm sind kleiner als die umliegenden Punkte und die Orientierung ändert sich beim Übergang vom Stamm zum Boden.
+	],
+	rect(image("../images/auto-crop/properties.png", height: 30%), inset: 0.5pt),
+) <analyse_render>
 
 // === Baumart
 

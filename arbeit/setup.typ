@@ -15,28 +15,11 @@
 
 	set heading(numbering: (..nums) => {
 		let nums = nums.pos()
-		if nums.len() <= 1 {
-			numbering("I.", ..nums)
-		} else if nums.len() <= 4 {
-			numbering("1.", ..nums.slice(1))
-		} else {
-			none
+		if nums.len() >=4 {
+			return	none
 		}
+		return numbering("1.1 ", ..nums)
 	})
-
-	set heading(supplement: [Kapitel])
-
-	show ref: it => {
-		let el = it.element
-		if el == none {
-			return it
-		}
-		if el.func() != heading {
-			return it
-		}
-		let body = el.supplement + [ ] + numbering("I-1.1", ..counter(el.func()).at(el.location()))
-		link(el.location(), body)
-	}
 
 	show raw: it => text(size: 1.2em, it)
 
@@ -68,32 +51,16 @@
 
 	show outline.entry: it => {
 		if it.level == 1 {
-			v(2em, weak: true) + strong(it)
+			v(1.7em, weak: true) + strong(it)
 
 		} else {
 			h((it.level - 2) * 2em, weak: false) + it
 		}
 	}
 
-	document
-}
+	set bibliography(style: "chicago-author-date")
 
-#let side-caption(amount: (1fr, 1fr), content) = {
-	show figure: it => box({
-		v(1em)
-		grid(
-			columns: amount,
-			align(center + horizon)[#it.body],
-			align(center + horizon, {
-				set align(left)
-				set par(hanging-indent: 0.5cm, justify: true)
-				pad(left: 0.5cm, right: 1cm, it.caption)
-				v(1em)
-			}),
-		)
-		v(1em)
-	})
-	content
+	document
 }
 
 #let link-footnote(_link, _body) = {
