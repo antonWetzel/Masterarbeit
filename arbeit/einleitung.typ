@@ -35,27 +35,38 @@ Die Visualisierung präsentiert die berechneten Ergebnisse. Dabei werden die Eig
 #let section(index, name) = {
 	set heading(numbering: none)
 
-	heading(numbering: none, depth: 3, [Abschnitt #numbering("1.1", index): #name])
+	heading(numbering: none, depth: 3, outlined: false, [Abschnitt #numbering("1.1", index): #name])
 }
 
 #section(1, [Einleitung])
 
-In der Einleitung wird das Theme und Struktur der Arbeit vorgestellt.
+In der Einleitung wird die Motivation, Theme und Struktur für Arbeit vorgestellt.
 
 #section(2, [Stand der Technik])
 
-Der Stand der Technik beschäftigt sich mit zugehörigen wissenschaftlichen und technischen Arbeiten. #todo-inline[Update mit Stand der Technik]
+Der Stand der Technik beschäftigt sich mit zugehörigen wissenschaftlichen und technischen Arbeiten. Dazu gehört die Aufnahme und Verarbeitung von Punktdaten und die Analyse von Bäumen mit den Daten.
 
-#section(3, [Methodik])
 
-#todo[Update]
+#section(3, [Segmentierung])
 
-Im Abschnitt Methodik werden die benutzen Algorithmen vorgestellt und erforscht. Dazu gehört die Segmentierung in einzelnen Bäume, Analyse und Triangulierung dieser und die technischen Grundlagen für die Visualisierung der Ergebnisse.
+Die Segmentierung erklärt den verwendeten Algorithmus für die Unterteilung von einer Punktwolke für ein Waldstück in mehrere Punktwolken für jeweils einen Baum. Die Punktwolke kann dabei ungeordnet sein und für die einzelnen Punkte wird nur die Position vorrausgesetzt.
 
-#section(4, [Implementierung])
+#section(4, [Triangulierung])
+
+Bei der Triangulierung wird für die Punktwolke von einem Baum ein geeignetes Dreiecksnetz gesucht. Mit dem Dreiecksnetz und den Punkten kann für den Baum ein dreidimensionales Mesh erstellt werden.
+
+#section(5, [Visualisierung])
+
+Im Abschnitt Visualisierung werden die Algorithmen erklärt, um die Punktwolken mit allen gegebenen und berechneten Daten in Echtzeit zu rendern.
+
+#section(6, [Analyse von Segmenten])
+
+Bei der Analyse wird mit der Punktwolke von einem Baum die charakteristischen Eigenschaften abgeschätzt. Dazu gehört der Durchmesser vom Stamm und der Krone und die Höhe vom gesamten Baum, Stamm und Krone.
+
+#section(7, [Implementierung])
 
 Die Methodik ist die Grundlage für die Implementierung. Das Softwareprojekt mit der technischen Umsetzung der Algorithmen wird vorgestellt. Dafür wird die Bedienung vom Softwareprojekt, der Ablauf vom Import, das Anzeigen aller Punkte und von einzelnen Segmenten erklärt.
 
-#section(5, [Auswertung])
+#section(8, [Auswertung])
 
 Schlussendlich werden die Algorithmen aus der Methodik mithilfe der Implementierung ausgewertet. Dafür werden die benutzten Datensätze vorgestellt, mit denen der Ablauf bis zur Visualisierung getestet wird. Die Auswertung enthält die gemessenen Werte und die daraus folgende Bewertung der Arbeit.

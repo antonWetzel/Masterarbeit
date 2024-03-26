@@ -43,7 +43,7 @@
 		pad(top: 0.7cm, it, bottom: 0.1cm)
 	}
 	show heading.where(level: 2): it => {
-		pad(top: 0.5cm, it, bottom: 0.1cm)
+		pad(top: 0.3cm, it, bottom: 0.1cm)
 	}
 	show heading.where(level: 3): it => pad(top: 0.3cm, it, bottom: 0.1cm)
 
