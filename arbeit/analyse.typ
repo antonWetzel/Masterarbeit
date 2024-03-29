@@ -5,29 +5,26 @@
 
 Die charakteristischen Eigenschaften werden für jedes Segment einzeln berechnet. Ein Beispiel für die Ergebnisse sind in @analyse_eigenschaften zu sehen. Für jeden Punkt im Baum wird zuerst die relative Höhe, lokale Krümmung und zugehörige horizontale Ausdehnung bestimmt. Mit diesen Daten wird das eine Klassifikation vom Segment in Boden, Stamm und Krone durchgeführt.
 
-Mit der Klassifikation wird die Bäum-, Stamm- und Kronenhöhe abgeschätzt. Zusätzlich kann mit der Bodenhöhe und den Punkten der Umfang vom Stamm bei $130$ cm Höhe bestimmt werden. Mit den Punkten zugehörig zur Krone wird die zugehörige Projektionsfläche und Volumen berechnet.
+Mit der Klassifikation wird die Baum-, Stamm- und Kronenhöhe abgeschätzt. Zusätzlich kann mit der Bodenhöhe und den Punkten der Umfang vom Stamm bei $130$ cm Höhe bestimmt werden. Mit den Punkten zugehörig zur Krone wird die zugehörige Projektionsfläche und Volumen berechnet.
 
-#figure(
-	caption: [Segment basierend auf den berechneten Eigenschaften eingefärbt.],
-	grid(
-		columns: 4,
-		column-gutter: 1em,
-		subfigure(image("../images/auto-crop/height.png"), caption: [Höhe]),
-		subfigure(image("../images/auto-crop/curve_all.png"), caption: [Krümmung]),
-		subfigure(image("../images/auto-crop/var_all.png"), caption: [Ausdehnung]),
-		subfigure(placeholder("classifcation"), caption: [Klassifikation]),
-	)
-) <analyse_eigenschaften>
+#figure(caption: [Segment basierend auf den berechneten Eigenschaften eingefärbt.], grid(
+	columns: 4,
+	column-gutter: 1em,
+	subfigure(image("../images/auto-crop/height.png"), caption: [Höhe]), subfigure(image("../images/auto-crop/curve_all.png"), caption: [Krümmung]), subfigure(image("../images/auto-crop/var_all.png"), caption: [Ausdehnung]), subfigure(placeholder("classifcation"), caption: [Klassifikation]),
+)) <analyse_eigenschaften>
 
-== Eingabe
+
+== Eingabedaten
 
 Die Punkte im Segment sind als Liste der Länge $n$ verfügbar. Für den Punkt $i in NN_0^(n-1)$ ist nur die globale Position $p_i = (p_(i x), p_(i y), p_(i z))$ gegeben. Die Punkte sind dabei ungeordnet, wodurch aufeinanderfolgende Punkte in der Liste weit voneinander entfernte Positionen haben können.
-
 
 Um einen Punkt $i$ zu analysieren, wird die zugehörige Nachbarschaft $N_i$ benötigt. Die Nachbarschaft enthält dabei die nächsten Punkte nach Abstand sortiert. Dafür wird für alle Punkte ein KD-Baum erstellt. Mit diesem können effizient für eine Position $p_i$ und ein beliebiges $k in NN$ die $k$-nächsten Punkte bestimmt werden. Die Konstruktion und Verwendung vom KD-Baum wird in @kd_baum erklärt. In der Nachbarschaft ist dann $N_0$ der ursprüngliche Punkt $i$, $N_1$ der nächste Punkt und $N_(k-1)$ der $k-1$ nächste Punkt.
 
 
-== Punkthöhe
+== Punkteigenschaften
+
+
+=== Punkthöhe
 
 Für jeden Punkt wird die relative Höhe im Segment bestimmt. Dafür wird zuerst mit allen Positionen die Mindesthöhe $h_min$ und Maximalhöhe $h_max$ bestimmt.
 
@@ -39,7 +36,8 @@ $ h_i = (p_(i y) - h_min) / (h_max - h_min) $
 
 Die relative Höhe liegt immer im Bereich $[0; 1]$ und wird größer, je höher der Punkt liegt.
 
-== Krümmung <krümmung>
+
+=== Krümmung <krümmung>
 
 Die Krümmung der ursprünglichen abgetasteten Oberfläche wird für jeden Punkt geschätzt. Dafür wird für den Punkte $i$ die Verteilung der Positionen der Punkte in der Nachbarschaft $N_i$ betrachtet. Zuerst wird für die Nachbarschaft der geometrische Schwerpunkt $s_i$ bestimmt.
 
@@ -152,33 +150,12 @@ $ c_i = (3 lambda_(i 2)) / (lambda_(i 0) + lambda_(i 1) + lambda_(i 2)) $
 
 $c_i$ liegt dabei im abgeschlossenen Bereich $[0; 1]$, weil $0 <= lambda_(i 0) <= lambda_(i 1) <= lambda_(i 2)$ ist.
 
-== Ausdehnung
 
-Für die Berechnung der horizontalen Ausdehnung wird der Baum entlang der Horizontalen in $5thin$cm breite Scheiben $S_alpha$ unterteilt.
-
-$ S_alpha = {i | i in NN_0^(n-1), p_(i y) in [h_min + 0.05 alpha "cm")} $
-
-Die Ausdehnung wird für jede Scheibe einzeln berechnet. Dafür wird zuerst der geometrische Schwerpunkt $s_alpha$ der Punkte in der Scheibe entlang der x- und z-Achse berechnet.
-
-$ s_alpha = 1 / (|S_alpha|) sum_(i in S_alpha) (p_(i x), p_(i z)) $
-
-Mit dem Schwerpunkt wird die durchschnittliche Varianz $v_alpha$ der Abweichung in der Scheibe berechnet.
-
-$ v_alpha = 1 / (|S_alpha|) sum_(i in S_alpha) |(p_(i x), p_(i z)) - s_alpha| $ Die größte Varianz von allen Scheiben wird verwendet, um die Varianzen auf den Bereich $[0; 1]$ zu normieren. Für jeden Punkt wird die Varianz der zugehörigen Scheibe zugeordnet.
-
-== Klassifikation
-
-#todo[Update]
-
-Die Ausdehnung eignet sich zur Unterscheidung von Stamm und Krone. Beim Stamm sind die Punkte näher einander, während bei der Krone die Punkte weiter verteilt sind. Für die Unterteilung wird die erste Scheibe von Unten gesucht, dessen normierte Varianz größer als ein Schwellwert ist.
-
-
-== Eigenschaften für die Visualisierung <eigenschaften_visualisierung>
+=== Eigenschaften für die Visualisierung <eigenschaften_visualisierung>
 
 Für die Visualisierung werden die Position, Orientierung und Größe von einem Punkte benötigt. Die Position ist in den Eingabedaten gegeben und die anderen Eigenschaften werden mit der lokalen Umgebung vom Punkt berechnet.
 
 Für die Orientierung wird die Normale bestimmt, welche orthogonal zur geschätzten zugehörigen Oberfläche vom Punkt ist. Dafür werden die Eigenvektoren aus @krümmung verwendet. Der Eigenvektor, welcher zum kleinsten Eigenwert gehört, ist dabei orthogonal zur geschätzten Ebene mit der größten Ausdehnung. Für die Punktgröße wird der durchschnittliche Abstand zu den umliegenden Punkten bestimmt. Dadurch werden die Punkte in Bereichen mit hoher Punktdichte kleiner. In @analyse_render ist ein Beispiel gegeben.
-
 
 #figure(
 	caption: [
@@ -188,8 +165,70 @@ Für die Orientierung wird die Normale bestimmt, welche orthogonal zur geschätz
 	rect(image("../images/auto-crop/properties.png", height: 30%), inset: 0.5pt),
 ) <analyse_render>
 
-// === Baumart
 
-// #todo([Segmente + Eigenschaften + ? $->$ Klassifizierung?])
-// - out of scope?
-// - neural?
+== Baumeigenschaften
+
+#todo[was]
+
+Die einstellbaren Parameter sind in @analyse_klassifkation_parameter gelistet.
+
+#figure(
+	caption: [Parameter für die Klassifikation.],
+	table(
+		columns: (auto, 1fr),
+		align: (x, y) => if y == 0 { center } else { (center, left).at(x) },
+		[*Name*], [*Funktion*],
+		$w$,      [Breite von einer Scheibe],
+		$h_g$,    [Maximale Suchhöhe für den Boden],
+		$s_g$,    [Skalierungsfaktor für die Mindestfläche vom Boden zur kleinsten Scheibe],
+		$h_t$,    [Höhe für die Berechnung vom Stammdurchmesser],
+		$r_t$,    [Bereich für die Berechnung vom Stammdurchmesser],
+		$d_c$,    [Differenz zwischen den Stammdurchmesser und dem Mindestdurchmesser der Krone],
+	),
+) <analyse_klassifkation_parameter>
+
+
+=== Unterteilung in Scheiben
+
+Zuerst werden die Punkte gleich breite Scheiben unterteilt. Dafür wird mit der Breite $w$ der Scheiben, $h_min$ und $h_max$ die Anzahl der benötigten Scheiben $c$ und den Index der Scheibe $s_i$ für den Punkt $i$ berechnet.
+
+$ c = floor((h_max - h_min) / w) + 1 #h(40pt) s_i = floor((p_(i y) - h_min) / w) $
+
+Für jede Scheibe wird der horizontale konvexe Bereich bestimmt, der alle Punkte in der Scheibe beinhaltet. Dafür werden die Methoden wie bei der Segmentierung in @segmentierung_bereiche_chapter verwendet. Mit den Bereichen wird die Fläche bestimmt, welche von den Punkten in der Scheibe belegt wird. In @analyse_klassifkation_slices ist ein Beispiel gegeben.
+
+#figure(
+	caption: [Baum in Scheiben unterteilt mit der zugehörigen Fläche für jede Scheibe.],
+	image("../images/klassifkation_slices.svg"),
+) <analyse_klassifkation_slices>
+
+
+=== Bodenhöhe
+
+Mit den Flächen wird zuerst die kleinste Fläche $a_min$ und die größte Fläche $a_max$ bestimmt.
+
+Danach wird die Bodenhöhe $g$ gesucht. Dafür werden die Suchhöhe $h_g$ und der Skalierungsfaktor $s_g$ verwendet. Von unten wird die erste Scheibe gesucht, welche eine größere Fläche als $s_g dot a_min$ hat. Ist die Scheibe höher als $h_g$, wird die Höhe der untersten Scheibe als Boden verwendet. Ist die Scheibe niedriger als $h_g$, wird die nächste Scheibe gesucht, dessen Fläche kleiner als $s_g dot a_min$ und die Höhe von dieser Scheibe wird als $g$ verwendet.
+
+
+=== Stammdurchmesser
+
+Mit der berechneten Bodenhöhe $g$, der Messhöhe $h_t$ und dem Bereich $r_t$ wird der Stammdurchmesser $d_t$ bestimmt. Zuerst werden alle Punkte mit einer Höhe im Bereich $[g + h_t - r_t / 2, g + h_t + r_t / 2)$ gesucht. Mit dem Ransac-Algorithmus wird der Kreis gesucht, welcher am nächsten an allen Punkten liegt.
+
+#todo[Ransac]
+
+Der Durchmesser vom Kreis wird als der geschätzte Stammdurchmesser verwendet.
+
+
+=== Baumhöhe
+
+Mit dem Stammdurchmesser $d_t$ und der Mindestdifferenz $d_c$ wird die Höhe vom Anfang der Krone bestimmt. Dafür wird die Mindestfläche für die erste Scheibe der Krone $a_m$ bestimmt.
+
+$ a_m = pi dot ((d_t + d_c) / 2)^2 $
+
+Danach wird die erste Scheibe höher als der Boden gesucht, dessen Fläche größer als $a_m$ ist. Der Stamm geht vom Boden bis zu dieser Scheibe und die Krone von dieser Scheibe bis zur höchsten Scheibe.
+
+
+=== Durchmesser von der Baumkrone
+
+Für den Durchmesser von der Baumkrone wird für alle Scheiben in der Krone die Scheibe mit der größten Fläche $a_c$ gesucht. Mit der Fläche wird der zugehörige Durchmesser $d_c$ geschätzt.
+
+$ d_c = 2 dot sqrt(a_c / pi) $

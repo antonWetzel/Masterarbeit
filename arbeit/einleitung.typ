@@ -40,16 +40,15 @@ Die Visualisierung präsentiert die berechneten Ergebnisse. Dabei werden die Eig
 
 #section(1, [Einleitung])
 
-In der Einleitung wird die Motivation, Theme und Struktur für Arbeit vorgestellt.
+In der Einleitung wird die Motivation für die Arbeit erklärt, das Thema definiert und die Struktur der Arbeit vorgestellt.
 
 #section(2, [Stand der Technik])
 
 Der Stand der Technik beschäftigt sich mit zugehörigen wissenschaftlichen und technischen Arbeiten. Dazu gehört die Aufnahme und Verarbeitung von Punktdaten und die Analyse von Bäumen mit den Daten.
 
-
 #section(3, [Segmentierung])
 
-Die Segmentierung erklärt den verwendeten Algorithmus für die Unterteilung von einer Punktwolke für ein Waldstück in mehrere Punktwolken für jeweils einen Baum. Die Punktwolke kann dabei ungeordnet sein und für die einzelnen Punkte wird nur die Position vorrausgesetzt.
+Die Segmentierung erklärt den verwendeten Algorithmus für die Unterteilung von einer Punktwolke für ein Waldstück in mehrere Punktwolken für jeweils einen Baum. Die Punktwolke kann dabei ungeordnet sein und für die einzelnen Punkte wird nur die Position vorausgesetzt.
 
 #section(4, [Triangulierung])
 

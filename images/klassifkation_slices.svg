@@ -1,0 +1,615 @@
+<svg viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="95.98,315.83438 94.98,316.33438 93.3625,316.67688 84.21,314.98938 82.1975,314.61563 83.0625,314.00186 85.675,313.04062 88.6975,312.34064 91.34,312.64688 93.265,313.29813 93.7525,313.55313 95.01,314.61438 95.1625,314.7531 " fill="rgb(0, 0, 256)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="307" width="1.3776866" height="1" fill="rgb(0, 0, 256)" stroke-width="0.1" stroke="black" />
+  <polygon points="95.2675,314.91812 92.645004,317.24814 83.815,316.61063 81.85,315.74188 81.675,315.34436 81.48,314.84064 81.4525,314.58188 81.995,313.68936 85.5025,312.03436 87.135,311.4081 94.515,313.33188 95.057495,314.34937 " fill="rgb(0.8338762, 0, 255.16612)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="306" width="2.229183" height="1" fill="rgb(0.8338762, 0, 255.16612)" stroke-width="0.1" stroke="black" />
+  <polygon points="92.48,316.64313 91.479996,317.14313 88.1175,317.14063 85.7625,316.66437 85.1325,316.51813 84.53,316.33313 83.3625,315.81436 82.6925,315.34937 81.9,314.69937 81.5375,313.71814 83.435,312.0331 89.64,312.29562 91.935,313.24313 92.4125,313.7794 92.915,314.37314 92.985,315.81937 " fill="rgb(1.6677524, 0, 254.33224)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="305" width="1.8139354" height="1" fill="rgb(1.6677524, 0, 254.33224)" stroke-width="0.1" stroke="black" />
+  <polygon points="93.0075,315.60938 92.0075,316.10938 88.44,316.17188 86.605,315.87314 84.5,315.23062 85.2775,312.53436 86.04,312.17688 88.8575,311.4319 90.715,311.47687 91.3575,311.54312 " fill="rgb(2.5016286, 0, 253.49837)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="304" width="1.2413167" height="1" fill="rgb(2.5016286, 0, 253.49837)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.095,310.63937 90.9125,311.58063 88.7875,314.53064 85.3975,314.62686 85.385,314.46814 85.47,313.94937 85.865,311.62686 " fill="rgb(3.3355048, 0, 252.66449)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="303" width="0.59742147" height="1" fill="rgb(3.3355048, 0, 252.66449)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.5975,309.68564 89.7625,311.37314 89.8925,311.75937 87.6375,312.86563 87.065,312.76813 86.515,311.26062 86.38,310.2231 " fill="rgb(4.169381, 0, 251.83061)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="302" width="0.29264992" height="1" fill="rgb(4.169381, 0, 251.83061)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.395004,308.6606 88.9375,308.91687 89.76,310.25687 89.1425,310.43063 87.06,308.83813 87.88,308.61688 " fill="rgb(5.0032573, 0, 250.99675)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="301" width="0.08768976" height="1" fill="rgb(5.0032573, 0, 250.99675)" stroke-width="0.1" stroke="black" />
+  <polygon points="91.2575,308.54562 90.2575,309.04562 85.9375,310.51312 87.2225,307.17938 " fill="rgb(5.8371334, 0, 250.16287)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="300" width="0.31799626" height="1" fill="rgb(5.8371334, 0, 250.16287)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.53,308.39688 90.06,307.18936 88.53,308.39688 87.53,308.89688 " fill="rgb(6.6710095, 0, 249.329)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="299" width="0.03415001" height="1" fill="rgb(6.6710095, 0, 249.329)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.19,307.07938 89.535,306.64438 89.535,306.97562 88.78,307.27188 87.19,307.57938 " fill="rgb(7.504886, 0, 248.49512)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="298" width="0.04376312" height="1" fill="rgb(7.504886, 0, 248.49512)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.0575,306.14063 89.3225,304.21188 89.9125,304.63437 90.057495,306.14063 89.0575,306.64063 " fill="rgb(8.338762, 0, 247.66124)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="297" width="0.065123476" height="1" fill="rgb(8.338762, 0, 247.66124)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.275,305.20688 88.0975,305.74063 86.93,303.91437 89.55,303.44437 89.9975,303.4431 90.6175,303.70187 " fill="rgb(9.172639, 0, 246.82736)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="296" width="0.1866182" height="1" fill="rgb(9.172639, 0, 246.82736)" stroke-width="0.1" stroke="black" />
+  <polygon points="90.1975,302.84064 90.27,303.7206 89.1975,303.34064 89.005,302.73312 " fill="rgb(10.006515, 0, 245.99348)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="295" width="0.0324" height="1" fill="rgb(10.006515, 0, 245.99348)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.79,301.82312 89.575,303.14688 88.1,302.46188 86.83,301.71936 " fill="rgb(10.840391, 0, 245.1596)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="294" width="0.08331686" height="1" fill="rgb(10.840391, 0, 245.1596)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.6825,301.94562 87.6825,302.44562 86.845,302.06436 87.4925,300.73813 88.275,300.73062 " fill="rgb(11.674267, 0, 244.32573)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="293" width="0.08227776" height="1" fill="rgb(11.674267, 0, 244.32573)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.1125,299.8156 88.1125,299.8156 87.1125,300.3156 " fill="rgb(13.342019, 0, 242.65797)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="291" width="0.010000004" height="1" fill="rgb(13.342019, 0, 242.65797)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.78,298.10687 89.78,298.10687 88.78,298.60687 " fill="rgb(14.175896, 0, 241.8241)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="290" width="0.010000004" height="1" fill="rgb(14.175896, 0, 241.8241)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.0875,297.16687 87.1175,296.78064 87.0875,297.16687 86.7275,297.53186 86.0875,297.66687 " fill="rgb(15.009772, 0, 240.99023)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="289" width="0.021425001" height="1" fill="rgb(15.009772, 0, 240.99023)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.8625,295.84314 89.3775,296.24188 86.615,297.38812 86.1475,296.0619 " fill="rgb(15.843648, 0, 240.15636)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="288" width="0.107898" height="1" fill="rgb(15.843648, 0, 240.15636)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.975,294.8181 88.6,294.7556 88.975,294.8181 89.1975,295.06686 89.065,295.18564 87.975,295.3181 86.5925,294.98312 86.7625,294.94186 " fill="rgb(16.677525, 0, 239.32248)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="287" width="0.035092186" height="1" fill="rgb(16.677525, 0, 239.32248)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.89,293.92563 88.67,294.07312 87.89,294.42563 87.5,293.80563 " fill="rgb(17.5114, 0, 238.4886)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="286" width="0.017049996" height="1" fill="rgb(17.5114, 0, 238.4886)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.315,294.26062 88.315,294.26062 87.315,294.76062 " fill="rgb(18.345278, 0, 237.65472)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="285" width="0.010000004" height="1" fill="rgb(18.345278, 0, 237.65472)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.5825,292.3744 86.582504,292.3744 85.5825,292.8744 85.535,292.56937 " fill="rgb(19.179153, 0, 236.82085)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="284" width="0.010475006" height="1" fill="rgb(19.179153, 0, 236.82085)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.02,292.3719 89.165,292.08813 89.020004,292.3719 88.02,292.8719 " fill="rgb(20.01303, 0, 235.98697)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="283" width="0.015675" height="1" fill="rgb(20.01303, 0, 235.98697)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.9575,290.17563 86.9575,290.17563 86.7,291.08813 85.9575,290.67563 " fill="rgb(20.846905, 0, 235.15309)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="282" width="0.025675012" height="1" fill="rgb(20.846905, 0, 235.15309)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.4925,289.0269 87.4925,289.0269 86.4925,289.5269 " fill="rgb(21.680782, 0, 234.31921)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="281" width="0.010000004" height="1" fill="rgb(21.680782, 0, 234.31921)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.46,288.72812 86.5575,288.0631 87.46,288.72812 86.46,289.22812 " fill="rgb(22.514658, 0, 233.48534)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="280" width="0.023300009" height="1" fill="rgb(22.514658, 0, 233.48534)" stroke-width="0.1" stroke="black" />
+  <polygon points="90.4725,287.08813 89.4725,287.58813 87.275,288.32187 86.995,286.89313 " fill="rgb(23.348534, 0, 232.65146)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="279" width="0.10557758" height="1" fill="rgb(23.348534, 0, 232.65146)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.62,286.88937 85.39,286.3719 88.97,286.2531 " fill="rgb(24.182411, 0, 231.8176)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="278" width="0.037599258" height="1" fill="rgb(24.182411, 0, 231.8176)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.9525,285.39313 85.9525,285.89313 85.74,285.47437 85.8525,285.37314 " fill="rgb(25.016287, 0, 230.98372)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="277" width="0.0127725005" height="1" fill="rgb(25.016287, 0, 230.98372)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.93,284.59686 86.93,284.59686 87.71,285.42563 85.93,285.09686 " fill="rgb(25.850163, 0, 230.14984)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="276" width="0.034375012" height="1" fill="rgb(25.850163, 0, 230.14984)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.3325,283.26437 87.332504,283.26437 88.1825,284.50186 86.3325,283.76437 " fill="rgb(26.684038, 0, 229.31596)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="275" width="0.043250017" height="1" fill="rgb(26.684038, 0, 229.31596)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.4325,282.98062 86.4325,283.48062 86.415,282.19812 86.8875,282.0894 " fill="rgb(27.517916, 0, 228.48209)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="274" width="0.03543271" height="1" fill="rgb(27.517916, 0, 228.48209)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.9575,281.08688 87.957504,281.08688 86.725,282.17938 " fill="rgb(28.351791, 0, 227.64821)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="273" width="0.021850007" height="1" fill="rgb(28.351791, 0, 227.64821)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.5775,280.3131 87.4,279.91937 88.2875,280.03436 89.0475,280.27438 88.4575,281.40936 86.82,280.89938 86.5775,280.8131 " fill="rgb(29.185667, 0, 226.81433)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="272" width="0.09608878" height="1" fill="rgb(29.185667, 0, 226.81433)" stroke-width="0.1" stroke="black" />
+  <polygon points="90.0425,280.18564 89.0425,280.68564 87.3975,280.32938 85.7325,279.67313 86.9525,279.58188 " fill="rgb(30.019545, 0, 225.98045)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="271" width="0.08344826" height="1" fill="rgb(30.019545, 0, 225.98045)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.2325,278.27188 87.2325,278.27188 88.979996,279.36563 88.5225,279.29312 86.2325,278.77188 85.9925,278.48563 " fill="rgb(30.85342, 0, 225.14658)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="270" width="0.053198975" height="1" fill="rgb(30.85342, 0, 225.14658)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.3625,277.21188 87.3625,277.21188 86.3625,277.71188 86.135,277.25687 " fill="rgb(31.687296, 0, 224.3127)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="269" width="0.012275007" height="1" fill="rgb(31.687296, 0, 224.3127)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.3575,276.22562 87.3575,276.22562 89.2725,277.32437 86.3575,276.72562 " fill="rgb(32.52117, 0, 223.47882)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="268" width="0.05112501" height="1" fill="rgb(32.52117, 0, 223.47882)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.7425,275.17438 87.7425,275.17438 86.7425,275.67438 " fill="rgb(33.35505, 0, 222.64496)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="267" width="0.010000004" height="1" fill="rgb(33.35505, 0, 222.64496)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.31,273.9319 88.31,273.9319 89.6125,275.23438 87.31,274.4319 " fill="rgb(34.188927, 0, 221.81107)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="266" width="0.049075007" height="1" fill="rgb(34.188927, 0, 221.81107)" stroke-width="0.1" stroke="black" />
+  <polygon points="90.055,273.2769 89.055,273.7769 87.3625,272.96188 87.955,272.96313 " fill="rgb(35.0228, 0, 220.9772)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="265" width="0.036890436" height="1" fill="rgb(35.0228, 0, 220.9772)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.485,272.03064 90.485,272.03064 89.485,272.53064 85.855,272.52313 " fill="rgb(35.856678, 0, 220.14333)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="264" width="0.046300005" height="1" fill="rgb(35.856678, 0, 220.14333)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.13,271.30814 87.13,271.30814 89.7475,272.16562 86.475,271.92938 86.13,271.80814 " fill="rgb(36.690556, 0, 219.30945)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="263" width="0.059630673" height="1" fill="rgb(36.690556, 0, 219.30945)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.3375,270.86563 86.3975,270.06937 88.0925,269.52063 87.3375,270.86563 86.3375,271.36563 " fill="rgb(37.52443, 0, 218.47557)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="262" width="0.0632344" height="1" fill="rgb(37.52443, 0, 218.47557)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.9325,270.60687 86.76,269.02814 88.0875,268.58438 90.15,269.95813 " fill="rgb(38.358307, 0, 217.6417)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="261" width="0.14000848" height="1" fill="rgb(38.358307, 0, 217.6417)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.135,267.9669 88.135,267.9669 86.8675,269.12936 86.745,268.04562 " fill="rgb(39.19218, 0, 216.80782)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="260" width="0.03189621" height="1" fill="rgb(39.19218, 0, 216.80782)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.1875,268.33438 87.1875,268.83438 87.0725,267.3181 87.1625,267.07687 87.2125,266.98813 87.667496,266.70062 89.26,266.71814 88.685,268.03186 " fill="rgb(40.02606, 0, 215.97394)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="259" width="0.12106414" height="1" fill="rgb(40.02606, 0, 215.97394)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.7575,265.97562 87.7575,266.47562 87.47,265.76312 " fill="rgb(40.859936, 0, 215.14006)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="258" width="0.017125009" height="1" fill="rgb(40.859936, 0, 215.14006)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.875,265.7769 88.875,266.2769 87.3025,266.30188 85.525,265.49313 88.3475,264.99564 89.08,265.0919 " fill="rgb(41.69381, 0, 214.30618)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="257" width="0.14330404" height="1" fill="rgb(41.69381, 0, 214.30618)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.655,264.14188 87.655,264.64188 86.0575,264.10187 86.2425,264.08438 " fill="rgb(42.527687, 0, 213.47232)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="256" width="0.027832132" height="1" fill="rgb(42.527687, 0, 213.47232)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.2925,262.98187 86.9975,262.91187 89.0925,263.14563 88.99,263.66562 87.5725,264.32187 86.2925,263.48187 " fill="rgb(43.361565, 0, 212.63843)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="255" width="0.10327355" height="1" fill="rgb(43.361565, 0, 212.63843)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.9025,261.99063 87.9025,261.99063 86.9025,262.49063 " fill="rgb(44.19544, 0, 211.80457)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="254" width="0.010000004" height="1" fill="rgb(44.19544, 0, 211.80457)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.005,262.2319 87.145,260.90314 87.1575,260.8844 88.31,261.0619 88.005,262.2319 87.005,262.7319 " fill="rgb(45.029316, 0, 210.97069)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="253.00002" width="0.06528094" height="1" fill="rgb(45.029316, 0, 210.97069)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.61,259.95563 88.61,259.95563 88.085,261.30438 86.785,260.26563 " fill="rgb(45.863194, 0, 210.13681)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="252" width="0.05217438" height="1" fill="rgb(45.863194, 0, 210.13681)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.73,259.23062 88.73,259.73062 88.1375,258.98563 " fill="rgb(46.697067, 0, 209.30293)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="251" width="0.020824997" height="1" fill="rgb(46.697067, 0, 209.30293)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.03,258.15314 90.03,258.15314 88.32,259.33063 88.235,258.20938 " fill="rgb(47.530945, 0, 208.46906)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="250" width="0.041473508" height="1" fill="rgb(47.530945, 0, 208.46906)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.5975,257.61563 86.41,256.92938 89.345,257.3756 " fill="rgb(48.364822, 0, 207.63518)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="249" width="0.038609423" height="1" fill="rgb(48.364822, 0, 207.63518)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.225,256.1544 88.695,257.2594 87.225,256.6544 86.9275,256.1819 86.8725,256.07813 87.125,255.9419 87.35,255.88065 87.875,255.99564 " fill="rgb(49.198696, 0, 206.8013)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="248.00002" width="0.049183812" height="1" fill="rgb(49.198696, 0, 206.8013)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.1825,256.20938 88.1825,256.70938 86.995,255.09062 87.275,254.92062 88.3025,254.71687 88.6925,255.12563 " fill="rgb(50.032574, 0, 205.96742)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="247" width="0.09665686" height="1" fill="rgb(50.032574, 0, 205.96742)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.4075,254.20062 88.415,253.77562 88.604996,253.99312 87.1025,255.29312 86.4075,254.70062 " fill="rgb(50.86645, 0, 205.13354)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="246" width="0.06819725" height="1" fill="rgb(50.86645, 0, 205.13354)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.4925,253.21063 88.4925,253.71063 87.925,253.07312 87.9825,253.05562 " fill="rgb(51.700325, 0, 204.29968)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="245" width="0.019131757" height="1" fill="rgb(51.700325, 0, 204.29968)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.51,251.91188 89.11,252.17688 88.7875,253.23438 86.075,252.90562 86.4,252.32437 " fill="rgb(52.534203, 0, 203.46579)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="244" width="0.109117776" height="1" fill="rgb(52.534203, 0, 203.46579)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.832504,251.21063 89.72,251.46814 87.3575,252.04564 85.585,251.37439 86.2425,251.08315 87.34,251.07314 " fill="rgb(53.368076, 0, 202.63193)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="243.00002" width="0.09190012" height="1" fill="rgb(53.368076, 0, 202.63193)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.275,250.71312 86.52,250.97563 86.7475,249.94313 89.1525,249.98563 " fill="rgb(54.201954, 0, 201.79805)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="242" width="0.05098502" height="1" fill="rgb(54.201954, 0, 201.79805)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.065,249.23312 87.2225,248.97812 87.465,248.96437 88.065,249.23312 89.16,250.12688 87.065,249.73312 " fill="rgb(55.03583, 0, 200.96417)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="241" width="0.045393445" height="1" fill="rgb(55.03583, 0, 200.96417)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.3825,247.78813 89.3825,247.78813 89.455,248.95688 86.8175,249.01938 86.36,248.61812 87.645004,247.84062 " fill="rgb(55.869705, 0, 200.1303)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="240" width="0.120311126" height="1" fill="rgb(55.869705, 0, 200.1303)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.5325,246.65437 88.5325,246.65437 88.255,247.10812 87.5325,247.15437 " fill="rgb(56.703583, 0, 199.29642)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="239" width="0.016300002" height="1" fill="rgb(56.703583, 0, 199.29642)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.51,246.19315 87.47,245.7244 88.24,245.8319 88.3275,246.26564 87.3575,246.94814 86.3575,247.44814 85.91,246.9094 " fill="rgb(57.53746, 0, 198.46254)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="238.00002" width="0.08758852" height="1" fill="rgb(57.53746, 0, 198.46254)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.49,244.88937 88.49,244.88937 87.49,245.38937 " fill="rgb(58.371334, 0, 197.62866)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="237" width="0.010000004" height="1" fill="rgb(58.371334, 0, 197.62866)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.15,245.08313 87.15,245.58313 86.685,244.77687 87.2925,244.13687 " fill="rgb(59.20521, 0, 196.79478)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="236" width="0.04324794" height="1" fill="rgb(59.20521, 0, 196.79478)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.05,244.18687 88.05,244.68687 86.325,243.51062 85.97,242.78813 87.11,242.81563 " fill="rgb(60.03909, 0, 195.9609)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="235" width="0.1055474" height="1" fill="rgb(60.03909, 0, 195.9609)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.9925,242.42062 87.0475,241.97438 87.325,241.86313 87.5875,241.90437 87.8075,241.99812 89.625,243.12938 87.5125,243.09438 86.9925,242.92062 " fill="rgb(60.872963, 0, 195.12704)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="234" width="0.076041795" height="1" fill="rgb(60.872963, 0, 195.12704)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.5325,240.82063 86.5325,240.82063 85.5325,241.32065 " fill="rgb(61.70684, 0, 194.29315)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="233.00002" width="0.010000004" height="1" fill="rgb(61.70684, 0, 194.29315)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.375,240.21938 87.375,240.21938 86.375,240.71938 " fill="rgb(62.540718, 0, 193.45929)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="232" width="0.010000004" height="1" fill="rgb(62.540718, 0, 193.45929)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.585,239.90562 87.615,238.89813 88.485,238.88937 87.8225,240.20688 86.585,240.40562 " fill="rgb(63.37459, 0, 192.62541)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="231" width="0.06632493" height="1" fill="rgb(63.37459, 0, 192.62541)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.2275,239.24312 87.8475,237.86313 88.385,239.00313 88.2275,239.24312 87.2275,239.74312 " fill="rgb(64.208466, 0, 191.79153)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="230" width="0.043771002" height="1" fill="rgb(64.208466, 0, 191.79153)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.5775,238.51813 87.5775,239.01813 87.1,236.80063 " fill="rgb(65.04234, 0, 190.95766)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="229" width="0.049125" height="1" fill="rgb(65.04234, 0, 190.95766)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.2875,236.77065 86.325,235.77065 86.9425,235.68314 87.925,235.96439 88.2025,236.93564 86.2875,237.27065 " fill="rgb(65.87622, 0, 190.12378)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="228.00002" width="0.09277125" height="1" fill="rgb(65.87622, 0, 190.12378)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.6825,234.59813 88.7125,234.52812 88.41,235.88937 87.2275,236.43562 85.735,235.74063 " fill="rgb(66.7101, 0, 189.2899)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="227" width="0.12727815" height="1" fill="rgb(66.7101, 0, 189.2899)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.86,234.00688 89.86,234.00688 88.86,234.50688 " fill="rgb(67.543976, 0, 188.45602)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="226" width="0.010000004" height="1" fill="rgb(67.543976, 0, 188.45602)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.51,232.29938 86.51,232.29938 86.0675,233.71687 85.51,232.79938 " fill="rgb(68.37785, 0, 187.62215)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="225" width="0.033925004" height="1" fill="rgb(68.37785, 0, 187.62215)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.9875,233.12062 88.1025,231.86313 88.9875,233.12062 87.9875,233.62062 " fill="rgb(69.21172, 0, 186.78827)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="224" width="0.03515001" height="1" fill="rgb(69.21172, 0, 186.78827)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.86,230.50938 86.86,231.00938 85.2575,231.16064 86.435,230.45564 " fill="rgb(70.0456, 0, 185.9544)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="223.00002" width="0.034358338" height="1" fill="rgb(70.0456, 0, 185.9544)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.55,230.79187 86.025,229.67813 87.43,229.67688 88.6775,229.74437 " fill="rgb(70.87948, 0, 185.12051)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="222" width="0.060316753" height="1" fill="rgb(70.87948, 0, 185.12051)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.5675,229.40187 86,228.79688 87.285,228.71437 87.8,228.86438 88.9675,229.69313 88.520004,230.12312 85.5675,229.90187 " fill="rgb(71.713356, 0, 184.28665)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="221" width="0.13799459" height="1" fill="rgb(71.713356, 0, 184.28665)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.207504,228.35938 90.207504,228.35938 89.207504,228.85938 " fill="rgb(72.54723, 0, 183.45276)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="220" width="0.010000004" height="1" fill="rgb(72.54723, 0, 183.45276)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.775,227.86438 86.775,228.36438 86.07,227.09062 87.91,227.19937 " fill="rgb(73.38111, 0, 182.6189)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="219" width="0.05729062" height="1" fill="rgb(73.38111, 0, 182.6189)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.6775,226.29439 89.6775,226.29439 88.6775,226.79439 " fill="rgb(74.21498, 0, 181.78502)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="218.00002" width="0.010000004" height="1" fill="rgb(74.21498, 0, 181.78502)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.1925,225.80063 87.1925,225.80063 86.1925,226.30063 " fill="rgb(75.04886, 0, 180.95114)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="217" width="0.010000004" height="1" fill="rgb(75.04886, 0, 180.95114)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.21,224.70187 88.21,224.70187 87.21,225.20187 " fill="rgb(75.88274, 0, 180.11726)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="216" width="0.010000004" height="1" fill="rgb(75.88274, 0, 180.11726)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.5875,222.04312 87.5875,222.04312 87.67,222.53438 87.29,223.82437 85.1375,223.13562 " fill="rgb(76.71661, 0, 179.28339)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="215" width="0.108492896" height="1" fill="rgb(76.71661, 0, 179.28339)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.0225,222.93687 88.0525,222.09938 89.0225,222.93687 88.0225,223.43687 " fill="rgb(77.55049, 0, 178.44951)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="214" width="0.02675001" height="1" fill="rgb(77.55049, 0, 178.44951)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.2325,221.3819 87.745,220.57689 85.8375,221.60065 85.2325,221.8819 " fill="rgb(78.38436, 0, 177.61563)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="213.00002" width="0.02678268" height="1" fill="rgb(78.38436, 0, 177.61563)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.275,215.95062 88.08,220.86937 87.08,221.36937 86.8975,219.50188 89.275,215.13188 " fill="rgb(79.21824, 0, 176.78177)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="212" width="0.22711825" height="1" fill="rgb(79.21824, 0, 176.78177)" stroke-width="0.1" stroke="black" />
+  <polygon points="92.2425,214.72313 87.6175,219.75063 86.1325,218.56813 88.9125,214.05063 " fill="rgb(80.05212, 0, 175.94788)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="211" width="0.5969546" height="1" fill="rgb(80.05212, 0, 175.94788)" stroke-width="0.1" stroke="black" />
+  <polygon points="93.25,213.56438 85.76,218.53438 89.725,213.28563 91.93,213.37938 " fill="rgb(80.885994, 0, 175.11401)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="210" width="0.39782524" height="1" fill="rgb(80.885994, 0, 175.11401)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.3725,211.58063 90.82,212.18687 86.7925,217.74437 85.792496,218.24437 84.4375,216.56438 " fill="rgb(81.71987, 0, 174.28012)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="209" width="0.6080737" height="1" fill="rgb(81.71987, 0, 174.28012)" stroke-width="0.1" stroke="black" />
+  <polygon points="84.725,215.90314 84.8025,214.59814 88.38,216.09439 88.6725,216.23314 87.8625,216.6619 84.7925,217.07188 84.725,216.40314 " fill="rgb(82.55375, 0, 173.44626)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="208.00002" width="0.21690132" height="1" fill="rgb(82.55375, 0, 173.44626)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.19,215.39438 88.19,215.89438 83.285,216.74063 83.33,216.12062 84.74,214.17062 88.9975,212.04813 89.3175,212.75812 " fill="rgb(83.38762, 0, 172.61238)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="207" width="0.6239824" height="1" fill="rgb(83.38762, 0, 172.61238)" stroke-width="0.1" stroke="black" />
+  <polygon points="84.545,214.65688 87.6425,213.80438 84.6425,216.04312 83.6425,216.54312 83.0975,216.08438 " fill="rgb(84.2215, 0, 171.7785)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="206" width="0.14508113" height="1" fill="rgb(84.2215, 0, 171.7785)" stroke-width="0.1" stroke="black" />
+  <polygon points="82.5975,214.35562 86.815,212.39563 88.4525,213.26688 82.5975,214.85562 " fill="rgb(85.055374, 0, 170.94463)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="205" width="0.19622995" height="1" fill="rgb(85.055374, 0, 170.94463)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.255,211.46437 86.47,211.56313 86.34,212.31938 85.34,212.81938 83.215,212.73312 83.6075,211.57562 " fill="rgb(85.88925, 0, 170.11075)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="204" width="0.1410408" height="1" fill="rgb(85.88925, 0, 170.11075)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.4775,210.41939 86.4775,210.41939 83.4475,213.10439 84.095,210.57188 " fill="rgb(86.72313, 0, 169.27687)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="203.00002" width="0.12174876" height="1" fill="rgb(86.72313, 0, 169.27687)" stroke-width="0.1" stroke="black" />
+  <polygon points="83.3425,210.14063 84.6825,209.45062 86.3325,209.40312 87.0225,209.58438 83.3425,210.64063 82.14,210.78313 " fill="rgb(87.55701, 0, 168.443)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="202" width="0.09133827" height="1" fill="rgb(87.55701, 0, 168.443)" stroke-width="0.1" stroke="black" />
+  <polygon points="80.8825,210.64188 82.1225,209.64937 83.2775,209.06563 85.85,208.67688 87.67,208.53937 86.3275,209.74687 74.1225,216.32062 " fill="rgb(88.39088, 0, 167.60913)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="201" width="0.73367" height="1" fill="rgb(88.39088, 0, 167.60913)" stroke-width="0.1" stroke="black" />
+  <polygon points="78.53,214.31062 72.225,215.95187 69.9675,212.70938 70.0225,212.46063 81.3425,207.66562 87.9475,208.13063 " fill="rgb(89.224754, 0, 166.77524)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="200" width="2.6660113" height="1" fill="rgb(89.224754, 0, 166.77524)" stroke-width="0.1" stroke="black" />
+  <polygon points="82.2125,212.37688 79.72,213.82813 74.935,215.59062 73.905,215.79688 73.06,215.70187 71.575,215.21687 69.7125,211.75313 76.2375,205.92438 86.93,206.90562 " fill="rgb(90.05863, 0, 165.94138)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="199" width="3.992219" height="1" fill="rgb(90.05863, 0, 165.94138)" stroke-width="0.1" stroke="black" />
+  <polygon points="81.9275,214.33939 80.9275,214.83939 74.73,214.59064 72.32,210.76689 70.96,206.94064 78.64,206.18814 86.355,205.51314 " fill="rgb(90.89251, 0, 165.10748)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="198.00002" width="3.871159" height="1" fill="rgb(90.89251, 0, 165.10748)" stroke-width="0.1" stroke="black" />
+  <polygon points="80.645,215.03313 73.875,209.59563 70.225,205.99812 71.520004,205.39813 79.4275,204.65813 88.1325,204.92313 81.885,214.61812 81.37,214.91188 " fill="rgb(91.72639, 0, 164.27362)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="197" width="4.099462" height="1" fill="rgb(91.72639, 0, 164.27362)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.985,204.58438 83.0475,213.14563 81.5375,213.69063 81.415,213.70813 75.665,212.13687 70.985,204.63937 71.0525,204.44313 72.225,203.87813 85.11,203.81938 " fill="rgb(92.56026, 0, 163.43974)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="196" width="4.496596" height="1" fill="rgb(92.56026, 0, 163.43974)" stroke-width="0.1" stroke="black" />
+  <polygon points="80.545,212.47313 69.455,205.46812 71.7625,204.25188 78.925,202.00812 85.9,202.26938 86.83,203.83563 82.9475,211.58812 81.49,212.14813 " fill="rgb(93.394135, 0, 162.60587)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="195" width="4.278689" height="1" fill="rgb(93.394135, 0, 162.60587)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.3125,202.37813 85.3125,202.87813 76.815,205.79562 68.445,205.35812 78.38,199.94937 79.3725,200.06563 85.5075,201.94687 " fill="rgb(94.22801, 0, 161.77199)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="194" width="2.0749018" height="1" fill="rgb(94.22801, 0, 161.77199)" stroke-width="0.1" stroke="black" />
+  <polygon points="71.3925,203.36813 76.99,199.81815 77.4775,199.60564 79.0075,199.33064 87.835,200.62814 87.105,201.68188 80.0775,209.00938 70.9375,204.49814 " fill="rgb(95.06189, 0, 160.93811)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="193.00002" width="3.6227202" height="1" fill="rgb(95.06189, 0, 160.93811)" stroke-width="0.1" stroke="black" />
+  <polygon points="69.6475,203.07062 70.565,202.01187 75.1625,197.74937 75.9525,197.70062 86.43,199.27562 87.53,199.59062 70.64,207.81313 " fill="rgb(95.89577, 0, 160.10423)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="192" width="3.3761783" height="1" fill="rgb(95.89577, 0, 160.10423)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.04,199.59438 87.035,199.82687 86.04,200.09438 71.145,202.27313 71.1025,201.78813 75.505,196.96812 77.1575,196.82687 86.5325,198.49687 " fill="rgb(96.729645, 0, 159.27036)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="191" width="1.9178638" height="1" fill="rgb(96.729645, 0, 159.27036)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.775,198.61438 86.775,199.11438 68.665,204.39813 70.9525,201.02687 74.7325,197.24687 75.8375,196.66188 78.2175,196.76312 85.6775,197.77562 " fill="rgb(97.563515, 0, 158.4365)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="190" width="2.522958" height="1" fill="rgb(97.563515, 0, 158.4365)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.8475,197.20187 85.685,197.48938 75.27,204.05063 73.6525,205.06688 65.03,204.22937 62.3325,200.88063 74.0025,196.08812 78.5375,195.56438 85.4925,196.31688 86.23,196.44687 " fill="rgb(98.39739, 0, 157.6026)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="189" width="5.12938" height="1" fill="rgb(98.39739, 0, 157.6026)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.3725,196.54189 87.3725,197.04189 73.28,204.07814 66.675,203.69064 65.0075,203.0694 64.7775,199.0219 76.4925,196.4419 87.1175,196.40689 " fill="rgb(99.23127, 0, 156.76874)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="188.00002" width="4.2081347" height="1" fill="rgb(99.23127, 0, 156.76874)" stroke-width="0.1" stroke="black" />
+  <polygon points="72.545,203.74687 67.8875,203.23688 65.2425,202.24937 60.2875,198.84062 62.75,197.47687 71.5725,193.80063 87.979996,194.67938 75.15,202.99687 " fill="rgb(100.06515, 0, 155.93484)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="187" width="6.3045893" height="1" fill="rgb(100.06515, 0, 155.93484)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.3625,194.31062 74.29,202.95813 73.815,203.22937 73.0975,203.23688 67.7325,202.43312 60.055,197.86313 61.5,196.61812 73.105,192.42188 " fill="rgb(100.899025, 0, 155.10098)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="186" width="6.367177" height="1" fill="rgb(100.899025, 0, 155.10098)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.2375,192.84312 85.815,193.55937 74.175,202.16437 73.4,202.55937 72.5525,202.05812 67.9675,198.89813 71.2125,191.05438 71.9475,190.03563 84.655,192.57562 " fill="rgb(101.7329, 0, 154.26709)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="185" width="4.919995" height="1" fill="rgb(101.7329, 0, 154.26709)" stroke-width="0.1" stroke="black" />
+  <polygon points="84.8925,191.12938 87.7825,192.56313 78.595,197.24812 71.1575,190.61438 72.89,189.84688 " fill="rgb(102.56677, 0, 153.43323)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="184" width="2.5086067" height="1" fill="rgb(102.56677, 0, 153.43323)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.5475,190.44939 87.285,190.70564 88.0225,191.39938 80.335,194.16563 75.59,193.84814 73.745,193.63814 71.755,191.3619 82.425,189.78189 " fill="rgb(103.40065, 0, 152.59935)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="183.00002" width="1.7801385" height="1" fill="rgb(103.40065, 0, 152.59935)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.94,190.68938 85.94,191.18938 80.185,192.79938 72.29,193.20062 72.41,190.37938 79.1375,187.45313 84.645,188.06813 " fill="rgb(104.23453, 0, 151.76547)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="182" width="2.2774901" height="1" fill="rgb(104.23453, 0, 151.76547)" stroke-width="0.1" stroke="black" />
+  <polygon points="73.8,191.65312 69.805,191.05438 68.2,189.84187 78.9675,185.98938 83.82,185.99812 88.23,189.37437 " fill="rgb(105.068405, 0, 150.9316)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="181" width="2.6251345" height="1" fill="rgb(105.068405, 0, 150.9316)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.7625,188.78062 86.7625,189.28062 73.6625,191.00937 66.425,190.27063 67.4475,189.41812 80.2075,185.59187 82.5625,185.09187 84.6125,185.18813 85.5525,185.28062 " fill="rgb(105.90228, 0, 150.09772)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="180" width="2.7812936" height="1" fill="rgb(105.90228, 0, 150.09772)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.61,187.56938 87.61,188.06938 73.8525,189.28937 66.770004,189.25063 62.3525,189.13312 77.4225,184.16687 83.6725,183.60063 " fill="rgb(106.73615, 0, 149.26385)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="179" width="3.256835" height="1" fill="rgb(106.73615, 0, 149.26385)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.11,182.0369 85.635,185.49814 85.55,185.71564 73.07,189.09064 64.255,187.96063 67.36,186.39938 80.5075,181.53564 84.1125,181.7219 " fill="rgb(107.57003, 0, 148.42996)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="178.00002" width="3.3536046" height="1" fill="rgb(107.57003, 0, 148.42996)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.55,181.13562 86.2825,185.85562 64.055,187.31062 73.51,182.70313 80.01,179.92688 82.28,180.37062 82.4325,180.40312 " fill="rgb(108.40391, 0, 147.5961)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="177" width="3.4033265" height="1" fill="rgb(108.40391, 0, 147.5961)" stroke-width="0.1" stroke="black" />
+  <polygon points="82.0575,177.98062 82.995,179.12563 86.1975,183.36688 67.065,186.55188 63.235,186.12813 67.325,179.39688 80.71,177.91313 " fill="rgb(109.237785, 0, 146.7622)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="176" width="5.0401425" height="1" fill="rgb(109.237785, 0, 146.7622)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.4025,183.70688 85.4025,184.20688 64.3075,185.30313 68.1125,178.61937 69.47,177.25937 82.505,176.22313 84.735,178.60812 86.62,182.25313 " fill="rgb(110.07166, 0, 145.92834)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="175" width="5.907029" height="1" fill="rgb(110.07166, 0, 145.92834)" stroke-width="0.1" stroke="black" />
+  <polygon points="57.2025,185.59438 64.215,170.65813 82.305,177.08563 86.56,182.85063 67.5425,185.16687 57.2025,186.09438 " fill="rgb(110.90554, 0, 145.09445)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="174" width="10.343606" height="1" fill="rgb(110.90554, 0, 145.09445)" stroke-width="0.1" stroke="black" />
+  <polygon points="56.824997,184.74564 61.072502,178.78938 65.535,173.45064 82,173.5069 85.93,181.8019 56.824997,185.24564 " fill="rgb(111.73941, 0, 144.26059)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="173.00002" width="9.158258" height="1" fill="rgb(111.73941, 0, 144.26059)" stroke-width="0.1" stroke="black" />
+  <polygon points="82.4925,174.15688 84.07,180.35812 62.4875,186.04187 58.515,183.38812 60.775,177.13937 67.130005,172.05937 80.5775,172.94937 " fill="rgb(112.57329, 0, 143.42671)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="172" width="9.559547" height="1" fill="rgb(112.57329, 0, 143.42671)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.72,179.72563 86.72,180.22563 64.6225,186.10938 63.7575,185.91313 62.515,185.34438 62.385002,185.28438 61.97,185.04437 60.2625,182.61188 60.1875,176.57938 64.04,168.77937 67.5375,162.92313 " fill="rgb(113.407166, 0, 142.59283)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="171" width="13.771479" height="1" fill="rgb(113.407166, 0, 142.59283)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.13,179.31813 63.940002,185.66812 62.8575,185.80812 55.4,178.81187 66.275,161.08063 66.957504,161.35312 86.9625,178.26312 87.0375,178.67563 " fill="rgb(114.24104, 0, 141.75896)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="170" width="16.300158" height="1" fill="rgb(114.24104, 0, 141.75896)" stroke-width="0.1" stroke="black" />
+  <polygon points="68.43,161.51437 86.9075,176.88812 63.9775,184.66937 50.1475,177.74312 66.0925,160.54187 " fill="rgb(115.07492, 0, 140.92508)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="169" width="18.061707" height="1" fill="rgb(115.07492, 0, 140.92508)" stroke-width="0.1" stroke="black" />
+  <polygon points="50.78,176.97939 56.2175,167.85564 62.77,160.4094 67.015,159.37314 81.6775,171.03564 87.2825,176.52438 72.135,180.46939 71.235,180.57939 61.4625,180.54189 56.9375,179.71188 50.98,177.40564 " fill="rgb(115.9088, 0, 140.0912)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="168.00002" width="18.279026" height="1" fill="rgb(115.9088, 0, 140.0912)" stroke-width="0.1" stroke="black" />
+  <polygon points="71.51,180.44438 59.0975,179.43562 50.33,176.26062 37.43,150.31438 40.755,150.73312 66.2075,158.08188 69.75,159.64937 87.51,175.38188 " fill="rgb(116.74267, 0, 139.25732)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="167" width="31.096003" height="1" fill="rgb(116.74267, 0, 139.25732)" stroke-width="0.1" stroke="black" />
+  <polygon points="50.855,175.16188 37.3875,151.23187 38.625,148.83063 77.72,165.34187 86.2,174.62187 72.325,179.30937 62.28,178.43813 " fill="rgb(117.576546, 0, 138.42346)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="166" width="28.063276" height="1" fill="rgb(117.576546, 0, 138.42346)" stroke-width="0.1" stroke="black" />
+  <polygon points="36.445,147.71437 39.925,147.00812 66.855,156.51813 78.5875,163.50812 85.57,171.82437 86.4475,173.51187 85.645,173.69313 62.4425,177.54688 60.8575,177.60562 55.0425,176.75812 54.665,176.64688 52.0825,174.22438 34.362503,150.25188 34.3825,149.99937 34.4075,149.72438 " fill="rgb(118.41042, 0, 137.58957)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="165" width="32.45498" height="1" fill="rgb(118.41042, 0, 137.58957)" stroke-width="0.1" stroke="black" />
+  <polygon points="56.745,177.24437 51.845,176.56688 33.6875,148.87187 33.587498,147.95313 36.612503,146.96812 39.76,146.06187 40.3825,145.96687 81.105,161.82813 81.5975,162.04062 86.84,172.56313 67.995,176.06563 59.0175,177.27188 " fill="rgb(119.2443, 0, 136.7557)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="164" width="35.52124" height="1" fill="rgb(119.2443, 0, 136.7557)" stroke-width="0.1" stroke="black" />
+  <polygon points="57.4825,178.10939 52.817497,174.88065 33.0175,147.96939 36.1525,145.23189 36.5325,145.21063 48.8825,148.6744 66.505005,154.69939 83.3925,160.5969 83.725,160.72064 85.2925,169.52563 84.665,170.07564 58.322502,178.62564 " fill="rgb(120.07818, 0, 135.92181)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="163.00002" width="35.664925" height="1" fill="rgb(120.07818, 0, 135.92181)" stroke-width="0.1" stroke="black" />
+  <polygon points="32.23,147.08063 38.762497,145.98438 49.449997,147.68063 82.675,159.36438 87.3925,170.18938 85.965,170.59563 59.2125,177.87938 58.635002,177.83688 58.1075,177.79688 57.5,177.41063 " fill="rgb(120.91205, 0, 135.08795)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="162" width="36.170433" height="1" fill="rgb(120.91205, 0, 135.08795)" stroke-width="0.1" stroke="black" />
+  <polygon points="49.075,146.79813 74.255,161.01062 84.3425,167.95313 85.475,169.52063 59.012497,176.78937 57.9825,176.95062 53.665,172.43562 37.052498,151.58438 37.0825,145.51813 39.0675,145.58313 " fill="rgb(121.745926, 0, 134.25407)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="161" width="29.11697" height="1" fill="rgb(121.745926, 0, 134.25407)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.3375,168.38437 67.5275,172.52687 53.2975,171.30188 35.677498,150.25188 39.59,146.49437 48.805,144.98688 " fill="rgb(122.5798, 0, 133.4202)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="160" width="27.2475" height="1" fill="rgb(122.5798, 0, 133.4202)" stroke-width="0.1" stroke="black" />
+  <polygon points="38.48,148.46938 37.972496,147.35938 45.0575,144.11063 46.5475,143.55687 47.8175,143.49063 84.06,165.10687 86.3825,166.75438 86.1475,167.58188 52.825,170.40813 " fill="rgb(123.41368, 0, 132.58632)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="159" width="25.046783" height="1" fill="rgb(123.41368, 0, 132.58632)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.0875,166.31938 86.46,166.40062 53.085,168.95438 52.4625,168.79688 35.1375,147.58313 40.1525,143.71437 48.33,142.71938 86.97,165.59563 " fill="rgb(124.24756, 0, 131.75244)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="158" width="26.746555" height="1" fill="rgb(124.24756, 0, 131.75244)" stroke-width="0.1" stroke="black" />
+  <polygon points="57.550003,162.54187 50.925,155.00937 40.7575,143.22563 41.8525,142.63937 48.3075,141.54312 86.5775,164.61313 86.695,165.21687 84.8625,165.26688 " fill="rgb(125.081436, 0, 130.91856)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="157" width="15.843889" height="1" fill="rgb(125.081436, 0, 130.91856)" stroke-width="0.1" stroke="black" />
+  <polygon points="50.825,167.47313 38.4775,164.52812 37.525,145.55063 41.0925,142.45438 42.435,141.62187 48.655,141.42188 85.995,163.35562 86.955,163.99937 86.86,164.56438 " fill="rgb(125.915306, 0, 130.08469)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="156" width="30.538105" height="1" fill="rgb(125.915306, 0, 130.08469)" stroke-width="0.1" stroke="black" />
+  <polygon points="50.392498,166.55812 36.5475,164.29813 37.6325,145.66437 38.457497,144.95438 45.4925,140.97937 49.6025,141.14313 83.13,158.82437 87.345,162.78563 86.11,163.37437 " fill="rgb(126.74918, 0, 129.25082)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="155" width="32.159855" height="1" fill="rgb(126.74918, 0, 129.25082)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.515,161.97438 85.1075,162.32938 45.655,165.15813 35.3425,164.17563 34.4775,163.98563 36.100002,142.99937 45.3725,140.11188 48.059998,140.71562 82.5025,157.29562 83.435,157.99312 " fill="rgb(127.58306, 0, 128.41693)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="154" width="32.70113" height="1" fill="rgb(127.58306, 0, 128.41693)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.52,160.15437 85.1375,161.35312 46.252502,164.67438 31.9025,164.93938 45.455,140.47687 46.357502,140.09187 46.912502,139.97188 83.1575,156.60437 " fill="rgb(128.41693, 0, 127.58307)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="153" width="29.699245" height="1" fill="rgb(128.41693, 0, 127.58307)" stroke-width="0.1" stroke="black" />
+  <polygon points="46.23,164.04062 44.567497,164.13312 32.885,164.15688 44.53,142.82437 47.1875,141.17938 83.155,155.54562 87.0025,159.66812 84.1425,160.60562 " fill="rgb(129.25081, 0, 126.74919)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="152" width="27.803854" height="1" fill="rgb(129.25081, 0, 126.74919)" stroke-width="0.1" stroke="black" />
+  <polygon points="45.7625,163.25812 32.4025,163.22563 33.0975,161.14313 38.78,156.10938 53.4025,147.87938 56.785,147.12187 76.52,152.41188 78.6575,153.37062 85.1775,158.04312 85.6325,159.08687 85.405,159.22438 84.82,159.32437 " fill="rgb(130.08469, 0, 125.91531)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="151" width="20.18189" height="1" fill="rgb(130.08469, 0, 125.91531)" stroke-width="0.1" stroke="black" />
+  <polygon points="53.57,146.90437 79.12,152.12938 86.205,157.37688 86.0775,157.55562 84.2725,158.14313 35.63,164.19063 35.54,164.18187 33.877502,163.48938 33.0575,161.65187 32.92,160.96562 33.115,160.59438 40.274998,153.66063 " fill="rgb(130.91856, 0, 125.081436)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="150" width="20.64893" height="1" fill="rgb(130.91856, 0, 125.081436)" stroke-width="0.1" stroke="black" />
+  <polygon points="37.7975,163.58937 34.5075,163.82813 33.829998,163.71187 32.665,162.78438 32.972496,160.49562 33.3075,159.52313 39.365,153.50937 63.6025,150.26688 78.075,151.45938 87.0525,156.53313 85.63,157.10938 45.075,162.69063 " fill="rgb(131.75244, 0, 124.24756)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="149" width="17.446127" height="1" fill="rgb(131.75244, 0, 124.24756)" stroke-width="0.1" stroke="black" />
+  <polygon points="32.4125,161.77437 34.33,158.63687 39.405,152.12312 45.5225,151.50438 65.09,149.59312 78.49,151.87563 87.5975,155.61937 87.38,156.47063 43.5875,163.40688 39.0875,163.86937 32.6725,162.72563 32.1825,162.56438 " fill="rgb(132.58632, 0, 123.41368)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="148" width="18.958103" height="1" fill="rgb(132.58632, 0, 123.41368)" stroke-width="0.1" stroke="black" />
+  <polygon points="41.559998,164.13437 31.989998,161.81813 31.894997,161.76563 40.987503,151.23813 41.927498,151.04813 44.0875,150.62062 63.775,147.94937 77.96,150.54813 78.0725,150.59563 87.245,154.55313 88.4025,155.15437 87.775,155.42062 43.9775,163.94562 " fill="rgb(133.4202, 0, 122.5798)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="147" width="20.804049" height="1" fill="rgb(133.4202, 0, 122.5798)" stroke-width="0.1" stroke="black" />
+  <polygon points="43.6075,163.02687 42.33,163.04062 40.175,162.64688 39.31,160.89688 38.1875,156.42563 42.855,149.72812 77.33,149.44313 88.055,153.90688 44.4375,163.01312 " fill="rgb(134.25407, 0, 121.745926)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="146" width="17.040174" height="1" fill="rgb(134.25407, 0, 121.745926)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.2825,152.84438 87.2825,153.34438 44.482502,162.08063 46.07,157.52313 65.5625,149.29688 75.395,147.32687 " fill="rgb(135.08795, 0, 120.91205)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="145" width="10.666179" height="1" fill="rgb(135.08795, 0, 120.91205)" stroke-width="0.1" stroke="black" />
+  <polygon points="42.449997,153.68312 76.575,146.68187 86.78,151.51312 49.3325,156.74812 " fill="rgb(135.92183, 0, 120.07817)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="144" width="7.7424126" height="1" fill="rgb(135.92183, 0, 120.07817)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.945,150.88063 85.945,151.38063 45.2475,156.16063 73.6875,145.62813 74.91,145.42563 " fill="rgb(136.7557, 0, 119.24429)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="143" width="6.2738066" height="1" fill="rgb(136.7557, 0, 119.24429)" stroke-width="0.1" stroke="black" />
+  <polygon points="81.0375,151.26563 75.2375,144.57312 75.3025,144.49562 75.73,144.39688 84.505,149.35812 85.2625,149.83937 " fill="rgb(137.58957, 0, 118.41043)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="142" width="0.82800263" height="1" fill="rgb(137.58957, 0, 118.41043)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.205,148.13437 86.54,148.86937 85.54,149.36937 81.365,149.68312 81.1725,149.68938 74.3875,143.53313 " fill="rgb(138.42345, 0, 117.57655)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="141" width="0.9529974" height="1" fill="rgb(138.42345, 0, 117.57655)" stroke-width="0.1" stroke="black" />
+  <polygon points="84.625,147.76813 83.625,148.26813 80.3675,148.87938 72.7375,141.75812 73.6875,141.60063 74.535,141.59438 84.0775,146.91437 " fill="rgb(139.25732, 0, 116.742676)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="140" width="1.1585274" height="1" fill="rgb(139.25732, 0, 116.742676)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.0225,146.94687 84.0225,147.44687 80.7525,148.04562 79.675,148.02562 72.545,140.96187 85.0025,145.56813 " fill="rgb(140.0912, 0, 115.9088)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="139" width="1.297082" height="1" fill="rgb(140.0912, 0, 115.9088)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.0275,145.13687 87.2925,145.51688 86.2925,146.01688 83.145,145.62187 71.1125,139.35938 72.27,139.68687 " fill="rgb(140.92508, 0, 115.07492)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="138" width="0.7039568" height="1" fill="rgb(140.92508, 0, 115.07492)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.44,143.57562 85.625,144.01062 85.68,144.48688 80.11,146.53937 79.4275,146.65312 71.525,138.01312 " fill="rgb(141.75896, 0, 114.24104)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="137" width="1.6663373" height="1" fill="rgb(141.75896, 0, 114.24104)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.4525,142.75188 85.3475,143.77812 79.3875,145.33438 67.4675,134.35063 " fill="rgb(142.59283, 0, 113.407166)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="136" width="2.2556076" height="1" fill="rgb(142.59283, 0, 113.407166)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.5625,141.59938 88.5625,142.09938 79.23,144.72937 70.525,135.76688 " fill="rgb(143.42671, 0, 112.57329)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="135" width="2.4377587" height="1" fill="rgb(143.42671, 0, 112.57329)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.6225,140.34312 87.6225,140.84312 78.9575,143.74687 78.0225,143.71312 69.115,134.35812 68.175,132.10437 88.15,140.08563 " fill="rgb(144.26059, 0, 111.73941)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="134" width="3.476606" height="1" fill="rgb(144.26059, 0, 111.73941)" stroke-width="0.1" stroke="black" />
+  <polygon points="79.0175,142.42813 78.2175,142.50937 68.8,133.10812 69.0825,132.95062 86.735,139.08937 87.0275,139.49437 84.6975,140.53313 83.2825,141.10938 " fill="rgb(145.09447, 0, 110.90553)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="133" width="2.5004" height="1" fill="rgb(145.09447, 0, 110.90553)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.905,139.56313 84.905,140.06313 78.035,142.28438 66.53,129.49937 78.1825,133.28937 86.885,137.97687 87.3475,138.31313 " fill="rgb(145.92834, 0, 110.071655)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="132" width="3.928751" height="1" fill="rgb(145.92834, 0, 110.071655)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.04,137.56813 88.04,138.06813 83.915,138.98187 79.14,139.62187 28.119999,121.851875 28.029999,121.52937 30.254997,120.33938 36.4775,119.92812 67.604996,130.08313 87.72,136.76938 " fill="rgb(146.76222, 0, 109.23778)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="131" width="11.315683" height="1" fill="rgb(146.76222, 0, 109.23778)" stroke-width="0.1" stroke="black" />
+  <polygon points="30.195,118.250626 35.454998,118.47188 66.7375,127.76813 88.3075,136.04938 83.72,137.82813 76.9975,140.24812 27.7075,120.70438 26.852497,120.280624 27.364998,119.48813 " fill="rgb(147.59608, 0, 108.403915)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="130" width="15.195653" height="1" fill="rgb(147.59608, 0, 108.403915)" stroke-width="0.1" stroke="black" />
+  <polygon points="78.9725,129.50688 87.8675,134.87312 87.6925,135.20688 84.2975,136.80438 78.215,136.26187 38.33,123.14687 26.337502,119.13937 28.845001,117.94312 32.277496,116.89188 35.41,116.413124 38.1425,117.085625 " fill="rgb(148.42996, 0, 107.57004)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="129" width="13.887057" height="1" fill="rgb(148.42996, 0, 107.57004)" stroke-width="0.1" stroke="black" />
+  <polygon points="89.6,133.81438 88.6,134.31438 76.735,138.44687 29.6875,116.89562 34.0475,115.430626 34.850002,115.19312 39.4175,116.225624 67.065,122.92062 " fill="rgb(149.26384, 0, 106.73616)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="128" width="17.306501" height="1" fill="rgb(149.26384, 0, 106.73616)" stroke-width="0.1" stroke="black" />
+  <polygon points="37.7375,123.20563 36.7,122.54188 32.8025,116.945625 32.912502,116.67812 34.422497,114.24563 35.595,113.82437 61.37,117.44937 66.395004,119.149376 88.59,132.07938 88.53,132.45313 88.3225,132.59062 85.5025,133.76062 76.17,137.61438 75.175,137.49063 " fill="rgb(150.09772, 0, 105.90228)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="127" width="24.173595" height="1" fill="rgb(150.09772, 0, 105.90228)" stroke-width="0.1" stroke="black" />
+  <polygon points="85.5475,132.79062 76.465,136.74063 32.684998,123.27812 32.302498,122.10812 31.915,114.60313 32.6475,113.26938 34.66,113.336876 65.8875,116.06062 87.775,130.52063 87.87,130.69313 87.91,131.11688 " fill="rgb(150.9316, 0, 105.068405)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="126" width="28.437975" height="1" fill="rgb(150.9316, 0, 105.068405)" stroke-width="0.1" stroke="black" />
+  <polygon points="45.2775,112.335625 66.51,114.70813 80.7675,124.54938 88.9275,130.25313 88.185,131.06938 76.4625,135.81062 32.5025,121.445625 31.939999,121.02187 32.2025,115.59062 33.1525,113.29938 " fill="rgb(151.76547, 0, 104.23453)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="125" width="28.828325" height="1" fill="rgb(151.76547, 0, 104.23453)" stroke-width="0.1" stroke="black" />
+  <polygon points="31.935001,121.85188 30.5825,113.28438 37.340004,112.214386 45.595,111.51438 61.91,113.454384 64.31,114.245636 88.475,128.24689 88.965,129.04314 88.8475,129.13063 76.0675,135.11563 " fill="rgb(152.59935, 0, 103.40065)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="124.00001" width="29.852108" height="1" fill="rgb(152.59935, 0, 103.40065)" stroke-width="0.1" stroke="black" />
+  <polygon points="33.155,110.99062 39.035,110.76312 60.2125,112.14562 60.8375,112.30688 90.15,126.91563 90.6225,127.64188 74.3875,134.20438 28.3,120.569374 " fill="rgb(153.43323, 0, 102.56677)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="123" width="31.428047" height="1" fill="rgb(153.43323, 0, 102.56677)" stroke-width="0.1" stroke="black" />
+  <polygon points="34.68,110.48813 58.98,111.33938 64.9275,113.84937 89.2425,125.06812 91.8075,127.09187 76.5425,133.00438 76.095,133.12312 27.309998,120.16812 27.695,113.92563 " fill="rgb(154.2671, 0, 101.732895)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="122" width="32.056625" height="1" fill="rgb(154.2671, 0, 101.732895)" stroke-width="0.1" stroke="black" />
+  <polygon points="44.4225,108.08188 57.2425,110.39563 63.7125,111.92563 89.075,123.99687 89.3,124.24438 91.07,126.500626 76.4175,131.88937 28.365002,119.63438 27.697502,119.280624 27.93,112.77187 32.98,110.468124 " fill="rgb(155.10098, 0, 100.89902)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="121" width="32.545006" height="1" fill="rgb(155.10098, 0, 100.89902)" stroke-width="0.1" stroke="black" />
+  <polygon points="33.144997,109.984375 41.7375,107.866875 60.9775,110.265625 64.6,111.616875 88.7275,122.26688 89.6325,122.67313 91.932495,124.70937 84.1625,127.993126 75.985,130.86688 28.2,118.87312 26.237503,118.12813 " fill="rgb(155.93486, 0, 100.06514)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="120" width="31.94747" height="1" fill="rgb(155.93486, 0, 100.06514)" stroke-width="0.1" stroke="black" />
+  <polygon points="93.0975,123.901886 76.285,130.55688 26.582497,117.35938 33.2225,110.11563 34.497498,108.92563 42.0025,106.89938 64.42,110.62188 89.17,121.53063 92.4875,123.251884 " fill="rgb(156.76872, 0, 99.23128)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="119.00001" width="32.115604" height="1" fill="rgb(156.76872, 0, 99.23128)" stroke-width="0.1" stroke="black" />
+  <polygon points="26.9925,116.69813 33.842503,107.73813 42.7275,106.60438 59.105,108.000626 89.0575,120.890625 93.0775,122.97188 92.1175,123.39687 75.6,129.32562 75.2675,129.37437 51.25,131.59563 27.017498,116.82313 " fill="rgb(157.6026, 0, 98.3974)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="118" width="39.953213" height="1" fill="rgb(157.6026, 0, 98.3974)" stroke-width="0.1" stroke="black" />
+  <polygon points="94.479996,121.69688 75.6175,128.47687 50.0275,132.25063 29.155003,115.96313 33.445,107.061874 50.6675,107.02937 59.3575,108.874374 63.565002,110.30688 88.62,119.24687 " fill="rgb(158.43648, 0, 97.56352)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="117" width="39.31977" height="1" fill="rgb(158.43648, 0, 97.56352)" stroke-width="0.1" stroke="black" />
+  <polygon points="31.59,106.09937 44.8375,105.92062 54.73,107.01063 56.425,107.243126 94.4175,119.648125 95.5275,120.179375 95.415,120.430626 76.415,127.28438 50.205,131.67188 49.14,131.52313 30.307499,116.06563 " fill="rgb(159.27036, 0, 96.729645)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="116" width="40.28593" height="1" fill="rgb(159.27036, 0, 96.729645)" stroke-width="0.1" stroke="black" />
+  <polygon points="30.5125,104.69312 43.0825,104.390625 51.2375,105.531876 52.7075,105.74687 53.765,105.91688 55.795,106.26938 87.9825,116.91812 93.6525,119.460625 94.0975,119.663124 76,126.35687 50.510002,130.39937 50.079998,130.18312 42.8825,126.09187 28.822498,113.953125 " fill="rgb(160.10423, 0, 95.89577)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="115" width="40.46792" height="1" fill="rgb(160.10423, 0, 95.89577)" stroke-width="0.1" stroke="black" />
+  <polygon points="42.025,124.869385 28.172497,112.02438 30.314999,103.86313 45.0925,104.159386 49.1475,104.70938 55.215,105.838135 88.225,115.97563 92.685,118.08688 75.505,125.276886 50.645,128.45189 47.6725,127.54314 " fill="rgb(160.93811, 0, 95.06189)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="114.00001" width="38.593193" height="1" fill="rgb(160.93811, 0, 95.06189)" stroke-width="0.1" stroke="black" />
+  <polygon points="47.9575,127.17812 28.3675,111.16812 25.877499,106.844376 25.8275,106.75437 25.48,106.100624 25.337502,105.82687 47.1225,103.26437 56.11,103.12312 96.675,116.33312 96.2325,116.55937 82.8975,120.40813 56.940002,126.04188 49.095,127.45187 " fill="rgb(161.77199, 0, 94.22801)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="113" width="39.0648" height="1" fill="rgb(161.77199, 0, 94.22801)" stroke-width="0.1" stroke="black" />
+  <polygon points="27.96,110.08437 26.032501,106.226875 26.212502,106.04813 30.98,105.13062 57.14,104.91688 61.0475,105.711876 89.235,113.59937 96.505005,115.67313 96.735,116.055626 74.675,123.47938 49.2925,126.66063 48.0875,126.09937 " fill="rgb(162.60587, 0, 93.394135)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="112" width="36.876034" height="1" fill="rgb(162.60587, 0, 93.394135)" stroke-width="0.1" stroke="black" />
+  <polygon points="47.4025,119.686874 29.4175,110.86562 27.315002,108.03313 26.224998,104.850624 48.6325,101.601875 57.2925,103.37312 62.14,104.65188 97.93,114.51938 97.270004,114.866875 74.85,121.976875 58.33,121.71437 58.269997,121.710625 49.545,120.61562 " fill="rgb(163.43974, 0, 92.56026)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="111" width="34.32036" height="1" fill="rgb(163.43974, 0, 92.56026)" stroke-width="0.1" stroke="black" />
+  <polygon points="27.302498,106.13062 27.54,105.89313 29.739998,104.093124 32.485,103.47437 51.417503,100.64188 61.58,103.34937 98.61,113.243126 98.1275,113.54188 97.875,113.63812 74.1375,121.25313 61.8175,123.10437 50.5925,119.506874 27.420002,107.679375 " fill="rgb(164.27362, 0, 91.72638)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="110" width="34.51798" height="1" fill="rgb(164.27362, 0, 91.72638)" stroke-width="0.1" stroke="black" />
+  <polygon points="48.315002,99.495636 68.9625,99.525635 99.2225,112.10563 99.3275,112.36813 73.725,120.41313 61.725,122.705635 60.9925,122.509384 53.75,120.141884 27.140003,105.48938 28.369999,103.096886 " fill="rgb(165.1075, 0, 90.8925)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="109.00001" width="39.683697" height="1" fill="rgb(165.1075, 0, 90.8925)" stroke-width="0.1" stroke="black" />
+  <polygon points="46.440002,98.73688 66.957504,98.73813 69.2125,99.23813 99.9775,110.898125 100.29,111.13687 73.9275,119.616875 60.41,121.17062 27.902496,105.73563 28.3525,104.25188 " fill="rgb(165.94136, 0, 90.05864)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="108" width="38.3167" height="1" fill="rgb(165.94136, 0, 90.05864)" stroke-width="0.1" stroke="black" />
+  <polygon points="27.379997,104.23312 28.732498,103.66563 31.7075,102.51938 35.2725,101.460625 38.855,100.90063 66.5525,98.41063 67.8825,98.47188 100.8625,109.66812 99.7625,110.19063 74.325,118.57938 61.19,119.72813 60.5175,119.52063 " fill="rgb(166.77524, 0, 89.22476)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="107" width="35.468395" height="1" fill="rgb(166.77524, 0, 89.22476)" stroke-width="0.1" stroke="black" />
+  <polygon points="46.485,96.83312 68.835,98.140625 102.805,109.179375 73.7025,117.366875 62.4075,118.23062 61.325,118.14687 23.460003,105.25938 27.490002,102.844376 35.159996,99.984375 " fill="rgb(167.60912, 0, 88.390884)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="106" width="38.913113" height="1" fill="rgb(167.60912, 0, 88.390884)" stroke-width="0.1" stroke="black" />
+  <polygon points="101.59,107.31563 101.817505,108.41563 73.3175,116.21438 72.72,116.27063 60.2125,115.960625 59.095,115.91187 24.012497,104.45688 24.107498,104.00437 35.4525,98.52563 47.225002,96.14188 53.46,96.56812 69.185,98.86063 " fill="rgb(168.443, 0, 87.55701)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="105" width="36.431747" height="1" fill="rgb(168.443, 0, 87.55701)" stroke-width="0.1" stroke="black" />
+  <polygon points="25.682503,103.698135 26.1525,102.056885 36.64,97.64063 54.42,95.47438 66.5975,96.040634 102.5525,106.540634 102.104996,106.729385 72.915,115.32688 60.3425,115.790634 46.670002,111.29438 " fill="rgb(169.27687, 0, 86.72313)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="104.00001" width="37.1872" height="1" fill="rgb(169.27687, 0, 86.72313)" stroke-width="0.1" stroke="black" />
+  <polygon points="46.7825,110.203125 40.9725,108.343124 40.3475,107.344376 36.609997,96.86938 36.8725,96.69688 56.127502,94.063126 66.9075,95.601875 101.0175,105.561874 72.8975,114.44312 61.02,113.686874 59.94,113.44312 " fill="rgb(170.11075, 0, 85.88925)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="103" width="32.434174" height="1" fill="rgb(170.11075, 0, 85.88925)" stroke-width="0.1" stroke="black" />
+  <polygon points="41.75,107.51187 40.8275,107.11938 39.8625,106.23688 37.585,96.34812 38.284996,96.08437 50.872498,93.866875 55.822502,93.16937 66.1575,95.03438 104.0625,104.25437 104.8375,104.539375 72.59,113.35438 61.752502,113.18437 " fill="rgb(170.94463, 0, 85.055374)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="102" width="32.97816" height="1" fill="rgb(170.94463, 0, 85.055374)" stroke-width="0.1" stroke="black" />
+  <polygon points="104.8575,103.36063 103.8575,103.86063 72.92,112.280624 61.364998,111.725624 59.58,111.35438 42.365,106.710625 40.2925,104.76938 46.655,91.906876 96.905,100.48563 104.405,103.12063 " fill="rgb(171.7785, 0, 84.2215)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="101" width="30.668142" height="1" fill="rgb(171.7785, 0, 84.2215)" stroke-width="0.1" stroke="black" />
+  <polygon points="72.03,111.249374 58.802498,110.81438 43.5425,106.37688 41.364998,103.81062 47.345,91.328125 53.285,89.476875 90.355,95.38563 105.082504,102.406876 " fill="rgb(172.61238, 0, 83.38762)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="100" width="35.2898" height="1" fill="rgb(172.61238, 0, 83.38762)" stroke-width="0.1" stroke="black" />
+  <polygon points="61.42,110.30563 58.325,109.66188 42.575,105.83563 42.41,105.77188 41.74,105.486885 41.2425,104.901886 52.415,90.11313 91.29,94.190636 105.6,101.229385 72.3475,109.60813 " fill="rgb(173.44626, 0, 82.55374)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="99.00001" width="32.598396" height="1" fill="rgb(173.44626, 0, 82.55374)" stroke-width="0.1" stroke="black" />
+  <polygon points="51.4375,109.18938 42.32,105.02187 41.7625,103.80063 45.62,89.40063 47.502502,87.851875 50.872498,87.43437 52.51,87.55312 92.0225,93.63438 105.854996,99.99687 106.0625,100.23688 82.6875,105.31812 60.4775,109.226875 " fill="rgb(174.28014, 0, 81.719864)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="98" width="35.570656" height="1" fill="rgb(174.28014, 0, 81.719864)" stroke-width="0.1" stroke="black" />
+  <polygon points="51.385002,86.53313 52.52,86.46562 95.3275,94.743126 95.3475,95.280624 94.9725,101.94063 83.6825,104.593124 59.612503,108.08063 51.1725,107.976875 50.21,107.789375 45.72,106.586876 40.925,104.39687 43.822502,87.32687 " fill="rgb(175.11401, 0, 80.88599)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="97" width="34.052288" height="1" fill="rgb(175.11401, 0, 80.88599)" stroke-width="0.1" stroke="black" />
+  <polygon points="43.375,104.62938 42.52,104.375626 41.085,103.45937 40.7625,103.23813 45.420002,86.811874 49.21,86.00562 51.245003,85.72312 51.69,85.66812 76.82,89.26063 78.94,89.60438 98.12,94.79813 94.630005,100.92812 83.4175,103.36437 65.2025,106.24062 64.255,106.38937 59.5625,106.913124 52.515,107.04813 50.58,106.75562 " fill="rgb(175.94788, 0, 80.052124)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="96" width="34.08851" height="1" fill="rgb(175.94788, 0, 80.052124)" stroke-width="0.1" stroke="black" />
+  <polygon points="42.035,110.17438 40.5325,108.79938 40.989998,102.29938 42.7875,98.76187 50.4375,84.500626 51.93,84.18938 107.765,96.26312 83.145,102.399376 " fill="rgb(176.78175, 0, 79.21825)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="95" width="35.434143" height="1" fill="rgb(176.78175, 0, 79.21825)" stroke-width="0.1" stroke="black" />
+  <polygon points="42.045,96.838135 47.260002,85.46563 49.7975,83.353134 51.16,83.40563 78.685,88.526886 107.3625,95.18688 108.03,95.89063 83.1425,101.799385 42.84,109.15314 40.4475,107.681885 " fill="rgb(177.61563, 0, 78.38437)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="94.00001" width="37.584843" height="1" fill="rgb(177.61563, 0, 78.38437)" stroke-width="0.1" stroke="black" />
+  <polygon points="43.7625,84.27937 50.135002,82.05688 108.8125,93.41937 83.2925,100.90437 42.850002,108.11437 41.7925,108.29938 41.6525,108.02687 40.344997,102.16812 42.995,85.601875 " fill="rgb(178.44951, 0, 77.55049)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="93" width="39.23793" height="1" fill="rgb(178.44951, 0, 77.55049)" stroke-width="0.1" stroke="black" />
+  <polygon points="43.4675,83.038124 49.715,81.03313 109.19,92.37312 109.5925,93.273125 82.6775,99.70187 42.3125,106.756874 41.442497,102.15813 41.415,101.83188 41.605,89.11313 42.219997,86.311874 42.6875,84.601875 " fill="rgb(179.28339, 0, 76.71661)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="92" width="38.94147" height="1" fill="rgb(179.28339, 0, 76.71661)" stroke-width="0.1" stroke="black" />
+  <polygon points="40.2175,100.74438 42.2025,84.203125 42.379997,83.83063 43.822502,82.34187 45.122498,81.76187 85.5675,85.04063 111.792496,91.890625 112.125,92.061874 112.0275,92.320625 84.5425,98.83938 42.7425,104.743126 " fill="rgb(180.11726, 0, 75.88274)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="91" width="40.062305" height="1" fill="rgb(180.11726, 0, 75.88274)" stroke-width="0.1" stroke="black" />
+  <polygon points="40.1875,86.44813 41.7275,82.30688 47.1725,81.09563 94.8975,83.80813 111.3625,89.40312 112.6025,90.54188 111.6625,90.96438 92.9225,96.756874 44.18,104.460625 42.1275,103.81688 " fill="rgb(180.95114, 0, 75.04886)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="90" width="43.96528" height="1" fill="rgb(180.95114, 0, 75.04886)" stroke-width="0.1" stroke="black" />
+  <polygon points="95.6175,83.33438 102.705,85.29438 112.5775,88.28688 112.6125,88.713135 111.8625,89.29563 110.895004,89.823135 99.292496,94.46063 94.425,96.06188 86.1425,97.95813 50.502502,101.814384 42.11,102.57813 38.870003,85.78938 43.5875,81.78938 48.55,80.30188 49.235,80.19563 77.5475,81.24938 87.545,82.24063 " fill="rgb(181.78502, 0, 74.21498)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="89.00001" width="45.25902" height="1" fill="rgb(181.78502, 0, 74.21498)" stroke-width="0.1" stroke="black" />
+  <polygon points="43.074997,101.71687 41.02,95.444374 38.435,84.874374 42.5225,79.87062 48.995,79.179375 82.285,80.59563 88.3175,81.55187 102.62,84.038124 113.0275,86.788124 112.615,88.29562 105.692505,91.44688 86.065,97.04562 43.375,102.186874 " fill="rgb(182.6189, 0, 73.3811)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="88" width="46.15374" height="1" fill="rgb(182.6189, 0, 73.3811)" stroke-width="0.1" stroke="black" />
+  <polygon points="47.9675,78.19688 48.559998,77.87187 103.6625,75.015625 113.6625,85.38812 114.225,87.76688 107.369995,90.76437 106.0725,91.10687 85.03,95.55063 44.2825,101.52937 41.345,91.86313 39.497498,83.41688 " fill="rgb(183.45277, 0, 72.547226)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="87" width="54.454556" height="1" fill="rgb(183.45277, 0, 72.547226)" stroke-width="0.1" stroke="black" />
+  <polygon points="41.8175,101.125626 41.04,100.28687 41.329998,91.08312 43.8975,83.118126 44.737503,81.50313 45.2375,80.68313 46.7875,78.60438 50.09,77.70187 103.0875,73.98062 107.795,89.62063 52.620003,100.51688 51.072502,100.649376 " fill="rgb(184.28665, 0, 71.71335)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="86" width="50.639797" height="1" fill="rgb(184.28665, 0, 71.71335)" stroke-width="0.1" stroke="black" />
+  <polygon points="36.342503,91.186874 43.670002,78.17313 47.025,77.16937 49.635002,76.835625 105.865,71.499374 117.3375,79.73062 113.6075,82.58437 102.025,87.17687 87.21,91.54312 52.92,99.45688 52.1575,99.61188 50.78,99.631874 41.7825,99.633125 40.9475,99.461876 " fill="rgb(185.12051, 0, 70.879486)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="85" width="55.843254" height="1" fill="rgb(185.12051, 0, 70.879486)" stroke-width="0.1" stroke="black" />
+  <polygon points="33.629997,94.354385 36.427498,90.26313 45.925,77.95813 47.82,76.35063 105.5075,70.393135 115.9725,78.28938 118.104996,84.861885 52.41,98.321884 44.427498,99.323135 41.2325,98.85063 40.765,98.73438 " fill="rgb(185.95439, 0, 70.04561)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="84.00001" width="58.789112" height="1" fill="rgb(185.95439, 0, 70.04561)" stroke-width="0.1" stroke="black" />
+  <polygon points="114.785,75.26813 115.45,76.55813 118.385,84.01312 87.735,90.14562 44.0225,98.399376 43.864998,98.41062 43.2125,98.35438 41.715,97.88937 34.699997,93.80937 34.2025,93.313126 34.13,92.921875 35.685,89.671875 37.6325,86.86063 45.3325,76.774376 49.91,74.30813 107.0525,71.23937 " fill="rgb(186.78827, 0, 69.21173)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="83" width="57.660095" height="1" fill="rgb(186.78827, 0, 69.21173)" stroke-width="0.1" stroke="black" />
+  <polygon points="34.3,92.819374 34.135,92.72063 34.2575,91.73688 43.07,75.35687 50.245,74.11063 106.520004,70.710625 116.08,74.01063 119.08,81.94187 116.7175,85.008125 46.0975,97.70937 43.489998,98.030624 " fill="rgb(187.62215, 0, 68.37785)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="82" width="60.481995" height="1" fill="rgb(187.62215, 0, 68.37785)" stroke-width="0.1" stroke="black" />
+  <polygon points="36.445,88.05187 42.99,74.62688 43.345,74.55688 48.317497,73.86938 102.125,69.445625 110.4375,70.47063 115.155,72.788124 119.475,78.11063 119.479996,79.78687 119.1075,80.64687 115.5325,82.585625 45.1325,97.57687 44.64,97.523125 43.329998,97.32188 37.9925,91.08312 " fill="rgb(188.45602, 0, 67.543976)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="81" width="58.044033" height="1" fill="rgb(188.45602, 0, 67.543976)" stroke-width="0.1" stroke="black" />
+  <polygon points="43.555,96.46687 42.84,96.12938 37.1275,86.94937 38.204998,83.734375 45.197502,71.30688 103.29,68.563126 110.54,69.30812 113.5025,70.500626 119.525,77.179375 120.7,80.16937 120.3875,80.461876 115.555,82.031876 44.725002,96.586876 " fill="rgb(189.2899, 0, 66.7101)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="80" width="60.29915" height="1" fill="rgb(189.2899, 0, 66.7101)" stroke-width="0.1" stroke="black" />
+  <polygon points="106.9825,66.72063 110.9375,68.42438 116.695,71.695625 121.240005,78.813126 118.692505,79.42062 89.5525,85.86562 45.5075,95.413124 35.7825,86.84062 36.065002,86.195625 44.3,71.08188 45.34,70.258125 46.015,70.125626 104.3975,65.875626 105.28,66.00313 " fill="rgb(190.12378, 0, 65.87622)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="79" width="61.656536" height="1" fill="rgb(190.12378, 0, 65.87622)" stroke-width="0.1" stroke="black" />
+  <polygon points="96.08,83.006874 82.055,85.468124 53.58,86.89562 40.747498,87.43188 40.55,87.42563 40.0675,87.38937 36.195,86.17687 35.747498,85.618126 35.707504,85.343124 43.699997,69.78687 44.085,69.61437 45.335,69.17313 104.6225,64.69937 111.115,67.211876 123.905,75.12187 121.405,76.80688 " fill="rgb(190.95766, 0, 65.04234)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="78" width="54.57877" height="1" fill="rgb(190.95766, 0, 65.04234)" stroke-width="0.1" stroke="black" />
+  <polygon points="36.469997,85.40437 35.5475,84.25438 43.4125,69.18437 45.1025,68.531876 103.807495,63.931877 108.635,64.01187 124.8225,73.149376 126.275,74.25562 125.9575,74.70688 121.975006,76.51187 90.34,83.80937 89.1325,83.95937 82.1725,84.36938 40.0225,86.491875 39.822502,86.46562 " fill="rgb(191.79153, 0, 64.208466)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="77" width="55.933212" height="1" fill="rgb(191.79153, 0, 64.208466)" stroke-width="0.1" stroke="black" />
+  <polygon points="55.96,84.32437 52.0475,83.881874 50.4525,83.65312 38.925,81.13062 38.727497,80.55937 43.385002,73.64687 46.085,71.55312 72.165,65.97188 105.7525,63.355625 106.8725,63.525627 107.3325,63.669373 123.49,71.055626 133.375,76.406876 132.485,76.72063 89.7375,82.82313 81.655,83.65938 " fill="rgb(192.62541, 0, 63.374588)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="76" width="51.98646" height="1" fill="rgb(192.62541, 0, 63.374588)" stroke-width="0.1" stroke="black" />
+  <polygon points="51.114998,83.60687 39.737503,79.91937 39.2575,79.29562 43.35,72.741875 48.7275,70.436874 70.5,64.26437 104.1875,59.721874 127.715,71.524376 127.3125,74.414375 89.9275,81.788124 83.7875,82.656876 " fill="rgb(193.45929, 0, 62.54071)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="75" width="53.75271" height="1" fill="rgb(193.45929, 0, 62.54071)" stroke-width="0.1" stroke="black" />
+  <polygon points="106.74,59.214375 120.4675,65.47313 127.7925,70.33437 127.8275,73.58312 96.2975,79.289375 89.9275,79.79938 52.9175,81.648125 51.0875,81.59062 43.965,78.51938 43.2775,71.94187 45.7,69.51312 45.9225,69.313126 70.74,62.961876 " fill="rgb(194.29317, 0, 61.706833)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="74" width="51.70144" height="1" fill="rgb(194.29317, 0, 61.706833)" stroke-width="0.1" stroke="black" />
+  <polygon points="91.2975,80.148125 50.6575,80.85687 44.6875,76.47437 43.434998,70.34812 44.215,68.87187 45.885002,68.03687 106.067505,58.389374 120.60249,64.28563 134.4975,71.524376 124.07,73.929375 94.925,79.46687 " fill="rgb(195.12703, 0, 60.87297)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="73" width="52.336483" height="1" fill="rgb(195.12703, 0, 60.87297)" stroke-width="0.1" stroke="black" />
+  <polygon points="130.92,69.328125 132.065,72.06563 92.0975,79.17563 82.105,79.48062 50.555,80.054375 44.4625,75.47813 43.642498,74.80187 44.345,68.77563 44.5275,67.280624 71.14,62.896873 112.29,59.800625 120.784996,63.743126 " fill="rgb(195.9609, 0, 60.039093)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="72" width="50.70253" height="1" fill="rgb(195.9609, 0, 60.039093)" stroke-width="0.1" stroke="black" />
+  <polygon points="52.91,78.281876 52.2,78.15813 50.8125,77.57188 43.5425,74.16187 44.949997,67.57562 47.43,66.149376 65.54,61.790627 112.115,59.275623 123.590004,61.424374 129.91501,67.79562 130.895,68.813126 131.1625,69.98563 119.74,81.65187 119.14,81.84062 " fill="rgb(196.79478, 0, 59.205215)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="71" width="60.103966" height="1" fill="rgb(196.79478, 0, 59.205215)" stroke-width="0.1" stroke="black" />
+  <polygon points="123.0775,60.561874 134.3025,66.68437 133.465,77.73312 117.135,80.20187 53.77,76.726875 45.305,73.49687 41.927498,66.90437 44.2175,65.961876 65.4525,60.274376 66.6025,60.088127 116.8725,59.788124 " fill="rgb(197.62866, 0, 58.371338)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="70" width="61.301407" height="1" fill="rgb(197.62866, 0, 58.371338)" stroke-width="0.1" stroke="black" />
+  <polygon points="116.3575,77.88937 91.47,77.55187 86.6175,77.27812 53.1725,75.109375 52.07,74.73937 45.2775,70.43562 41.0975,65.305626 67.545,59.700626 116.072495,58.203125 121.845,58.335625 134.5675,64.14188 134.9925,67.18188 129.905,76.09187 129.4875,76.569374 " fill="rgb(198.46254, 0, 57.53746)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="69" width="58.82839" height="1" fill="rgb(198.46254, 0, 57.53746)" stroke-width="0.1" stroke="black" />
+  <polygon points="43.3775,62.485626 67.4225,58.780624 117.29,56.721874 121.915,56.829376 124.604996,57.989376 134.005,62.154373 134.67,63.641876 134.745,65.62187 134.66751,65.87312 131.45,76.00938 127.59,78.08312 92.415,79.726875 48.22,71.649376 46.88,70.929375 40.885002,64.05813 40.8625,63.968124 " fill="rgb(199.29642, 0, 56.703583)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="68" width="65.10569" height="1" fill="rgb(199.29642, 0, 56.703583)" stroke-width="0.1" stroke="black" />
+  <polygon points="42.3875,61.143124 73.5025,57.979374 115.955,55.201874 123.09,55.874374 134.195,61.975624 133.845,64.975624 132.2625,75.86313 127.3525,76.51063 94.795,80.72813 41.954998,72.72188 40.285,62.488125 40.6025,62.035625 " fill="rgb(200.1303, 0, 55.869705)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="67" width="71.93755" height="1" fill="rgb(200.1303, 0, 55.869705)" stroke-width="0.1" stroke="black" />
+  <polygon points="37.864998,61.109375 38.1175,59.576874 66.18,56.819374 118.295,55.095627 123.5025,55.115623 126.11,57.115623 131.735,61.836876 133.17,63.674374 133.33,63.954376 136.0325,73.398125 134.0625,76.70812 94.675,79.81563 93.385,79.66688 53.77,71.57687 45.0275,69.52563 " fill="rgb(200.96417, 0, 55.035828)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="66" width="71.81222" height="1" fill="rgb(200.96417, 0, 55.035828)" stroke-width="0.1" stroke="black" />
+  <polygon points="132.63501,61.480625 133.36,62.589375 135.615,71.063126 135.89749,73.55063 134.625,74.58938 134.055,74.82437 93.67,78.70187 40.965,70.63812 36.625,59.730625 37.237503,58.945625 75.0075,54.204376 122.0525,54.185623 125.95,55.780624 " fill="rgb(201.79805, 0, 54.20195)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="65" width="76.40698" height="1" fill="rgb(201.79805, 0, 54.20195)" stroke-width="0.1" stroke="black" />
+  <polygon points="131.0675,73.773125 93.5875,75.133125 40.940002,69.71687 39.837498,69.09937 33.86,58.771873 34.715,57.916874 65.7675,54.734375 119.072495,53.989376 126.11,54.959373 132.2575,59.550625 133.0825,61.369373 135.4225,72.94312 133.9925,73.281876 " fill="rgb(202.63193, 0, 53.368073)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="64" width="69.71021" height="1" fill="rgb(202.63193, 0, 53.368073)" stroke-width="0.1" stroke="black" />
+  <polygon points="132.9575,70.10562 130.83,71.06438 94.29,73.23937 41.6375,68.788124 40.53,68.44312 40.235,68.32562 39.76,67.72312 32.8725,57.671875 32.729996,57.268127 34.745003,56.819374 71.505,52.018127 124.655,52.065624 126.292496,53.775627 133.7625,62.091873 " fill="rgb(203.4658, 0, 52.534195)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="63" width="69.86123" height="1" fill="rgb(203.4658, 0, 52.534195)" stroke-width="0.1" stroke="black" />
+  <polygon points="31.462498,57.455627 32.410004,56.31688 33.515,55.45813 70.885,51.08938 118.84,51.139378 126.692505,51.95313 130.0275,61.47813 129.48999,63.459377 124.4925,69.609375 123.1075,70.71563 110.5125,72.36313 41.3075,67.515625 39.8675,67.13688 " fill="rgb(204.29967, 0, 51.700333)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="62.000004" width="66.93605" height="1" fill="rgb(204.29967, 0, 51.700333)" stroke-width="0.1" stroke="black" />
+  <polygon points="70.68,49.896873 125.57,48.378124 126.4775,49.498123 126.8825,50.196877 129.8825,60.773125 129.9275,64.01312 129.60251,64.226875 123.05,68.405624 121.662506,68.87063 81.615,68.73312 40.232502,66.085625 30.092503,57.153126 29.982498,56.375626 30.9225,55.691875 31.160004,55.595627 33.515,54.653126 " fill="rgb(205.13354, 0, 50.866455)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="61" width="66.28251" height="1" fill="rgb(205.13354, 0, 50.866455)" stroke-width="0.1" stroke="black" />
+  <polygon points="113.8625,68.98312 81.71,67.811874 46.705,65.336876 40.55,64.69312 40.03,64.554375 38.41,63.720627 37.565,62.976875 29.565002,55.845627 29.7225,55.631874 31.237503,54.604374 31.642498,54.533127 70.8725,48.636875 72.14,48.510628 125.345,47.284374 128.0275,49.100624 129.59,52.026875 134.31,64.905624 122.175,67.90938 " fill="rgb(205.96742, 0, 50.032578)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="60" width="69.54543" height="1" fill="rgb(205.96742, 0, 50.032578)" stroke-width="0.1" stroke="black" />
+  <polygon points="109.44,69.00562 81.9425,67.00313 50.495,64.710625 45.02,64.27187 39.9275,63.236874 38.5675,62.916874 30.995003,54.724373 30.689999,54.080624 30.677498,53.943127 32.145,53.628124 69.1525,47.084373 72.1825,46.963123 125.8,46.533127 128.015,47.421875 130.5425,48.748123 131.0475,49.228127 136.54,63.251877 134.7,63.843124 " fill="rgb(206.8013, 0, 49.1987)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="59" width="72.45223" height="1" fill="rgb(206.8013, 0, 49.1987)" stroke-width="0.1" stroke="black" />
+  <polygon points="38.665,61.645626 38.024998,61.443123 36.295,60.180626 68.34,45.973125 127.24,45.433125 130.72,48.570625 136.2875,62.238125 136.02,62.514374 134.4925,62.875626 119.2,66.27062 109.979996,67.874374 81.9375,66.33312 48.9775,63.515625 46.7725,63.271873 45.3275,63.106873 " fill="rgb(207.63518, 0, 48.364822)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="58" width="66.659325" height="1" fill="rgb(207.63518, 0, 48.364822)" stroke-width="0.1" stroke="black" />
+  <polygon points="39.6775,59.619377 39.4925,59.27938 39.295002,58.690628 38.927498,57.03563 72.675,46.080627 126.0325,43.940628 127.317505,44.32563 130.88501,47.20938 136.18,61.38063 135.525,62.08188 116.05,67.39563 112.18,67.55438 81.89,65.33063 48.355,62.31813 46.2275,62.05813 40.4125,60.32438 " fill="rgb(208.46906, 0, 47.530945)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="57.000004" width="65.69105" height="1" fill="rgb(208.46906, 0, 47.530945)" stroke-width="0.1" stroke="black" />
+  <polygon points="41.907497,59.739376 39.9725,59.143124 38.2375,58.095627 38.2725,56.713123 38.284996,56.374374 38.807503,56.055626 64.525,47.025627 71.825,45.488125 117.58,43.708126 126.2,43.475624 128.5625,45.754375 129.425,46.940624 135.105,60.995625 134.9275,61.208126 118.29,66.649376 114.9125,67.18312 81.7525,64.211876 " fill="rgb(209.30293, 0, 46.697067)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="56" width="64.06463" height="1" fill="rgb(209.30293, 0, 46.697067)" stroke-width="0.1" stroke="black" />
+  <polygon points="81.615,63.456875 42.535,58.014374 34.2275,56.621876 57.7125,47.340626 67.8725,43.578125 71.0075,42.961876 72.3475,42.944374 118.665,42.355625 126.409996,43.103127 130.535,44.349373 133.2225,45.226875 133.645,45.533127 133.655,59.430626 132.89749,60.900627 118.7375,65.79437 117.2425,66.125626 " fill="rgb(210.13681, 0, 45.86319)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="55" width="67.8633" height="1" fill="rgb(210.13681, 0, 45.86319)" stroke-width="0.1" stroke="black" />
+  <polygon points="34.27,55.580624 34.432503,55.421875 36.025,54.700626 67.51,42.448124 71.875,42.213127 124.6675,41.801876 125.792496,42.199375 131.13,45.218124 133.095,59.893124 132.705,60.230625 114.905,64.44688 113.615005,64.42563 81.04,62.313126 38.0925,56.950626 " fill="rgb(210.97069, 0, 45.029312)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="54" width="65.768364" height="1" fill="rgb(210.97069, 0, 45.029312)" stroke-width="0.1" stroke="black" />
+  <polygon points="133.9325,57.811874 130.995,59.663124 113.4875,60.670624 81.1775,61.245625 38.137497,55.946877 37.1625,55.696877 36.697502,55.551876 34.745003,54.911877 34.36,54.734375 34.66,54.111874 55.572502,43.841873 68.485,41.546875 93.854996,41.376877 124.4725,41.625626 134.0075,43.699375 " fill="rgb(211.80457, 0, 44.195435)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="53" width="64.372475" height="1" fill="rgb(211.80457, 0, 44.195435)" stroke-width="0.1" stroke="black" />
+  <polygon points="81.5475,60.08688 37.6575,55.04063 34.427498,53.84813 55.32,42.84438 74.085,39.733128 112.542496,40.30563 114.395004,40.44563 126.46,41.96563 128.445,43.43063 130.6225,58.86313 115.28,59.291878 " fill="rgb(212.63844, 0, 43.361557)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="52.000004" width="61.208977" height="1" fill="rgb(212.63844, 0, 43.361557)" stroke-width="0.1" stroke="black" />
+  <polygon points="46.5825,47.315624 47.309998,46.609375 54.3475,42.166874 55.7175,41.556877 55.98,41.443123 66.6875,40.023125 112.8,38.439377 117.345,38.346874 128.0925,41.396873 132.87,43.060623 132.9625,43.731876 130.1275,57.599373 129.315,57.774376 125.955,58.084373 81.255,59.110626 47.5675,48.750626 " fill="rgb(213.4723, 0, 42.527695)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="51" width="55.99141" height="1" fill="rgb(213.4723, 0, 42.527695)" stroke-width="0.1" stroke="black" />
+  <polygon points="47.3225,47.266876 47.6475,46.684376 55.305,40.123123 56.017498,40.011875 72.9125,38.723125 94.7575,37.384377 112.2375,36.806877 117.942505,37.258125 132.9725,42.376877 130.1425,54.834373 128.91501,56.733124 80.64,58.241875 " fill="rgb(214.30618, 0, 41.693817)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="50" width="56.325794" height="1" fill="rgb(214.30618, 0, 41.693817)" stroke-width="0.1" stroke="black" />
+  <polygon points="118.305,35.469376 129.66751,40.874374 129.0675,52.894375 124.68,53.863125 93.3825,56.133125 80.845,56.819374 47.25,46.641876 46.614998,46.223125 46.65,45.528126 47.96,44.476875 54.635002,39.259377 69.317505,37.783127 94.0575,36.173126 " fill="rgb(215.14006, 0, 40.85994)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="49" width="53.45281" height="1" fill="rgb(215.14006, 0, 40.85994)" stroke-width="0.1" stroke="black" />
+  <polygon points="80.9175,56.313126 47.920002,44.655624 44.565002,42.358124 45.4425,41.833126 46.385,41.556877 57.932503,38.514374 112.345,33.674377 112.7475,33.655624 117.4925,35.339375 126.3275,41.126877 94.83,55.321877 " fill="rgb(215.97394, 0, 40.026062)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="48" width="43.59074" height="1" fill="rgb(215.97394, 0, 40.026062)" stroke-width="0.1" stroke="black" />
+  <polygon points="44.6825,40.854378 44.815,40.701878 56.965,37.73563 94.0025,33.89188 113.4125,32.60688 117.990005,34.721878 121.3375,36.62188 119.42,38.10938 98.0375,53.61438 97.235,53.82188 95.045,54.20063 81.17,55.22688 80.65,55.09063 48.4775,43.271877 45.350002,41.68688 44.9,41.37188 44.715,40.96063 " fill="rgb(216.80782, 0, 39.192184)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="47.000004" width="40.6819" height="1" fill="rgb(216.80782, 0, 39.192184)" stroke-width="0.1" stroke="black" />
+  <polygon points="113.3925,31.248125 122.0475,35.070625 121.39,36.665627 99.56,52.384377 94.375,53.018124 80.2025,54.234375 80.1175,54.215626 52.4375,43.800625 43.947502,40.316875 44.5325,39.945625 54.254997,37.369377 55.0075,37.203125 55.8675,37.033127 69.7375,34.800625 " fill="rgb(217.6417, 0, 38.358307)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="46" width="42.43706" height="1" fill="rgb(217.6417, 0, 38.358307)" stroke-width="0.1" stroke="black" />
+  <polygon points="69.39,33.854374 113.2275,30.268126 113.5,30.250626 117.5725,32.103127 120.9525,34.940624 121.21,35.196877 105.225,48.804375 97.979996,50.896873 80.4425,53.468124 53.905,43.496876 44.815,39.244377 57.735,36.014374 " fill="rgb(218.47557, 0, 37.52443)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="45" width="42.159897" height="1" fill="rgb(218.47557, 0, 37.52443)" stroke-width="0.1" stroke="black" />
+  <polygon points="81.6875,51.568127 81.38,51.589375 77.9925,50.831875 54.4575,42.481876 46.0875,38.845627 47.3975,38.015625 68.775,32.205624 93.055,30.769375 112.6525,29.615625 113.9675,29.800625 117.4725,30.929375 123.6225,33.220627 113.2575,48.089375 " fill="rgb(219.30945, 0, 36.69055)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="44" width="44.894085" height="1" fill="rgb(219.30945, 0, 36.69055)" stroke-width="0.1" stroke="black" />
+  <polygon points="114.64,45.631874 113.6175,47.203125 81.385,52.336876 80.3175,52.143124 55.0425,41.269375 53.455,36.473125 56.97,35.089375 67.8625,31.139376 113.9775,27.349375 120.4525,31.421875 121.259995,31.948124 121.4975,32.655624 " fill="rgb(220.14333, 0, 35.856674)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="43" width="46.378937" height="1" fill="rgb(220.14333, 0, 35.856674)" stroke-width="0.1" stroke="black" />
+  <polygon points="121.2,31.77188 115.5725,45.463127 114.25,46.409378 111.525,47.21688 81.575,51.23813 52.88,41.83688 56.36,34.490627 68.4025,29.98313 112.667496,26.786879 113.405,26.90313 121.195,30.449379 " fill="rgb(220.9772, 0, 35.022797)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="42.000004" width="47.7827" height="1" fill="rgb(220.9772, 0, 35.022797)" stroke-width="0.1" stroke="black" />
+  <polygon points="68.7125,28.818127 113.195,25.915625 120.8625,30.005625 121.207504,30.451874 114.6075,45.318123 109.765,46.629375 81.1375,50.289375 53.0575,39.404373 55.765,35.259377 58.059998,33.486874 60.1875,31.885624 " fill="rgb(221.81108, 0, 34.18892)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="41" width="46.75295" height="1" fill="rgb(221.81108, 0, 34.18892)" stroke-width="0.1" stroke="black" />
+  <polygon points="115.130005,43.635624 113.67,44.673126 111.42,45.453125 81.085,50.209373 52.1675,39.094376 55.122498,35.509377 57.5825,32.911877 59.572502,30.961876 67.65,28.314375 113.7625,24.836876 121.05,29.073124 121.1075,29.543125 115.5,43.083126 " fill="rgb(222.64496, 0, 33.35504)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="40" width="48.27112" height="1" fill="rgb(222.64496, 0, 33.35504)" stroke-width="0.1" stroke="black" />
+  <polygon points="53.9675,38.783127 52.7725,38.314377 52.182503,37.839375 56.29,32.661877 58.86,29.893124 66.515,27.864376 67.22,27.746876 114.8975,26.345625 116.7425,26.715626 122.2175,27.878124 115.12,42.516876 112.9875,43.583126 111.67,44.098125 110.9825,44.240623 81.6775,49.070625 80.655,49.163124 " fill="rgb(223.47882, 0, 32.52118)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="39" width="45.42128" height="1" fill="rgb(223.47882, 0, 32.52118)" stroke-width="0.1" stroke="black" />
+  <polygon points="80.045,47.421875 60.1325,39.801876 54.7275,37.360626 54.010002,33.261875 57.2425,29.853125 59.7125,28.519375 60.2675,28.390625 67.6975,27.191875 69.5725,27.066875 94.270004,26.208124 95.6525,26.160625 114.215,25.525625 115.04,25.619375 115.682495,25.745625 124.7375,27.850624 112.3675,41.824375 81.2125,47.785625 " fill="rgb(224.3127, 0, 31.687302)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="38" width="43.336376" height="1" fill="rgb(224.3127, 0, 31.687302)" stroke-width="0.1" stroke="black" />
+  <polygon points="80.5575,47.460625 60.5375,38.196877 54.3125,35.158127 53.3975,32.601875 53.905,31.054375 54.47,30.568125 58.2725,27.303123 60.95,26.730625 70.7975,25.429375 114.915,24.795624 123.1375,26.531876 123.325,26.879375 111.7775,40.589375 110.77,41.559376 " fill="rgb(225.14658, 0, 30.853424)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="37" width="43.83041" height="1" fill="rgb(225.14658, 0, 30.853424)" stroke-width="0.1" stroke="black" />
+  <polygon points="71.645004,24.083126 72.26,24.068125 75.7625,23.989376 96.3475,23.814375 115.1425,24.206875 123.69,24.688126 125.185,25.243126 108.4325,40.646873 80.5875,46.354374 80.11,46.264374 56.2625,33.933125 52.5575,30.903126 52.175,30.233124 59.085,25.761875 " fill="rgb(225.98045, 0, 30.019547)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="36" width="43.132404" height="1" fill="rgb(225.98045, 0, 30.019547)" stroke-width="0.1" stroke="black" />
+  <polygon points="95.6675,22.290627 96.63,22.334375 125.557495,23.879375 125.675,23.971874 125.61,24.550625 107.7375,38.686874 80.545,46.025627 80.025,45.753124 67.41,39.090626 55.489998,32.764374 51.045,29.300625 51.752502,28.785625 58.1725,24.514374 75.4275,22.603127 " fill="rgb(226.81433, 0, 29.185669)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="35" width="43.939274" height="1" fill="rgb(226.81433, 0, 29.185669)" stroke-width="0.1" stroke="black" />
+  <polygon points="105.4825,37.403126 87.9175,43.494377 79.7225,44.984375 79.0875,44.803123 78.6525,44.591873 55.265,31.828125 50.574997,28.109375 50.105,27.416874 60.2,23.275625 76.17,21.349377 96.9275,21.176876 126.925,22.686874 126.8,23.059376 " fill="rgb(227.64821, 0, 28.351791)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="34" width="44.162216" height="1" fill="rgb(227.64821, 0, 28.351791)" stroke-width="0.1" stroke="black" />
+  <polygon points="126.7375,21.610626 127.292496,22.296875 105.405,34.644375 86.78,41.420624 81.3675,43.194374 78.945,43.815624 78.5425,43.844376 78,43.791874 55.235,31.065624 50.0675,27.545624 49.8975,26.908125 50.1175,26.554375 50.35,26.328125 60.505,22.839375 69.4125,21.626875 75.2775,21.235626 96.7525,20.176876 126.305,21.524376 " fill="rgb(228.48209, 0, 27.517914)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="33" width="41.906036" height="1" fill="rgb(228.48209, 0, 27.517914)" stroke-width="0.1" stroke="black" />
+  <polygon points="96.46,18.783125 126.74,20.393126 125.79,21.063126 103.595,33.494373 86.49,39.939377 78.8875,42.724373 78.045,42.691875 54.682503,29.686874 59.435,22.008125 60.05,21.899376 75.5,20.126875 " fill="rgb(229.31596, 0, 26.684036)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="32" width="39.478695" height="1" fill="rgb(229.31596, 0, 26.684036)" stroke-width="0.1" stroke="black" />
+  <polygon points="103.2475,32.568127 99.5925,34.513126 89.2425,39.606876 80.8925,41.98813 76.5125,41.334377 75.8675,41.015625 65.3225,31.076878 58.525,22.871876 59.65,21.094376 59.947502,20.825626 60.235,20.726877 60.6575,20.636877 96.725,18.021877 122.2775,20.150627 " fill="rgb(230.14984, 0, 25.850159)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="31.000002" width="35.615948" height="1" fill="rgb(230.14984, 0, 25.850159)" stroke-width="0.1" stroke="black" />
+  <polygon points="81.0525,40.813126 78.91,40.871876 76.035,40.903126 73.19,39.805626 59.28,20.595625 60.34,19.336874 95.99,16.530624 106.2325,17.983126 107.345,18.225624 116.1075,22.755625 97.15,34.458126 89.42,39.113125 " fill="rgb(230.98372, 0, 25.016281)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="30" width="34.562733" height="1" fill="rgb(230.98372, 0, 25.016281)" stroke-width="0.1" stroke="black" />
+  <polygon points="100.045,33.390625 83.215,40.565624 74.115,40.250626 67.0975,38.980625 58.6025,20.104374 63.260002,18.455624 96.2275,15.478125 107.305,16.956875 115.4375,21.951874 115.369995,22.059376 " fill="rgb(231.8176, 0, 24.182404)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="29" width="38.33515" height="1" fill="rgb(231.8176, 0, 24.182404)" stroke-width="0.1" stroke="black" />
+  <polygon points="93.425,37.100624 81.955,41.158127 71.707504,41.136875 65.64,38.343124 61.629997,18.906876 61.6425,18.686874 61.665,18.314375 62.010002,18.000626 97.59,14.539374 107.085,15.771874 115.26,21.120625 115.582504,21.631874 " fill="rgb(232.65146, 0, 23.348541)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="28" width="39.5867" height="1" fill="rgb(232.65146, 0, 23.348541)" stroke-width="0.1" stroke="black" />
+  <polygon points="83.045,39.934376 69.85,41.428123 64.7525,39.539375 62.96,38.808125 61.55,16.859375 63.185,16.781876 106.035,14.755625 106.56,14.946875 107.442505,15.303125 114.94,20.055626 115.177505,20.306875 115.505,21.043125 97.442505,36.096874 95.4725,37.429375 " fill="rgb(233.48534, 0, 22.514664)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="27" width="42.134197" height="1" fill="rgb(233.48534, 0, 22.514664)" stroke-width="0.1" stroke="black" />
+  <polygon points="62.9675,38.444374 62.4575,38.291878 60.2225,16.455627 61.625,15.358127 105.395004,13.681877 107.490005,13.984377 115.2025,19.644377 107.6075,28.105627 97.96,38.79313 69.98,40.235626 " fill="rgb(234.31921, 0, 21.680786)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="26.000002" width="45.990177" height="1" fill="rgb(234.31921, 0, 21.680786)" stroke-width="0.1" stroke="black" />
+  <polygon points="96.765,36.684376 95.765,37.184372 72.285,38.093124 69.225,38.156876 63.802498,37.195625 61.690002,15.351875 61.6725,14.838124 61.825,14.585625 62.4225,14.310625 105.335,12.230625 106.667496,12.190624 108.675,12.913124 103.0475,27.189375 " fill="rgb(235.15309, 0, 20.846909)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="25" width="39.56332" height="1" fill="rgb(235.15309, 0, 20.846909)" stroke-width="0.1" stroke="black" />
+  <polygon points="97.6025,35.725624 97.0025,35.811874 95.825,35.858124 71.3425,36.414375 64.2575,36.058125 63.552498,35.769375 62.8625,35.120625 61.3075,13.841875 63.225,13.686875 106.6825,11.030625 108.055,11.336875 108.33,12.053125 108.2575,12.529375 105.615005,25.776875 " fill="rgb(235.98697, 0, 20.013031)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="24" width="40.351982" height="1" fill="rgb(235.98697, 0, 20.013031)" stroke-width="0.1" stroke="black" />
+  <polygon points="97.945,34.760624 96.945,35.260624 63.2725,34.930626 62.3475,34.705627 61.9925,34.441875 62.1675,12.886875 102.895004,9.260625 105.1325,9.513124 106.205,9.731874 108.5125,10.936874 106.7425,25.181875 " fill="rgb(236.82085, 0, 19.179153)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="23" width="41.86274" height="1" fill="rgb(236.82085, 0, 19.179153)" stroke-width="0.1" stroke="black" />
+  <polygon points="63.15,33.751877 60.9975,33.514374 60.8425,33.410625 65.8975,18.910625 101.0025,8.095625 104.985,8.175625 105.435,8.215625 106.8825,8.894375 103.18,24.925625 97.6075,33.510624 " fill="rgb(237.65472, 0, 18.345276)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="22" width="32.284695" height="1" fill="rgb(237.65472, 0, 18.345276)" stroke-width="0.1" stroke="black" />
+  <polygon points="107.405,7.596877 93.25,28.553127 90.2475,29.639378 61.155,32.924377 60.98,32.856876 60.58,32.279377 68.957504,17.598127 69.2025,17.410627 104.9075,6.676877 " fill="rgb(238.4886, 0, 17.511398)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="21.000002" width="24.44019" height="1" fill="rgb(238.4886, 0, 17.511398)" stroke-width="0.1" stroke="black" />
+  <polygon points="91.835,28.223125 91.545,28.381874 90.835,28.723125 60.4775,31.405624 71.275,16.373125 74.9825,15.069375 103.27,5.716875 104.0325,5.628124 105.085,5.8268747 105.915,6.251875 96.5975,22.694374 " fill="rgb(239.32248, 0, 16.67752)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="20" width="22.866648" height="1" fill="rgb(239.32248, 0, 16.67752)" stroke-width="0.1" stroke="black" />
+  <polygon points="72.8125,28.895626 67.94,25.688126 66.7125,22.900625 71.2125,15.935625 71.5125,15.531876 71.9,15.274375 75.5275,13.845625 104.7975,5.328125 90.805,27.626875 " fill="rgb(240.15636, 0, 15.843643)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="19" width="18.814333" height="1" fill="rgb(240.15636, 0, 15.843643)" stroke-width="0.1" stroke="black" />
+  <polygon points="76.3,12.966875 92.8325,10.764376 93.725,10.801875 95.09,11.129375 95.265,11.381875 96.425,18.833124 95.035,20.945625 93.825,21.589375 84.6925,25.731876 77.2125,27.076874 72.815,25.755625 67.405,23.531876 65.5975,22.044374 70.12,15.461875 71.44,14.681875 " fill="rgb(240.99023, 0, 15.009766)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="18" width="13.819829" height="1" fill="rgb(240.99023, 0, 15.009766)" stroke-width="0.1" stroke="black" />
+  <polygon points="96.082504,17.425625 94.5125,20.226875 80.34,24.524376 76.76,25.383125 76.2325,25.384375 71.2175,25.143126 68.295,24.175625 66.23,21.674376 70.9575,14.389375 92.5375,10.506875 92.7125,10.546875 " fill="rgb(241.8241, 0, 14.175903)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="17" width="11.706116" height="1" fill="rgb(241.8241, 0, 14.175903)" stroke-width="0.1" stroke="black" />
+  <polygon points="74.5825,24.849375 67.47,23.811874 65.8125,21.965626 66.7125,19.720625 71.3575,14.620625 93.7025,9.408125 95.9825,16.293125 79.4975,23.344376 " fill="rgb(242.65797, 0, 13.342026)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="16" width="10.394438" height="1" fill="rgb(242.65797, 0, 13.342026)" stroke-width="0.1" stroke="black" />
+  <polygon points="95.09,15.213125 77.08,23.444374 68.6075,23.248125 67.825,23.099375 66.2575,22.686874 64.5225,20.866875 66.1975,18.424376 72.8875,14.609375 75.685,13.129375 89.27,13.711875 94.4375,14.301875 95.1925,14.508125 95.6775,14.855625 " fill="rgb(243.49185, 0, 12.508148)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="15" width="7.665831" height="1" fill="rgb(243.49185, 0, 12.508148)" stroke-width="0.1" stroke="black" />
+  <polygon points="66.925,21.958126 65.8175,21.556875 64.8125,20.646875 64.635,19.829374 65.225,17.506874 72.75,12.321875 82.84,15.970625 84.245,16.846874 84.1875,17.121876 82.035,19.755625 79.7825,21.089375 76.3125,22.275625 74.75,22.371876 74.425,22.386875 67.405,21.996876 " fill="rgb(244.32573, 0, 11.674271)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="14" width="5.210302" height="1" fill="rgb(244.32573, 0, 11.674271)" stroke-width="0.1" stroke="black" />
+  <polygon points="74.6975,21.739376 67.2525,21.109375 64.545,19.973125 63.705,19.215626 66.1125,15.729376 73.455,11.708126 75.8075,12.088126 87.53,14.814376 85.0475,17.546875 " fill="rgb(245.1596, 0, 10.840393)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="13.000001" width="5.863454" height="1" fill="rgb(245.1596, 0, 10.840393)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.61,15.851875 86.61,16.351875 78.0125,20.300625 74.09,20.204376 67.495,19.920626 64.2675,19.070625 65.1625,15.149375 71.76,10.135625 74.4325,10.464375 86.37,14.459375 " fill="rgb(245.99348, 0, 10.0065155)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="12" width="6.181234" height="1" fill="rgb(245.99348, 0, 10.0065155)" stroke-width="0.1" stroke="black" />
+  <polygon points="86.2775,12.775625 87.675,14.378125 87.425,15.465625 77.625,18.951874 75.7575,19.259375 74.6025,19.319374 73.1625,19.250626 69.0375,18.663124 68.83,17.054375 70.905,9.788125 72.1175,9.348125 72.7375,9.430625 83.45,11.964375 " fill="rgb(246.82736, 0, 9.172638)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="11" width="5.047589" height="1" fill="rgb(246.82736, 0, 9.172638)" stroke-width="0.1" stroke="black" />
+  <polygon points="73.9625,18.594376 72.0275,17.921875 70.66,17.400625 69.29,16.853125 68.9525,16.169376 68.925,16.043125 68.9275,15.838125 72.6625,9.403125 77.605,9.435625 84.565,10.881875 87.3675,11.571875 87.9375,11.855625 88.3525,13.780624 88,14.144375 76.905,19.169374 " fill="rgb(247.66124, 0, 8.33876)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="10" width="5.0541005" height="1" fill="rgb(247.66124, 0, 8.33876)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.0475,13.435625 78.5325,17.041874 76.6225,17.619375 73.3975,17.568125 72.265,17.483124 71.6725,17.376875 67.67,15.094376 71.545,8.660625 77.4275,8.259375 80.2925,8.813125 84.57,10.120625 87.4425,11.286875 88.2825,13.231874 " fill="rgb(248.49512, 0, 7.504883)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="9" width="5.2537217" height="1" fill="rgb(248.49512, 0, 7.504883)" stroke-width="0.1" stroke="black" />
+  <polygon points="88.62,12.479375 87.62,12.979375 77.1925,16.980625 72.175,16.978125 70.4325,16.466875 69.1275,15.871876 67.7825,13.939375 71.4575,7.731875 77.045,7.415625 81.145,8.209375 " fill="rgb(249.329, 0, 6.6710052)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="8" width="5.3168283" height="1" fill="rgb(249.329, 0, 6.6710052)" stroke-width="0.1" stroke="black" />
+  <polygon points="72.64,6.325625 78.24,6.670625 80.7225,7.530625 82.1525,8.254375 86.5025,10.478125 87.7175,11.315625 77.1175,15.853125 76.4475,15.918125 74.025,16.093124 71.785,15.749374 70.1175,15.203125 68.807495,14.325624 67.585,12.814375 71.015,6.375625 " fill="rgb(250.16287, 0, 5.8371277)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="7" width="5.1318283" height="1" fill="rgb(250.16287, 0, 5.8371277)" stroke-width="0.1" stroke="black" />
+  <polygon points="79.74,5.630625 87.795,10.438125 87.685,10.693125 76.18,15.608125 73.04,15.430625 71.9725,14.973125 68.09,13.254375 66.8875,11.590625 70.2075,5.090625 " fill="rgb(250.99675, 0, 5.00325)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="6" width="5.7458305" height="1" fill="rgb(250.99675, 0, 5.00325)" stroke-width="0.1" stroke="black" />
+  <polygon points="87.105,9.389375 87.1175,9.441875 86.8975,10.079374 76.9575,14.178125 75.59,14.683125 72.5875,13.759376 68.3025,10.974375 69.8425,5.139375 70.06,4.518125 70.68,4.300625 71.125,4.271875 77.46,4.3268747 80.245,4.714375 " fill="rgb(251.83061, 0, 4.169388)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="5" width="5.2685313" height="1" fill="rgb(251.83061, 0, 4.169388)" stroke-width="0.1" stroke="black" />
+  <polygon points="75.1825,13.2768755 74.9125,13.173125 73.6725,5.630625 74.205,4.854375 77.2075,2.911875 78.99,3.358125 87.7625,8.493125 77.1625,12.850625 75.7825,13.415625 " fill="rgb(252.66449, 0, 3.3355103)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="4" width="3.2984405" height="1" fill="rgb(252.66449, 0, 3.3355103)" stroke-width="0.1" stroke="black" />
+  <polygon points="76.915,12.359375 74.51,12.143125 74.9725,3.393125 75.225,2.898125 76.87,2.135625 78.5625,2.741875 87.042496,7.6531253 " fill="rgb(253.49837, 0, 2.5016327)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="3" width="2.9629154" height="1" fill="rgb(253.49837, 0, 2.5016327)" stroke-width="0.1" stroke="black" />
+  <polygon points="78.1675,2.4181252 76.145,3.256875 75.7325,2.331875 75.7825,2.225625 76.86,1.723125 77.615,2.024375 " fill="rgb(254.33224, 0, 1.6677551)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="2" width="0.080331" height="1" fill="rgb(254.33224, 0, 1.6677551)" stroke-width="0.1" stroke="black" />
+  <polygon points="77.81,1.196875 76.81,1.696875 75.6475,1.986875 75.93,1.293125 76.2725,1.148125 76.6675,0.998125 77.44,0.750625 " fill="rgb(255.16612, 0, 0.83387756)" stroke-width="0.2" stroke="black" />
+  <rect x="200" y="1" width="0.04988256" height="1" fill="rgb(255.16612, 0, 0.83387756)" stroke-width="0.1" stroke="black" />
+  <line x1="200" y1="0" x2="200" y2="310" stroke="black" />
+</svg>

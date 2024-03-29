@@ -15,8 +15,8 @@
 
 	set heading(numbering: (..nums) => {
 		let nums = nums.pos()
-		if nums.len() >=4 {
-			return	none
+		if nums.len() >= 4 {
+			return none
 		}
 		return numbering("1.1 ", ..nums)
 	})

@@ -9,7 +9,7 @@
 Für die Segmentierung werden alle Punkte in gleich breite parallele Scheiben entlang der Höhe unterteilt. Danach werden die Scheiben von Oben nach Unten einzeln verarbeitet, um die Segmente zu bestimmen. Dafür werden die Punkte in einer Scheibe zu zusammenhängenden Bereichen zusammengefasst. Mit den Bereichen werden die Koordinaten der Bäume bestimmt, welche in der momentanen Scheibe existieren. Die Punkte in der Scheibe werden dann dem nächsten Baum zugeordnet.
 
 
-== Bereiche bestimmen
+== Bereiche bestimmen <segmentierung_bereiche_chapter>
 
 #let points = (
 	(0, 1.9),
