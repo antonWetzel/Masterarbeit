@@ -12,8 +12,6 @@ Wörter: #total-words
 
 #todo-outline()
 
-#todo[Baum anstatt von Segment verwendenen]
-
 #show: setup
 
 #include "deckblatt.typ"
@@ -31,9 +29,9 @@ Wörter: #total-words
 
 #include "segmentierung.typ"
 
-#include "triangulierung.typ"
-
 #include "visualisierung.typ"
+
+#include "triangulierung.typ"
 
 #include "analyse.typ"
 

@@ -1,7 +1,7 @@
 #import "setup.typ": *
 
 
-= Segmentierung der Punktwolke in Bäume <seperierung_in_segmente>
+= Segmentierung von Waldstücken <seperierung_in_segmente>
 
 
 == Ablauf

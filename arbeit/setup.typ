@@ -6,10 +6,10 @@
 #import "@preview/wordometer:0.1.0": word-count, total-words
 
 #let setup(document) = {
-	let font = "Noto Serif"
-	let font = "Noto Sans"
+	set text(font: "Noto Serif")
+	// set text(font: "Noto Sans")
 
-	set text(lang: "de", font: font, region: "DE", size: 11pt, weight: 400, fallback: false)
+	set text(lang: "de", region: "DE", size: 11pt, weight: 400, fallback: false)
 	show math.equation: set text(font: "Noto Sans Math", weight: 600, fallback: false)
 	set par(justify: true)
 

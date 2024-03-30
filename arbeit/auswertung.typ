@@ -32,7 +32,7 @@ In @auswertung_import_phasen ist die Dauer für die einzelnen Phasen vom Import 
 ) <auswertung_import_phasen>
 
 
-== Segmentierung in Bäume
+== Segmentierung von Waldstücken
 
 Ein Beispiel für eine Segmentierung ist in @segmentierung_ergebnis gegeben. Die meisten Bäume werden korrekt erkannt und zu unterschiedlichen Segmenten zugeordnet. Je weiter die Spitzen der Bäume voneinander getrennt sind, desto besser können die Bäume voneinander getrennt werden.
 
@@ -59,37 +59,6 @@ Kleine Bereiche werden vor der Zuordnung entfernt. Dadurch wird vermieden, dass 
 		subfigure(rect(image("../images/segmentation_top_error.png"), inset: 0.5pt), caption: [Segment einzeln]),
 	),
 ) <auswertung_segmentierung_spitze>
-
-
-== Analyse von Segmenten
-
-In @auswertung_curve und @auswertung_var ist ein Segment basierend auf den berechneten Eigenschaften eingefärbt gegeben und zusätzlich mit den größten und kleinste Werte gefiltert.
-
-Die Punkte mit der größten Krümmung gehören zu den Blättern, was eine teilweise Filterung ermöglicht. Die Punkte beim Stamm haben eine geringere Krümmung, aber auch Punkte, die zu den Blättern gehören, können eine geringe Krümmung haben.
-
-Punkte zugehörig zu einer geringen horizontalen Ausdehnung gehören immer zum Stamm oder der Spitze der Krone, wodurch der Stamm identifiziert werden kann.
-
-#figure(
-	caption: [Punktwolke basierend auf der Krümmung eingefärbt.],
-	grid(
-		columns: 1 * 3,
-		gutter: 1em,
-		subfigure(box(image("../images/crop/curve_all.png"), stroke: 1pt + gray), caption: [Alle Punkte]),
-		subfigure(box(image("../images/crop/curve_low.png"), stroke: 1pt + gray), caption: [Geringe Varianz]),
-		subfigure(box(image("../images/crop/curve_high.png"), stroke: 1pt + gray), caption: [Hohe Varianz]),
-	),
-) <auswertung_curve>
-
-#figure(
-	caption: [Punktwolke basierend auf der Ausdehnung eingefärbt.],
-	grid(
-		columns: 1 * 3,
-		gutter: 1em,
-		subfigure(box(image("../images/crop/var_all.png"), stroke: 1pt + gray), caption: [Alle Punkte]),
-		subfigure(box(image("../images/crop/var_trunk.png"), stroke: 1pt + gray), caption: [Geringe Ausdehnung]),
-		subfigure(box(image("../images/crop/var_crown.png"), stroke: 1pt + gray), caption: [Hohe Ausdehnung]),
-	),
-) <auswertung_var>
 
 
 == Triangulierung
@@ -146,6 +115,45 @@ Das Eye-Dome Lighting ermöglicht eine bessere Wahrnehmung der verlorenen Tiefen
 	caption: [Speicherbedarf für die Punkte und Detailstufen.],
 	image("../data/ratio_source_lod_points.svg"),
 ) <auswertung_vis_lod_memory>
+
+
+== Analyse von Bäumen
+
+
+=== Punkteigenschaften
+
+In @auswertung_curve und @auswertung_var ist ein Segment basierend auf den berechneten Eigenschaften eingefärbt gegeben und zusätzlich mit den größten und kleinste Werte gefiltert.
+
+Die Punkte mit der größten Krümmung gehören zu den Blättern, was eine teilweise Filterung ermöglicht. Die Punkte beim Stamm haben eine geringere Krümmung, aber auch Punkte, die zu den Blättern gehören, können eine geringe Krümmung haben.
+
+Punkte zugehörig zu einer geringen horizontalen Ausdehnung gehören immer zum Stamm oder der Spitze der Krone, wodurch der Stamm identifiziert werden kann.
+
+#figure(
+	caption: [Punktwolke basierend auf der Krümmung eingefärbt.],
+	grid(
+		columns: 1 * 3,
+		gutter: 1em,
+		subfigure(box(image("../images/crop/curve_all.png"), stroke: 1pt + gray), caption: [Alle Punkte]),
+		subfigure(box(image("../images/crop/curve_low.png"), stroke: 1pt + gray), caption: [Geringe Krümmung]),
+		subfigure(box(image("../images/crop/curve_high.png"), stroke: 1pt + gray), caption: [Hohe Krümmung]),
+	),
+) <auswertung_curve>
+
+#figure(
+	caption: [Punktwolke basierend auf der Ausdehnung eingefärbt.],
+	grid(
+		columns: 1 * 3,
+		gutter: 1em,
+		subfigure(box(image("../images/crop/var_all.png"), stroke: 1pt + gray), caption: [Alle Punkte]),
+		subfigure(box(image("../images/crop/var_trunk.png"), stroke: 1pt + gray), caption: [Geringe Ausdehnung]),
+		subfigure(box(image("../images/crop/var_crown.png"), stroke: 1pt + gray), caption: [Hohe Ausdehnung]),
+	),
+) <auswertung_var>
+
+
+=== Baumeigenschaften
+
+#todo[Auswertung Baumeigenschafte]
 
 
 == Fazit

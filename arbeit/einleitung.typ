@@ -46,17 +46,17 @@ In der Einleitung wird die Motivation für die Arbeit erklärt, das Thema defini
 
 Der Stand der Technik beschäftigt sich mit zugehörigen wissenschaftlichen und technischen Arbeiten. Dazu gehört die Aufnahme und Verarbeitung von Punktdaten und die Analyse von Bäumen mit den Daten.
 
-#section(3, [Segmentierung])
+#section(3, [Segmentierung von Waldstücken])
 
 Die Segmentierung erklärt den verwendeten Algorithmus für die Unterteilung von einer Punktwolke für ein Waldstück in mehrere Punktwolken für jeweils einen Baum. Die Punktwolke kann dabei ungeordnet sein und für die einzelnen Punkte wird nur die Position vorausgesetzt.
 
-#section(4, [Triangulierung])
-
-Bei der Triangulierung wird für die Punktwolke von einem Baum ein geeignetes Dreiecksnetz gesucht. Mit dem Dreiecksnetz und den Punkten kann für den Baum ein dreidimensionales Mesh erstellt werden.
-
-#section(5, [Visualisierung])
+#section(4, [Visualisierung])
 
 Im Abschnitt Visualisierung werden die Algorithmen erklärt, um die Punktwolken mit allen gegebenen und berechneten Daten in Echtzeit zu rendern.
+
+#section(5, [Triangulierung])
+
+Bei der Triangulierung wird für die Punktwolke von einem Baum ein geeignetes Dreiecksnetz gesucht. Mit dem Dreiecksnetz und den Punkten kann für den Baum ein dreidimensionales Mesh erstellt werden.
 
 #section(6, [Analyse von Segmenten])
 
