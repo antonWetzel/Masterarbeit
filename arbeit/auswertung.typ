@@ -8,14 +8,14 @@
 
 Der benutze Datensatz @data beinhaltet $12$ Hektar Waldfläche in Deutschland, Baden-Württemberg. Die Daten sind mit Laserscans aufgenommen, wobei die Scans von Flugzeugen (ALS#footnote([aircraft laser scan])), Drohnen (ULS#footnote([uncrewed aerial vehicle laser scan])) und vom Boden (TLS#footnote([terrestrial laser scan])) aus durchgeführt wurden. Dabei entstehen 3D-Punktwolken, welche im komprimiert LAS Dateiformat gegeben sind.
 
-Für die meisten Waldstücke existiert ein ALS, ULS und TLS. Dabei enthält der ALS die wenigsten und der TLS die meisten Punkte. Bei ALS und ULS sind die Punkte gleichmäßig über das gescannte Gebiet verteilt. Bei TLS wird von einem zentralen Punkt aus gescannt, wodurch die Punktedichte nach außen immer weiter abnimmt.
+Für die meisten Waldstücke existieren ALS-, ULS- und TLS-Daten. Dabei enthalten die ALS-Daten die wenigsten und die TLS-Daten die meisten Punkte. Bei den ALS- und ULS-Daten sind die Punkte gleichmäßig über das gescannte Gebiet verteilt. Bei den TLS-Daten wird von einem zentralen Punkt aus gescannt, wodurch die Punktedichte nach außen immer weiter abnimmt.
 
-// Der Datensatz ist bereits in einzelne Bäume unterteilt. Zusätzlich wurden für $6$ Hektar die Baumart, Höhe, Stammdurchmesser auf Brusthöhe und Anfangshöhe und Durchmesser der Krone gemessen. Mit den bereits bestimmten Eigenschaften können automatisch berechnete Ergebnisse validiert werden.
+Der Datensatz ist bereits in einzelne Bäume unterteilt. Zusätzlich wurden für $6$ Hektar die Baumart, Höhe, Stammdurchmesser auf Brusthöhe und Anfangshöhe und Durchmesser der Krone gemessen. Mit den bereits bestimmten Eigenschaften können automatisch berechnete Ergebnisse validiert werden.
 
 
 == Importgeschwindigkeit
 
-Für den Import sind in @messwerte die Messdaten für unterschiedliche Datensätze gegeben. Die Eigenschaften vom verwendeten System zum Messen sind in @systemeigenschaften gelistet. Dabei wurden nur die ALS und ULS verwendet. Durch die hohe Punktanzahl und die ungleichmäßige Verteilung bei den TLS sind diese nicht gut für die Analyse geeignet.
+Für den Import sind in @messwerte die Messdaten für unterschiedliche Datensätze gegeben. Die Eigenschaften vom verwendeten System zum Messen sind in @systemeigenschaften gelistet. Dabei wurden nur die ALS- und ULS-Daten verwendet. Durch die hohe Punktanzahl und die ungleichmäßige Verteilung bei den TLS-Daten sind diese nicht gut für die Analyse von Waldstücken geeignet.
 
 In @auswertung_import_geschwindigkeit ist der Durchsatz beim Import angegeben. Dabei wird eine Importgeschwindigkeit von circa $400 space.thin 000$ Punkte pro Sekunde für die Datensätze erreicht.
 
@@ -153,7 +153,43 @@ Punkte zugehörig zu einer geringen horizontalen Ausdehnung gehören immer zum S
 
 === Baumeigenschaften
 
-#todo[Auswertung Baumeigenschafte]
+In @analyse_baumeigenschaften werden die korrekten gemessenen Werte für die Baumeigenschaften mit den aus den Punktwolken algorithmisch berechneten Werten verglichen. Entlang der x-Achse sind die gemessenen Werte und entlang der y-Achse sind die berechneten Werte.
+
+#figure(
+	caption: [Vergleich zwischen den gemessenen Baumeigenschaften und den berechneten Werten.],
+	grid(
+		columns: 1 * 3,
+		column-gutter: 1em,
+		subfigure(image("../data/trunk-diameter.svg"), caption: [Durchmesser (cm) vom Stamm bei 130 cm]),
+		subfigure(image("../data/trunk-height.svg"), caption: [Anfangshöhe (m) von der Baumkrone]),
+		subfigure(image("../data/crown-diameter.svg"), caption: [Durchmesser (m) von der Baumkrone]),
+	),
+) <analyse_baumeigenschaften>
+
+Für den Vergleich wurden die einzelnen Bäume aus dem Datensatz verwenden. Die Positionen der Bäume wurde mit einer Kombination von den ALS-, ULS- und TLS-Daten und einer manuellen Unterteilung der Punkte berechnet. Danach wurden alle Punktwolken der Waldstücke mit den Baumpositionen unterteilt, wodurch besonders für die ALS- und ULS-Daten für manche Bäume nur wenig Punkte bekannt sind @pang. Eine Visualisierung vom Unterschied ist in @auswertung_vergleich_scanner gegeben.
+
+// ALS: 6446
+// ULS_on: 74262
+// ULS_off: 58201
+// TLS: 1687505
+// BR02\single_trees\FagSyl_BR02_02
+
+#figure(
+	caption: [Vergleich zwischen den unterschiedlichen Daten für den gleichen Baum.],
+	grid(
+		columns: 1 * 4,
+		subfigure(image("../images/crop/compare_als.png"), caption: [ALS#linebreak()6446 Punkte]),
+		subfigure(image("../images/crop/compare_uls_off.png"), caption: [ULS-off#linebreak()58201 Punkte]),
+		subfigure(image("../images/crop/compare_uls_on.png"), caption: [ULS-on#linebreak()74262 Punkte]),
+		subfigure(image("../images/crop/compare_tls.png"), caption: [TLS#linebreak()1687505 Punkte]),
+	),
+) <auswertung_vergleich_scanner>
+
+Die Berechnung vom Stammdurchmesser funktioniert für die TLS-Daten am besten. Bei den ULS Daten ist eine Korrelation zu sehen, aber die Ergebnisse weichen stark von den gemessenen Werten ab. Mit den ALS-Daten kann der Stammdurchmesser nicht berechnet werden. Bei vielen Punktwolken waren zu wenig Datenpunkte im verwendeten Bereich für die Berechnung, wodurch der Standardwert von $50$ cm verwendet wurde.
+
+Auch die Berechnung von der Anfangshöhe der Baumkrone funktioniert mit den TLS-Daten am besten. Mit den ALS- und den ULS-Daten ist eine Approximation möglich, wodurch die Ergebnisse bei den ALS Daten weiter von den gemessenen Werten schwanken.
+
+Bei der Berechnung vom Durchmesser der Baumkrone sind die ALS-, ULS- und TLS-Daten geeignet. Durch die Approximation der Baumform ist der berechnete Wert kleiner als der gemessene Wert. Bei den gemessenen Werten würde der Durchschnitt zwischen der größten Ausdehnung und zugehörigen orthogonalen Ausdehnung bestimmt.
 
 
 == Fazit

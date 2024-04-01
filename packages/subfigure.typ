@@ -16,12 +16,12 @@
 		}
 	})
 	sub_figure.step()
+	set par(justify: false)
 	box(width: width, align(center, {
 		content
 		if caption != none {
 			v(10pt, weak: true)
 			sub_figure.display(numbering) + [ ] + caption
 		}
-		v(10pt)
 	}))
 }
