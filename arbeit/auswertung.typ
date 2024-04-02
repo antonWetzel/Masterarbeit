@@ -185,11 +185,11 @@ Für den Vergleich wurden die einzelnen Bäume aus dem Datensatz verwenden. Die 
 	),
 ) <auswertung_vergleich_scanner>
 
-Die Berechnung vom Stammdurchmesser funktioniert für die TLS-Daten am besten. Bei den ULS Daten ist eine Korrelation zu sehen, aber die Ergebnisse weichen stark von den gemessenen Werten ab. Mit den ALS-Daten kann der Stammdurchmesser nicht berechnet werden. Bei vielen Punktwolken waren zu wenig Datenpunkte im verwendeten Bereich für die Berechnung, wodurch der Standardwert von $50$ cm verwendet wurde.
+Die Berechnung vom Stammdurchmesser funktioniert für die TLS-Daten am besten. Der Stamm wird als Kreis approximiert, wodurch die berechneten Werte kleiner als die gemessenen Werte sind. Bei den ULS Daten ist eine Korrelation zu sehen, aber die Ergebnisse weichen stark von den gemessenen Werten ab. Mit den ALS-Daten kann der Stammdurchmesser nicht berechnet werden. Bei vielen Punktwolken waren zu wenig Datenpunkte im verwendeten Bereich für die Berechnung, wodurch der Standardwert von $50$ cm verwendet wurde.
 
 Auch die Berechnung von der Anfangshöhe der Baumkrone funktioniert mit den TLS-Daten am besten. Mit den ALS- und den ULS-Daten ist eine Approximation möglich, wodurch die Ergebnisse bei den ALS Daten weiter von den gemessenen Werten schwanken.
 
-Bei der Berechnung vom Durchmesser der Baumkrone sind die ALS-, ULS- und TLS-Daten geeignet. Durch die Approximation der Baumform ist der berechnete Wert kleiner als der gemessene Wert. Bei den gemessenen Werten würde der Durchschnitt zwischen der größten Ausdehnung und zugehörigen orthogonalen Ausdehnung bestimmt.
+Bei der Berechnung vom Durchmesser der Baumkrone sind die ALS-, ULS- und TLS-Daten geeignet. Durch die Approximation der Baumform als Kreis ist der berechnete Wert kleiner als der gemessene Wert. Bei den gemessenen Werten würde der Durchschnitt zwischen der größten Ausdehnung und zugehörigen orthogonalen Ausdehnung bestimmt.
 
 
 == Fazit

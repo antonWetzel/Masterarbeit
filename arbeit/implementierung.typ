@@ -81,22 +81,29 @@ In @implementierung_befehle sind die Befehle gelistet, um den Importer und die V
 Für den Import wird der Datensatz und der Ordner zum Speichern der Ergebnisse benötigt. Beide können über die Befehlszeile angegeben werden oder über ein Dialogfenster ausgewählt werden. Alle weiteren Optionen sind in @implementierung_import_optionen gelistet. Am Ende vom Import wird im Ordner für die Ergebnisse die `project.json` Datei und zugehörige Daten abgespeichert, welche von der Visualisierung geöffnet werden können.
 
 #figure(
-	caption: [Mögliche Optionen für den Import.],
+	caption: [Optionen für den Import.],
 	table(
 		align: (x, y) => if y == 0 { horizon + center } else { horizon + (left, right, left).at(x) },
 		columns: (1fr, auto, 2fr),
-		[*Flag*],                    [*Standardwert*], [*Funktion*],
-		`--max-threads`,             [unbegrenzt],     [Maximale Anzahl an parallelen Threads],
-		`--min-segment-size`,        $100$,            [Mindestanzahl von Punkten für ein Segment],
-		`--segmenting-slice-width`,  $1.0$,            [Breite der horizontalen Scheiben für die Segmentierung in Meter],
-		`--segmenting-max-distance`, $1.0$,            [Mindestabstand zwischen Bereichen in Meter],
-		`--neighbors-count`,         $31$,             [Maximale Anzahl der Punkte in der Nachbarschaft von einem Punkt],
-		`--neighbors-max-distance`,  $1.0$,            [Maximale Distanz vom Punkt zu den Punkten in der Nachbarschaft],
-		`--lod-size-scale`,          $0.95$,           [Skalierungsfaktor für die Fläche der kombinierten Punkte],
+		[*Flag*],                      [*Standardwert*], [*Funktion*],
+		`--max-threads`,               [unbegrenzt],     [Maximale Anzahl an parallelen Threads],
+		`--min-segment-size`,          $100$,            [Mindestanzahl von Punkten für ein Segment],
+		`--segmenting-slice-width`,    [#number(1) m],   [Breite der horizontalen Scheiben für die Segmentierung],
+		`--segmenting-max-distance`,   [#number(1) m],   [Mindestabstand zwischen Bereichen für die Segmentierung],
+		`--calculations-slice-width`,  [#number(0.1) m], [Breite der horizontalen Scheiben für die Analyse von einem Baum],
+		`--ground-min-area-scale`,     number(1.5),      [Mindestgröße vom Boden im Vergleich zu der kleinsten Scheibe],
+		`--ground-max-search-height`,  [#number(1.0) m], [Maximale Suchhöhe für den Anfang vom Boden],
+		`--trunk-diameter-height`,     [#number(1.3) m], [Höhe für den Durchmesser vom Stamm],
+		`--trunk-diameter-range`,      [#number(0.2) m], [Bereich für den Durchmesser vom Stamm],
+		`--crown-diameter-difference`, [#number(1.0) m], [Unterschied vom Durchmesser zwischen dem Stamm und dem Anfang von der Krone],
+		`--neighbors-count`,           number(31),       [Maximale Anzahl der Punkte in der Nachbarschaft],
+		`--neighbors-max-distance`,    [#number(1.0) m], [Maximale Distanz vom Punkt zu den Punkten in der Nachbarschaft],
+		`--lod-size-scale`,            number(0.95),     [Skalierungsfaktor für die Fläche der kombinierten Punkte für die Detailstufen],
+		`--proj-location`,             [`+proj=utm`\
+		`+ellps=GRS80`\
+		`+zone=32`], [Region für die geographischen Koordinaten],
 	),
 ) <implementierung_import_optionen>
-
-#todo[update]
 
 
 === Visualisierung

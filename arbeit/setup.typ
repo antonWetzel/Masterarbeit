@@ -69,20 +69,28 @@
 }
 
 #let number = (number) => {
-	let blocks = ()
-	let current = number
-	while current >= 1000 {
-		blocks.push(calc.rem(number, 1000))
-		current = int(current / 1000)
+	let number = str(float(number))
+	let split = number.split(".")
+	let res = []
+	{
+		let text = split.at(0)
+		for i in range(text.len()) {
+			res += text.at(i)
+			let idx = text.len() - i - 1
+			if idx != 0 and calc.rem(idx, 3) == 0 {
+				res += sym.space.thin
+			}
+		}
 	}
-	blocks.push(current)
-	blocks = blocks.rev()
-	blocks = blocks.map((value) => {
-		let res = str(value)
-		// while res.len() < 3 {
-		// res = "0" + res
-		// }
-		return res
-	})
-	return eval("$" + blocks.join(" space.thin ") + "$")
+	if split.len() >= 2 {
+		res += $,$
+		let text = split.at(1)
+		for i in range(text.len()) {
+			res += text.at(i)
+			if i != 0 and calc.rem(i, 3) == 0 {
+				res += sym.space.thin
+			}
+		}
+	}
+	return res
 }

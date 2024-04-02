@@ -208,25 +208,19 @@ https://dl.acm.org/doi/pdf/10.1145/355578.366316
   numpages   = {1}
 }
 
-https://dl.acm.org/doi/pdf/10.1145/358669.358692
-@article{ransac,
-  author     = {Fischler, Martin A. and Bolles, Robert C.},
-  title      = {Random Sample Consensus: A Paradigm for Model Fitting with Applications to Image Analysis and Automated Cartography},
-  year       = {1981},
-  issue_date = {June 1981},
-  publisher  = {Association for Computing Machinery},
-  address    = {New York, NY, USA},
-  volume     = {24},
-  number     = {6},
-  issn       = {0001-0782},
-  url        = {https://doi.org/10.1145/358669.358692},
-  doi        = {10.1145/358669.358692},
-  abstract   = {A new paradigm, Random Sample Consensus (RANSAC), for fitting a model to experimental data is introduced. RANSAC is capable of interpreting/smoothing data containing a significant percentage of gross errors, and is thus ideally suited for applications in automated image analysis where interpretation is based on the data provided by error-prone feature detectors. A major portion of this paper describes the application of RANSAC to the Location Determination Problem (LDP): Given an image depicting a set of landmarks with known locations, determine that point in space from which the image was obtained. In response to a RANSAC requirement, new results are derived on the minimum number of landmarks needed to obtain a solution, and algorithms are presented for computing these minimum-landmark solutions in closed form. These results provide the basis for an automatic system that can solve the LDP under difficult viewing},
-  journal    = {Commun. ACM},
-  month      = {jun},
-  pages      = {381–395},
-  numpages   = {15},
-  keywords   = {location determination, camera calibration, image matching, automated cartography, scene analysis, model fitting}
+https://d1wqtxts1xzle7.cloudfront.net/3436793/torr_mlesac-libre.pdf?1390831910=&response-content-disposition=inline%3B+filename%3DMLESAC_A_New_Robust_Estimator_With_Appli.pdf&Expires=1712085343&Signature=LxcQlmr8YJqqjQ-1~rB-kbEp26bbAWw8RDIlkdbXwOAUumEX2cvA1wMUMa4wfjQgQmDNJDRc190RRrRErKXttjrsIq79JfxpWkEK7xq8YXM4sGVza~w4I-NNJ9ZiYvkvu6TmqwxUKpWZCzGMzFjPU0MnByHxFIJZeaMCVJkDas7Bpidy9BuwYvLLidNxPfYHKkauTSyckZyT3ETjszx5V86wZ4PbyDURxkq1mmmvNO6XwToC~4E5pa1KAZyMFxcKcE2068EaCQtNE2HxY-2ngTU8hNVJmZAy4cuhi0556mVf6uFdU03lZM38x7-paQgor9vRbwLvoX8yfecJS9QnoA__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA
+@article{msac,
+title = {MLESAC: A New Robust Estimator with Application to Estimating Image Geometry},
+journal = {Computer Vision and Image Understanding},
+volume = {78},
+number = {1},
+pages = {138-156},
+year = {2000},
+issn = {1077-3142},
+doi = {https://doi.org/10.1006/cviu.1999.0832},
+url = {https://www.sciencedirect.com/science/article/pii/S1077314299908329},
+author = {P.H.S. Torr and A. Zisserman},
+abstract = {A new method is presented for robustly estimating multiple view relations from point correspondences. The method comprises two parts. The first is a new robust estimator MLESAC which is a generalization of the RANSAC estimator. It adopts the same sampling strategy as RANSAC to generate putative solutions, but chooses the solution that maximizes the likelihood rather than just the number of inliers. The second part of the algorithm is a general purpose method for automatically parameterizing these relations, using the output of MLESAC. A difficulty with multiview image relations is that there are often nonlinear constraints between the parameters, making optimization a difficult task. The parameterization method overcomes the difficulty of nonlinear constraints and conducts a constrained optimization. The method is general and its use is illustrated for the estimation of fundamental matrices, image–image homographies, and quadratic transformations. Results are given for both synthetic and real images. It is demonstrated that the method gives results equal or superior to those of previous approaches.}
 }
 
 https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=4160265

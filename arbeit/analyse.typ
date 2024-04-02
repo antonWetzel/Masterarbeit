@@ -214,11 +214,13 @@ Danach wird die Bodenhöhe $g$ gesucht. Dafür werden die Suchhöhe $h_g$ und de
 
 === Stammdurchmesser
 
-Mit der berechneten Bodenhöhe $g$, der Messhöhe $h_t$ und dem Bereich $r_t$ wird der Stammdurchmesser $d_t$ bestimmt. Zuerst werden alle Punkte bestimmt, deren Höhen im Bereich $[g + h_t - r_t / 2, g + h_t + r_t / 2)$ liegen. Mit dem Ransac-Algorithmus wird der Kreis gesucht, welcher am nächsten an allen Punkten liegt.
+Mit der berechneten Bodenhöhe $g$, der Messhöhe $h_t$ und dem Bereich $r_t$ wird der Stammdurchmesser $d_t$ bestimmt. Zuerst werden alle Punkte bestimmt, deren Höhen im Bereich $[g + h_t - r_t / 2, g + h_t + r_t / 2)$ liegen. Mit dem MSAC-Algorithmus#footnote([#strong[m]-estimator #strong[sa]mple #strong[c]onsensus]) wird der Kreis gesucht, welcher am besten die Punkte beschreibt.
 
-#todo[Ransac]
+Beim MSAC-Algorithmus werden wiederholt genug zufällige Datenpunkte ausgewählt, dass aus diesen der gewünschte Wert eindeutig berechnet werden kann. Danach wird für jeden Datenpunkt die Abweichung zum Wert bestimmt. Die Abweichung wird auf einen Maximalwert beschränkt, um den Einfluss von weit entfernten Datenpunkten zu verringern. Die Summe von allen Abweichungen ist der Fehler für den momentanen Wert. Der Wert mit dem geringsten Fehler wird als das finale Ergebnis verwendet @msac.
 
-Der Durchmesser vom Kreis wird als der geschätzte Stammdurchmesser verwendet.
+Am Anfang wird als Durchmesser der Standardwert #number(0.5) m und als bester Fehler der größtmögliche Wert verwendet. Dann werden wiederholt drei zufällige Punkte ausgewählt, mit denen das Zentrum und der Durchmesser vom zugehörige Kreis eindeutig berechnet werden kann. Mit allen Punkten wird der Fehler für den Kreis berechnet. Um den Effekt von Datenpunkten zu verringern, welche nicht zum Stamm gehören wird die Abweichung auf #number(0.2) m beschränkt. Ist der momentane Fehler kleiner als der bisher bester Fehler, wird der Durchmesser als neuen besten Wert verwendet und der beste Fehler wird aktualisiert.
+
+Nach allen Iterationen wird der Durchmesser vom besten Kreis als der geschätzte Stammdurchmesser verwendet.
 
 
 === Baumhöhe
