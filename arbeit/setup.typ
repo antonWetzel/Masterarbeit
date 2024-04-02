@@ -47,7 +47,7 @@
 	}
 	show heading.where(level: 3): it => pad(top: 0.3cm, it, bottom: 0.1cm)
 
-	show link: it => text(fill: blue, it)
+	show link: it => text(fill: eastern, it)
 
 	show outline.entry: it => {
 		if it.level == 1 {
