@@ -67,27 +67,31 @@
 
 == Messwerte vom Import <messwerte>
 
-#let data = csv("../data/werte.tsv", delimiter: "\t")
-#figure(
-	table(
-		align: (x, y) => if y == 0 { center } else { (left, left, right, right, right).at(x) },
-		columns: 5,
-		[#box(width: 2.2cm)[*Datensatz*]], [*Datei*], [*Daten#linebreak()Punkte*], [*Segment#linebreak()Punkte*], [*Detailstufen#linebreak()Punkte*],
-		..data.flatten(),
-	),
-	caption: [Messwerte (1).],
-) <messwerte_1>
+#[
+	#set text(size: 0.9em)
+	#set par(justify: false)
+	#let data = csv("../data/werte.tsv", delimiter: "\t")
+	#figure(
+		table(
+			align: (x, y) => if y == 0 { center } else { (left, left, right, right, right).at(x) },
+			columns: (1fr, 2.5fr, 1fr, 1fr, 1.2fr),
+			[#box(width: 2.2cm)[*Datensatz*]], [*Datei*], [*Daten*#linebreak() (Punkte)], [*Segmente* (Punkte)], [#box[*Detailstufen*]#linebreak() (Punkte)],
+			..data.flatten(),
+		),
+		caption: [Messwerte (Verwendete Datei und Punktanzahl).],
+	) <messwerte_1>
 
-#let data = csv("../data/werte_2.tsv", delimiter: "\t")
-#figure(
-	table(
-		align: (x, y) => if y == 0 { center } else { (left, right, right, right, right, right).at(x) },
-		columns: 6,
-		[#box(width: 2.2cm)[*Datensatz*]], [*Segmente*], [*Punkte#linebreak()Laden* $(s)$], [*Segmentierung* $(s)$], [*Berechnungen* $(s)$], [*Detailstufen* $(s)$],
-		..data.flatten(),
-	),
-	caption: [Messwerte (2).],
-) <messwerte_2>
+	#let data = csv("../data/werte_2.tsv", delimiter: "\t")
+	#figure(
+		table(
+			align: (x, y) => if y == 0 { center } else { (left, right, right, right, right, right).at(x) },
+			columns: (1fr, 1fr, 1fr, 1.5fr, 1fr, 1fr),
+			[#box(width: 2.2cm)[*Datensatz*]], [*Segmente* (Anzahl)], [*Laden* (Sekunden)], [*Segmentierung* (Sekunden)], [*Analyse* (Sekunden)], [*Detailstufen* (Sekunden)],
+			..data.flatten(),
+		),
+		caption: [Messwerte (Anzahl Segmente und Importgeschwindigkeit).],
+	) <messwerte_2>
+]
 
 
 == KD-Baum <kd_baum>

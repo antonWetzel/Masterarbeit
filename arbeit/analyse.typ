@@ -6,9 +6,12 @@
 Die charakteristischen Eigenschaften werden für jeden Baum einzeln berechnet. Für jeden Punkt im Baum wird zuerst die relative Höhe, lokale Krümmung und zugehörige horizontale Ausdehnung bestimmt. Mit diesen Daten wird dann eine Unterteilung in Boden, Stamm und Krone durchgeführt. Ein Beispiel für die Ergebnisse sind in @analyse_eigenschaften zu sehen.
 
 #figure(caption: [Segment basierend auf den berechneten Eigenschaften eingefärbt.], grid(
-	columns: 4,
+	columns: 1 * 4,
 	column-gutter: 1em,
-	subfigure(image("../images/auto-crop/height.png"), caption: [Höhe]), subfigure(image("../images/auto-crop/curve_all.png"), caption: [Krümmung]), subfigure(image("../images/auto-crop/var_all.png"), caption: [Ausdehnung]), subfigure(placeholder("classifcation"), caption: [Klassifikation]),
+	subfigure(image("../images/crop/prop_height.png"), caption: [Höhe]),
+	subfigure(image("../images/crop/prop_curve_all.png"), caption: [Krümmung]),
+	subfigure(image("../images/crop/prop_var_all.png"), caption: [Ausdehnung]),
+	subfigure(image("../images/crop/prop_classification.png"), caption: [Klassifikation]),
 )) <analyse_eigenschaften>
 
 Mit der Unterteilung wird für den Stamm und die Krone die Höhe und der Durchmesser abgeschätzt.

@@ -6,14 +6,22 @@ patterns = [
 	("height", (600, 0, 500, 0)),
 	("lod_", (536, 17, 1920 - 1502, 1000 - 985)),
 	("triangulation_", (760, 15, 1920 - 1219, 1000 - 965)),
-	("compare", (747, 27, 1920 - 1140, 1000 - 982))
+	("compare", (747, 27, 1920 - 1140, 1000 - 982)),
+	("prop_", (1077, 83, 1073, 80)),
 ]
 
 from PIL import Image
 import os
+import shutil
 
-if not os.path.exists("crop"):
-    os.makedirs("crop")
+
+if os.path.exists("crop"):
+	shutil.rmtree("crop")
+os.makedirs("crop")
+
+if os.path.exists("auto-crop"):
+	shutil.rmtree("auto-crop")
+os.makedirs("auto-crop")
 
 for pattern in patterns:
 	name = pattern[0]
@@ -31,16 +39,15 @@ for pattern in patterns:
 		img.save("./crop/" + file)
 		print("crop " + file)
 
-if not os.path.exists("auto-crop"):
-    os.makedirs("auto-crop")
-
-
 for file in os.listdir():
 	if "crop" in file:
 		continue
 	if not file.endswith("png"):
 		continue
 	img = Image.open(file)
-	img = img.crop(img.getbbox())
+	box = img.getbbox()
+	size = img.size
+	img = img.crop(box)
+	box = (box[0], box[1], size[0] - box[2], size[1] - box[3])
 	img.save("./auto-crop/" + file)
-	print("crop " + file)
+	print("crop", file, box)

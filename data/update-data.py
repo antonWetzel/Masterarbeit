@@ -2,17 +2,11 @@ import os
 import shutil
 import json
 
-import pygsheets
 
-PATH = "../../treee/cwd/auto/"
+PATH = "./../treee/cwd/auto/"
 
 KEYS = ["source_points", "leaf_points", "branch_points", "segments"]
 TIMES = ["import", "segment", "calculate", "lods"]
-
-
-client = pygsheets.authorize()
-sh = client.open('Masterarbeit')
-wks = sh.sheet1
 
 table = []
 
@@ -35,8 +29,8 @@ for file in os.listdir(PATH):
 table.sort()
 table.insert(0, ["data"] + KEYS + TIMES)
 
-
-print(table)
-
-
-wks.update_values("D3", table)
+res = open("data/data.tsv", "w")
+for row in table:
+    for entry in row:
+        res.write(f"{entry}\t")
+    res.write("\n")

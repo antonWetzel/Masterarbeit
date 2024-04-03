@@ -15,16 +15,16 @@ Der Datensatz ist bereits in einzelne Bäume unterteilt. Zusätzlich wurden für
 
 == Importgeschwindigkeit
 
-Für den Import sind in @messwerte die Messdaten für unterschiedliche Datensätze gegeben. Die Eigenschaften vom verwendeten System zum Messen sind in @systemeigenschaften gelistet. Dabei wurden nur die ALS- und ULS-Daten verwendet. Durch die hohe Punktanzahl und die ungleichmäßige Verteilung bei den TLS-Daten sind diese nicht gut für die Analyse von Waldstücken geeignet.
+Für den Import sind in @auswertung_import_geschwindigkeit die Importgeschwindigkeiten in Punkte pro Sekunde gegeben. Die genauen Messwerte sind in @messwerte und die Eigenschaften vom verwendeten System sind in @systemeigenschaften gelistet. Für jedes Waldstück wurde ein zufälliger Datensatz von den ALS-, ULS- und TLS-Daten verwendet.
 
-In @auswertung_import_geschwindigkeit ist der Durchsatz beim Import angegeben. Dabei wird eine Importgeschwindigkeit von circa $400 space.thin 000$ Punkte pro Sekunde für die Datensätze erreicht.
+Bei den ALS-Daten wird für die meisten Datensätze eine Importgeschwindigkeit von #number(500000) erreicht. Durch die kleinen Datenmengen schwankt aber die Importgeschwindigkeit stark. Bei den `ALS-KAxx`-Daten ist der Boden sehr eben, wodurch die Baumkronen ähnliche Höhen haben. Dadurch haben viele Punkte die gleiche Höhe und die Segmentierung dauert länger. Für die ULS-Daten wird eine Importgeschwindigkeit von #number(200000) und für die TLS-Daten von #number(400000) erreicht.
 
 #figure(
 	caption: [Geschwindigkeit vom Import in Punkte pro Sekunde.],
 	image("../data/punkte_pro_sekunde.svg"),
 ) <auswertung_import_geschwindigkeit>
 
-In @auswertung_import_phasen ist die Dauer für die einzelnen Phasen vom Import aufgeschlüsselt. Bei jeder Phase wird jeder Punkt betrachtet, aber am längsten wird für die Segmentierung und Berechnungen von Informationen benötigt, weil diese mehr Aufwand pro Punkt benötigen.
+In @auswertung_import_phasen ist die Dauer für die einzelnen Phasen vom Import aufgeschlüsselt. Am längsten wird für die Analyse der Segmente benötigt, weil für jeden Punkt die benötigten Eigenschaften berechnet werden.
 
 #figure(
 	caption: [Dauer für die einzelnen Importphasen in $mu s$ pro Punkt.],
@@ -38,7 +38,7 @@ Ein Beispiel für eine Segmentierung ist in @segmentierung_ergebnis gegeben. Die
 
 #figure(
 	caption: [Segmentierung von einer Punktwolke.],
-	image("../images/auto-crop/segments-br06-als.png"),
+	image("../images/auto-crop/segments-ka11-als.png"),
 ) <segmentierung_ergebnis>
 
 Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeordnet. Bei Bereichen ohne Bäume entstehen dadurch Segmente wie in @auswertung_segmentierung_keine_bäume. Die Punkte in freien Flächen werden zu eigenen Segmenten zusammengefasst. Wenn die Punkte in der Nähe von einem Baum liegen, werden diese zu dem Baum hinzugefügt.
@@ -130,24 +130,24 @@ Punkte zugehörig zu einer geringen horizontalen Ausdehnung gehören immer zum S
 
 #figure(
 	caption: [Punktwolke basierend auf der Krümmung eingefärbt.],
-	grid(
+	box(width: 75%, grid(
 		columns: 1 * 3,
 		gutter: 1em,
-		subfigure(box(image("../images/crop/curve_all.png"), stroke: 1pt + gray), caption: [Alle Punkte]),
-		subfigure(box(image("../images/crop/curve_low.png"), stroke: 1pt + gray), caption: [Geringe Krümmung]),
-		subfigure(box(image("../images/crop/curve_high.png"), stroke: 1pt + gray), caption: [Hohe Krümmung]),
-	),
+		subfigure(image("../images/crop/prop_curve_all.png"), caption: [Alle Punkte]),
+		subfigure(image("../images/crop/prop_curve_low.png"), caption: [Geringe Krümmung]),
+		subfigure(image("../images/crop/prop_curve_high.png"), caption: [Hohe Krümmung]),
+	)),
 ) <auswertung_curve>
 
 #figure(
 	caption: [Punktwolke basierend auf der Ausdehnung eingefärbt.],
-	grid(
+	box(width: 75%, grid(
 		columns: 1 * 3,
 		gutter: 1em,
-		subfigure(box(image("../images/crop/var_all.png"), stroke: 1pt + gray), caption: [Alle Punkte]),
-		subfigure(box(image("../images/crop/var_trunk.png"), stroke: 1pt + gray), caption: [Geringe Ausdehnung]),
-		subfigure(box(image("../images/crop/var_crown.png"), stroke: 1pt + gray), caption: [Hohe Ausdehnung]),
-	),
+		subfigure(image("../images/crop/prop_var_all.png"), caption: [Alle Punkte]),
+		subfigure(image("../images/crop/prop_var_trunk.png"), caption: [Geringe Ausdehnung]),
+		subfigure(image("../images/crop/prop_var_crown.png"), caption: [Hohe Ausdehnung]),
+	)),
 ) <auswertung_var>
 
 
