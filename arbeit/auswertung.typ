@@ -178,10 +178,10 @@ Für den Vergleich wurden die einzelnen Bäume aus dem Datensatz verwenden. Die 
 	caption: [Vergleich zwischen den unterschiedlichen Daten für den gleichen Baum.],
 	grid(
 		columns: 1 * 4,
-		subfigure(image("../images/crop/compare_als.png"), caption: [ALS#linebreak()6446 Punkte]),
-		subfigure(image("../images/crop/compare_uls_off.png"), caption: [ULS-off#linebreak()58201 Punkte]),
-		subfigure(image("../images/crop/compare_uls_on.png"), caption: [ULS-on#linebreak()74262 Punkte]),
-		subfigure(image("../images/crop/compare_tls.png"), caption: [TLS#linebreak()1687505 Punkte]),
+		subfigure(image("../images/crop/compare_als.png"), caption: [ALS#linebreak()#number(6446) Punkte]),
+		subfigure(image("../images/crop/compare_uls_off.png"), caption: [ULS-off#linebreak()#number(58201) Punkte]),
+		subfigure(image("../images/crop/compare_uls_on.png"), caption: [ULS-on#linebreak()#number(74262) Punkte]),
+		subfigure(image("../images/crop/compare_tls.png"), caption: [TLS#linebreak()#number(1687505) Punkte]),
 	),
 ) <auswertung_vergleich_scanner>
 
