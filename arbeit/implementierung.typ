@@ -116,8 +116,8 @@ Mit dem Benutzerinterface kann die Visualisierung angepasst werden und Informati
 
 #figure(
 	caption: [Benutzerinterface mit den verfügbaren Optionen und Informationen. ],
-	grid(
-		gutter: 3em,
+	box(width: 80%, grid(
+		gutter: 2em,
 		columns: 1 * (1fr, 2fr),
 		rect(image("../images/ui.png"), radius: 4pt, inset: 2pt, stroke: rgb(27, 27, 27) + 4pt),
 		align(horizon + left)[
@@ -126,14 +126,15 @@ Mit dem Benutzerinterface kann die Visualisierung angepasst werden und Informati
 			- *Property*
 				- Die angezeigte Eigenschaft ändern
 			- *Segment*
-				- Triangulation starten
 				- Punkte, Linien oder Dreiecke anzeigen
+				- Triangulation starten
 				- Informationen über das ausgewählte Segment
 				- Segment speichern
 			- *Visual*
 				- Punktegröße ändern
 				- Punkte basierend auf der ausgewählten Eigenschaft filtern
-				- Farbpalette und Hintergrundfarbe ändern
+				- Farbpalette wechseln
+				- Hintergrundfarbe ändern
 				- Screenshot speichern
 				- Knoten für die Detailstufen anzeigen
 			- *Eye Dome*
@@ -144,7 +145,7 @@ Mit dem Benutzerinterface kann die Visualisierung angepasst werden und Informati
 				- Steuerung der Kamera ändern
 				- Kameraposition speichern oder wiederherstellen
 		],
-	),
+	)),
 ) <implementierung_ui>
 
 
@@ -380,13 +381,11 @@ Die ausgewählte Eigenschaft wird durch Einfärbung der Punkte angezeigt. Dabei 
 
 Um ein bestimmtes Segment auszuwählen, wird das momentan sichtbare Segment bei der Mausposition berechnet. Als Erstes werden die Koordinaten der Maus mit der Position und Orientierung der Kamera in eine dreidimensionale Position und Richtung umgewandelt. Der Ursprung und die Richtung bilden zusammen einen Strahl.
 
-Im Octree wird vom Root-Knoten aus die Leaf-Knoten gesucht, welche den Strahl enthalten. Dafür wird bei einem Branch-Knoten die acht Kinderknoten betrachtet. Für jeden Kinderknoten wird überprüft, ob der Strahl den Bereich vom Knoten scheidet und gegebenenfalls wird der Abstand zur Kamera berechnet. Weil der Voxel zugehörig zum Knoten entlang der Achsen vom Koordinatensystem ausgerichtet ist, kann mit dem Algorithmus in @implementierung_ray_aabb überprüft werden, ob der Strahl den Voxel berührt.
+Im Octree wird vom Root-Knoten aus die Leaf-Knoten gesucht, welche den Strahl enthalten. Dafür wird bei einem Branch-Knoten die acht Kinderknoten betrachtet. Für jeden Kinderknoten wird überprüft, ob der Strahl den Bereich vom Knoten scheidet und gegebenenfalls wird der Abstand zur Kamera berechnet. Weil der Voxel zugehörig zum Knoten entlang der Achsen vom Koordinatensystem ausgerichtet ist, kann mit dem Algorithmus in @implementierung_ray_aabb überprüft werden, ob der Strahl den Voxel berührt @ray_aabb.
 
 #figure(
 	caption: [
-		Schnittmenge von Strahl und Quadrat in 2D. @ray_aabb\
-		Zuerst wird für jede Achse der Bereich bestimmt, für den der Strahl im Quadrat liegen kann.\
-		Die Schnittmenge ist die Überschneidung von den Bereichen für alle Achsen.
+		Schnittmenge von Strahl und Quadrat in 2D. Zuerst wird für jede Achse der Bereich bestimmt, für den der Strahl im Quadrat liegen kann. Die Schnittmenge ist die Überschneidung von den Bereichen für alle Achsen.
 	],
 	cetz.canvas(length: 0.5cm, {
 		import cetz.draw: *

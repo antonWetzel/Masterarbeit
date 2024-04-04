@@ -84,7 +84,7 @@ Durch die Berechnung von $o$ ist die Reihenfolge der Punkte relevant. Vertausche
 
 === KD-Baum berechnen
 
-Zuerst wird ein KD-Baum für die Punkte im Segment berechnet. Der KD-Baum ermöglicht die effiziente Bestimmung von den nächsten Punkten für eine beliebige Position. Dabei werden nur die Punkte bestimmt, welche näher als ein Maximalabstand von der Position entfernt sind.
+Zuerst wird ein KD-Baum für die Punkte im Segment berechnet. Der KD-Baum ermöglicht die effiziente Bestimmung von den nächsten Punkten für eine beliebige Position. Dabei werden nur die Punkte bestimmt, welche näher als ein Maximalabstand von der Position entfernt sind. Die Konstruktion und Verwendung vom KD-Baum wird in @kd_baum erklärt.
 
 Mit dem KD-Baum kann auch überprüft werden, ob in einer $alpha$-Kugel keine weiteren Punkte liegen. Dafür wird der erste Punkt gesucht, der in der Kugel liegt. Wenn kein Punkt gefunden wird, ist die Kugel leer.
 
@@ -104,11 +104,11 @@ Wenn ein Dreieck mit zugehöriger $alpha$-Kugel gefunden wurde, welche keine wei
 
 Solange es noch eine äußere Kante $(p_1, p_2)$ gibt, kann die Triangulierung erweitert werden. Für die Kante ist bereits ein Dreieck und die zugehörige $alpha$-Kugel mit Zentrum $c$ bekannt. Die Kante dient als Pivot, um welches die $alpha$-Kugel gerollt wird. Der erste Punkt $p$, welcher von der Kugel berührt wird, bildet mit $p_1$ und $p_2$ ein neues Dreieck.
 
-In @ball_pivoting_erweiterung ist ein Beispiel für eine Erweiterung in 2D gegeben. Im zweidimensionalen werden Kanten gesucht und Punkte werden als Pivot verwendet.
+In @ball_pivoting_erweiterung ist ein Beispiel für eine Erweiterung in 2D gegeben. Im zweidimensionalen werden Kanten gesucht und Punkte werden als Pivot verwendet. Die vorherige Kante und der momentane Pivot-Punkt sind in Schwarz. Der $alpha$-Kreis rollt entlang der markierten Richtung und berührt zuerst den grünen Punkt. Die weiteren Kandidaten sind in Rot und liegen weiter entlang der Rotation.
 
 #figure(
 	caption: [
-		Erweiterung der gefundenen Oberfläche in 2D. Die vorherige Kante und der momentane Pivot-Punkt sind in Schwarz. Der $alpha$-Kreis rollt entlang der markierten Richtung. In Grün ist der erste Punkt und zugehörigen Kreis, welche berührt werden. Die weiteren Punkte in Rot sind Kandidaten, liegen aber weiter in der Rotation, weshalb die grüne Kante zur Oberfläche hinzugefügt wird.
+		Erweiterung der gefundenen Oberfläche in 2D.
 
 	],
 	cetz.canvas(length: 2cm, {
@@ -287,7 +287,7 @@ In @triangulierung_alpha wurde die Triangulation für die gleiche Punktwolke mit
 
 #figure(
 	caption: [Triangulation für unterschiedliche $alpha$. Im oberen Bild sind die Dreiecke ausgefüllt und im unteren Bild umrandet.],
-	grid(
+	box(width: 80%, grid(
 		columns: 1 * 5,
 		subfigure(
 			caption: [$0.2$ m],
@@ -309,7 +309,7 @@ In @triangulierung_alpha wurde die Triangulation für die gleiche Punktwolke mit
 			caption: [$5.0$ m],
 			lines_and_mesh("5.0"),
 		),
-	),
+	)),
 ) <triangulierung_alpha>
 
 Der Bereich für die Suche vom nächsten Kandidaten für die Erweiterung von der Triangulierung ist abhängig von $alpha$. Dadurch steigt der Berechnungsaufwand mit größerem $alpha$, weil mehr Kandidaten betrachtet werden müssen.

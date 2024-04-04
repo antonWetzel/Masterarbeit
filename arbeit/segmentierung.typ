@@ -211,5 +211,5 @@ Der Ablauf wird für alle Scheiben durchgeführt, wodurch alle Punkte zu Segment
 
 #figure(
 	caption: [Segmentierung von einem Waldstück.],
-	image("../images/auto-crop/segments-br06-als.png"),
+	image("../images/auto-crop/segments-br05-als.png", width: 80%),
 ) <segment_example>

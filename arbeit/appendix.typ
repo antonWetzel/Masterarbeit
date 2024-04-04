@@ -26,7 +26,7 @@
 		align: (left, right),
 		[Physische Kerne],         $8$,
 		[Logische Kerne],          $8$,
-		[Maximale Taktrate],       $4,6 "GHz"$,
+		[Maximale Taktrate],       [#number(4.6) GHz],
 		[Cachegröße (L1, L2, L3)], [$512 "KiB"$, $2 "MiB"$, $12 "MiB"$],
 	),
 )

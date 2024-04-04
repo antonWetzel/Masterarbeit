@@ -18,7 +18,4 @@
 / Branch-Knoten: ist ein Knoten, welcher weitere Kinderknoten hat.
 / Root-Knoten: ist der erste Knoten im Tree, alle anderen Knoten sind direkte oder indirekte Kinderknoten vom Root-Knoten.
 / KD-Baum: ist eine Datenstruktur, um im $k$-dimensionalen Raum für eine Position die nächsten Punkte zu bestimmen.
-
-// == Akronyme
-
-// #todo([Akronyme])
+/ Greedy-Algorithmus: ist eine Kategorie von Algorithmen, bei denen das Ergebnis schrittweise berechnet wird. Bei jedem Schritt wird mit den momentanen Informationen die beste Entscheidung getroffen, wodurch das Ergebnis schnell, aber meist nicht global optimal berechnet wird.

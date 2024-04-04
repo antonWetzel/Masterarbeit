@@ -18,7 +18,7 @@
 		if nums.len() >= 4 {
 			return none
 		}
-		return numbering("1.1 ", ..nums)
+		return numbering("1.1", ..nums)
 	})
 
 	show raw: it => text(size: 1.2em, it)
@@ -40,10 +40,10 @@
 
 	show heading.where(level: 1): it => {
 		pagebreak(weak: true)
-		pad(top: 0.7cm, it, bottom: 0.1cm)
+		pad(top: 0.5cm, it, bottom: 0.1cm)
 	}
 	show heading.where(level: 2): it => {
-		pad(top: 0.3cm, it, bottom: 0.1cm)
+		pad(top: 0.2cm, it, bottom: 0.1cm)
 	}
 	show heading.where(level: 3): it => pad(top: 0.3cm, it, bottom: 0.1cm)
 
@@ -51,8 +51,8 @@
 
 	show outline.entry: it => {
 		if it.level == 1 {
-			v(1.7em, weak: true) + strong(it)
-
+			v(1.4em, weak: true)
+			strong(it)
 		} else {
 			h((it.level - 2) * 2em, weak: false) + it
 		}

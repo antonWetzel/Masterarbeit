@@ -183,7 +183,7 @@ Alle Punkte gehören nach der Unterteilung zu einem Leaf-Knoten im Octree. Für 
 
 #figure(
 	caption: [Unterschiedliche Detailstufen. Jeder Würfel enthält bis zu $32768$ Punkte. In der höchsten Stufe werden alle Punkte im Datensatz angezeigt.],
-	grid(
+	box(width: 90%, grid(
 		columns: (3),
 		gutter: 1em,
 		subfigure(image("../images/crop/lod_0.png"), caption: [Stufe 0]),
@@ -195,7 +195,7 @@ Alle Punkte gehören nach der Unterteilung zu einem Leaf-Knoten im Octree. Für 
 		subfigure(image("../images/crop/lod_6.png"), caption: [Stufe 6]),
 		subfigure(image("../images/crop/lod_7.png"), caption: [Stufe 7]),
 		subfigure(image("../images/crop/lod_8.png"), caption: [Stufe 8]),
-	),
+	)),
 ) <visualiserung_lods>
 
 
