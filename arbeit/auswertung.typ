@@ -156,61 +156,50 @@ Punkte zugehörig zu einer geringen horizontalen Ausdehnung gehören immer zum S
 In @analyse_baumeigenschaften werden die korrekten gemessenen Werte für die Baumeigenschaften mit den aus den Punktwolken algorithmisch berechneten Werten verglichen. Entlang der x-Achse sind die gemessenen Werte und entlang der y-Achse sind die berechneten Werte.
 
 #figure(
-	caption: [Vergleich zwischen den gemessenen Baumeigenschaften und den berechneten Werten.],
+	caption: [Vergleich zwischen den Messwerten und Approximation von den Eigenschaften für die Baumkrone.],
 	grid(
-		columns: 1 * 3,
+		columns: 1 * 2,
 		column-gutter: 1em,
-		subfigure(image("../data/trunk-diameter.svg"), caption: [Durchmesser (cm) vom Stamm bei 130 cm]),
-		subfigure(image("../data/trunk-height.svg"), caption: [Anfangshöhe (m) von der Baumkrone]),
-		subfigure(image("../data/crown-diameter.svg"), caption: [Durchmesser (m) von der Baumkrone]),
+		row-gutter: 3em,
+		subfigure(image("../data/data_tree_height.svg", height: 200pt), caption: [Gesamthöhe vom Baum]),
+		subfigure(image("../data/data_trunk_diameter.svg", height: 200pt), caption: [Stammdurchmesser bei #number(130, unit: [cm])]),
+		subfigure(image("../data/data_crown_start.svg", height: 200pt), caption: [Anfangshöhe der Baumkrone]),
+		subfigure(image("../data/data_crown_diameter.svg", height: 200pt), caption: [Durchmesser der Baumkrone]),
 	),
 ) <analyse_baumeigenschaften>
 
-Für den Vergleich wurden die einzelnen Bäume aus dem Datensatz verwenden. Die Positionen der Bäume wurde mit einer Kombination von den ALS-, ULS- und TLS-Daten und einer manuellen Unterteilung der Punkte berechnet. Danach wurden alle Punktwolken der Waldstücke mit den Baumpositionen unterteilt, wodurch besonders für die ALS- und ULS-Daten für manche Bäume nur wenig Punkte bekannt sind @pang. Eine Visualisierung vom Unterschied ist in @auswertung_vergleich_scanner gegeben.
+Für den Vergleich wurden die einzelnen Bäume aus dem Datensatz verwenden. Die Positionen der Bäume wurde mit einer Kombination von den ALS-, ULS- und TLS-Daten und einer manuellen Unterteilung der Punkte berechnet. Danach wurden alle Punktwolken der Waldstücke mit den Baumpositionen unterteilt, wodurch besonders für die ALS- und ULS-Daten für manche Bäume nur wenig Punkte bekannt sind @pang. Eine Visualisierung vom Unterschied ist in @auswertung_vergleich_scanner und @auswertung_vergleich2_scanner gegeben.
 
-// ALS: 6446
-// ULS_on: 74262
-// ULS_off: 58201
-// TLS: 1687505
-// BR02\single_trees\FagSyl_BR02_02
-
+// BR01\single_trees\QuePet_BR01_P21T14
 #figure(
-	caption: [Vergleich zwischen den unterschiedlichen Daten für den gleichen Baum.],
+	caption: [Vergleich zwischen den unterschiedlichen Daten für einen Baum mit wenig Punkten.],
 	grid(
 		columns: 1 * 4,
+		gutter: 3em,
+		subfigure(image("../images/crop/compare2_als.png"), caption: [ALS#linebreak()#number(1503) Punkte]),
+		subfigure(image("../images/crop/compare2_uls_off.png"), caption: [ULS-off#linebreak()#number(7156) Punkte]),
+		subfigure(image("../images/crop/compare2_uls_on.png"), caption: [ULS-on#linebreak()#number(6273) Punkte]),
+		subfigure(rect(width: 100%, height: 37%, radius: 5pt, align(center + horizon)[Keine Daten]), caption: [TLS#linebreak() -- Punkte]),
+	),
+) <auswertung_vergleich_scanner>
+
+// BR02\single_trees\FagSyl_BR02_02
+#figure(
+	caption: [Vergleich zwischen den unterschiedlichen Daten für einen Baum mit vielen Punkten.],
+	grid(
+		columns: 1 * 4,
+		gutter: 2em,
 		subfigure(image("../images/crop/compare_als.png"), caption: [ALS#linebreak()#number(6446) Punkte]),
 		subfigure(image("../images/crop/compare_uls_off.png"), caption: [ULS-off#linebreak()#number(58201) Punkte]),
 		subfigure(image("../images/crop/compare_uls_on.png"), caption: [ULS-on#linebreak()#number(74262) Punkte]),
 		subfigure(image("../images/crop/compare_tls.png"), caption: [TLS#linebreak()#number(1687505) Punkte]),
 	),
-) <auswertung_vergleich_scanner>
+) <auswertung_vergleich2_scanner>
+
+Für die Gesamthöhe vom Baum liegen weniger Messwerte vor, wodurch weniger Vergleiche für die Approximation möglich sind. Die Approximation für die Baumhöhe ist mit den ALS-, ULS- und TLS-Daten möglich.
 
 Die Berechnung vom Stammdurchmesser funktioniert für die TLS-Daten am besten. Der Stamm wird als Kreis approximiert, wodurch die berechneten Werte kleiner als die gemessenen Werte sind. Bei den ULS Daten ist eine Korrelation zu sehen, aber die Ergebnisse weichen stark von den gemessenen Werten ab. Mit den ALS-Daten kann der Stammdurchmesser nicht berechnet werden. Bei vielen Punktwolken waren zu wenig Datenpunkte im verwendeten Bereich für die Berechnung, wodurch der Standardwert von $50$ cm verwendet wurde.
 
 Auch die Berechnung von der Anfangshöhe der Baumkrone funktioniert mit den TLS-Daten am besten. Mit den ALS- und den ULS-Daten ist eine Approximation möglich, wodurch die Ergebnisse bei den ALS Daten weiter von den gemessenen Werten schwanken.
 
 Bei der Berechnung vom Durchmesser der Baumkrone sind die ALS-, ULS- und TLS-Daten geeignet. Durch die Approximation der Baumform als Kreis ist der berechnete Wert kleiner als der gemessene Wert. Bei den gemessenen Werten würde der Durchschnitt zwischen der größten Ausdehnung und zugehörigen orthogonalen Ausdehnung bestimmt.
-
-
-== Fazit
-
-Die Software ermöglicht den Übergang von den Punktdaten ohne weitere Informationen zu einer interaktiven Visualisierung vom Waldstück. Dadurch ist ein Überblick über das gescannte Waldstücke und einzelne Bäume möglich. Trotzdem gibt es noch Fehler bei der Methodik und Implementierung, welche ausgebessert werden können.
-
-Die Segmentierung unterteilt die Punkte in einzelne Bäume. Wenn die Kronen der Bäume klar getrennte Spitzen haben, werden diese problemlos unterteilt. Dadurch werden manche Waldstücke gut segmentiert, aber je näher die Kronen der Bäume zueinander sind, desto wahrscheinlicher werden mehrere Bäume zu einem Segment zusammengefasst. Vor der Segmentierung muss der Mindestabstand zwischen Segmenten und die Breite der Scheiben festgelegt werden. Die Parameter müssen passend für den Datensatz gewählt werden, was eine Anpassungsmöglichkeit, aber auch eine Fehlerquelle ist.
-
-Bei der Analyse von einem Baum werden Daten für jeden Punkt im Baum und für den gesamten Baum berechnet. Für die einzelnen Punkte werden Punktgröße, Normale für die Visualisierung und die lokale Krümmung problemlos berechnet. Die Berechnung vom Durchmesser funktioniert für die meisten Bereiche vom Baum, wird aber durch Punkte, welche nicht zum Baum gehören stark beeinflusst.
-
-Die charakteristischen Eigenschaften vom Baum können mit den genaueren TLS-Daten abgeschätzt werden, haben aber noch systematische Fehler, welche das Ergebnis verfälschen. Mit den ALS- und ULS-Daten werden größere Gebiete abgedeckt, dafür sind die berechneten Eigenschaften ungenauer. Besonders die Berechnung vom Durchmesser vom Stamm ist nur mit den TLS-Daten möglich.
-
-Die Triangulierung berechnet ein Mesh für die Segmente, welches von der Visualisierung angezeigt werden kann. Die Visualisierung kann die berechneten Daten ohne Probleme visualisieren. Durch die Detailstufen können auch größere Datenmengen interaktiv angezeigt werden.
-
-
-== Ausblick
-
-Momentan werden die ermittelten Daten nur für die Visualisierung verwendet. In der `project.json` sind die charakteristischen Eigenschaften für die Segmente gespeichert, aber auch Daten für die Visualisierung. Durch eine Trennung wird eine automatische Weiterverarbeitung der berechneten Eigenschaften erleichtert.
-
-Vor der Visualisierung müssen die Daten importiert werden. Je größer die Datenmenge, desto länger dauert der Import und während des Imports können die Daten noch nicht inspiziert werden. Die Möglichkeit die Zwischenergebnisse vom Importprozess anzuzeigen würde das Anpassen von Importparametern erleichtern und die Zeit verringert, ab der die ersten Ergebnisse sichtbar sind.
-
-Der Importer unterstützt momentan nur Dateien im LASzip-Format, wodurch Daten in anderen Formaten nicht verwendet werden können oder zuerst konvertiert werden müssen. Durch andere Importformate kann die Verwendung erweitert werden.
-
-Die Visualisierung kann Punktwolken auch aus anderen Quellen als Waldstücke anzeigen, ist aber stark an diesen Verwendungszweck angepasst. Durch einen zusätzlicher Importer, welcher für beliebige Datensätze geeignet ist kann die Visualisierung vielseitiger benutzt werden.

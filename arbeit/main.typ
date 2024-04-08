@@ -39,8 +39,8 @@ Wörter: #total-words
 
 #include "auswertung.typ"
 
-#include "appendix.typ"
+#include "fazit.typ"
 
-#include "glossar.typ"
+#include "appendix.typ"
 
 #bibliography("bibliographie.bib")

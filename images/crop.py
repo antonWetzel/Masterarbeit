@@ -8,6 +8,7 @@ patterns = [
 	("triangulation_", (760, 15, 1920 - 1219, 1000 - 965)),
 	("compare", (747, 27, 1920 - 1140, 1000 - 982)),
 	("prop_", (1077, 83, 1073, 80)),
+	("compare2", (860, 42, 746, 32)),
 ]
 
 from PIL import Image

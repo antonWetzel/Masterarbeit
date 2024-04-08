@@ -17,6 +17,7 @@
 	})
 	sub_figure.step()
 	set par(justify: false)
+	set align(bottom)
 	box(width: width, align(center, {
 		content
 		if caption != none {

@@ -40,10 +40,11 @@
 
 	show heading.where(level: 1): it => {
 		pagebreak(weak: true)
-		pad(top: 0.5cm, it, bottom: 0.1cm)
+		pad(it, bottom: 0.1cm)
 	}
+
 	show heading.where(level: 2): it => {
-		pad(top: 0.2cm, it, bottom: 0.1cm)
+		pad(top: 0.5cm, it, bottom: 0.1cm)
 	}
 	show heading.where(level: 3): it => pad(top: 0.3cm, it, bottom: 0.1cm)
 
@@ -68,7 +69,7 @@
 	footnote(raw(_link))
 }
 
-#let number = (number) => {
+#let number = (number, unit: none) => {
 	let number = str(float(number))
 	let split = number.split(".")
 	let res = []
@@ -91,6 +92,9 @@
 				res += sym.space.thin
 			}
 		}
+	}
+	if unit != none {
+		res += [ ] + unit
 	}
 	return box(res)
 }

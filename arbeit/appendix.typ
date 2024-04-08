@@ -4,94 +4,22 @@
 = Appendix
 
 
-== Systemeigenschaften <systemeigenschaften>
+== Glossar
 
-#figure(
-	caption: [Überblick über die Systemeigenschaften],
-	table(
-		columns: (1fr, 2fr),
-		align: (left, right),
-		[Betriebssystem], [Windows 11],
-		[Prozessor],      [Intel(R) Core(TM) i7-9700KF CPU \@ 3.60 GHz],
-		[Grafikkarte],    [NVIDIA GeForce GTX 1660 SUPER],
-		[RAM],            [2 x G.Skill F4-3200C16-8GIS],
-		[Festplatte],     [SanDisk SSD PLUS 2000GB],
-	),
-)
+/ Koordinatensystem: ist eine Menge von Achsen, mit den eine Position genau beschrieben werden kann. Im Normalfall werden kartesische Koordinaten verwendet, welche so orientiert sind, dass die x-Achse nach rechts, die y-Achse nach oben und die z-Achse nach hinten zeigt.
+/ Punkt: ist eine dreidimensionale Position, welcher zusätzlichen Informationen zugeordnet werden können.
+/ Punktwolke: ist eine Menge von Punkten. Für alle Punkte sind die gleichen zusätzlichen Informationen vorhanden.
+/ Normale: ist ein normalisierter dreidimensionaler Vektor, welcher die Orientierung einer Oberfläche von einem Objekt angibt. Der Vektor ist dabei orthogonal zur Oberfläche, kann aber in das Objekt oder aus dem Objekt gerichtet sein.
 
-#figure(
-	caption: [Prozessoreigenschaften],
-	table(
-		columns: (1fr, 2fr),
-		align: (left, right),
-		[Physische Kerne],         $8$,
-		[Logische Kerne],          $8$,
-		[Maximale Taktrate],       [#number(4.6) GHz],
-		[Cachegröße (L1, L2, L3)], [$512 "KiB"$, $2 "MiB"$, $12 "MiB"$],
-	),
-)
-
-#figure(
-	caption: [Grafikkarteneigenschaften],
-	table(
-		columns: (1fr, 2fr),
-		align: (left, right),
-		[Basistaktung],          $1530 "Mhz"$,
-		[Boost-Taktung],         $1785 "Mhz"$,
-		[Speicherkonfiguration], $6 "GB GDDR6"$,
-		[Speicherschnittstelle], $192 "Bit"$,
-	),
-)
-
-#figure(
-	caption: [RAM-Eigenschaften],
-	table(
-		columns: (1fr, 2fr),
-		align: (left, right),
-		[Größe],    $2 times 8 "GiB"$,
-		[Taktrate], $2133 "MHz"$,
-	),
-)
-
-#figure(
-	caption: [Sequenzielle Lese- und Schreibgeschwindigkeit der Festplatte mit $4 "KiB"$ Blöcken für unterschiedliche Dateigrößen.],
-	table(
-		columns: (1fr, 1fr, 1fr, 1fr),
-		align: (left, right, right, right),
-		[*Aktion*],  [*1 GiB*],      [*5 GiB*],      [*10 GiB*],
-		[Lesen],     $776 "MiB/s"$,  $384 "MiB/s"$,  $218 "MiB/s"$,
-		[Schreiben], $1739 "MiB/s"$, $1929 "MiB/s"$, $270 "MiB/s"$,
-	),
-)
-
-
-== Messwerte vom Import <messwerte>
-
-#[
-	#set text(size: 0.9em)
-	#set par(justify: false)
-	#let data = csv("../data/werte.tsv", delimiter: "\t")
-	#figure(
-		table(
-			align: (x, y) => if y == 0 { center } else { (left, left, right, right, right).at(x) },
-			columns: (1fr, 2.5fr, 1fr, 1fr, 1.2fr),
-			[#box(width: 2.2cm)[*Datensatz*]], [*Datei*], [*Daten*#linebreak() (Punkte)], [*Segmente* (Punkte)], [#box[*Detailstufen*]#linebreak() (Punkte)],
-			..data.flatten(),
-		),
-		caption: [Messwerte (Verwendete Datei und Punktanzahl).],
-	) <messwerte_1>
-
-	#let data = csv("../data/werte_2.tsv", delimiter: "\t")
-	#figure(
-		table(
-			align: (x, y) => if y == 0 { center } else { (left, right, right, right, right, right).at(x) },
-			columns: (1fr, 1fr, 1fr, 1.5fr, 1fr, 1fr),
-			[#box(width: 2.2cm)[*Datensatz*]], [*Segmente* (Anzahl)], [*Laden* (Sekunden)], [*Segmentierung* (Sekunden)], [*Analyse* (Sekunden)], [*Detailstufen* (Sekunden)],
-			..data.flatten(),
-		),
-		caption: [Messwerte (Anzahl Segmente und Importgeschwindigkeit).],
-	) <messwerte_2>
-]
+/ Voxel: ist ein Würfel im dreidimensionalen Raum. Die Position und Größe vom Voxel kann explizit abgespeichert oder relative zu den umliegenden Voxeln bestimmt werden.
+/ Tree: ist eine Datenstruktur, bestehend aus Knoten, welche wiederum Kinderknoten haben können. Die Knoten selber können weitere Informationen enthalten.
+/ Octree: ist eine Baumdatenstruktur, bei dem ein Knoten acht Kinderknoten haben kann. Mit einem Octree kann ein Voxel aufgeteilt werden. Jeder Knoten gehört zu einem Voxel, welcher gleichmäßig mit den Kinderknoten weiter unterteilt wird.
+/ Quadtree: ist eine Baumdatenstruktur, bei dem ein Knoten vier Kinderknoten haben kann. Statt eines Voxels bei einem Octree, wird ein zweidimensionales Quadrat unterteilen.
+/ Leaf-Knoten: ist ein Knoten, welcher keine weiteren Kinderknoten hat. Für Punktwolken gehört jeder Punkt zu genau einem Leaf-Knoten.
+/ Branch-Knoten: ist ein Knoten, welcher weitere Kinderknoten hat.
+/ Root-Knoten: ist der erste Knoten im Tree, alle anderen Knoten sind direkte oder indirekte Kinderknoten vom Root-Knoten.
+/ KD-Baum: ist eine Datenstruktur, um im $k$-dimensionalen Raum für eine Position die nächsten Punkte zu bestimmen.
+/ Greedy-Algorithmus: ist eine Kategorie von Algorithmen, bei denen das Ergebnis schrittweise berechnet wird. Bei jedem Schritt wird mit den momentanen Informationen die beste Entscheidung getroffen, wodurch das Ergebnis schnell, aber meist nicht global optimal berechnet wird.
 
 
 == KD-Baum <kd_baum>
@@ -271,3 +199,93 @@ In @quadtree und @octree sind Beispiele in 2D und 3D gegeben.
 === Suchanfrage
 
 Bei einer Suchanfrage wird vom Root-Knoten aus der Leaf-Knoten gesucht, welche die gesuchte Position enthält. Dafür wird so lange der momentane Knoten ein Branch-Knoten ist berechnet, welcher der Kinderknoten die Position enthält und von diesem aus weiter gesucht.
+
+
+== Systemeigenschaften <systemeigenschaften>
+
+#figure(
+	caption: [Überblick über die Systemeigenschaften],
+	table(
+		columns: (1fr, 2fr),
+		align: (left, right),
+		[Betriebssystem], [Windows 11],
+		[Prozessor],      [Intel(R) Core(TM) i7-9700KF CPU \@ 3.60 GHz],
+		[Grafikkarte],    [NVIDIA GeForce GTX 1660 SUPER],
+		[RAM],            [2 x G.Skill F4-3200C16-8GIS],
+		[Festplatte],     [SanDisk SSD PLUS 2000GB],
+	),
+)
+
+#figure(
+	caption: [Prozessoreigenschaften],
+	table(
+		columns: (1fr, 2fr),
+		align: (left, right),
+		[Physische Kerne],         $8$,
+		[Logische Kerne],          $8$,
+		[Maximale Taktrate],       [#number(4.6) GHz],
+		[Cachegröße (L1, L2, L3)], [$512 "KiB"$, $2 "MiB"$, $12 "MiB"$],
+	),
+)
+
+#figure(
+	caption: [Grafikkarteneigenschaften],
+	table(
+		columns: (1fr, 2fr),
+		align: (left, right),
+		[Basistaktung],          $1530 "Mhz"$,
+		[Boost-Taktung],         $1785 "Mhz"$,
+		[Speicherkonfiguration], $6 "GB GDDR6"$,
+		[Speicherschnittstelle], $192 "Bit"$,
+	),
+)
+
+#figure(
+	caption: [RAM-Eigenschaften],
+	table(
+		columns: (1fr, 2fr),
+		align: (left, right),
+		[Größe],    $2 times 8 "GiB"$,
+		[Taktrate], $2133 "MHz"$,
+	),
+)
+
+#figure(
+	caption: [Sequenzielle Lese- und Schreibgeschwindigkeit der Festplatte mit $4 "KiB"$ Blöcken für unterschiedliche Dateigrößen.],
+	table(
+		columns: (1fr, 1fr, 1fr, 1fr),
+		align: (left, right, right, right),
+		[*Aktion*],  [*1 GiB*],      [*5 GiB*],      [*10 GiB*],
+		[Lesen],     $776 "MiB/s"$,  $384 "MiB/s"$,  $218 "MiB/s"$,
+		[Schreiben], $1739 "MiB/s"$, $1929 "MiB/s"$, $270 "MiB/s"$,
+	),
+)
+
+
+== Messwerte vom Import <messwerte>
+
+#[
+	#set text(size: 0.85em)
+	#set par(justify: false)
+	#let data = csv("../data/werte.tsv", delimiter: "\t")
+	#figure(
+		table(
+			align: (x, y) => if y == 0 { center } else { (left, left, right, right, right).at(x) },
+			columns: (1fr, 2.5fr, 1fr, 1fr, 1.2fr),
+			[#box(width: 2.2cm)[*Datensatz*]], [*Datei*], [*Daten*#linebreak() (Punkte)], [*Segmente* (Punkte)], [#box[*Detailstufen*]#linebreak() (Punkte)],
+			..data.flatten(),
+		),
+		caption: [Messwerte (Verwendete Datei und Punktanzahl).],
+	) <messwerte_1>
+
+	#let data = csv("../data/werte_2.tsv", delimiter: "\t")
+	#figure(
+		table(
+			align: (x, y) => if y == 0 { center } else { (left, right, right, right, right, right).at(x) },
+			columns: (1fr, 1fr, 1fr, 1.5fr, 1fr, 1fr),
+			[#box(width: 2.2cm)[*Datensatz*]], [*Segmente* (Anzahl)], [*Laden* (Sekunden)], [*Segmentierung* (Sekunden)], [*Analyse* (Sekunden)], [*Detailstufen* (Sekunden)],
+			..data.flatten(),
+		),
+		caption: [Messwerte (Anzahl Segmente und Importgeschwindigkeit).],
+	) <messwerte_2>
+]

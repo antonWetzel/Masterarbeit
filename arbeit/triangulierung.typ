@@ -156,7 +156,7 @@ Um den ersten Punkt $p$ zu finden, werden zuerst alle möglichen Punkte bestimmt
 
 #figure(
 	caption: [Konstruktion des Abstands der $alpha$-Kugel vom Mittelpunkt der Kante],
-	cetz.canvas(length: 1cm, {
+	cetz.canvas(length: 0.5cm, {
 		import cetz.draw: *
 		arc((4, 3), start: 10deg, delta: -200deg, anchor: "origin", radius: 5, stroke: gray)
 
@@ -195,7 +195,7 @@ Für jeden Kandidaten $p$ wird berechnet, wie weit die Kugel um die Kante geroll
 
 #figure(
 	caption: [Berechnung von Zentrum der $alpha$-Kugel und zugehöriger Winkel für einen Kandidatenpunkt],
-	cetz.canvas(length: 2cm, {
+	cetz.canvas(length: 1.2cm, {
 		import cetz.draw: *
 
 		line((0, 0, 0), (0, 0, 2), (-2.4, 0, 1), close: true, name: "wow")

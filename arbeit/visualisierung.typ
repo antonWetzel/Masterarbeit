@@ -15,17 +15,19 @@ Um einen Kreis zu rendern, kann ein beliebiges Polygon gerendert werden, solange
 
 === Mögliche Polygone
 
-Zuerst wird ein Kreis mit Position $(0, 0)$ und Radius $1$ benötigt. Mithilfe der Position vom Punkt und der Kamera wird der Kreis transformiert, dass die korrekten Pixel eingefärbt werden.
+Zuerst wird ein Kreis mit Position $(0, 0)$ und Radius $1$ benötigt. Mithilfe der Position vom Punkt und der Kamera wird der Kreis transformiert, dass die korrekten Pixel eingefärbt werden. In @visualisierung_polygon ist die Konstruktion für mögliche Polygone gegeben.
 
-Das kleinste passende Dreieck ist ein gleichseitiges Dreieck. In @dreieck_größe ist die Konstruktor für die Seitenlänge gegeben. Ein mögliches Dreieck hat die Eckpunkte $(-tan(60°), -1)$, $(tan(60°), -1)$ und $(0, 2)$. Für das Dreieck werden dadurch drei Ecken und eine Fläche von $(w dot h) / 2 = (tan(60°) dot 2 dot 3) / 2 = tan(60°) dot 3 approx 5.2$ benötigt.
+#figure(caption: [Seitenlänge für Polygone, welche den Einheitskreis enthalten.], grid(
+	columns: 2,
+	subfigure(
+		caption: [Dreieck],
+		cetz.canvas(length: 1.8cm, {
+			import cetz.draw: *
 
-#figure(
-	caption: [Seitenlänge für das kleinste gleichseitige Dreieck, welches den Einheitskreis enthält.],
-	cetz.canvas(length: 2.0cm, {
-		import cetz.draw: *
-
-		let triangle() = {
+			circle((0, 0), radius: 1, fill: silver)
+			line((-1.73, -1), (-0.86, 0.5), (0, 0), close: true)
 			line((-1.73, -1), (0, -1), (0, 0), close: true)
+			line((0, -1), (1.73, -1), (0, 2), close: true)
 
 			arc((-1.73, -1), start: 0deg, stop: 30deg, anchor: "origin", radius: 0.6)
 			content((-1.45, -0.9), [$30°$], anchor: "west")
@@ -36,55 +38,37 @@ Das kleinste passende Dreieck ist ein gleichseitiges Dreieck. In @dreieck_größ
 			arc((0, 0), start: 210deg, stop: 270deg, anchor: "origin", radius: 0.5)
 			content((-0.2, -0.2), [$60°$], anchor: "north")
 
-			content((0, -0.5), [$1$], anchor: "west", padding: 0.05)
-		}
+			content((0, -1), $w = 2 dot tan(60°) approx 3,46$, anchor: "north", padding: 0.1)
+			line((0, 0), (0, 2), (-0.86, 0.5))
+			content((0, 0), $h = 1 + 1 / cos(60°) = 3$, angle: 90deg, anchor: "north", padding: 0.1)
+			circle((0, 0), radius: 0.05, fill: black, stroke: none)
+		}),
+	), subfigure(
+		caption: [Quadrat],
+		cetz.canvas(length: 1.8cm, {
+			import cetz.draw: *
+			line((-1, -1), (-1, 1), (1, 1), (1, -1), close: true)
+			circle((0, 0), radius: 1, fill: silver)
+			circle((0, 0), radius: 0.05, fill: black, stroke: none)
+			line((-1, -1), (1, 1))
+			line((-1, 0), (0, 0), (0, -1))
+			content((-0.5, 0.0), $1$, anchor: "south", padding: 0.1)
+			content((0.0, -0.5), $1$, anchor: "west", padding: 0.1)
+			content((0, -1), $a = 2$, anchor: "north", padding: 0.1)
+		}),
+	),
+)) <visualisierung_polygon>
 
-		circle((0, 0), radius: 1)
-		line((-1.73, -1), (-0.86, 0.5), (0, 0), close: true)
-		triangle()
+Das kleinste passende Dreieck ist ein gleichseitiges Dreieck. Ein mögliches Dreieck hat die Eckpunkte $(-tan(60°), -1)$, $(tan(60°), -1)$ und $(0, 2)$. Für das Dreieck werden drei Ecken und eine Fläche von $(w dot h) / 2 = (tan(60°) dot 2 dot 3) / 2 = tan(60°) dot 3 approx #number(5.2)$ benötigt.
 
-		content((-1.73 / 2, -1), [$x$], anchor: "north", padding: 0.1)
-		content(((-1.73, -1), 0.9, (0, 0)), angle: 30deg, [$y$], anchor: "south", padding: 0.1)
-		line((0, 0), (0, 2), (-0.86, 0.5))
-		content(((0, 0), 1.2, (0, 2)), [$y$], anchor: "west", padding: 0.1)
-		circle((0, 0), radius: 0.05, fill: black, stroke: none)
-
-		set-origin((3, 0))
-
-		triangle()
-
-		content(((-1.73, -0.98), 1.0, (0, 0.02)), angle: 30deg, [$y = 1 / cos(60°) = 2$], anchor: "south", padding: 0.1)
-		circle((0, 0), radius: 0.05, fill: black, stroke: none)
-
-		content((-1.73 / 2, -1), [$x = tan(60°) approx 1,73$], anchor: "north", padding: 0.1)
-
-	}),
-) <dreieck_größe>
-
-Das kleinste mögliche Viereck ist das Quadrat mit Seitenlänge $2$. In @vis_viereck_polygon ist die Konstruktion gegeben. Um diesen anzuzeigen, werden zwei Dreiecke benötigt. Für die beiden Dreiecke werden dadurch sechs Ecken und eine Fläche von $a^2 =2^2 = 4$ benötigt.
-
-#figure(
-	caption: [Seitenlänge für das kleinste Quadrat, welches den Einheitskreis enthält.],
-	cetz.canvas(length: 2.0cm, {
-		import cetz.draw: *
-
-		line((-1, -1), (-1, 1), (1, 1), (1, -1), close: true)
-		circle((0, 0), radius: 0.05, fill: black, stroke: none)
-		circle((0, 0), radius: 1)
-		line((-1, -1), (1, 1))
-		line((-1, 0), (0, 0), (0, -1))
-		content((-0.5, 0.0), $1$, anchor: "south", padding: 0.1)
-		content((0.0, -0.5), $1$, anchor: "west", padding: 0.1)
-
-	}),
-) <vis_viereck_polygon>
+Das kleinste mögliche Viereck ist das Quadrat mit Seitenlänge $2$. Um diesen anzuzeigen, wird das Quadrat entlang der Diagonalen in zwei Dreiecke unterteilt. Für die beiden Dreiecke werden sechs Ecken und eine Fläche von $a^2 =2^2 = 4$ benötigt.
 
 In @visualiserung_vergleich_polygon ist ein Vergleich für eine Punktwolke gerendert mit unterschiedlichen Polygonen. Für Polygone mit mehr Ecken, wird der benötigte Bereich kleiner, es werden aber auch mehr Ecken benötigt.
 
 #let boxed(p, caption: []) = subfigure(box(image(p), stroke: 1pt, clip: true), caption: caption)
 
 #figure(
-	caption: [Die gleiche Punktwolke mit unterschiedlichen Polygonen und Kreisen für die Punkte.],
+	caption: [Eine Punktwolke mit einem Polygonen oder Kreis für jeden Punkt.],
 	grid(
 		columns: 1 * 3,
 		gutter: 1em,
@@ -97,78 +81,79 @@ In @visualiserung_vergleich_polygon ist ein Vergleich für eine Punktwolke geren
 
 === Anzeigen im dreidimensionalen Raum
 
-Für jeden Punkt wird mit der Position $p$, Normalen $n$ und Größe $s$ die Position der Eckpunkte der Dreiecke im dreidimensionalen Raum bestimmt. Dafür werden zwei Vektoren bestimmt, welche paarweise zueinander und zur Normalen orthogonal sind.
+Für jeden Punkt wird mit der Position $p$, Normalen $n$ und Größe $s$ und den Koordinaten $(x_i, y_i)$ vom Eckpunkt $i$ wird die zugehörige Position im dreidimensionalen Raum bestimmt. Wie in @dreieck_kreuzprodukt werden zuerst zwei Vektoren bestimmt, welche paarweise zueinander und zur Normalen orthogonal sind. Mit den Vektoren wird dann die dreidimensionale Position vom Eckpunkt berechnet.
+
+#figure(caption: [Transformation der Eckpunkte mit der Normalen.], grid(
+	columns: 2,
+	subfigure(
+		caption: [$a$ und $b$ berechnen],
+		cetz.canvas(length: 2cm, {
+			import cetz.draw: *
+
+			let test((x, y, z), name: "", paint: gray) = {
+				let l = x * x + y * y + z * z
+				let l = calc.sqrt(l) / 2
+				let x = x / l
+				let y = y / l
+				let z = z / l
+
+				line((x, 0, 0), (x, 0, z), (0, 0, z), stroke: (paint: paint, dash: "dashed"))
+				line((x, 0, z), (x, y, z), stroke: (paint: paint, dash: "dashed"))
+				line((0, 0, 0), (x + z / 2, y + z / 2), stroke: paint, mark: (end: ">", fill: paint), name: name)
+			}
+
+			test((-56, -182, 70), name: "b", paint: red)
+			content("b.end", [$b$], anchor: "east", padding: 0.1)
+
+			test((-28, 14, 14), name: "a", paint: green)
+			content("a.end", [$a$], anchor: "east", padding: 0.1)
+
+			test((3, 1, 5), name: "n", paint: black)
+			content("n.end", [$n$], anchor: "west", padding: 0.1)
+
+			line((-2, 0, 0), (2, 0, 0), stroke: gray + 2pt, mark: (end: ">", fill: gray), name: "x")
+			line((0, -2, 0), (0, 2, 0), stroke: gray + 2pt, mark: (end: ">", fill: gray), name: "y")
+			line((-1, -1), (1, 1, 0), stroke: gray + 2pt, mark: (end: ">", fill: gray), name: "z")
+			content("x.end", [$x$], anchor: "north", padding: 0.1)
+			content("y.end", [$y$], anchor: "west", padding: 0.1)
+			content("z.end", [$z$], anchor: "west", padding: 0.1)
+
+			test((1, 5, -3), name: "n_m", paint: blue)
+			content("n_m.end", [$(n_y, n_z, -n_x)$], anchor: "south", padding: 0.1)
+		}),
+	), subfigure(
+		caption: [Eckpunkt berechnen],
+		cetz.canvas(length: 2cm, {
+			import cetz.draw: *
+
+			line((0, 0, 0), (0, 1, 0), mark: (end: ">", fill: black), name: "n")
+			line((0, 0, 0), (2, 0, 0), mark: (end: ">", fill: black), name: "a")
+			line((0, 0), (1, 1), mark: (end: ">", fill: black), name: "b")
+
+			content("n.end", [$n$], padding: 0.1, anchor: "east")
+			content("a.end", [$a$], padding: 0.1, anchor: "north")
+			content("b.end", [$b$], padding: 0.1, anchor: "west")
+
+			line((0, 0, 0), (0, 0, 1.5), stroke: green + 2pt)
+			line((0, 0, 0), (1.5, 0, 0), stroke: red + 2pt)
+			line((0, 0, 1.5), (1.5 + 1.5 / 2, 1.5 / 2), (1.5, 0, 0), stroke: (dash: "dashed"))
+
+			content((1.5 + 1.5 / 2, 1.5 / 2), [$p_i$], padding: 0.1, anchor: "west")
+
+			content((1.5 / 2, 0), [$x_i dot s$], anchor: "north", padding: 0.1)
+			content((0.4, 0.4), [$y_i dot s$], anchor: "west", padding: 0.1)
+
+			circle((0, 0), fill: black, radius: 0.0)
+			circle((1.5 + 1.5 / 2, 1.5 / 2), fill: black, radius: 0.02)
+
+			content((0, 0), [$p$], anchor: "east", padding: 0.1)
+		}),
+	)
+)) <dreieck_kreuzprodukt>
 
 Für den ersten Vektor $a$ wird mit der Normalen $n = (n_x, n_y, n_z)$ das Kreuzprodukt $a = (n_x, n_y, n_z) times (n_y, n_z, -n_x)$ bestimmt. Weil $|n| > 0$ ist, sind $(n_y, n_z, -n_x)$ und $n$ unterschiedlich. $a$ muss noch für die weiteren Berechnungen normalisiert werden. Für den zweiten Vektor $b$ wird das Kreuzprodukt $b = n times a$ bestimmt. Weil das Kreuzprodukt zweier Vektoren orthogonal zu beiden Vektoren ist, sind $n$, $a$ und $b$ paarweise orthogonal. Ein Beispiel ist in @dreieck_kreuzprodukt gegeben.
 
-#figure(
-	caption: [Beispiel für die Berechnung von $a$ und $b$ paarweise orthogonal zu $n$.],
-	cetz.canvas(length: 2cm, {
-		import cetz.draw: *
-
-		let test((x, y, z), name: "", paint: gray) = {
-			let l = x * x + y * y + z * z
-			let l = calc.sqrt(l) / 2
-			let x = x / l
-			let y = y / l
-			let z = z / l
-
-			line((x, 0, 0), (x, 0, z), (0, 0, z), stroke: (paint: paint, dash: "dashed"))
-			line((x, 0, z), (x, y, z), stroke: (paint: paint, dash: "dashed"))
-			line((0, 0, 0), (x + z / 2, y + z / 2), stroke: paint, mark: (end: ">", fill: paint), name: name)
-		}
-
-		test((-56, -182, 70), name: "b", paint: red)
-		content("b.end", [$b$], anchor: "east", padding: 0.1)
-
-		test((-28, 14, 14), name: "a", paint: green)
-		content("a.end", [$a$], anchor: "east", padding: 0.1)
-
-		test((3, 1, 5), name: "n", paint: black)
-		content("n.end", [$n$], anchor: "west", padding: 0.1)
-
-		line((-2, 0, 0), (2, 0, 0), stroke: gray + 2pt, mark: (end: ">", fill: gray), name: "x")
-		line((0, -2, 0), (0, 2, 0), stroke: gray + 2pt, mark: (end: ">", fill: gray), name: "y")
-		line((-1, -1), (1, 1, 0), stroke: gray + 2pt, mark: (end: ">", fill: gray), name: "z")
-		content("x.end", [$x$], anchor: "north", padding: 0.1)
-		content("y.end", [$y$], anchor: "west", padding: 0.1)
-		content("z.end", [$z$], anchor: "west", padding: 0.1)
-
-		test((1, 5, -3), name: "n_m", paint: blue)
-		content("n_m.end", [$(n_y, n_z, -n_x)$], anchor: "south", padding: 0.1)
-	}),
-) <dreieck_kreuzprodukt>
-
-Die Vektoren $a$ und $b$ spannen eine Ebene auf, welche orthogonal zu $n$ ist. Für den Eckpunkt $i$ vom Dreieck, mit den Koordinaten $(x_i, y_i)$, wird die Position $p_i = p + a * x_i * s + b * y_i * s$ berechnet werden. In @dreieck_eckpunkt ist die Berechnung dargestellt.
-
-#figure(
-	caption: [Berechnung von einem Eckpunkt.],
-	cetz.canvas(length: 2cm, {
-		import cetz.draw: *
-
-		line((0, 0, 0), (0, 1, 0), mark: (end: ">", fill: black), name: "n")
-		line((0, 0, 0), (2, 0, 0), mark: (end: ">", fill: black), name: "a")
-		line((0, 0), (1, 1), mark: (end: ">", fill: black), name: "b")
-
-		content("n.end", [$n$], padding: 0.1, anchor: "east")
-		content("a.end", [$a$], padding: 0.1, anchor: "north")
-		content("b.end", [$b$], padding: 0.1, anchor: "west")
-
-		line((0, 0, 0), (0, 0, 1.5), stroke: green + 2pt)
-		line((0, 0, 0), (1.5, 0, 0), stroke: red + 2pt)
-		line((0, 0, 1.5), (1.5 + 1.5 / 2, 1.5 / 2), (1.5, 0, 0), stroke: (dash: "dashed"))
-
-		content((1.5 + 1.5 / 2, 1.5 / 2), [$p_i$], padding: 0.1, anchor: "west")
-
-		content((1.5 / 2, 0), [$x_i*s$], anchor: "north", padding: 0.1)
-		content((0.4, 0.4), [$y_i*s$], anchor: "west", padding: 0.1)
-
-		circle((0, 0), fill: black, radius: 0.0)
-		circle((1.5 + 1.5 / 2, 1.5 / 2), fill: black, radius: 0.02)
-
-		content((0, 0), [$p$], anchor: "east", padding: 0.1)
-	}),
-) <dreieck_eckpunkt>
+Die Vektoren $a$ und $b$ spannen dadurch eine Ebene auf, welche orthogonal zu $n$ ist. Für den Eckpunkt vom Dreieck wird die Position $p_i = p + a * x_i * s + b * y_i * s$ berechnet.
 
 
 == Detailstufen
