@@ -8,14 +8,14 @@
 
 Der benutze Datensatz @data beinhaltet $12$ Hektar Waldfläche in Deutschland, Baden-Württemberg. Die Daten sind mit Laserscans aufgenommen, wobei die Scans von Flugzeugen (ALS#footnote([aircraft laser scan])), Drohnen (ULS#footnote([uncrewed aerial vehicle laser scan])) und vom Boden (TLS#footnote([terrestrial laser scan])) aus durchgeführt wurden. Dabei entstehen 3D-Punktwolken, welche im komprimiert LAS Dateiformat gegeben sind.
 
-Für die meisten Waldstücke existieren ALS-, ULS- und TLS-Daten. Dabei enthalten die ALS-Daten die wenigsten und die TLS-Daten die meisten Punkte. Bei den ALS- und ULS-Daten sind die Punkte gleichmäßig über das gescannte Gebiet verteilt. Bei den TLS-Daten wird von einem zentralen Punkt aus gescannt, wodurch die Punktedichte nach außen immer weiter abnimmt.
+Für die meisten Waldgebiete existieren ALS-, ULS- und TLS-Daten. Dabei enthalten die ALS-Daten die wenigsten und die TLS-Daten die meisten Punkte. Bei den ALS- und ULS-Daten sind die Punkte gleichmäßig über das gescannte Gebiet verteilt. Bei den TLS-Daten wird von einem zentralen Punkt aus gescannt, wodurch die Punktedichte nach außen immer weiter abnimmt.
 
 Der Datensatz ist bereits in einzelne Bäume unterteilt. Zusätzlich wurden für $6$ Hektar die Baumart, Höhe, Stammdurchmesser auf Brusthöhe und Anfangshöhe und Durchmesser der Krone gemessen. Mit den bereits bestimmten Eigenschaften können automatisch berechnete Ergebnisse validiert werden.
 
 
 == Importgeschwindigkeit
 
-Für den Import sind in @auswertung_import_geschwindigkeit die Importgeschwindigkeiten in Punkte pro Sekunde gegeben. Die genauen Messwerte sind in @messwerte und die Eigenschaften vom verwendeten System sind in @systemeigenschaften gelistet. Für jedes Waldstück wurde ein zufälliger Datensatz von den ALS-, ULS- und TLS-Daten verwendet.
+Für den Import sind in @auswertung_import_geschwindigkeit die Importgeschwindigkeiten in Punkte pro Sekunde gegeben. Die genauen Messwerte sind in @messwerte und die Eigenschaften vom verwendeten System sind in @systemeigenschaften gelistet. Für jedes Waldgebiet wurde jeweils ein zufälliger Datensatz von den ALS-, ULS- und TLS-Daten verwendet.
 
 #figure(
 	caption: [Geschwindigkeit vom Import in Punkte pro Sekunde.],
@@ -32,7 +32,7 @@ In @auswertung_import_phasen ist die Dauer für die einzelnen Phasen vom Import 
 ) <auswertung_import_phasen>
 
 
-== Segmentierung von Waldstücken
+== Segmentierung von Waldgebieten
 
 Ein Beispiel für eine Segmentierung ist in @segmentierung_ergebnis gegeben. Die meisten Bäume werden korrekt erkannt und zu unterschiedlichen Segmenten zugeordnet. Je weiter die Spitzen der Bäume voneinander getrennt sind, desto besser können die Bäume voneinander getrennt werden.
 
@@ -168,7 +168,7 @@ In @analyse_baumeigenschaften werden die korrekten gemessenen Werte für die Bau
 	),
 ) <analyse_baumeigenschaften>
 
-Für den Vergleich wurden die einzelnen Bäume aus dem Datensatz verwenden. Die Positionen der Bäume wurde mit einer Kombination von den ALS-, ULS- und TLS-Daten und einer manuellen Unterteilung der Punkte berechnet. Danach wurden alle Punktwolken der Waldstücke mit den Baumpositionen unterteilt, wodurch besonders für die ALS- und ULS-Daten für manche Bäume nur wenig Punkte bekannt sind @pang. Eine Visualisierung vom Unterschied ist in @auswertung_vergleich_scanner und @auswertung_vergleich2_scanner gegeben.
+Für den Vergleich wurden die einzelnen Bäume aus dem Datensatz verwenden. Die Positionen der Bäume wurde mit einer Kombination von den ALS-, ULS- und TLS-Daten und einer manuellen Unterteilung der Punkte berechnet. Danach wurden alle Punktwolken der Waldgebiete mit den Baumpositionen unterteilt, wodurch besonders für die ALS- und ULS-Daten für manche Bäume nur wenig Punkte bekannt sind @pang. Eine Visualisierung vom Unterschied ist in @auswertung_vergleich_scanner und @auswertung_vergleich2_scanner gegeben.
 
 // BR01\single_trees\QuePet_BR01_P21T14
 #figure(

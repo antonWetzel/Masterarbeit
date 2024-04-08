@@ -10,7 +10,7 @@
 	== Abstrakt
 
 	#align(left)[
-		Diese Arbeit beschäftigt sich mit der Verarbeitung und Visualisierung von Punktwolken von Waldstücken. Dabei wird der komplette Ablauf vom Datensatz bis zur Visualisierung der einzelnen Bäume mit relevanten Informationen durchgeführt.
+		Diese Arbeit beschäftigt sich mit der Verarbeitung und Visualisierung von Punktwolken von Waldgebieten. Dabei wird der komplette Ablauf vom Datensatz bis zur Visualisierung der einzelnen Bäume mit relevanten Informationen durchgeführt.
 
 		Ein Datensatz ist dabei eine ungeordnete Liste von Punkten, für die nur die dreidimensionale Position bekannt ist.
 

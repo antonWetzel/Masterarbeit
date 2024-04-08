@@ -6,24 +6,24 @@
 
 == Motivation
 
-Größere Gebiete wie Teile von Wäldern können mit 3D-Scanners abgetastet werden. Dabei wird vom Boden aus ein Waldstück abgetastet oder der Scanner ist an einem Flugzeug oder einer Drohne befestigt, womit der gewünschte Bereich abgeflogen wird. Dabei entsteht eine Punktwolke, bei der für jeden Punkt die Position bekannt ist.
+Größere Gebiete wie Teile von Wäldern können mit 3D-Scanners abgetastet werden. Dabei wird vom Boden aus ein Waldgebiet abgetastet oder der Scanner ist an einem Flugzeug oder einer Drohne befestigt, womit der gewünschte Bereich abgeflogen wird. Dabei entsteht eine Punktwolke, bei der für jeden Punkt die Position bekannt ist.
 
 Aus den Punkten sind relevante Informationen aber nicht direkt ersichtlich. Eine manuelle Weiterverarbeitung ist durch die großen Datenmengen unrealistisch, weshalb automatisierte Methoden benötigt werden.
 
 Vor der Analyse müssen die Punktwolken zuerst in die einzelnen Bäume unterteilt werden. Danach kann für jeden Baum die gewünschten Eigenschaften berechnet werden. Dazu gehört die Höhe vom Stamm, der Krone und dem gesamten Baum und der Durchmesser vom Stamm und der Baumkrone.
 
-Eine Visualisierung der Punktwolke und der berechneten Daten ermöglicht ein Überblick über das gescannte Waldstück. Ein Beispiel für so eine Visualisierung ist in @einleitung_beispiel gegeben. Es sind die Punkte vom Datensatz zu sehen, welche basierend auf der relativen Höhe im Baum eingefärbt sind. Dadurch ist der Boden in Gelb und zu den Baumspitzen hin ändert sich die Farbe zu Rot.
+Eine Visualisierung der Punktwolke und der berechneten Daten ermöglicht ein Überblick über das gescannte Waldgebiet. Ein Beispiel für so eine Visualisierung ist in @einleitung_beispiel gegeben. Es sind die Punkte vom Datensatz zu sehen, welche basierend auf der relativen Höhe im Baum eingefärbt sind. Dadurch ist der Boden in Gelb und zu den Baumspitzen hin ändert sich die Farbe zu Rot.
 
-#figure(caption: [Waldstück mit Einfärbung der Punkte nach Höhe.], image("../images/auto-crop/br06-uls.png", width: 90%)) <einleitung_beispiel>
+#figure(caption: [Waldgebiet mit Einfärbung der Punkte nach Höhe.], image("../images/auto-crop/br06-uls.png", width: 90%)) <einleitung_beispiel>
 
 
 == Themenbeschreibung
 
-Das Ziel dieser Arbeit ist eine Erforschung des Ablaufs von einem Scan von einem Waldstücke bis zur Analyse der Daten mit zugehöriger interaktiven Visualisierung der Ergebnisse.
+Das Ziel dieser Arbeit ist eine Erforschung des Ablaufs von einem Scan von einem Waldgebiet bis zur Analyse der Daten mit zugehöriger interaktiven Visualisierung der Ergebnisse.
 
-Als Eingabe wird der Datensatz vom Waldstücke benötigt. Dabei wird davon ausgegangen, dass ein Datensatz eine ungeordnete Menge von Punkten enthält, für die nur die Position im dreidimensionalen Raum bekannt ist. Je nach Scanner können die Punkte im Datensatz entsprechend der räumlichen Verteilung geordnet sein oder weitere Eigenschaften wie die Farbe der Punkte enthalten. Die weiteren Daten werden nicht bei der Analyse betrachtet, wodurch die Auswertung auch für Datensätze ohne die weiteren Daten funktioniert.
+Als Eingabe wird der Datensatz vom Waldgebiet benötigt. Dabei wird davon ausgegangen, dass ein Datensatz eine ungeordnete Menge von Punkten enthält, für die nur die Position im dreidimensionalen Raum bekannt ist. Je nach Scanner können die Punkte im Datensatz entsprechend der räumlichen Verteilung geordnet sein oder weitere Eigenschaften wie die Farbe der Punkte enthalten. Die weiteren Daten werden nicht bei der Analyse betrachtet, wodurch die Auswertung auch für Datensätze ohne die weiteren Daten funktioniert.
 
-Für die Analyse der Daten muss die Menge der Punkte zuerst in einzelne Bäume segmentiert werden, dass Punkte vom gleichem Baum zum gleichem Segment gehören. Danach können die einzelnen Bäume ausgewertet werden. Durch die Beschränkung auf Waldstücke kann die Segmentierung und die folgende Auswertung auf Bäume spezialisiert werden.
+Für die Analyse der Daten muss die Menge der Punkte zuerst in einzelne Bäume segmentiert werden, dass Punkte vom gleichem Baum zum gleichem Segment gehören. Danach können die einzelnen Bäume ausgewertet werden. Durch die Beschränkung auf Waldgebiete kann die Segmentierung und die folgende Auswertung auf Bäume spezialisiert werden.
 
 Bei der Auswertung werden charakteristische Eigenschaften für die Bäume, aber auch für die einzelnen Punkte im Baum bestimmt. Für Bäume werden Eigenschaften bestimmt, welche den ganzen Baum beschreiben. Für Punkte werden die Eigenschaften für die lokale Umgebung mit den umliegenden Punkten bestimmt.
 
@@ -45,9 +45,9 @@ In der Einleitung wird die Motivation für die Arbeit erklärt, das Thema defini
 
 Der Stand der Technik beschäftigt sich mit wissenschaftlichen und technischen Arbeiten zugehörigen zum Thema. Dazu gehört die Aufnahme und Verarbeitung von Punktdaten und die Analyse von Bäumen mit den Daten.
 
-#section(3, [Segmentierung von Waldstücken])
+#section(3, [Segmentierung von Waldgebieten])
 
-Die Segmentierung erklärt den verwendeten Algorithmus für die Unterteilung von einer Punktwolke von einem Waldstück in mehrere Punktwolken für jeweils einen Baum. Die Punktwolke kann dabei ungeordnet sein und für die einzelnen Punkte wird nur die Position vorausgesetzt.
+Die Segmentierung erklärt den verwendeten Algorithmus für die Unterteilung von einer Punktwolke von einem Waldgebiet in mehrere Punktwolken für jeweils einen Baum. Die Punktwolke kann dabei ungeordnet sein und für die einzelnen Punkte wird nur die Position vorausgesetzt.
 
 #section(4, [Visualisierung])
 
@@ -71,7 +71,7 @@ Bei der Auswertung werden die in der Arbeit vorgestellten Methoden analysiert. D
 
 #section(9, [Fazit])
 
-Im Fazit werden die Ergebnisse der Auswertung bewertet und mögliche Verbesserungen und weitere Schritte werden vorgestellt.
+Im Fazit werden die Ergebnisse der Auswertung bewertet und mögliche Verbesserungen und Verarbeitungsschritte werden vorgestellt.
 
 #section(10, [Appendix])
 

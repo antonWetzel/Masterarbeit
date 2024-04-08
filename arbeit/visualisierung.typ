@@ -211,7 +211,7 @@ Der Effekt entsteht dadurch, dass für jedes Pixel der maximale Unterschied in d
 #let boxed(p, caption: []) = subfigure(box(image(p), fill: rgb(35%, 49%, 58%), stroke: 1pt), caption: caption)
 
 #figure(
-	caption: [Waldstück mit und ohne Eye-Dome Lighting. Die Punkte sind zusätzlich in Weiß angezeigt, um den Effekt hervorzuheben.],
+	caption: [Waldgebiet mit und ohne Eye-Dome Lighting. Die Punkte sind zusätzlich in Weiß angezeigt, um den Effekt hervorzuheben.],
 	grid(
 		columns: 2 * 1,
 		gutter: 1em,

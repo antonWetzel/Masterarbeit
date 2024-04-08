@@ -1,7 +1,7 @@
 #import "setup.typ": *
 
 
-= Segmentierung von Waldstücken <seperierung_in_segmente>
+= Segmentierung von Waldgebieten <seperierung_in_segmente>
 
 
 == Ablauf
@@ -232,6 +232,6 @@ Mit den Koordinaten wird das Voronoi-Diagramm berechnet, welches den Raum in Ber
 Der Ablauf wird für alle Scheiben durchgeführt, wodurch alle Punkte zu Segmenten zugeordnet werden. Ein Beispiel für eine Segmentierung ist in @segment_example gegeben. Die unterschiedlichen Segmente sind durch unterschiedliche Einfärbung der zugehörigen Punkte markiert.
 
 #figure(
-	caption: [Segmentierung von einem Waldstück.],
+	caption: [Segmentierung von einem Waldgebiet.],
 	image("../images/auto-crop/segments-br05-als.png", width: 80%),
 ) <segment_example>
