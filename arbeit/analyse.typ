@@ -119,6 +119,8 @@ Die normierten Eigenvektoren $v_(i alpha)$ mit $alpha in {0, 1, 2}$ bilden eine 
 #let test(sec_scale) = cetz.canvas(length: 2cm, {
 	import cetz.draw: *;
 
+	set-style(stroke: black)
+
 	line((0, 0), (2, 0), mark: (end: ">", fill: black))
 	line((0, 0), (0, 2), mark: (end: ">", fill: black))
 	content((2, 0), anchor: "west", padding: 0.1, $x$)

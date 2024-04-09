@@ -180,7 +180,7 @@ Das Softwareprojekt ist in mehrere Module unterteilt, um den Quelltext zu strukt
 			rect((x, y), (x + 3, y + 1), name: name)
 			content(name, raw(name))
 		}
-		set-style(mark: (end: ">", fill: black))
+		set-style(mark: (end: ">", fill: black), stroke: black)
 
 		box(4, -1, "project")
 		box(4, 1, "data-file")
@@ -221,11 +221,11 @@ Die Struktur ist in @implementierung_datafile gegeben. Am Anfang der Datei wird 
 
 #figure(
 	caption: [Struktur einer Datei zum Speichern von Daten.],
-	tablex(
+	table(
 		align: center + horizon,
 		columns: 11 *(1fr, ),
-		colspanx(7)[*Informationen*],
-		colspanx(4)[*Daten*],
+		table.cell(colspan: 7)[*Informationen*],
+		table.cell(colspan: 4)[*Daten*],
 		$s_0$,
 		$l_0$,
 		$s_1$,
@@ -259,7 +259,7 @@ Der zugehörige Datenfluss ist in @überblick_datenfluss zu sehen. Nach der erst
 	cetz.canvas(length: 1cm, {
 		import cetz.draw: *
 
-		set-style(mark: (end: ">", fill: black))
+		set-style(mark: (end: ">", fill: black), stroke: black)
 		rect((0, 2), (3, 3), name: "daten")
 		content("daten", [Punktdaten])
 

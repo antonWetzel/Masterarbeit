@@ -5,9 +5,16 @@
 #import "@preview/tablex:0.0.8": tablex, colspanx, rowspanx
 #import "@preview/wordometer:0.1.0": word-count, total-words
 
+#let black = cmyk(0%, 0%, 0%, 100%)
+
 #let setup(document) = {
 	set text(font: "Noto Serif")
 	// set text(font: "Noto Sans")
+
+	set text(fill: black)
+	set table(stroke: black)
+	set rect(stroke: black)
+	set line(stroke: black)
 
 	set text(lang: "de", region: "DE", size: 11pt, weight: 400, fallback: false)
 	show math.equation: set text(font: "Noto Sans Math", weight: 600, fallback: false)

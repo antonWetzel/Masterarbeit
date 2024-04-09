@@ -21,14 +21,16 @@
 / KD-Baum: ist eine Datenstruktur, um im $k$-dimensionalen Raum für eine Position die nächsten Punkte zu bestimmen.
 / Greedy-Algorithmus: ist eine Kategorie von Algorithmen, bei denen das Ergebnis schrittweise berechnet wird. Bei jedem Schritt wird mit den momentanen Informationen die beste Entscheidung getroffen, wodurch das Ergebnis schnell, aber meist nicht global optimal berechnet wird.
 
+#pagebreak(weak: true)
+
 
 == KD-Baum <kd_baum>
 
-Für eine Menge von Punkten kann ein KD-Baum bestimmt werden. Mit diesem kann effizient bestimmt werden, welche Punkte innerhalb einer Kugel mit beliebiger Position und Radius liegen. Ein Beispiel für einen KD-Baum ist in @appendix_kd_baum gegeben.
+Für eine Menge von Punkten kann ein KD-Baum bestimmt werden. Mit diesem kann effizient bestimmt werden, welche Punkte innerhalb einer Kugel mit beliebiger Position und Radius liegen. Ein Beispiel für einen KD-Baum ist in @appendix_kd_baum gegeben. Für jede Unterteilung ist die Trenngerade mit weniger Punkten gezeichnet. Weil der rote Kreis vollständig auf einer Seite der ersten Unterteilung ist, müssen die Punkte auf der anderen Seite nicht betrachtet werden.
 
 #figure(
 	caption: [
-		KD-Baum für Punkte in 2D. Für jede Unterteilung ist die Trenngerade gepunkteter gezeichnet. Weil der rote Kreis vollständig auf einer Seite der ersten Unterteilung ist, müssen die Punkte auf der anderen Seite nicht betrachtet werden.
+		KD-Baum für Punkte in 2D.
 	],
 	cetz.canvas(length: 2cm, {
 		import "triangulierung.typ": positions
@@ -81,9 +83,9 @@ Der zugehörige Binärbaum muss nicht gespeichert werden, da diese implizit ents
 
 === Suche mit festem Radius
 
-Bei dieser Suchanfrage werden alle Punkte gesucht, welche in einer Kugel mit bekanntem Zentrum und Radius liegen. Von der Root-Knoten aus wird der Baum dabei durchsucht. Bei jeder Unterteilung wird dabei überprüft, wie die Kugel zur teilenden Ebene liegt. Ist die Kugel vollständig auf einer Seite, so muss nur der zugehörige Teilbaum weiter durchsucht werden. Liegen Teile der Kugel auf beiden Seiten, so müssen beide Teilbaum weiter durchsucht werden.
+Bei dieser Suchanfrage werden alle Punkte gesucht, welche in einer Kugel mit bekanntem Zentrum und Radius liegen. Von der Root-Knoten aus wird der Baum dabei durchsucht. Bei jeder Unterteilung wird dabei überprüft, wie die Kugel zur teilenden Ebene liegt. Ist die Kugel vollständig auf einer Seite, so muss nur der zugehörige Teilbaum weiter durchsucht werden. Liegen Teile der Kugel auf beiden Seiten, so müssen beide Teilbäume weiter durchsucht werden.
 
-Dabei wird bei jeder Unterteilung überprüft, ob die zugehörige Position in der Kugel liegt und gegebenenfalls zum Ergebnis hinzugefügt.
+Dabei wird bei jeder Unterteilung überprüft, ob der zugehörige Punkt in der Kugel liegt und wird gegebenenfalls zum Ergebnis hinzugefügt.
 
 Mit der gleichen Methode kann effizient bestimmt werden, ob eine Kugel leer ist. Dafür wird beim ersten gefundenen Punkt in der Kugel die Suche abgebrochen.
 
@@ -97,9 +99,11 @@ Es wird wieder von der Wurzel aus der Baum durchsucht. Bei jeder Unterteilung wi
 Nachdem ein Teilbaum vollständig durchsucht ist, wird überprüft, ob Punkte aus dem anderen Teilbaum näher am Zentrum liegen können. Dafür wird der Abstand vom Zentrum zur Ebene bestimmt. Ist der Abstand größer als die Maximaldistanz, so kann kein Punkt näher am Zentrum liegen und der Teilbaum muss nicht weiter betrachtet werden.
 
 
-=== Schnelle Suche
+=== Verbesserte Suche für kleine Teilbäume
 
-Sobald ein Teilbaum nur noch wenige Punkte beinhaltet, ist es langsamer zu überprüfen, welche Punkte näher sein können, als alle Punkte zu betrachten. Deshalb wird für Teilbäume mit weniger als $32$ Punkte die Punkte linear iteriert, wodurch Rekursion vermieden wird.
+Sobald ein Teilbaum nur noch wenige Punkte beinhaltet, ist es langsamer zu überprüfen, welche Punkte näher sein können, als alle Punkte zu betrachten. Deshalb wird für Teilbäume mit weniger als #number(32) Punkte die Punkte linear iteriert, wodurch Rekursion vermieden wird.
+
+#pagebreak(weak: true)
 
 
 == Baum (Datenstruktur)

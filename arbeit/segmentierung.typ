@@ -61,6 +61,7 @@ Um einen Punkt zu einem Bereich hinzuzufügen wird wie in @segmentierung_add_poi
 			caption: [Abstand berechnen],
 			cetz.canvas(length: 1cm, {
 				import cetz.draw: *
+				set-style(stroke: black)
 
 				line((-2, 0), (5, 0), stroke: white)
 				line((-2, -1), (5, -1), stroke: white)
@@ -95,6 +96,7 @@ Um einen Punkt zu einem Bereich hinzuzufügen wird wie in @segmentierung_add_poi
 			caption: [Punkt hinzufügen],
 			cetz.canvas(length: 1cm, {
 				import cetz.draw: *
+				set-style(stroke: black)
 
 				line((-2, 0), (5, 0), stroke: silver)
 				line((-2, -1), (5, -1), stroke: silver)
@@ -131,6 +133,7 @@ Um einen Punkt zu einem Bereich hinzuzufügen, werden alle Kanten entfernt, bei 
 
 #let area_figure(centers) = {
 	import cetz.draw: *
+	set-style(stroke: black)
 
 	let points = (
 		(0.0, 0.0),

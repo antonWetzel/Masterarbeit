@@ -14,7 +14,7 @@ Das Ziel der Triangulierung ist eine Approximation der ursprünglichen Oberfläc
 
 === Überblick
 
-Beim Ball-Pivoting Algorithmus werden die Dreiecke der Oberfläche bestimmt, welche von einer Kugel mit Radius $alpha$ ($alpha$-Kugel) erreicht werden können. Dabei berührt die Kugel die drei Eckpunkte vom Dreieck und alle anderen Punkte sind außerhalb der Kugel.
+Beim Ball-Pivoting Algorithmus werden die Dreiecke der Oberfläche bestimmt, welche von einer Kugel mit Radius $alpha$ ($alpha$-Kugel) erreicht werden können. Dabei berührt die Kugel die drei Eckpunkte vom Dreieck und alle anderen Punkte sind außerhalb der Kugel @ball_pivot.
 
 In @ball_pivoting_überblick ist ein Beispiel in 2D gegeben. Dabei werden die Linien gesucht, dass der zugehörige Kreis keine weiteren Punkte enthält.
 
@@ -35,6 +35,8 @@ In @ball_pivoting_überblick ist ein Beispiel in 2D gegeben. Dabei werden die Li
 
 #let draw_circle(a, b, color: gray) = {
 	import cetz.draw: *
+	set-style(stroke: black)
+
 	let d_x = (b.at(0) - a.at(0)) / 2.0
 	let d_y = (b.at(1) - a.at(1)) / 2.0
 	let d_l = calc.sqrt(d_x * d_x + d_y * d_y)
@@ -113,6 +115,7 @@ In @ball_pivoting_erweiterung ist ein Beispiel für eine Erweiterung in 2D gegeb
 	],
 	cetz.canvas(length: 2cm, {
 		import cetz.draw: *
+		set-style(stroke: black)
 
 		let a = positions.at(8);
 		let b = positions.at(9);
@@ -158,6 +161,8 @@ Um den ersten Punkt $p$ zu finden, werden zuerst alle möglichen Punkte bestimmt
 	caption: [Konstruktion des Abstands der $alpha$-Kugel vom Mittelpunkt der Kante],
 	cetz.canvas(length: 0.5cm, {
 		import cetz.draw: *
+		set-style(stroke: black)
+
 		arc((4, 3), start: 10deg, delta: -200deg, anchor: "origin", radius: 5, stroke: gray)
 
 		circle((0, 0), radius: 0.1, fill: black)
@@ -197,6 +202,7 @@ Für jeden Kandidaten $p$ wird berechnet, wie weit die Kugel um die Kante geroll
 	caption: [Berechnung von Zentrum der $alpha$-Kugel und zugehöriger Winkel für einen Kandidatenpunkt],
 	cetz.canvas(length: 1.2cm, {
 		import cetz.draw: *
+		set-style(stroke: black)
 
 		line((0, 0, 0), (0, 0, 2), (-2.4, 0, 1), close: true, name: "wow")
 		line((0, 0, 0), (0, 0, 2), (2.4, -1.2, 1), close: true)

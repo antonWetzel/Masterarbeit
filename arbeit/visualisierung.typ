@@ -23,6 +23,7 @@ Zuerst wird ein Kreis mit Position $(0, 0)$ und Radius $1$ benötigt. Mithilfe d
 		caption: [Dreieck],
 		cetz.canvas(length: 1.8cm, {
 			import cetz.draw: *
+			set-style(stroke: black)
 
 			circle((0, 0), radius: 1, fill: silver)
 			line((-1.73, -1), (-0.86, 0.5), (0, 0), close: true)
@@ -47,6 +48,8 @@ Zuerst wird ein Kreis mit Position $(0, 0)$ und Radius $1$ benötigt. Mithilfe d
 		caption: [Quadrat],
 		cetz.canvas(length: 1.8cm, {
 			import cetz.draw: *
+			set-style(stroke: black)
+
 			line((-1, -1), (-1, 1), (1, 1), (1, -1), close: true)
 			circle((0, 0), radius: 1, fill: silver)
 			circle((0, 0), radius: 0.05, fill: black, stroke: none)
@@ -89,6 +92,7 @@ Für jeden Punkt wird mit der Position $p$, Normalen $n$ und Größe $s$ und den
 		caption: [$a$ und $b$ berechnen],
 		cetz.canvas(length: 2cm, {
 			import cetz.draw: *
+			set-style(stroke: black)
 
 			let test((x, y, z), name: "", paint: gray) = {
 				let l = x * x + y * y + z * z
@@ -125,6 +129,7 @@ Für jeden Punkt wird mit der Position $p$, Normalen $n$ und Größe $s$ und den
 		caption: [Eckpunkt berechnen],
 		cetz.canvas(length: 2cm, {
 			import cetz.draw: *
+			set-style(stroke: black)
 
 			line((0, 0, 0), (0, 1, 0), mark: (end: ">", fill: black), name: "n")
 			line((0, 0, 0), (2, 0, 0), mark: (end: ">", fill: black), name: "a")
