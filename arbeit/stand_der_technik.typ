@@ -21,6 +21,8 @@ Mit der Punktwolke von einem Baum können charakteristische Informationen abgesc
 
 Die Arbeit von #cite( <simple_tree>, form: "prose") beschäftigt sich mit der Berechnung vom Holzvolumen von einem Baum. Dafür wird für einen Baum der Stamm und die Äste mit Zylindern approximiert, aus denen dann das totale Baumvolumen berechnet werden kann. Für die Rekonstruktion der Baumstruktur können auch neuronale Ansätze verwendet werden @neural_decomp.
 
+Mit den kombinierten Daten von den einzelnen Bäumen kann eine Forstinventur durchgeführt werden @forest_inventory. Wenn zeitlich versetze Datensätze vom gleichem Waldgebiet existieren, kann daraus auch die Entwicklung von den Bäumen abgeschätzt werden @forest_inventory_change.
+
 Mit Punktwolken kann auch die Baumspezies bestimmt werden. Dafür kann die Verteilung der Punkte zugehörig zur Baumkrone benutzt werden @tree_ident. Zusätzlich zu den Punktwolken können hyperspektralen Bildern vom Gebiet als eine weitere Datenquelle dienen, wodurch die Klassifikation verbessert werden kann @tree_ident_spectral @tree_ident_spectral_2. Mit hochauflösenden Daten kann ein Profil für die Rinde bestimmt werden, welches für die Einordnung verwendet wird @tree_bark.
 
 Eine Alternative zur Analyse von Bäumen mit Punktwolken ist die Verwendung von mehreren Fotografien als Datenquelle @from_images. Für die Fotos werden die Tiefeninformationen geschätzt, womit eine dreidimensionale Rekonstruktion ermöglicht wird. Das Verfahren ist nur für die Rekonstruktion von einzelnen Bäumen geeignet, dafür sind Farbinformationen vorhanden, womit realistische Modelle erstellt werden können.

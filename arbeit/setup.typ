@@ -19,6 +19,7 @@
 	set text(lang: "de", region: "DE", size: 11pt, weight: 400, fallback: false)
 	show math.equation: set text(font: "Noto Sans Math", weight: 600, fallback: false)
 	set par(justify: true)
+	set page(margin: 3cm)
 
 	set heading(numbering: (..nums) => {
 		let nums = nums.pos()
@@ -29,6 +30,14 @@
 	})
 
 	show raw: it => text(size: 1.2em, it)
+
+	show heading: it => block({
+		if it.numbering != none {
+			counter(heading).display()
+			h(15pt)
+		}
+		it.body
+	})
 
 	show figure: it => {
 		v(1em)
@@ -47,21 +56,22 @@
 
 	show heading.where(level: 1): it => {
 		pagebreak(weak: true)
-		pad(it, bottom: 0.1cm)
+		pad(it, bottom: 0.3cm)
 	}
 
 	show heading.where(level: 2): it => {
-		pad(top: 0.5cm, it, bottom: 0.1cm)
+		pad(top: 0.5cm, it, bottom: 0.3cm)
 	}
-	show heading.where(level: 3): it => pad(top: 0.3cm, it, bottom: 0.1cm)
+	show heading.where(level: 3): it => pad(top: 0.3cm, it, bottom: 0.3cm)
 
 	show link: it => text(fill: eastern, it)
 
 	show outline.entry: it => {
 		if it.level == 1 {
-			v(1.4em, weak: true)
+			v(1.2em, weak: true)
 			strong(it)
 		} else {
+			v(0.6em, weak: true)
 			h((it.level - 2) * 2em, weak: false) + it
 		}
 	}

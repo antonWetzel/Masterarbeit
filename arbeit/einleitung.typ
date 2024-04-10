@@ -14,7 +14,7 @@ Vor der Analyse müssen die Punktwolken zuerst in die einzelnen Bäume unterteil
 
 Eine Visualisierung der Punktwolke und der berechneten Daten ermöglicht ein Überblick über das gescannte Waldgebiet. Ein Beispiel für so eine Visualisierung ist in @einleitung_beispiel gegeben. Es sind die Punkte vom Datensatz zu sehen, welche basierend auf der relativen Höhe im Baum eingefärbt sind. Dadurch ist der Boden in Gelb und zu den Baumspitzen hin ändert sich die Farbe zu Rot.
 
-#figure(caption: [Waldgebiet mit Einfärbung der Punkte nach Höhe.], image("../images/auto-crop/br06-uls.png", width: 90%)) <einleitung_beispiel>
+#figure(caption: [Waldgebiet mit den Punkten nach der Höhe eingefärbt.], image("../images/auto-crop/br06-uls.png", width: 90%)) <einleitung_beispiel>
 
 
 == Themenbeschreibung

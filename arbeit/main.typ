@@ -43,4 +43,6 @@ Wörter: #total-words
 
 #include "appendix.typ"
 
+#include "eigenständigkeitserklärung.typ"
+
 #bibliography("bibliographie.bib")
