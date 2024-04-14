@@ -34,7 +34,7 @@
 	show heading: it => block({
 		if it.numbering != none {
 			counter(heading).display()
-			h(15pt)
+			h(13pt)
 		}
 		it.body
 	})
@@ -56,13 +56,14 @@
 
 	show heading.where(level: 1): it => {
 		pagebreak(weak: true)
-		pad(it, bottom: 0.3cm)
+		it
 	}
 
-	show heading.where(level: 2): it => {
-		pad(top: 0.5cm, it, bottom: 0.3cm)
-	}
-	show heading.where(level: 3): it => pad(top: 0.3cm, it, bottom: 0.3cm)
+	show heading.where(level: 2): it => pad(
+		top: 0.1cm,
+		bottom: 0.2cm,
+		it,
+	)
 
 	show link: it => text(fill: eastern, it)
 

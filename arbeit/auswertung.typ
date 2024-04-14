@@ -161,10 +161,10 @@ In @analyse_baumeigenschaften werden die korrekten gemessenen Werte für die Bau
 		columns: 1 * 2,
 		column-gutter: 1em,
 		row-gutter: 3em,
-		subfigure(image("../data/data_tree_height.svg", height: 200pt), caption: [Gesamthöhe vom Baum]),
-		subfigure(image("../data/data_trunk_diameter.svg", height: 200pt), caption: [Stammdurchmesser bei #number(130, unit: [cm])]),
-		subfigure(image("../data/data_crown_start.svg", height: 200pt), caption: [Anfangshöhe der Baumkrone]),
-		subfigure(image("../data/data_crown_diameter.svg", height: 200pt), caption: [Durchmesser der Baumkrone]),
+		subfigure(image("../data/data_tree_height.svg", height: 195pt), caption: [Gesamthöhe vom Baum]),
+		subfigure(image("../data/data_trunk_diameter.svg", height: 195pt), caption: [Stammdurchmesser bei #number(130, unit: [cm])]),
+		subfigure(image("../data/data_crown_start.svg", height: 195pt), caption: [Anfangshöhe der Baumkrone]),
+		subfigure(image("../data/data_crown_diameter.svg", height: 195pt), caption: [Durchmesser der Baumkrone]),
 	),
 ) <analyse_baumeigenschaften>
 

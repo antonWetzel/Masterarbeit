@@ -74,7 +74,11 @@
 						}
 					}
 				},
-				"local_languagetool_directory": "D:/LanguageTool-6.3/",
+				"disabled_checks": [
+					"DOPPELTES_LEERZEICHEN",
+					"WHITESPACE_RULE",
+					"EINHEIT_LEERZEICHEN",
+				],
 			}
 		}
 	]

@@ -1,8 +1,14 @@
+#import "setup.typ": *
+
+
 = Fazit
 
-Die Software ermöglicht den Übergang von den Punktdaten ohne weitere Informationen zu einer interaktiven Visualisierung vom Waldgebiet. Dadurch ist ein Überblick über das gescannte Waldgebiet und einzelne Bäume möglich. Trotzdem gibt es noch Fehler bei der Methodik und Implementierung, welche ausgebessert werden können.
+
+== Methodik
 
 Die Segmentierung unterteilt die Punkte in einzelne Bäume. Wenn die Kronen der Bäume klar getrennte Spitzen haben, werden diese problemlos unterteilt. Dadurch werden manche Waldgebiete gut segmentiert, aber je näher die Kronen der Bäume zueinander sind, desto wahrscheinlicher werden mehrere Bäume zu einem Segment zusammengefasst. Vor der Segmentierung muss der Mindestabstand zwischen Segmenten und die Breite der Scheiben festgelegt werden. Die Parameter müssen passend für den Datensatz gewählt werden, was eine Anpassungsmöglichkeit, aber auch eine Fehlerquelle ist.
+
+Die bereits existierende Segmentierung vom Datensatz unterteilt die Punktwolken besser für die einzelnen Bäume @pang. Dafür werden nicht nur einzelne Datensätze benötigt, sondern mehrere Datensätze werden automatisch und manuell kombiniert und in einzelne Bäume unterteilt.
 
 Bei der Analyse von einem Baum werden Daten für jeden Punkt im Baum und für den gesamten Baum berechnet. Für die einzelnen Punkte werden Punktgröße, Normale für die Visualisierung und die lokale Krümmung problemlos berechnet. Die Berechnung vom Durchmesser funktioniert für die meisten Bereiche vom Baum, wird aber durch Punkte, welche nicht zum Baum gehören stark beeinflusst.
 
@@ -11,9 +17,36 @@ Die charakteristischen Eigenschaften vom Baum können mit den genaueren TLS-Date
 Die Triangulierung berechnet ein Mesh für die Segmente, welches von der Visualisierung angezeigt werden kann. Die Visualisierung kann die berechneten Daten ohne Probleme visualisieren. Durch die Detailstufen können auch größere Datenmengen interaktiv angezeigt werden.
 
 
+== Visualisierung
+
+Die Software ermöglicht den Übergang von den Punktdaten ohne weitere Informationen zu einer interaktiven Visualisierung vom Waldgebiet. Dadurch ist ein Überblick über das gescannte Waldgebiet und einzelne Bäume möglich.
+
+Die Visualisierung ermöglicht eine interaktive Darstellung der Daten. Im Gegensatz zu LAStools @lastools werden Datenpunkte nicht mit einer festen Größe, sondern durch einen orientierten Kreis mit variablem Radius angezeigt. Dadurch entstehen keine Lücken zwischen den Datenpunkten, wenn diese eine geringere Dichte haben oder die Entfernung zur Kamera gering ist. Ein Vergleich ist in @fazit_lasview_compare gegeben. Beim `LASviewer` sind die Baumkronen weit von den Messpunkten schwer zu sehen, weil weniger Datenpunkte existieren.
+
+#figure(
+	caption: [Vergleich zwischen den Visualisierungen von `lasviewer` und `treee`.],
+	grid(
+		columns: 1 * 2,
+		gutter: 1em,
+		subfigure(image("../images/lasviewer_it.png"), caption: [`LASviewer`]),
+		subfigure(image("../images/lasviewer_treee.png"), caption: [`treee`]),
+	),
+) <fazit_lasview_compare>
+
+Für größere Datensätze zeigt LAStools nur eine vorher festgelegte Anzahl von zufällig ausgewählten Punkten. Je größer die Anzahl, desto länger wird für das Rendern der Punkte benötigt, wodurch für große Datensätze nicht alle Daten gerendert werden oder das Rendern länger dauert und die Navigation erschwert. Die Berechnung der Detailstufen benötigen einen Vorverarbeitungsschritt, dafür kann der komplette Datensatz interaktiv angezeigt werden ohne.
+
+
 == Ausblick
 
 Momentan werden die ermittelten Daten nur für die Visualisierung verwendet. In der `project.json` sind die charakteristischen Eigenschaften für die Segmente gespeichert, aber auch Daten für die Visualisierung. Durch eine Trennung wird eine automatische Weiterverarbeitung der berechneten Eigenschaften erleichtert.
+
+Für jeden Baum wird abhängig von der Höhe die horizontale Ausdehnung bestimmt. Ein Beispiel für die Daten ist in @fazit_slices gegeben. Die Verteilung kann als Basis für die Baumform benutzt werden, womit zum Beispiel Schätzung für die zugehörige Spezies gemacht werden kann.
+
+#figure(caption: [Horizontale Scheiben für einen Baum mit der zugehörigen Fläche für jede Scheibe.], grid(
+	columns: 1 * 2,
+	image("../images/auto-crop/prop_height.png", height: 30%),
+	image("../images/klassifkation_slices.svg", height: 30%),
+)) <fazit_slices>
 
 Vor der Visualisierung müssen die Daten importiert werden. Je größer die Datenmenge, desto länger dauert der Import und während des Imports können die Daten noch nicht inspiziert werden. Die Möglichkeit die Zwischenergebnisse vom Importprozess anzuzeigen würde das Anpassen von Importparametern erleichtern und die Zeit verringert, ab der die ersten Ergebnisse sichtbar sind.
 
