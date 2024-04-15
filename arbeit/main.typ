@@ -12,7 +12,7 @@ Wörter: #total-words
 
 #todo-outline() #pagebreak()
 
-#show: setup
+#show: (doc) => setup(doc, print: true)
 
 #include "deckblatt.typ"
 

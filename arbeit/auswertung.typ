@@ -6,9 +6,9 @@
 
 == Testdaten
 
-Der benutze Datensatz @data beinhaltet $12$ Hektar Waldfläche in Deutschland, Baden-Württemberg. Die Daten sind mit Laserscans aufgenommen, wobei die Scans von Flugzeugen (ALS#footnote([aircraft laser scan])), Drohnen (ULS#footnote([uncrewed aerial vehicle laser scan])) und vom Boden (TLS#footnote([terrestrial laser scan])) aus durchgeführt wurden. Dabei entstehen 3D-Punktwolken, welche im komprimiert LAS Dateiformat gegeben sind.
+Der benutze Datensatz @data beinhaltet $12$ Hektar Waldfläche in Deutschland, Baden-Württemberg. Die Daten sind mit Laserscans aufgenommen, wobei die Scans von Flugzeugen (ALS#footnote([aircraft laser scan])), Drohnen (ULS#footnote([uncrewed aerial vehicle laser scan])) und vom Boden (TLS#footnote([terrestrial laser scan])) aus durchgeführt wurden. Dabei entstehen 3D-Punktwolken, welche im komprimiert LASzip Dateiformat gegeben sind.
 
-Für die meisten Waldgebiete existieren ALS-, ULS- und TLS-Daten. Dabei enthalten die ALS-Daten die wenigsten und die TLS-Daten die meisten Punkte. Bei den ALS- und ULS-Daten sind die Punkte gleichmäßig über das gescannte Gebiet verteilt. Bei den TLS-Daten wird von einem zentralen Punkt aus gescannt, wodurch die Punktedichte nach außen immer weiter abnimmt.
+Für die meisten Waldgebiete existieren ALS-, ULS- und TLS-Daten. Dabei enthalten die ALS-Daten die wenigsten und die TLS-Daten die meisten Punkte. Bei den ALS- und ULS-Daten sind die Punkte gleichmäßig über das gescannte Gebiet verteilt. Bei den TLS-Daten wird von einem festen Punkt aus gescannt, wodurch die Punktdichte nach außen immer weiter abnimmt.
 
 Der Datensatz ist bereits in einzelne Bäume unterteilt. Zusätzlich wurden für $6$ Hektar die Baumart, Höhe, Stammdurchmesser auf Brusthöhe und Anfangshöhe und Durchmesser der Krone gemessen. Mit den bereits bestimmten Eigenschaften können automatisch berechnete Ergebnisse validiert werden.
 
@@ -22,33 +22,53 @@ Für den Import sind in @auswertung_import_geschwindigkeit die Importgeschwindig
 	image("../data/punkte_pro_sekunde.svg"),
 ) <auswertung_import_geschwindigkeit>
 
-Bei den ALS-Daten wird für die meisten Datensätze eine Importgeschwindigkeit von #number(500000) erreicht. Durch die kleinen Datenmengen schwankt aber die Importgeschwindigkeit stark. Für die ULS-Daten wird eine Importgeschwindigkeit von #number(200000) und für die TLS-Daten von #number(400000) erreicht.
+Bei den ALS-Daten wird für die meisten Datensätze eine Importgeschwindigkeit von #number(500000) erreicht. Durch die kleinen Datenmengen schwankt aber die Importgeschwindigkeit stark. Für die ULS-Daten liegt die Importgeschwindigkeit bei #number(400000) und für die TLS-Daten bei #number(250000).
 
-In @auswertung_import_phasen ist die Dauer für die einzelnen Phasen vom Import aufgeschlüsselt. Am längsten wird für die Analyse der Segmente benötigt, weil für jeden Punkt die benötigten Eigenschaften berechnet werden. Bei den `ALS-KAxx`-Daten ist der Boden sehr eben, wodurch die Baumkronen ähnliche Höhen haben. Dadurch haben viele Punkte die gleiche Höhe und die Segmentierung dauert länger.
+In @auswertung_import_phasen ist die Dauer für die einzelnen Phasen vom Import aufgeschlüsselt. Am längsten wird für die Analyse der Segmente benötigt, weil für jeden Punkt die benötigten Eigenschaften berechnet werden.
 
 #figure(
-	caption: [Dauer für die einzelnen Importphasen in $mu s$ pro Punkt.],
-	image("../data/mikrosekunde_phase_pro_punkt.svg"),
+	caption: [Dauer für die einzelnen Importphasen pro Punkt.],
+	grid(
+		gutter: 1em,
+		subfigure(image("../data/mikrosekunde_phase_pro_punkt.svg"), caption: [Absolut]),
+		subfigure(image("../data/phasen_percent.svg"), caption: [Relativ]),
+	) ,
 ) <auswertung_import_phasen>
+
+Bei den TLS-Daten enthalten durch die ungleiche Punktdichte manche Segmente sehr viele Punkte, wodurch die Analyse von diesen Segmenten überproportional länger dauert.
+
+Wie in @auswertung_ka_flat zu sehen ist bei den `ALS-KAxx`-Daten der Boden sehr eben, wodurch die Baumkronen ähnliche Höhen haben. Dadurch haben viele Punkte die gleiche Höhe und die Segmentierung dauert länger.
+
+#figure(
+	caption: [Seitenansicht für die Punktwolke `ALS-KA10`.],
+	image("../images/auto-crop/ka10-side.png"),
+) <auswertung_ka_flat>
 
 
 == Segmentierung von Waldgebieten
 
-Ein Beispiel für eine Segmentierung ist in @segmentierung_ergebnis gegeben. Die meisten Bäume werden korrekt erkannt und zu unterschiedlichen Segmenten zugeordnet. Je weiter die Spitzen der Bäume voneinander getrennt sind, desto besser können die Bäume voneinander getrennt werden.
+Beispiele für die Segmentierung sind in @segmentierung_ergebnis gegeben. Die meisten Bäume werden korrekt erkannt und zu unterschiedlichen Segmenten zugeordnet. Je weiter die Spitzen der Bäume voneinander getrennt sind, desto besser können die Bäume voneinander getrennt werden. Für Bäume, bei denen die Baumkronen keine klare Trennung haben, werden die Bäume fehlerhaft zu einem Segment zusammengefasst.
 
 #figure(
-	caption: [Segmentierung von einer Punktwolke.],
-	image("../images/auto-crop/segments-ka11-als.png"),
+	caption: [Segmentierung von unterschiedlichen Punktwolken.],
+	grid(
+		gutter: 1em,
+		grid(
+			columns: (1.3fr, 1fr),
+			subfigure(caption: [ALS], image("../images/auto-crop/segments-ka11-als.png")), subfigure(caption: [ULS], image("../images/auto-crop/segmentation_uls.png")),
+		),
+		subfigure(caption: [TLS], image("../images/auto-crop/segmentation_tls.png")),
+	),
 ) <segmentierung_ergebnis>
 
-Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeordnet. Bei Bereichen ohne Bäume entstehen dadurch Segmente wie in @auswertung_segmentierung_keine_bäume. Die Punkte in freien Flächen werden zu eigenen Segmenten zusammengefasst. Wenn die Punkte in der Nähe von einem Baum liegen, werden diese zu dem Baum hinzugefügt.
+Punkte, welche zu keinem Baum gehören, werden trotzdem zu den Segmenten zugeordnet. Dadurch entstehen Segmente wie in @auswertung_segmentierung_keine_bäume. Die Punkte in den freien Flächen werden zu eigenen Segmenten zusammengefasst, welche zu keinem Baum gehören. Wenn die Punkte in der Nähe von einem Baum liegen, werden diese als Boden zu dem Baum hinzugefügt.
 
 #figure(
 	caption: [Segmente bei Gebieten ohne Bäume.],
 	rect(image("../images/auto-crop/segmentation_no_trees.png"), inset: 0.5pt),
 ) <auswertung_segmentierung_keine_bäume>
 
-Kleine Bereiche werden vor der Zuordnung entfernt. Dadurch wird vermieden, dass ein Baum in mehrere Segmente unterteilt wird. Wenn die Spitze von einem Baum gerade so in einer Scheibe liegt, so ist der zugehörige Bereich klein und wird gefiltert. Dadurch wird kein neues Segment für den Baum erstellt und die Punkte werden dem nächsten Baum zugeordnet. Der Effekt ist in @auswertung_segmentierung_spitze zu sehen.
+Kleine Bereiche werden vor der Zuordnung entfernt. Dadurch wird vermieden, dass ein Baum in mehrere Segmente unterteilt wird. Wenn die Spitze von einem Baum gerade so in einer Scheibe liegt, so ist der zugehörige Bereich klein und wird gefiltert. Dadurch wird kein neues Segment für den Baum erstellt und die Punkte werden dem nächsten Baum zugeordnet. Der Effekt ist in @auswertung_segmentierung_spitze zu sehen. Die Spitzen von den umliegenden Bäumen wurden dem nächsten größeren Baum zugeordnet.
 
 #figure(
 	caption: [Segmentierungsfehler bei Baumspitzen.],
@@ -60,13 +80,15 @@ Kleine Bereiche werden vor der Zuordnung entfernt. Dadurch wird vermieden, dass 
 	),
 ) <auswertung_segmentierung_spitze>
 
+#pagebreak(weak: true)
+
 
 == Triangulierung
 
-Ein Beispiel für die Triangulation ist in @auswertung_triangulierung gegeben. Mit dem Ball-Pivoting Algorithmus wird eine äußere Hülle für die Punkte bestimmt, wodurch der Algorithmus auch für eine Baumkrone mit Blättern geeignet ist. Beim Baumstamm liegen alle Punkte auf der Oberfläche, wodurch diese problemlos trianguliert werden können. Bei der Krone sind die Punkte im Raum verteilt, wodurch diese nicht auf einer eindeutigen Oberfläche liegen.
+Ein Beispiel für die Triangulation ist in @auswertung_triangulierung gegeben. Mit dem Ball-Pivoting Algorithmus wird eine äußere Hülle für die Punkte bestimmt, wodurch der Algorithmus auch für eine Baumkrone mit Blättern geeignet ist.
 
 #figure(
-	caption: [Beispiel für eine Triangulierung von einem Baum mit $alpha = 1m$.],
+	caption: [Beispiel für eine Triangulierung von einem Baum mit #box($alpha = #number(1, unit: [m])$).],
 	stack(
 		dir: ltr,
 		spacing: 1em,
@@ -84,6 +106,8 @@ Ein Beispiel für die Triangulation ist in @auswertung_triangulierung gegeben. M
 		)),
 	),
 ) <auswertung_triangulierung>
+
+Beim Baumstamm liegen alle Punkte auf der Oberfläche, wodurch diese ohne Probleme trianguliert werden können. Bei der Krone sind die Punkte im Raum verteilt, wodurch diese nicht auf einer eindeutigen Oberfläche liegen. Mit einem ausreichend großen Wert für $alpha$ wird eine passende äußere Hülle berechnet.
 
 
 == Visualisierung

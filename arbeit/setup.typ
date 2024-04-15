@@ -7,14 +7,32 @@
 
 #let black = cmyk(0%, 0%, 0%, 100%)
 
-#let setup(document) = {
+#let setup(document, print: false) = {
 	set text(font: "Noto Serif")
 	// set text(font: "Noto Sans")
 
-	set text(fill: black)
-	set table(stroke: black)
-	set rect(stroke: black)
-	set line(stroke: black)
+	let setup_print(document) = {
+		set text(fill: black)
+		set table(stroke: black)
+		set rect(stroke: black)
+		set line(stroke: black)
+		show link: it => text(fill: black, it)
+
+		document
+	}
+
+	let setup_digital(document) = {
+		show link: it => text(fill: eastern, it)
+
+		document
+	}
+	let rule = if print {
+		setup_print
+	} else {
+		setup_digital
+	}
+
+	show: rule
 
 	set text(lang: "de", region: "DE", size: 11pt, weight: 400, fallback: false)
 	show math.equation: set text(font: "Noto Sans Math", weight: 600, fallback: false)
@@ -64,8 +82,6 @@
 		bottom: 0.2cm,
 		it,
 	)
-
-	show link: it => text(fill: eastern, it)
 
 	show outline.entry: it => {
 		if it.level == 1 {

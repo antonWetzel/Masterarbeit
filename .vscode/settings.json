@@ -9,6 +9,7 @@
 			"language": "typst",
 			"lsp": "typst-languagetool-lsp",
 			"options": {
+				"bundled": true,
 				"language": "de-DE",
 				"dictionary": [
 					"Normalen",
@@ -41,7 +42,12 @@
 					"Wetzel",
 					"Nauber",
 					"Mäder",
+					"ALS-",
 					"ULS",
+					"ULS-",
+					"ULS-Daten",
+					"LASviewer",
+					"treee",
 				],
 				"rules": {
 					"functions": {

@@ -118,7 +118,7 @@ Mit dem Benutzerinterface kann die Visualisierung angepasst werden und Informati
 	caption: [Benutzerinterface mit den verfügbaren Optionen und Informationen. ],
 	box(width: 80%, grid(
 		gutter: 2em,
-		columns: 1 * (1fr, 2fr),
+		columns: 1 * (1fr, 1.4fr),
 		rect(image("../images/ui.png"), radius: 4pt, inset: 2pt, stroke: rgb(27, 27, 27) + 4pt),
 		align(horizon + left)[
 			- *Load Project*
@@ -151,7 +151,7 @@ Mit dem Benutzerinterface kann die Visualisierung angepasst werden und Informati
 
 == Struktur vom Quelltext
 
-Das Softwareprojekt ist in mehrere Module unterteilt, um den Quelltext zu strukturieren. In @appendix_crates und @appendix_crates_abhängigkeiten sind die Module mit zugehöriger Funktionalität und Abhängigkeiten gelistet. Die wichtigsten Module sind `importer` und `viewer`, welche den Import und die Visualisierung beinhalten. Das Modul `treee` vereint beide zu einem Programm.
+Das Softwareprojekt ist in mehrere Module unterteilt, um den Quelltext zu strukturieren. In @appendix_crates und @appendix_crates_abhängigkeiten sind die Module mit zugehöriger Funktionalität und Abhängigkeiten gelistet. Die wichtigsten Module sind `importer` und `viewer`, welche den Import und die Visualisierung beinhalten. Das Modul `treee` ist ein gemeinsames Interface für `importer` und `viewer`, wodurch ein ausführbares Programm für das Projekt erstellt werden kann.
 
 #figure(
 	caption: [Module vom Projekt mit zugehöriger Funktionalität.],
@@ -165,7 +165,7 @@ Das Softwareprojekt ist in mehrere Module unterteilt, um den Quelltext zu strukt
 		`k-nearest`,     [Nachbarschaftssuche mit KD-Bäumen],
 		`render`,        [Rendern von Punktwolken, Linien und Dreiecken mit `wgpu`],
 		`viewer`,        [Visualisierung von Punktwolken],
-		`triangulation`, [Triangulation von Punktwolken],
+		`triangulation`, [Triangulation von einer Punktwolke],
 		`importer`,      [Import von Punktwolken],
 		`treee`,         [Gemeinsames Interface für `importer` und `viewer`],
 	),
@@ -208,49 +208,16 @@ Das Softwareprojekt ist in mehrere Module unterteilt, um den Quelltext zu strukt
 ) <appendix_crates_abhängigkeiten>
 
 
-== Format für eine Punktwolke
-
-Die Struktur von einer Punktwolke ist in der `project.json` Datei gespeichert. Dazu gehören die verfügbaren Eigenschaften und der Octree. Alle benötigten Daten für `project.json` werden in #link-footnote("https://github.com/antonWetzel/treee/blob/main/project/src/lib.rs", `project/src/lib.rs`) definiert.
-
-
-=== Daten
-
-In separaten Dateien werden die Daten für die Punkte oder Eigenschaften gespeichert. Das verwendete Dateiformat ermöglicht es, die Dateien inkrementell zu erstellen. Am Anfang wird nur benötigt, wie viele Einträge die Datei speichern kann. Danach können die Einträge in beliebiger Reihenfolge abgespeichert werden.
-
-Die Struktur ist in @implementierung_datafile gegeben. Am Anfang der Datei wird für jeden Eintrag die Startposition $s_i$ und die Länge $l_i$ vom zugehörigen Datensegment $d_i$ gespeichert. Danach folgen die Datensegmente in beliebiger Reihenfolge $pi$.
-
-#figure(
-	caption: [Struktur einer Datei zum Speichern von Daten.],
-	table(
-		align: center + horizon,
-		columns: 11 *(1fr, ),
-		table.cell(colspan: 7)[*Informationen*],
-		table.cell(colspan: 4)[*Daten*],
-		$s_0$,
-		$l_0$,
-		$s_1$,
-		$l_1$,
-		[...],
-		$s_(n-1)$,
-		$l_(n-1)$,
-		$d_(pi(0))$,
-		$d_(pi(1))$,
-		[...],
-		$d_(pi(n-1))$
-	),
-) <implementierung_datafile>
-
-Um den Eintrag $i$ mit den Daten $d$ zur Datei hinzufügen, wird zuerst $s_i$ auf das momentane Ende der Datei und $l_i$ auf die Länge von $d$ gesetzt. Danach wird $d$ am Ende der Datei hinzugefügt. Um die Daten für den Eintrag $i$ zu lesen, wird zuerst $s_i$ und $l_i$ ausgelesen und danach der zugehörige Bereich geladen.
-
-
 == Import
 
 Um einen Datensatz zu analysieren, muss dieser zuerst importiert werden, bevor er von der Visualisierung angezeigt werden kann. Der Import wird in mehreren getrennten Phasen durchgeführt. Dabei wird der Berechnungsaufwand für eine Phase so weit wie möglich parallelisiert. Die Phasen sind:
 
-+ Daten laden
-+ Segmente bestimmen
-+ Segmente analysieren und den Octree erstellen
-+ Detailstufen bestimmten und Octree speichern
+#align(center, box(width: 80%, align(left, [
+	+ Daten laden
+	+ Segmente bestimmen
+	+ Segmente analysieren und den Octree erstellen
+	+ Detailstufen bestimmten und Octree speichern
+])))
 
 Der zugehörige Datenfluss ist in @überblick_datenfluss zu sehen. Nach der ersten Phase sind die Punktedaten bekannt und nach der zweiten Phase auf die Segmente aufgeteilt. In der dritten Phase werden dann die Segmente verarbeiten und der Octree aufgebaut. Nach der vierten Phase ist auch der Octree vollständig und die Punktwolke wird abgespeichert.
 
@@ -293,9 +260,7 @@ Der zugehörige Datenfluss ist in @überblick_datenfluss zu sehen. Nach der erst
 
 === Parallelisierung
 
-Die Punktdaten werden in LASzip Dateien zu Blöcken zusammengefasst. Jeder Block wird separat komprimiert, wodurch mehrere Blöcke auch parallel dekomprimiert werden können. Ein weiterer Thread sammelt die dekomprimierten Blöcke für die Segmentierung.
-
-Für die Segmentierung wird über die einzelnen horizontalen Scheiben parallelisiert. Der genaue Ablauf ist in @implementierung_segment_parallel erklärt. Die Segmente werden wieder von einem weiteren Thread gesammelt.
+Die Punktdaten werden in LASzip Dateien zu Blöcken zusammengefasst. Jeder Block wird separat komprimiert, wodurch mehrere Blöcke auch parallel dekomprimiert werden können. Ein weiterer Thread sammelt die dekomprimierten Blöcke für die Segmentierung. Für die Segmentierung wird über die einzelnen horizontalen Scheiben parallelisiert. Der genaue Ablauf ist in @implementierung_segment_parallel erklärt. Die Segmente werden wieder von einem weiteren Thread gesammelt. Die Analyse der Segmente und die Berechnung der Detailstufen sind trivial parallelisierbar. Die Segmente haben untereinander keine Datenabhängigkeiten, wodurch diese parallel verarbeitete werden können. Bei den Detailstufen können bei einem Knoten die Kinderknoten parallel verarbeitet werden.
 
 #figure(
 	caption: [
@@ -320,7 +285,40 @@ Für die Segmentierung wird über die einzelnen horizontalen Scheiben parallelis
 	),
 ) <implementierung_segment_parallel>
 
-Die Analyse der Segmente und die Berechnung der Detailstufen sind trivial parallelisierbar. Die Analyse der Segmente wird für mehrere Segmente parallel durchgeführt, weil keine Abhängigkeiten zwischen den Daten existieren. Bei den Detailstufen können bei einem Knoten die Kinderknoten parallel verarbeitet werden.
+
+== Format für eine Punktwolke
+
+Die Struktur von einer Punktwolke ist in der `project.json` Datei gespeichert. Dazu gehören die verfügbaren Eigenschaften und der Octree. Alle benötigten Daten für `project.json` werden in #link-footnote("https://github.com/antonWetzel/treee/blob/main/project/src/lib.rs", `project/src/lib.rs`) definiert.
+
+
+=== Daten
+
+In separaten Dateien werden die Daten für die Punkte oder Eigenschaften gespeichert. Das verwendete Dateiformat ermöglicht es, die Dateien inkrementell zu erstellen. Am Anfang wird nur benötigt, wie viele Einträge die Datei speichern kann. Danach können die Einträge in beliebiger Reihenfolge abgespeichert werden.
+
+Die Struktur ist in @implementierung_datafile gegeben. Am Anfang der Datei wird für jeden Eintrag die Startposition $s_i$ und die Länge $l_i$ vom zugehörigen Datensegment $d_i$ gespeichert. Danach folgen die Datensegmente in beliebiger Reihenfolge $pi$.
+
+#figure(
+	caption: [Struktur einer Datei zum Speichern von Daten.],
+	table(
+		align: center + horizon,
+		columns: 11 *(1fr, ),
+		table.cell(colspan: 7)[*Informationen*],
+		table.cell(colspan: 4)[*Daten*],
+		$s_0$,
+		$l_0$,
+		$s_1$,
+		$l_1$,
+		[...],
+		$s_(n-1)$,
+		$l_(n-1)$,
+		$d_(pi(0))$,
+		$d_(pi(1))$,
+		[...],
+		$d_(pi(n-1))$
+	),
+) <implementierung_datafile>
+
+Um den Eintrag $i$ mit den Daten $d$ zur Datei hinzufügen, wird zuerst $s_i$ auf das momentane Ende der Datei und $l_i$ auf die Länge von $d$ gesetzt. Danach wird $d$ am Ende der Datei hinzugefügt. Um die Daten für den Eintrag $i$ zu lesen, wird zuerst $s_i$ und $l_i$ ausgelesen und danach der zugehörige Bereich geladen.
 
 
 == Punkte
@@ -464,7 +462,8 @@ Beim Anzeigen wird vom Root-Knoten aus zuerst geprüft, ob der momentane Knoten 
 	caption: [Sichtbare Knoten für unterschiedliche Detailstufen. Ein Knoten wird gerendert, solange ein Teil vom Knoten im Sichtfeld der Kamera liegt.],
 	grid(
 		columns: 1 * 2,
-		gutter: 1em,
+		column-gutter: 3em,
+		row-gutter: 1em,
 		box(image("../images/culling_0.png"), stroke: 1pt),
 		box(image("../images/culling_1.png"), stroke: 1pt),
 		box(image("../images/culling_2.png"), stroke: 1pt),

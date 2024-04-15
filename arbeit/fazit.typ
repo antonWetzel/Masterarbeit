@@ -4,32 +4,35 @@
 = Fazit
 
 
-== Methodik
+== Segmentierung
 
 Die Segmentierung unterteilt die Punkte in einzelne Bäume. Wenn die Kronen der Bäume klar getrennte Spitzen haben, werden diese problemlos unterteilt. Dadurch werden manche Waldgebiete gut segmentiert, aber je näher die Kronen der Bäume zueinander sind, desto wahrscheinlicher werden mehrere Bäume zu einem Segment zusammengefasst. Vor der Segmentierung muss der Mindestabstand zwischen Segmenten und die Breite der Scheiben festgelegt werden. Die Parameter müssen passend für den Datensatz gewählt werden, was eine Anpassungsmöglichkeit, aber auch eine Fehlerquelle ist.
 
 Die bereits existierende Segmentierung vom Datensatz unterteilt die Punktwolken besser für die einzelnen Bäume @pang. Dafür werden nicht nur einzelne Datensätze benötigt, sondern mehrere Datensätze werden automatisch und manuell kombiniert und in einzelne Bäume unterteilt.
 
-Bei der Analyse von einem Baum werden Daten für jeden Punkt im Baum und für den gesamten Baum berechnet. Für die einzelnen Punkte werden Punktgröße, Normale für die Visualisierung und die lokale Krümmung problemlos berechnet. Die Berechnung vom Durchmesser funktioniert für die meisten Bereiche vom Baum, wird aber durch Punkte, welche nicht zum Baum gehören stark beeinflusst.
 
-Die charakteristischen Eigenschaften vom Baum können mit den genaueren TLS-Daten abgeschätzt werden, haben aber noch systematische Fehler, welche das Ergebnis verfälschen. Mit den ALS- und ULS-Daten werden größere Gebiete abgedeckt, dafür sind die berechneten Eigenschaften ungenauer. Besonders die Berechnung vom Durchmesser vom Stamm ist nur mit den TLS-Daten möglich.
+== Analyse
 
-Die Triangulierung berechnet ein Mesh für die Segmente, welches von der Visualisierung angezeigt werden kann. Die Visualisierung kann die berechneten Daten ohne Probleme visualisieren. Durch die Detailstufen können auch größere Datenmengen interaktiv angezeigt werden.
+Bei der Analyse von einem Baum werden Daten für jeden Punkt im Baum und für den gesamten Baum berechnet. Für die einzelnen Punkte werden Punktgröße, Normale für die Visualisierung und die lokale Krümmung problemlos berechnet. Die Berechnung von der Ausdehnung für eine bestimmte Höhe vom Baum funktioniert für die meisten Bereiche, wird aber durch Punkte, welche nicht zum Baum gehören stark beeinflusst. Dadurch ist die Ausdehnung stark von der Qualität der Segmentierung abhängig.
+
+Die charakteristischen Eigenschaften vom Baum können mit den genaueren TLS-Daten abgeschätzt werden, haben aber noch systematische Fehler, welche das Ergebnis verfälschen. Mit den ALS- und ULS-Daten werden größere Gebiete abgedeckt, dafür sind die berechneten Eigenschaften ungenauer. Besonders die Berechnung vom Durchmesser vom Stamm ist nur mit den TLS-Daten möglich. Mit den ALS- und ULS-Daten können die Werte für die Baumhöhe und die Baumkrone abgeschätzt werden, weil diese Werte auch mit einer geringeren Punktdichte berechnet werden. Für Punktwolken aus der Luft mit geringer Dichte existieren besonders wenig Punkte im Bereich vom Baumstamm, wodurch keine Approximation vom Baumstamm möglich ist.
 
 
 == Visualisierung
 
 Die Software ermöglicht den Übergang von den Punktdaten ohne weitere Informationen zu einer interaktiven Visualisierung vom Waldgebiet. Dadurch ist ein Überblick über das gescannte Waldgebiet und einzelne Bäume möglich.
 
+Die Triangulierung berechnet ein Mesh für die Segmente, welches von der Visualisierung angezeigt werden kann. Unterschiedlich zu anderer 3D-Render-Software, kann das Mesh mit den berechneten Punkteigenschaften für die Farbinformationen angezeigt werden.
+
 Die Visualisierung ermöglicht eine interaktive Darstellung der Daten. Im Gegensatz zu LAStools @lastools werden Datenpunkte nicht mit einer festen Größe, sondern durch einen orientierten Kreis mit variablem Radius angezeigt. Dadurch entstehen keine Lücken zwischen den Datenpunkten, wenn diese eine geringere Dichte haben oder die Entfernung zur Kamera gering ist. Ein Vergleich ist in @fazit_lasview_compare gegeben. Beim `LASviewer` sind die Baumkronen weit von den Messpunkten schwer zu sehen, weil weniger Datenpunkte existieren.
 
 #figure(
-	caption: [Vergleich zwischen den Visualisierungen von `lasviewer` und `treee`.],
+	caption: [Vergleich zwischen den Visualisierungen von `LASviewer` und `treee`.],
 	grid(
 		columns: 1 * 2,
 		gutter: 1em,
-		subfigure(image("../images/lasviewer_it.png"), caption: [`LASviewer`]),
-		subfigure(image("../images/lasviewer_treee.png"), caption: [`treee`]),
+		subfigure(rect(inset: -1pt, radius: 4pt, stroke: 5pt, image("../images/lasviewer_it.png")), caption: [`LASviewer`]),
+		subfigure(rect(inset: -1pt, radius: 4pt, stroke: 5pt, image("../images/lasviewer_treee.png")), caption: [`treee`]),
 	),
 ) <fazit_lasview_compare>
 
