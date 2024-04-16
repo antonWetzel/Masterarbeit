@@ -10,13 +10,13 @@
 	== Abstrakt
 
 	#align(left)[
-		Diese Arbeit beschäftigt sich mit der Verarbeitung und Visualisierung von Punktwolken von Waldgebieten. Dabei wird der komplette Ablauf vom Datensatz bis zur Visualisierung der einzelnen Bäume mit relevanten Informationen durchgeführt.
+		Diese Arbeit beschäftigt sich mit der Verarbeitung, Analyse und Visualisierung von Waldgebieten mithilfe von Punktwolken. Dabei wird der komplette Ablauf vom Datensatz bis zur Visualisierung der einzelnen Bäume mit relevanten Informationen durchgeführt.
 
-		Ein Datensatz ist dabei eine ungeordnete Liste von Punkten, für die nur die dreidimensionale Position bekannt ist.
+		Ein Datensatz ist dabei ein Lidar-Scan von einem Waldgebiet, welcher als Liste von Punkten gegeben ist. Die Punkte können in beliebiger Reihenfolge abgespeichert sein und für jeden Punkt wird nur die dreidimensionale Position benötigt.
 
-		Die Punkte werden automatisch in einzelne Bäume unterteilt, relevante Informationen für die Bäume und die einzelnen Punkte berechnet und alle Daten werden für die Visualisierung in Echtzeit vorbereitet.
+		Zuerst werden die Punkte automatisch in einzelne Bäume unterteilt. Die Analyse berechnet für die Bäume und einzelne Punkte danach relevante Informationen und die Daten werden für die Visualisierung in Echtzeit vorbereitet.
 
-		Die vorgestellten Methoden und Algorithmen sind im zugehörigen Softwareprojekt umgesetzt, womit die Analyse und Visualisierung getestet wird.
+		In dem zugehörigen Softwareprojekt sind die vorgestellten Methoden, Datenstrukturen und Algorithmen umgesetzt. Die Analyse und Visualisierung der Waldgebiete werden mit der Umsetzung getestet und ausgewertet.
 	]
 ]))
 

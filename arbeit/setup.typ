@@ -84,12 +84,26 @@
 	)
 
 	show outline.entry: it => {
+		let elem(it, off) = {
+			v(1.1em, weak: true)
+			h((it.level - 1 - off) * 2em, weak: false)
+			if it.body.has("children") {
+				it.body.children.at(0)
+				h(10pt)
+				it.body.children.at(2)
+			} else {
+				it.body
+			}
+			box(width: 1fr, it.fill)
+			it.page
+		};
+
 		if it.level == 1 {
-			v(1.2em, weak: true)
-			strong(it)
+			v(2.5em, weak: true)
+			strong(elem(it, 0))
 		} else {
-			v(0.6em, weak: true)
-			h((it.level - 2) * 2em, weak: false) + it
+			v(1.1em, weak: true)
+			elem(it, 1)
 		}
 	}
 

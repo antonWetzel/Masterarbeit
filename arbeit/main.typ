@@ -6,13 +6,13 @@
 	keywords: ("Punktwolken", "botanische Bäume", "Rust", "WebGPU", "Visualisierung"),
 )
 
-#show: word-count
+// #show: word-count
 
-Wörter: #total-words
+// Wörter: #total-words
 
-#todo-outline() #pagebreak()
+// #todo-outline() #pagebreak()
 
-#show: (doc) => setup(doc, print: true)
+#show: (doc) => setup(doc, print: false)
 
 #include "deckblatt.typ"
 

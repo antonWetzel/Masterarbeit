@@ -54,7 +54,7 @@ Bei der Berechnung sind alle momentanen Bereiche in einer Liste gespeichert. Ein
 Um einen Punkt zu einem Bereich hinzuzufügen wird wie in @segmentierung_add_point für jede Kante der Abstand zum Punkt bestimmt und Kanten mit positivem Abstand werden ausgetauscht.
 
 #figure(
-	caption: [Berechnung vom Abstand vom Punkt $p$ zur Kante zwischen $a$ und $b$.],
+	caption: [Hinzufügen von einem neuen Eckpunkt zu einem Bereich.],
 	grid(
 		columns: 2,
 		subfigure(
