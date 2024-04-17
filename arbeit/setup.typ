@@ -17,13 +17,12 @@
 		set rect(stroke: black)
 		set line(stroke: black)
 		show link: it => text(fill: black, it)
-
 		document
 	}
 
 	let setup_digital(document) = {
 		show link: it => text(fill: eastern, it)
-
+		show ref: it => text(fill: eastern, it)
 		document
 	}
 	let rule = if print {

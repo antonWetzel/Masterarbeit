@@ -12,6 +12,7 @@
 				"bundled": true,
 				// "host": "http://127.0.0.1",
 				// "port": "8081",
+				"on_change": true,
 				"language": "de-DE",
 				"dictionary": [
 					"Normalen",
