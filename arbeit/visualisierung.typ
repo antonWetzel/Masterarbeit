@@ -6,9 +6,9 @@
 
 == Punkte
 
-Grafikpipelines haben mehrere primitive Formen, welche gerendert werden können. Die verfügbaren primitiven Formen sind meistens Punkte, Linien und Dreiecke, wobei Dreiecke immer verfügbar sind. Für das Anzeigen von komplizierter Modelle werden mehreren primitiven Formen zusammengesetzt.
+Grafikpipelines haben mehrere primitive Formen, welche gerendert werden können. Die verfügbaren primitiven Formen sind meistens Punkte, Linien und Dreiecke, wobei Dreiecke immer verfügbar sind. Für das Anzeigen von komplizierter Modellen werden mehrere primitiven Formen zusammengesetzt.
 
-Der primitive Punkt hat dabei keine Größe, sondern wird mit genau einem Pixel dargestellt. Um einen Punkt mit einer Größe anzeigen, werden Dreiecke als primitive Form verwendet. Bei einem Dreieck kann beliebige Eckpunkte haben und die Grafikpipeline färbt alle Pixel ein, welche zwischen den Eckpunkten liegen.
+Der primitive Punkt hat dabei keine Größe, sondern wird mit genau einem Pixel dargestellt. Um einen Punkt mit einer Größe anzeigen, werden Dreiecke als primitive Form verwendet. Dabei hat ein Dreieck beliebige Eckpunkte und die Grafikpipeline färbt alle Pixel ein, welche zwischen den Eckpunkten liegen.
 
 Um einen Kreis zu rendern, kann ein beliebiges Polygon gerendert werden, solange der gewünschte Kreis vollständig enthalten ist. Die Pixel, welche außerhalb vom Kreis liegen, werden beim Rendern verworfen, wodurch nur der Kreis übrig bleibt. Je mehr Ecken das Polygon hat, desto kleiner ist der Bereich vom Polygon, der nicht zum Kreis gehört. Jede Ecke und der benötigte Bereich erhöhen den benötigten Arbeitsaufwand.
 
@@ -30,13 +30,13 @@ Zuerst wird ein Kreis mit Position $(0, 0)$ und Radius $1$ benötigt. Mithilfe d
 			line((-1.73, -1), (0, -1), (0, 0), close: true)
 			line((0, -1), (1.73, -1), (0, 2), close: true)
 
-			arc((-1.73, -1), start: 0deg, stop: 30deg, anchor: "origin", radius: 0.6)
+			arc((-1.73, -1), start: 0deg, stop: 30deg, anchor: "origin", radius: 0.65)
 			content((-1.45, -0.9), [$30°$], anchor: "west")
 
-			arc((0, -1), start: 90deg, stop: 180deg, anchor: "origin", radius: 0.3)
+			arc((0, -1), start: 90deg, stop: 180deg, anchor: "origin", radius: 0.35)
 			circle((-0.15, -0.85), radius: 0.01, fill: black)
 
-			arc((0, 0), start: 210deg, stop: 270deg, anchor: "origin", radius: 0.5)
+			arc((0, 0), start: 210deg, stop: 270deg, anchor: "origin", radius: 0.52)
 			content((-0.2, -0.2), [$60°$], anchor: "north")
 
 			content((0, -1), $w = 2 dot tan(60°) approx 3,46$, anchor: "north", padding: 0.1)
@@ -66,7 +66,7 @@ Das kleinste passende Dreieck ist ein gleichseitiges Dreieck. Ein mögliches Dre
 
 Das kleinste mögliche Viereck ist das Quadrat mit Seitenlänge $2$. Um diesen anzuzeigen, wird das Quadrat entlang der Diagonalen in zwei Dreiecke unterteilt. Für die beiden Dreiecke werden sechs Ecken und eine Fläche von $a^2 =2^2 = 4$ benötigt.
 
-In @visualiserung_vergleich_polygon ist ein Vergleich für eine Punktwolke gerendert mit unterschiedlichen Polygonen. Für Polygone mit mehr Ecken, wird der benötigte Bereich kleiner, es werden aber auch mehr Ecken benötigt.
+In @visualiserung_vergleich_polygon ist ein Vergleich für eine Punktwolke gerendert mit unterschiedlichen Polygonen. Für Polygone mit mehr Ecken, wird der benötigte Bereich kleiner, es werden aber auch mehr Eckpunkte benötigt.
 
 #let boxed(p, caption: []) = subfigure(box(image(p), stroke: 1pt, clip: true), caption: caption)
 
@@ -84,13 +84,13 @@ In @visualiserung_vergleich_polygon ist ein Vergleich für eine Punktwolke geren
 
 === Anzeigen im dreidimensionalen Raum
 
-Für jeden Punkt wird mit der Position $p$, Normalen $n$ und Größe $s$ und den Koordinaten $(x_i, y_i)$ vom Eckpunkt $i$ wird die zugehörige Position im dreidimensionalen Raum bestimmt. Wie in @dreieck_kreuzprodukt werden zuerst zwei Vektoren bestimmt, welche paarweise zueinander und zur Normalen orthogonal sind. Mit den Vektoren wird dann die dreidimensionale Position vom Eckpunkt berechnet.
+Für jeden Punkt wird mit der Position $p$, Normalen $n$ und Größe $s$ und den Koordinaten $(x_i, y_i)$ vom Eckpunkt $i$ die zugehörige Position $p_i$ im dreidimensionalen Raum bestimmt. Wie in @dreieck_kreuzprodukt werden zuerst zwei Vektoren bestimmt, welche paarweise zueinander und zur Normalen orthogonal sind. Mit den Vektoren wird dann die dreidimensionale Position vom Eckpunkt berechnet.
 
 #figure(caption: [Transformation der Eckpunkte mit der Normalen.], grid(
 	columns: 2,
 	subfigure(
 		caption: [$a$ und $b$ berechnen],
-		cetz.canvas(length: 2cm, {
+		cetz.canvas(length: 1.6cm, {
 			import cetz.draw: *
 			set-style(stroke: black)
 
@@ -156,9 +156,9 @@ Für jeden Punkt wird mit der Position $p$, Normalen $n$ und Größe $s$ und den
 	)
 )) <dreieck_kreuzprodukt>
 
-Für den ersten Vektor $a$ wird mit der Normalen $n = (n_x, n_y, n_z)$ das Kreuzprodukt $a = (n_x, n_y, n_z) times (n_y, n_z, -n_x)$ bestimmt. Weil $|n| > 0$ ist, sind $(n_y, n_z, -n_x)$ und $n$ unterschiedlich. $a$ muss noch für die weiteren Berechnungen normalisiert werden. Für den zweiten Vektor $b$ wird das Kreuzprodukt $b = n times a$ bestimmt. Weil das Kreuzprodukt zweier Vektoren orthogonal zu beiden Vektoren ist, sind $n$, $a$ und $b$ paarweise orthogonal. Ein Beispiel ist in @dreieck_kreuzprodukt gegeben.
+Für den ersten Vektor $a$ wird mit der Normalen $n = (n_x, n_y, n_z)$ das Kreuzprodukt $a = (n_x, n_y, n_z) times (n_y, n_z, -n_x)$ bestimmt. Weil $norm(n) > 0$ ist, sind $n$ und $(n_y, n_z, -n_x)$ unterschiedlich. $a$ muss noch für die weiteren Berechnungen normalisiert werden. Für den zweiten Vektor $b$ wird das Kreuzprodukt $b = n times a$ bestimmt. Weil das Kreuzprodukt zweier Vektoren orthogonal zu beiden Vektoren ist, sind $n$, $a$ und $b$ paarweise orthogonal.
 
-Die Vektoren $a$ und $b$ spannen dadurch eine Ebene auf, welche orthogonal zu $n$ ist. Für den Eckpunkt vom Dreieck wird die Position $p_i = p + a * x_i * s + b * y_i * s$ berechnet.
+Die Vektoren $a$ und $b$ spannen dadurch eine Ebene auf, welche orthogonal zu $n$ ist. Für den Eckpunkt vom Dreieck wird die Position $p_i = p + a dot x_i dot s + b dot y_i dot s$ berechnet.
 
 
 == Detailstufen
@@ -167,9 +167,9 @@ Je nach Scanner und Größe des abgetasteten Gebietes kann die Punktwolke unters
 
 Besonders für weit von der Kamera entfernte Punkte ist es nicht notwendig, alle Punkte genau anzuzeigen. Deshalb wird für weit entfernte Punkte eine vereinfachte Version berechnet und anstelle der originalen Punkte verwendet. Diese besteht aus weniger Punkten und benötigt dadurch weniger Ressourcen.
 
-Für die gesamte Punktwolke wird ein Octree mit den Punkten erstellt. Am Anfang besteht der Octree aus einem Leaf-Knoten und die Punkte zum Octree hinzugefügt. Dafür wird der Leaf-Knoten bestimmt, der zur Position vom Punkt gehört. Enthält der Leaf-Knoten weniger Punkte als die festgelegte Maximalanzahl, so wird der Punkt zum Knoten hinzugefügt. Wenn der Leaf-Knoten bereits voll ist, so wird dieser unterteilt. Der Leaf-Knoten wird in acht Kinderknoten unterteilt und die Punkte vom Leaf-Knoten werden auf die Kinderknoten verteilt, wodurch der Leaf-Knoten zum Branch-Knoten wird. Für die Unterteilung wird der Knoten entlang der x-, y- und z-Achse in der Mitte geteilt.
+Für die gesamte Punktwolke wird ein Octree mit den Punkten erstellt. Am Anfang besteht der Octree aus einem Leaf-Knoten und die Punkte werden nacheinander zum Octree hinzugefügt. Dafür wird der Leaf-Knoten bestimmt, der zur Position vom Punkt gehört. Enthält der Leaf-Knoten weniger Punkte als die festgelegte Maximalanzahl, so wird der Punkt zum Knoten hinzugefügt. Wenn der Leaf-Knoten bereits voll ist, so wird dieser aufgeteilt. Der Leaf-Knoten wird mit einem Branch-Knoten mit acht Leaf-Knoten als Kinderknoten ersetzt und die Punkte vom Leaf-Knoten werden auf die Kinderknoten verteilt. Für die Unterteilung wird der Knoten entlang der x-, y- und z-Achse in der Mitte geteilt.
 
-Alle Punkte gehören nach der Unterteilung zu einem Leaf-Knoten im Octree. Für jeden Branch-Knoten wird dann eine Punktwolke berechnet, welche als Vereinfachung der Punkte der zugehörigen Kinderknoten verwendet werden kann. In @visualiserung_lods sind die unterschiedlichen Stufen vom Octree mit zugehörigen Detailstufen visualisiert.
+Alle Punkte gehören nach der Unterteilung zu einem Leaf-Knoten im Octree. Von den Leaf-Knoten aus bis zum Root-Knoten wird für jeden Branch-Knoten eine Punktwolke berechnet, welche als Vereinfachung der Punkte der zugehörigen Kinderknoten verwendet werden kann. In @visualiserung_lods sind die unterschiedlichen Stufen vom Octree mit zugehörigen Detailstufen visualisiert. Für jede höhere Stufe wird jeder Branch-Knoten durch seine Kinderknoten ersetzt, bis nur noch Leaf-Knoten angezeigt werden.
 
 #figure(
 	caption: [Unterschiedliche Detailstufen. Jeder Würfel enthält bis zu $32768$ Punkte. In der höchsten Stufe werden alle Punkte im Datensatz angezeigt.],
@@ -195,34 +195,38 @@ Die Detailstufen werden wie bei "Fast Out-of-Core Octree Generation for Massive 
 
 Dadurch haben zwar Berechnungen der gröberen Detailstufen für Knoten näher an der Wurzel nur Zugriff auf bereits vereinfachte Daten, aber die Anzahl der Punkte, mit denen die Detailstufe berechnet wird, ist viel kleiner. Solange die Detailstufen eine gute Vereinfachung der ursprünglichen Punkte sind, kann so der Berechnungsaufwand stark verringert werden.
 
-Für die Berechnung einer Detailstufe wird der Voxel, welcher zu dem Knoten gehört, in eine feste Anzahl von gleich großen Teilvoxeln unterteilt. Für jeden Teilvoxel werden zuerst alle Punkt aus den Kinderknoten bestimmt, welche im Teilvoxel liegen. Liegt kein Punkt im Teilvoxel, so wird dieser übersprungen. Aus den Punkten im Teilvoxel wird ein repräsentativer Punkt bestimmt. Dafür werden Position, Normale und Größe gemittelt und die Eigenschaften von einem der Punkte übernommen. Die Detailstufe besteht aus allen repräsentativen Punkten für die Teilvoxel, welche nicht leer waren.
+Für die Berechnung einer Detailstufe wird der Voxel, welcher zu dem Knoten gehört, in eine feste Anzahl von gleich großen Teilvoxeln unterteilt. Für jeden Teilvoxel werden zuerst alle Punkt aus den Kinderknoten bestimmt, welche im Teilvoxel liegen. Liegt kein Punkt im Teilvoxel, so wird dieser übersprungen. Aus den Punkten im Teilvoxel wird ein repräsentativer Punkt bestimmt. Dafür werden die Positionen, Normalen und Größen der Punkte gemittelt und die Eigenschaften von einem der Punkte übernommen. Die Detailstufe besteht aus allen repräsentativen Punkten für die Teilvoxel, welche nicht leer waren.
 
 Bei der nächst gröberen Detailstufe ist der Voxel vom Branch-Knoten doppelt so groß. Durch die feste Anzahl der Teilvoxel verdoppelt sich auch die Größe der Teilvoxel, wodurch die Punkte weiter vereinfacht werden.
 
 
-== Eye-Dome Lighting
+== Eye-Dome-Lighting
 
-Um die Punktwolke anzuzeigen, werden die Punkte aus dem dreidimensionalen Raum auf den zweidimensionalen Monitor projiziert. Dabei gehen die Tiefeninformationen verloren. Mit der Rendertechnik Eye-Dome Lighting werden die Kanten von Punkten hervorgehoben, bei denen die Tiefe sich stark ändert.
+Um die Punktwolke anzuzeigen, werden die Punkte aus dem dreidimensionalen Raum auf den zweidimensionalen Monitor projiziert. Dabei gehen die Tiefeninformationen verloren. Mit der Rendertechnik Eye-Dome-Lighting werden die Kanten von Punkten hervorgehoben, bei denen die Tiefe sich stark ändert.
 
-Beim Rendern von 3D-Szenen wird für jedes Pixel die momentane Tiefe vom Polygon an dieser Stelle gespeichert. Das wird benötigt, dass bei überlappenden Polygonen das nähere Polygon an der Kamera angezeigt wird. Nachdem die Szene gerendert ist, wird mit den Tiefeninformationen für jedes Pixel der Unterschied zu den umliegenden Pixeln bestimmt. Ein Beispiel für die Tiefeninformationen ist in @eye_dome_depth gegeben.
+Beim Rendern von 3D-Szenen wird für jedes Pixel die momentane Tiefe vom Polygon an dieser Stelle gespeichert. Das wird benötigt, dass bei überlappenden Polygonen das nähere Polygon an der Kamera angezeigt wird. Nachdem die Szene gerendert ist, wird mit den Tiefeninformationen für jedes Pixel der Unterschied zu den umliegenden Pixeln bestimmt. Ein Beispiel für die Tiefeninformationen ist in @eye_dome_depth gegeben. Je heller ein Pixel ist, desto weiter ist das zugehörige Polygon von der Kamera entfernt und Pixel ohne zugehöriges Polygon sind in Weiß.
 
 #figure(
-	caption: [Tiefeninformationen nach dem Rendern der Szene. Je heller eine Position ist, desto weiter ist das Polygon zugehörig zur Koordinate von der Kamera entfernt.],
-	box(image("../images/eye_dome_depth_edited.png", width: 80%), stroke: 1pt),
+	caption: [Tiefeninformationen nach dem Rendern der Szene. ],
+	box(image("../images/eye_dome_depth_edited.png"), stroke: 1pt),
 ) <eye_dome_depth>
 
-Der Effekt entsteht dadurch, dass für jedes Pixel der maximale Unterschied in der Tiefe zu den umliegenden Pixeln bestimmt wird. Je größer der Unterschied, desto mehr wird das zugehörige Pixel verdunkelt. Eine Veranschaulichung ist in @eye_dome_example gegeben.
+Der Effekt entsteht dadurch, dass für jedes Pixel der maximale Unterschied in der Tiefe zu den umliegenden Pixeln bestimmt wird. Je größer der Unterschied, desto mehr wird das zugehörige Pixel verdunkelt. Eine Veranschaulichung ist in @eye_dome_example gegeben. Die Punktwolke ist zusätzlich ohne Farbe gerendert, um den Effekt hervorzuheben.
 
 #let boxed(p, caption: []) = subfigure(box(image(p), fill: rgb(35%, 49%, 58%), stroke: 1pt), caption: caption)
 
 #figure(
-	caption: [Waldgebiet mit und ohne Eye-Dome Lighting. Die Punkte sind zusätzlich in Weiß angezeigt, um den Effekt hervorzuheben.],
+	caption: [Waldgebiet mit und ohne Eye-Dome-Lighting. ],
 	grid(
 		columns: 2 * 1,
 		gutter: 1em,
-		boxed("../images/eye_dome_without.png", caption: [Ohne Eye-Dome Lighting]),
-		boxed("../images/eye_dome_with.png", caption: [Mit Eye-Dome Lighting]),
-		boxed("../images/eye_dome_white_without.png", caption: [Einfarbig ohne Eye-Dome Lighting]),
-		boxed("../images/eye_dome_white_with.png", caption: [Einfarbig mit Eye-Dome Lighting]),
+		boxed("../images/eye_dome_without.png", caption: [Ohne Eye-Dome-Lighting]),
+		boxed("../images/eye_dome_with.png", caption: [Mit Eye-Dome-Lighting]),
+		boxed("../images/eye_dome_white_without.png", caption: [Einfarbig ohne Eye-Dome-Lighting]),
+		boxed("../images/eye_dome_white_with.png", caption: [Einfarbig mit Eye-Dome-Lighting]),
 	),
 ) <eye_dome_example>
+
+Die Kanten sind immer nur einem Pixel breit, wodurch der optische Effekt von der Auflösung beeinflusst wird. Wenn die Auflösung sehr niedrig ist, werden die Kanten breiter und für eine hohe Auflösung dünner.
+
+Die Berechnung wird für jedes Pixel durchgeführt, wodurch der Aufwand nur Abhängig von der Anzahl der Pixel ist. Für eine Punktwolke mit sehr vielen Punkten bleibt dadurch der Aufwand für das Eye-Dome-Lighting gleich.

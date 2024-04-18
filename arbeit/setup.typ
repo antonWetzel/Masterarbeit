@@ -49,7 +49,7 @@
 	show raw: it => text(size: 1.2em, it)
 
 	show heading: it => block({
-		if it.numbering != none {
+		if it.numbering != none and it.level < 4 {
 			counter(heading).display()
 			h(13pt)
 		}

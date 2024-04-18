@@ -6,17 +6,14 @@
 
 == Ziel
 
-Das Ziel der Triangulierung ist eine Approximation der ursprünglichen Oberfläche von den gescannten Bäumen, welche weiterverarbeitet oder angezeigt werden kann. Die meisten Programme und Hardware sind auf das Anzeigen von Dreiecken spezialisiert und können diese effizienter als Punkte darstellen. Dafür wird die Triangulierung von einem Segment bestimmt.
+Das Ziel der Triangulierung ist eine Approximation der ursprünglichen Oberfläche von den gescannten Bäumen, welche weiterverarbeitet oder angezeigt werden kann. Die meisten Programme und Hardware sind auf das Anzeigen von Dreiecken spezialisiert und können diese effizienter als Punkte darstellen. Die Triangulierung wird dafür mit den Punkten von einem Bereich berechnet.
 
 
 == Ball-Pivoting Algorithmus
 
-
-=== Überblick
-
 Beim Ball-Pivoting Algorithmus werden die Dreiecke der Oberfläche bestimmt, welche von einer Kugel mit Radius $alpha$ ($alpha$-Kugel) erreicht werden können. Dabei berührt die Kugel die drei Eckpunkte vom Dreieck und alle anderen Punkte sind außerhalb der Kugel @ball_pivot.
 
-In @ball_pivoting_überblick ist ein Beispiel in 2D gegeben. Dabei werden die Linien gesucht, dass der zugehörige Kreis keine weiteren Punkte enthält.
+In @ball_pivoting_überblick ist ein Beispiel in 2D gegeben. Dabei werden die Kanten zwischen zwei Punkten gesucht, dass der zugehörige Kreis keine weiteren Punkte enthält. Für die äußeren Punkte in Schwarz wird eine Oberfläche gefunden. Für den inneren Punkt in Rot kann kein Nachbar gefunden werden, weil alle zugehörigen Kreise weitere Punkte enthalten würden.
 
 #let positions = (
 	(0, 0),
@@ -48,9 +45,9 @@ In @ball_pivoting_überblick ist ein Beispiel in 2D gegeben. Dabei werden die Li
 
 #figure(
 	caption: [
-		Ball-Pivoting Algorithmus in 2D. Für die äußeren Punkte in Schwarz wird eine Oberfläche gefunden. Für den inneren Punkt in Rot kann kein Nachbar gefunden werden, weil alle zugehörigen Kreise weitere Punkte enthalten würden.
+		Ball-Pivoting Algorithmus in 2D.
 	],
-	cetz.canvas(length: 2cm, {
+	cetz.canvas(length: 1.7cm, {
 		import cetz.draw: *
 
 		for i in range(1, positions.len()) {
@@ -71,17 +68,17 @@ In @ball_pivoting_überblick ist ein Beispiel in 2D gegeben. Dabei werden die Li
 	}),
 ) <ball_pivoting_überblick>
 
-Die gefundenen Dreiecke bilden eine Hülle, welche alle Punkte beinhaltet. Je kleiner $alpha$ ist, desto genauer ist die Hülle um die Punkte und Details werden besser wiedergegeben. Dafür werden mehr Dreiecke benötigt und Lücken im Datensatz sind auch in der Hülle vorhanden.
+Die gefundenen Dreiecke bilden eine äußere Hülle um die Punkte. Je kleiner $alpha$ ist, desto genauer ist die Hülle um die Punkte und Details werden besser wiedergegeben. Dafür werden mehr Dreiecke benötigt und größere Lücken in den Punkten sind auch in der Hülle vorhanden.
 
 
 === $alpha$-Kugel für ein Dreieck
 
-Für ein Dreieck $(p_1, p_2, p_3)$ wird die Position der zugehörigen $alpha$-Kugel benötigt. Dafür wird zuerst das Zentrum $c$ vom Umkreis vom Dreieck bestimmt. Von diesem sind alle Eckpunkte gleich weit entfernt. Ist der Abstand $d_c$ vom Zentrum zu den Ecken größer als $alpha$, so gibt es keine zugehörige $alpha$-Kugel. Für Abstände kleiner gleich $alpha$ ist das Zentrum der Kugel $d = sqrt(alpha^2 - d_c^2)$ vom Zentrum vom Umkreis entfernt. Der Vektor $o = (p_2 - p_1) times (p_3 - p_1)$ ist orthogonal zum Dreieck, womit die Position vom Zentrum der $alpha$-Kugel mit $c + d dot o / (|o|)$ berechnet werden kann.
+Für ein Dreieck $(p_1, p_2, p_3)$ wird die Position der zugehörigen $alpha$-Kugel benötigt. Dafür wird zuerst das Zentrum $c$ vom Umkreis vom Dreieck bestimmt. Von diesem sind alle Eckpunkte gleich weit entfernt. Ist der Abstand $d_c$ vom Zentrum zu den Ecken größer als $alpha$, so gibt es keine zugehörige $alpha$-Kugel. Für Abstände kleiner gleich $alpha$ ist das Zentrum der Kugel $d = sqrt(alpha^2 - d_c^2)$ vom Zentrum vom Umkreis entfernt. Der Vektor $o = (p_2 - p_1) times (p_3 - p_1)$ ist orthogonal zum Dreieck, womit die Position vom Zentrum der $alpha$-Kugel mit $c + d dot o / (norm(o))$ berechnet werden kann.
 
 Durch die Berechnung von $o$ ist die Reihenfolge der Punkte relevant. Vertauschen von zwei Punkten berechnet die $alpha$-Kugel auf der anderen Seite des Dreiecks.
 
 
-=== Ablauf
+== Ablauf
 
 
 === KD-Baum berechnen
@@ -97,7 +94,7 @@ Als Anfang wird ein Dreieck mit zugehöriger $alpha$-Kugel benötigt, dass keine
 
 Für den momentanen Punkt werden die umliegenden Punkte mit einem Abstand von $2 alpha$ oder weniger bestimmt. Für weiter entfernte Punkte gibt es keine $alpha$-Kugel, welche beide Punkte berühren würde.
 
-Mit dem momentanen Punkt und alle möglichen Kombination von zwei Punkten aus den umliegenden Punkten wird ein Dreieck gebildet. Für das Dreieck werden nun die zwei möglichen $alpha$-Kugeln bestimmt, welche zum Dreieck gehören.
+Mit dem momentanen Punkt und alle möglichen Kombination von zwei Punkten aus den umliegenden Punkten wird ein Dreieck gebildet. Für das Dreieck wird probiert die zwei möglichen $alpha$-Kugeln zu bestimmen, welche zum Dreieck gehören.
 
 Wenn ein Dreieck mit zugehöriger $alpha$-Kugel gefunden wurde, welche keine weiteren Punkte enthält, kann dieses Dreieck als Startdreieck verwendet werden. Das Dreieck wird zur Triangulierung hinzugefügt und die drei zugehörigen Kanten bilden die momentanen äußeren Kanten, von denen aus die Triangulierung berechnet wird.
 
@@ -113,7 +110,7 @@ In @ball_pivoting_erweiterung ist ein Beispiel für eine Erweiterung in 2D gegeb
 		Erweiterung der gefundenen Oberfläche in 2D.
 
 	],
-	cetz.canvas(length: 2cm, {
+	cetz.canvas(length: 1.7cm, {
 		import cetz.draw: *
 		set-style(stroke: black)
 
@@ -155,10 +152,14 @@ In @ball_pivoting_erweiterung ist ein Beispiel für eine Erweiterung in 2D gegeb
 
 ==== Mögliche Kandidaten bestimmen
 
-Um den ersten Punkt $p$ zu finden, werden zuerst alle möglichen Punkte bestimmt, welche von der Kugel bei der kompletten Rotation berührt werden können. Dafür wird der Mittelpunkt $m p = (p_1 + p_2) / 2$ der Kante und der Abstand $d = |p_1-m p| = |p_2-m p|$ berechnet. Der Abstand zwischen dem Zentrum der Kugel und den Endpunkten von der Kante ist immer $alpha$, dadurch ist der Abstand vom Zentrum zum Mittelpunkt $d_C = sqrt(alpha^2 - d^2)$. In @triangulierung_abstand_kugel ist die Konstruktion veranschaulicht.
+Um den ersten Punkt $p$ zu finden, werden zuerst alle möglichen Punkte bestimmt, welche von der Kugel bei der kompletten Rotation berührt werden können. Dafür wird der Mittelpunkt $m p$ der Kante und der Abstand $d$ berechnet.
+
+$ m p = (p_1 + p_2) / 2 #h(40pt) d = norm(p_1-m p) = norm(p_2-m p) $
+
+Der Abstand zwischen dem Zentrum der Kugel und den Endpunkten von der Kante ist immer $alpha$, dadurch ist der Abstand vom Zentrum zum Mittelpunkt der Kante $d_C = sqrt(alpha^2 - d^2)$. In @triangulierung_abstand_kugel ist die Konstruktion veranschaulicht.
 
 #figure(
-	caption: [Konstruktion des Abstands der $alpha$-Kugel vom Mittelpunkt der Kante],
+	caption: [Abstand vom Zentrum der $alpha$-Kugel zum Mittelpunkt der Kante.],
 	cetz.canvas(length: 0.5cm, {
 		import cetz.draw: *
 		set-style(stroke: black)
@@ -191,15 +192,15 @@ Um den ersten Punkt $p$ zu finden, werden zuerst alle möglichen Punkte bestimmt
 	}),
 ) <triangulierung_abstand_kugel>
 
-Die möglichen Punkte sind vom Zentrum der Kugel $c$ maximal $alpha$ entfernt und $c$ ist vom Mittelpunkt $m p$ genau $d_c$ weit entfernt. Deshalb werden mit dem KD-Baum die Punkte in der Kugel mit Zentrum $m p$ und Radius $alpha + d_c$ bestimmt.
+Die möglichen Punkte sind vom Zentrum der Kugel $c$ maximal $alpha$ entfernt und $c$ ist vom Mittelpunkt $m p$ genau $d_c$ weit entfernt. Deshalb werden mit dem KD-Baum die Punkte in der Kugel mit Zentrum $m p$ und Radius $alpha + d_c$ als mögliche Kandidaten bestimmt.
 
 
 ==== Besten Kandidaten bestimmen
 
-Für jeden Kandidaten $p$ wird berechnet, wie weit die Kugel um die Kante gerollt werden muss, bis die Kugel den Kandidaten berührt. Dafür wird zuerst das Zentrum $c_p$ der $alpha$-Kugel bestimmt, welche $p_1$, $p_2$ und $p$ berührt. Die Kugel wird dabei wie in @triangulierung_kugel_seite bestimmt, dass die Kugel auf der korrekten Seite vom potenziellen Dreieck liegt. $p$ kann so liegen, dass es keine zugehörige $alpha$-Kugel gibt, in diesem Fall wird $p$ nicht weiter betrachtet. Für die restlichen Kandidaten wird der Winkel $phi$ berechnet, wie weit um die Kante die Kugel gerollt wurde.
+Für jeden Kandidaten $p$ wird berechnet, wie weit die Kugel um die Kante gerollt werden muss, bis die Kugel den Kandidaten berührt. Dafür wird zuerst das Zentrum $c_p$ der $alpha$-Kugel bestimmt, welche $p_1$, $p_2$ und $p$ berührt. Das Zentrum wird dabei wie in @triangulierung_kugel_seite berechnet, dass die Kugel auf der korrekten Seite vom potenziellen Dreieck liegt. $p$ kann so liegen, dass es keine zugehörige $alpha$-Kugel gibt, in diesem Fall wird $p$ nicht weiter betrachtet. Für die restlichen Kandidaten wird der Winkel $phi$ berechnet, wie weit um die Kante die Kugel gerollt wurde.
 
 #figure(
-	caption: [Berechnung von Zentrum der $alpha$-Kugel und zugehöriger Winkel für einen Kandidatenpunkt],
+	caption: [Berechnung von Zentrum der $alpha$-Kugel und zugehöriger Winkel für einen Kandidaten.],
 	cetz.canvas(length: 1.2cm, {
 		import cetz.draw: *
 		set-style(stroke: black)
@@ -237,21 +238,25 @@ Für jeden Kandidaten $p$ wird berechnet, wie weit die Kugel um die Kante geroll
 	}),
 ) <triangulierung_kugel_seite>
 
-Mit $m p$, $c$ und $c_p$ wird der Winkel $phi$ bestimmt. Dafür werden die Vektoren $a = c - m p$ und $b = c_p - m p$ bestimmt und normalisiert. Der Kosinus von $phi$ ist dabei das Skalarprodukt $s =a dot b$. Zusätzlich wird das Kreuzprodukt $k =a times b$ bestimmt, um die Winkel mit gleichen Kosinus zu unterscheiden.
+Mit $m p$, $c$ und $c_p$ wird der Winkel $phi$ bestimmt. Dafür werden die normalisierten Vektoren $a$ und $b$ berechnet.
 
-$ phi = cases(
-		arccos(s) & "falls" & k >= 0,
-		tau - arccos(s) & "falls" & k < 0,
+$ a = (c - m p) / norm(c - m p) #h(40pt) b = (c_p - m p) / norm(c_p - m p) $
+
+Der Kosinus von $phi$ ist dabei das Skalarprodukt $s =a dot b$. Zusätzlich wird mit dem Kreuzprodukt $k =a times b$ die Richtung $r$ bestimmt, um die Winkel mit gleichen Kosinus zu unterscheiden.
+
+$ k = a times b #h(40pt) r = k dot (p_2 - p_1) #h(40pt) phi = cases(
+		arccos(s) & "falls" & r >= 0,
+		tau - arccos(s) & "falls" & r < 0,
 	) $
 
-Von allen Kandidaten wird der Punkt $p_3$ ausgewählt, für den $phi$ am kleinsten ist.
+Von allen Kandidaten wird der Punkt $p_3$ ausgewählt, für den $phi$ am kleinsten ist. Wenn $p_1 = p_3$ oder $p_2 = p_3$, dann gibt es keinen dritten Punkt um die Triangulierung zu erweitern und kein weiteres Dreieck wird für die Kante hinzugefügt.
 
-Es muss nicht kontrolliert werden, ob ein Punkt in der $alpha$-Kugel von $(p_1, p_2, p_3)$ liegt, weil diese immer leer ist. Würde ein weiterer Punkt in der Kugel liegen, so würde der zugehörige Winkel $phi$ von diesem Punkt kleiner sein, weil der Punkt beim Rollen um die Kante früher von der Kugel berührt wird. Weil $p_3$ aber zum kleinsten Winkel gehört, ist die zugehörige $alpha$-Kugel immer leer. Dies gilt aber nur, wenn die Kugel vor dem Rollen leer ist.
+Es muss nicht kontrolliert werden, ob ein Punkt in der $alpha$-Kugel von $(p_1, p_2, p_3)$ liegt, weil diese immer leer ist. Würde ein weiterer Punkt in der Kugel liegen, so würde der zugehörige Winkel $phi$ von diesem Punkt kleiner sein, weil der Punkt beim Rollen um die Kante früher von der Kugel berührt wird. Weil $p_3$ aber zum kleinsten Winkel gehört, ist die zugehörige $alpha$-Kugel immer leer. Dies gilt aber nur, wenn die Kugel vor dem Rollen bereits leer war.
 
 
 ==== Triangulierung erweitern
 
-Das neu gefundene Dreieck mit den Eckpunkten $(p_1, p_2, p_3)$ wird zur Triangulierung hinzugefügt. Die Kante ($p_1, p_2$) wird von den äußeren Kanten entfernt, dafür werden die neuen Kanten zwischen $(p_1, p_3)$ und $(p_3, p_2)$ hinzugefügt. Wenn eine der neuen Kante in den äußeren Kanten bereits vorhanden ist, wird diese nicht hinzugefügt, sondern von den äußeren Kanten entfernt, weil das zugehörige zweite Dreieck bereits gefunden wurde. Eine Veranschaulichung ist in @triangulierung_erweiterung gegeben.
+Das neu gefundene Dreieck mit den Eckpunkten $(p_1, p_2, p_3)$ wird zur Triangulierung hinzugefügt. Die Kante ($p_1, p_2$) wird von den äußeren Kanten entfernt, dafür werden die neuen Kanten $(p_1, p_3)$ und $(p_3, p_2)$ hinzugefügt. Wenn eine der neuen Kante in den äußeren Kanten bereits vorhanden ist, wird diese nicht hinzugefügt, sondern von den äußeren Kanten entfernt, weil das zugehörige zweite Dreieck auf der anderen Seite der Kante bereits gefunden wurde. Eine Veranschaulichung ist in @triangulierung_erweiterung gegeben.
 
 #figure(
 	caption: [Erweiterung der Triangulierung in 3D.],
@@ -259,29 +264,29 @@ Das neu gefundene Dreieck mit den Eckpunkten $(p_1, p_2, p_3)$ wird zur Triangul
 		columns: 2,
 		column-gutter: 2em,
 		row-gutter: 1em,
-		subfigure(image("../images/pivot_0.png", width: 90%), caption: [Kante mit zugehörigem Dreieck, #box[$alpha$-Kugel] und Ring mit Radius $d_c$]), subfigure(image("../images/pivot_1.png", width: 90%), caption: [Kugel mit Radius $alpha + d_c$, welche alle Kandidaten enthält]),
-		subfigure(image("../images/pivot_2.png", width: 90%), caption: [Erster Punkt, welcher entlang der Rotation die Kugel berührt]),                 subfigure(image("../images/pivot_3.png", width: 90%), caption: [Triangulierung, mit dem neuen Dreieck hinzugefügt]),
+		subfigure(image("../images/pivot_0.png", width: 70%), caption: [Kante mit zugehörigem Dreieck, #box[$alpha$-Kugel] und Ring mit Radius $d_c$]), subfigure(image("../images/pivot_1.png", width: 70%), caption: [Kugel mit Radius $alpha + d_c$, welche alle Kandidaten enthält]),
+		subfigure(image("../images/pivot_2.png", width: 70%), caption: [Erster Punkt, welcher entlang der Rotation die Kugel berührt]),                 subfigure(image("../images/pivot_3.png", width: 70%), caption: [Triangulierung, mit dem neuen Dreieck hinzugefügt]),
 	)),
 ) <triangulierung_erweiterung>
 
 
 === Komplettes Segment triangulieren
 
-Solange es noch äußere Kanten gibt, kann von diesen aus die Triangulierung erweitert werden. Dabei muss beachtet werden, dass durch Ungenauigkeiten bei der Berechnung und Punkte mit gleicher Position eine Kante mehrfach gefunden werden kann. Um eine erneute Triangulierung von bereits triangulierten Bereichen zu verhindern, werden alle inneren Kanten gespeichert und neue Kanten nur zu den äußeren Kanten hinzugefügt, wenn diese noch nicht in den inneren Kanten vorhanden sind. Bei der Erweiterung wird die äußere Kante zu den inneren Kanten hinzugefügt.
+Solange es noch äußere Kanten gibt, kann von diesen aus die Triangulierung erweitert werden. Dabei muss beachtet werden, dass durch Ungenauigkeiten bei der Berechnung eine Kante mehrfach gefunden werden kann. Um eine erneute Triangulierung von bereits triangulierten Bereichen zu verhindern, werden alle inneren Kanten gespeichert und neue Kanten nur zu den äußeren Kanten hinzugefügt, wenn diese noch nicht in den inneren Kanten vorhanden sind.
 
 Wenn es keine weiteren äußeren Kanten gibt, muss ein neues Startdreieck gefunden werden. Dabei werden nur die Punkte in Betracht gezogen, welche zu noch keinem Dreieck gehören. Wenn kein Startdreieck gefunden werden kann, ist das Segment vollständig trianguliert.
 
 
-=== Vorauswahl
+== Vorauswahl
 
 Vor der Triangulierung wird mit einem Mindestabstand die Menge der Punkte berechnet, welche betrachtet werden. Dafür wird eine Teilmenge der Punkte bestimmt, dass die Punkte paarweise mindestens den Mindestabstand voneinander entfernt sind.
 
-Für die Berechnung wird ein Greedy-Algorithmus verwendet. Am Anfang werden alle Punkte zur Teilmenge hinzugefügt und danach werden alle Punkte in der Teilmenge iteriert. Für jeden Punkt werden mit dem KD-Baum die Punkte in der Nachbarschaft bestimmt, welche näher als der Mindestabstand zum momentanen Punkt liegen. Die Punkte werden aus der Teilmenge entfernt.
+Für die Berechnung wird ein Greedy-Algorithmus verwendet. Am Anfang werden alle Punkte zur Teilmenge hinzugefügt und danach werden die Punkte in der Teilmenge iteriert. Für jeden Punkt wird mit dem KD-Baum die Punkte in der Nachbarschaft bestimmt, welche näher als den Mindestabstand zum momentanen Punkt liegen. Die nahen Punkte werden aus der Teilmenge entfernt und der nächste Punkt in der Teilmenge wird betrachtet.
 
 
-=== Auswahl von $alpha$
+== Auswahl von $alpha$
 
-In @triangulierung_alpha wurde die Triangulation für die gleiche Punktwolke mit unterschiedlichen Werten für $alpha$ berechnet. Mit einem größerem $alpha$ wird das Ergebnis immer weiter vereinfacht. Bei einem kleinen Wert für $alpha$ können Lücken in der Triangulierung entstehen, wenn die Punkte weiter als $2 alpha$ voneinander entfernt sind.
+In @triangulierung_alpha wurde die Triangulation für die gleiche Punktwolke mit unterschiedlichen Werten für $alpha$ berechnet. Im oberen Bild sind die Dreiecke ausgefüllt und im unteren Bild umrandet. Mit einem größerem $alpha$ wird das Ergebnis immer weiter vereinfacht. Bei einem kleinen Wert für $alpha$ entstehen Lücken in der Triangulierung, wenn die Punkte weiter als $2 alpha$ voneinander entfernt sind.
 
 #let lines_and_mesh(prec) = {
 	stack(
@@ -292,7 +297,7 @@ In @triangulierung_alpha wurde die Triangulation für die gleiche Punktwolke mit
 }
 
 #figure(
-	caption: [Triangulation für unterschiedliche $alpha$. Im oberen Bild sind die Dreiecke ausgefüllt und im unteren Bild umrandet.],
+	caption: [Triangulation für unterschiedliche $alpha$.],
 	box(width: 80%, grid(
 		columns: 1 * 5,
 		subfigure(
@@ -318,6 +323,6 @@ In @triangulierung_alpha wurde die Triangulation für die gleiche Punktwolke mit
 	)),
 ) <triangulierung_alpha>
 
-Der Bereich für die Suche vom nächsten Kandidaten für die Erweiterung von der Triangulierung ist abhängig von $alpha$. Dadurch steigt der Berechnungsaufwand mit größerem $alpha$, weil mehr Kandidaten betrachtet werden müssen.
+Der Bereich für die Suche vom nächsten Kandidaten für die Erweiterung von der Triangulierung ist abhängig von $alpha$. Dadurch steigt der Berechnungsaufwand mit größerem $alpha$, weil mehr Dreiecke und jeweils mehr Kandidaten berechnet werden müssen.
 
 Im Idealfall wird $alpha$ so klein gewählt, dass keine gewünschten Details verloren gehen und so groß, dass keine Lücken in der Triangulierung entstehen.

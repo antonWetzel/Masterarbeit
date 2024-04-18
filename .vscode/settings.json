@@ -23,8 +23,7 @@
 					"Octree",
 					"Octrees",
 					"Quadtree",
-					"Eye-Dome",
-					"Lighting",
+					"Eye-Dome-Lighting",
 					"Renderzeit",
 					"Ball-Pivoting",
 					"Greedy-Algorithmus",
@@ -78,6 +77,10 @@
 					},
 					"arguments": {
 						"caption": {
+							"before": "\n\n",
+							"after": "\n\n",
+						},
+						"doc": {
 							"before": "\n\n",
 							"after": "\n\n",
 						}
