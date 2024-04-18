@@ -89,7 +89,9 @@
 			if it.body.has("children") {
 				it.body.children.at(0)
 				h(10pt)
-				it.body.children.at(2)
+				for x in it.body.children.slice(2) {
+					x
+				}
 			} else {
 				it.body
 			}

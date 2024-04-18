@@ -5,7 +5,7 @@
 
 Die charakteristischen Eigenschaften werden für jeden Baum einzeln berechnet. Für jeden Punkt im Baum wird zuerst die relative Höhe, lokale Krümmung und zugehörige horizontale Ausdehnung bestimmt. Mit diesen Daten wird dann eine Unterteilung in Boden, Stamm und Krone durchgeführt. Ein Beispiel für die Ergebnisse sind in @analyse_eigenschaften zu sehen.
 
-#figure(caption: [Segment basierend auf den berechneten Eigenschaften eingefärbt.], grid(
+#figure(caption: [Baum eingefärbt mit den berechneten Eigenschaften.], grid(
 	columns: 1 * 4,
 	column-gutter: 1em,
 	subfigure(image("../images/crop/prop_height.png"), caption: [Höhe]),
@@ -13,8 +13,6 @@ Die charakteristischen Eigenschaften werden für jeden Baum einzeln berechnet. F
 	subfigure(image("../images/crop/prop_var_all.png"), caption: [Ausdehnung]),
 	subfigure(image("../images/crop/prop_classification.png"), caption: [Klassifikation]),
 )) <analyse_eigenschaften>
-
-Mit der Unterteilung wird für den Stamm und die Krone die Höhe und der Durchmesser abgeschätzt.
 
 
 == Eingabedaten
@@ -24,7 +22,7 @@ Die Punkte sind als Liste der Länge $n$ gegeben. Für den Punkt $i in NN_0^(n-1
 
 == Punkteigenschaften
 
-Um einen Punkt $i$ zu analysieren, wird die zugehörige Nachbarschaft $N_i$ benötigt. Die Nachbarschaft enthält dabei die nächsten Punkte nach Abstand sortiert. Dafür wird mit den Punkten ein KD-Baum erstellt. Mit diesem können effizient für eine Position $p_i$ und ein beliebiges $k in NN$ die $k$-nächsten Punkte bestimmt werden. Die Konstruktion und Verwendung vom KD-Baum wird in @kd_baum erklärt. In der Nachbarschaft ist dann $N_0$ der ursprüngliche Punkt $i$, $N_1$ der nächste Punkt und $N_(k-1)$ der $k-1$ nächste Punkt.
+Um einen Punkt $i$ zu analysieren, wird die zugehörige Nachbarschaft $N_i$ benötigt. Die Nachbarschaft enthält dabei die nächsten Punkte nach Abstand sortiert. Dafür wird mit den Punkten ein KD-Baum erstellt. Mit diesem können effizient für eine Position $p_i$ und ein beliebiges $k in NN$ die $k$-nächsten Punkte bestimmt werden. Die Konstruktion und Verwendung vom KD-Baum wird in @kd_baum erklärt. In der Nachbarschaft ist dann $N_0$ der momentane Punkt $i$, $N_1$ der nächste Punkt und $N_(k-1)$ der $k-1$ nächste Punkt.
 
 
 === Relative Höhe
@@ -40,9 +38,9 @@ $ h_i = (p_(i y) - h_min) / (h_max - h_min) $
 Die relative Höhe liegt immer im Bereich $[0; 1]$ und wird größer, je höher der Punkt liegt.
 
 
-=== Krümmung <krümmung>
+=== Krümmung
 
-Die Krümmung der ursprünglichen abgetasteten Oberfläche wird für jeden Punkt geschätzt. Dafür wird für den Punkt $i$ die Verteilung der Positionen der Punkte in der Nachbarschaft $N_i$ betrachtet. Zuerst wird für die Nachbarschaft der geometrische Schwerpunkt $s_i$ bestimmt.
+Die Krümmung der ursprünglichen abgetasteten Oberfläche wird für jeden Punkt geschätzt. Dafür wird für den Punkt $i$ die Verteilung der umliegenden Punkte $N_i$ betrachtet. Zuerst wird für die Nachbarschaft der geometrische Schwerpunkt $s_i$ bestimmt.
 
 $ s_i = 1 / k dot sum_(j in N_i) p_j $
 
@@ -61,7 +59,7 @@ Mit dem Schwerpunkte kann die Kovarianzmatrix $C_i$ bestimmt werden.
 
 Ohne die Verschiebung um $s_i$ würde die globale Position der Punkte die Kovarianzmatrix beeinflussen. Von der Kovarianzmatrix werden die Eigenwerte und zugehörige Eigenvektoren bestimmt.
 
-Die normierten Eigenvektoren $v_(i alpha)$ mit $alpha in {0, 1, 2}$ bilden eine Orthonormalbasis und der zugehörige Eigenwert $lambda_(i alpha)$ für $v_(i alpha)$ ist die Ausdehnung der Punkte entlang des Basisvektors. Der kleinste Eigenwert gehört zu Dimension mit der geringsten Ausdehnung. Je kleiner der kleinste Eigenwert, desto näher liegen die Punkte in der Nachbarschaft an der Ebene, aufgespannt durch die anderen beiden Eigenvektoren. Ein Beispiel für zweidimensionale Eigenvektoren ist in @analyse_eigenvektoren gegeben.
+Die normierten Eigenvektoren $v_(i alpha)$ mit $alpha in {0, 1, 2}$ bilden eine Orthonormalbasis und der zugehörige Eigenwert $lambda_(i alpha)$ für $v_(i alpha)$ ist die Ausdehnung der Punkte entlang des Basisvektors. Der kleinste Eigenwert gehört zur Dimension mit der geringsten Ausdehnung. Je kleiner der kleinste Eigenwert, desto näher liegen die Punkte in der Nachbarschaft an der Ebene aufgespannt durch die anderen beiden Eigenvektoren. Ein Beispiel für Eigenvektoren im zweidimensionalen ist in @analyse_eigenvektoren gegeben. Die Länge der Vektoren ist anhängig vom zugehörigen Eigenwert und die Ausdehnung der Punkte ist am geringsten Entlang des kleinsten Eigenvektors.
 
 #let numbers = (
 	(0.4855, -0.6487),
@@ -146,7 +144,7 @@ Die normierten Eigenvektoren $v_(i alpha)$ mit $alpha in {0, 1, 2}$ bilden eine 
 })
 
 #figure(
-	caption: [Eigenwerte und zugehörige Eigenvektoren der Kovarianzmatrix für eine Punktmenge. Die Länge der Vektoren ist anhängig vom zugehörigen Eigenwert.],
+	caption: [Eigenwerte und zugehörige Eigenvektoren.],
 	grid(
 		columns: 2,
 		subfigure(test(1.0), caption: $lambda_0 = 4 lambda_1$), subfigure(test(2.0), caption: $lambda_0 = 2 lambda_1$),
@@ -162,23 +160,23 @@ $c_i$ liegt dabei im abgeschlossenen Bereich $[0; 1]$, weil $0 <= lambda_(i 0) <
 
 === Eigenschaften für die Visualisierung <eigenschaften_visualisierung>
 
-Für die Visualisierung werden die Position, Orientierung und Größe von einem Punkte benötigt. Die Position ist in den Eingabedaten gegeben und die anderen Eigenschaften werden mit der lokalen Umgebung vom Punkt berechnet. In @analyse_render ist ein Beispiel gegeben.
+Für die Visualisierung wird die Position, Orientierung und Größe von jedem Punkt benötigt. Die Position ist in den Eingabedaten gegeben und die anderen Eigenschaften werden mit der lokalen Umgebung vom Punkt berechnet. In @analyse_render ist ein Beispiel gegeben. Die dichteren Punkte beim Stamm sind kleiner als die umliegenden Punkte und die Orientierung ändert sich beim Übergang vom Stamm zum Boden.
 
 #figure(
 	caption: [
-		Ausschnitt von einer Punktwolke. Die dichteren Punkte beim Stamm sind kleiner als die umliegenden Punkte und die Orientierung ändert sich beim Übergang vom Stamm zum Boden.
+		Ausschnitt von einer Punktwolke.
 	],
 	rect(image("../images/auto-crop/properties.png", height: 30%), inset: 0.5pt),
 ) <analyse_render>
 
-Für die Orientierung wird die Normale bestimmt, welche orthogonal zur geschätzten zugehörigen Oberfläche vom Punkt ist. Dafür werden die Eigenvektoren aus @krümmung verwendet. Der Eigenvektor, welcher zum kleinsten Eigenwert gehört, ist dabei orthogonal zur geschätzten Ebene mit der größten Ausdehnung.
+Für die Orientierung wird die Normale bestimmt, welche orthogonal zur geschätzten zugehörigen Oberfläche vom Punkt ist. Dafür werden wieder die Eigenvektoren der Kovarianzmatrix verwendet. Der Eigenvektor, welcher zum kleinsten Eigenwert gehört, ist dabei orthogonal zur geschätzten Ebene mit der größten Ausdehnung.
 
 Für die Punktgröße wird der durchschnittliche Abstand zu den umliegenden Punkten bestimmt. Dadurch werden die Punkte in Bereichen mit hoher Punktdichte kleiner.
 
 
 == Baumeigenschaften
 
-Für den Baum wird die Gesamthöhe und die Höhe und Durchmesser vom Stamm und der Krone gesucht. Dafür werden die Punkte in Scheiben unterteilt, diese dem Boden, Stamm oder Krone zugeordnet und dann wird mit den Scheiben die gesuchten Werte berechnet. Die einstellbaren Parameter dafür sind in @analyse_klassifkation_parameter gelistet.
+Für den Baum wird die Gesamthöhe und jeweils die Höhe und den Durchmesser vom Stamm und der Krone gesucht. Dafür werden die Punkte in Scheiben unterteilt, diese dem Boden, Stamm oder Krone zugeordnet und dann wird mit den Scheiben die gesuchten Werte berechnet. Die einstellbaren Parameter dafür sind in @analyse_klassifkation_parameter gelistet.
 
 #figure(
 	caption: [Parameter für die Klassifikation.],
@@ -219,11 +217,11 @@ Danach wird die Bodenhöhe $g$ gesucht. Dafür werden die Suchhöhe $h_g$ und de
 
 === Stammdurchmesser
 
-Mit der berechneten Bodenhöhe $g$, der Messhöhe $h_t$ und dem Bereich $r_t$ wird der Stammdurchmesser $d_t$ bestimmt. Zuerst werden alle Punkte bestimmt, deren Höhen im Bereich $[g + h_t - r_t / 2, g + h_t + r_t / 2)$ liegen. Mit dem MSAC-Algorithmus#footnote([#strong[m]-estimator #strong[sa]mple #strong[c]onsensus]) wird der Kreis gesucht, welcher am besten die Punkte beschreibt.
+Mit der berechneten Bodenhöhe $g$, der Messhöhe $h_t$ und dem Bereich $r_t$ wird der Stammdurchmesser $d_t$ bestimmt. Zuerst werden alle Punkte bestimmt, bei denen die Höhe im Bereich $[g + h_t - r_t / 2, g + h_t + r_t / 2)$ liegt. Mit dem MSAC-Algorithmus#footnote([#strong[m]-estimator #strong[sa]mple #strong[c]onsensus]) wird der Kreis gesucht, welcher am besten die Punkte beschreibt.
 
 Beim MSAC-Algorithmus werden wiederholt genug zufällige Datenpunkte ausgewählt, dass aus diesen der gewünschte Wert eindeutig berechnet werden kann. Danach wird für jeden Datenpunkt die Abweichung zum Wert bestimmt. Die Abweichung wird auf einen Maximalwert beschränkt, um den Einfluss von weit entfernten Datenpunkten zu verringern. Die Summe von allen Abweichungen ist der Fehler für den momentanen Wert. Der Wert mit dem geringsten Fehler wird als das finale Ergebnis verwendet @msac.
 
-Am Anfang wird als Durchmesser der Standardwert #number(0.5) m und als bester Fehler der größtmögliche Wert verwendet. Dann werden wiederholt drei zufällige Punkte ausgewählt, mit denen das Zentrum und der Durchmesser vom zugehörige Kreis eindeutig berechnet werden kann. Mit allen Punkten wird der Fehler für den Kreis berechnet. Um den Effekt von Datenpunkten zu verringern, welche nicht zum Stamm gehören wird die Abweichung auf #number(0.2) m beschränkt. Ist der momentane Fehler kleiner als der bisher bester Fehler, wird der Durchmesser als neuen besten Wert verwendet und der beste Fehler wird aktualisiert.
+Am Anfang wird als Durchmesser der Standardwert #number(0.5) m und als kleinster Fehler unendlich verwendet. Dann werden wiederholt drei zufällige Punkte ausgewählt, mit denen das Zentrum und der Durchmesser vom zugehörige Kreis eindeutig berechnet werden kann. Der summierte Abstand von allen Punkten zum Kreis wird als Fehler berechnet. Um den Effekt von Datenpunkten zu verringern, welche nicht zum Stamm gehören wird die Abweichung auf #number(0.2) m beschränkt. Ist der momentane Fehler kleiner als der bisher kleinste Fehler, wird der Durchmesser als neuen besten Wert verwendet und der kleinste Fehler wird aktualisiert.
 
 Nach allen Iterationen wird der Durchmesser vom besten Kreis als der geschätzte Stammdurchmesser verwendet.
 
@@ -234,7 +232,7 @@ Mit dem Stammdurchmesser $d_t$ und der Mindestdifferenz $d_c$ wird die Höhe vom
 
 $ a_m = pi dot ((d_t + d_c) / 2)^2 $
 
-Danach wird die erste Scheibe höher als der Boden gesucht, dessen Fläche größer als $a_m$ ist. Der Baum geht vom Boden bis zur höchsten Scheibe, der Stamm vom Boden bis zu dieser Scheibe und die Krone von dieser Scheibe bis zur höchsten Scheibe.
+Danach wird die erste Scheibe höher als der Boden gesucht, dessen Fläche größer als $a_m$ ist und die zugehörige Höhe $h_c$ als Anfang der Krone verwendet. Der Baum geht vom Boden bis zur höchsten Scheibe, der Stamm vom Boden bis $h_c$ und die Krone von $h_c$ bis zur höchsten Scheibe.
 
 
 === Durchmesser von der Baumkrone
