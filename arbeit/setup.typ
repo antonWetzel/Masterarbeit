@@ -103,11 +103,10 @@
 			v(2.5em, weak: true)
 			strong(elem(it, 0))
 		} else {
-			v(1.1em, weak: true)
+			v(1.15em, weak: true)
 			elem(it, 1)
 		}
 	}
-
 	set bibliography(style: "chicago-author-date")
 
 	document
