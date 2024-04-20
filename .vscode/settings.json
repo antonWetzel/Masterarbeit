@@ -9,9 +9,11 @@
 			"language": "typst",
 			"lsp": "typst-languagetool-lsp",
 			"options": {
-				"bundled": true,
-				// "host": "http://127.0.0.1",
-				// "port": "8081",
+				// "bundled": true,
+				"host": "http://127.0.0.1",
+				"port": "8081",
+				"main": "./arbeit/main.typ",
+				"root": ".",
 				"on_change": true,
 				"language": "de-DE",
 				"dictionary": [
@@ -51,41 +53,6 @@
 					"LASviewer",
 					"treee",
 				],
-				"rules": {
-					"functions": {
-						"number": {
-							"before": "0",
-						},
-						"link": {
-							"before": "https://link.com",
-						},
-						"link-footnote": {
-							"before": "https://link.com",
-						},
-						"grid": {
-							"after_argument": "\n\n",
-						},
-						"table": {
-							"after_argument": "\n\n",
-						},
-						"tablex": {
-							"after_argument": "\n\n",
-						},
-						"content": {
-							"before": "\n\n",
-						}
-					},
-					"arguments": {
-						"caption": {
-							"before": "\n\n",
-							"after": "\n\n",
-						},
-						"doc": {
-							"before": "\n\n",
-							"after": "\n\n",
-						}
-					}
-				},
 				"disabled_checks": [
 					"DOPPELTES_LEERZEICHEN",
 					"WHITESPACE_RULE",

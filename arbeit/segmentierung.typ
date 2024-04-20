@@ -227,7 +227,7 @@ Mit den Koordinaten wird das Voronoi-Diagramm berechnet, welches den Raum in Ber
 	),
 ) <segmentierung_voronoi>
 
-Der Ablauf wird für alle Scheiben von Oben nach Untern durchgeführt, wodurch alle Punkte zu Segmenten zugeordnet werden. In @segment_example ist die Segmentierung für eine Punktwolke gegeben. Die unterschiedlichen Segmente sind durch unterschiedliche Einfärbung der zugehörigen Punkte markiert. 
+Der Ablauf wird für alle Scheiben von Oben nach Untern durchgeführt, wodurch alle Punkte zu Segmenten zugeordnet werden. In @segment_example ist die Segmentierung für eine Punktwolke gegeben. Die unterschiedlichen Segmente sind durch unterschiedliche Einfärbung der zugehörigen Punkte markiert.
 
 #figure(
 	caption: [Segmentierung von einem Waldgebiet.],

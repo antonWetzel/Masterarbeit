@@ -35,7 +35,7 @@
 
 	set text(lang: "de", region: "DE", size: 11pt, weight: 400, fallback: false)
 	show math.equation: set text(font: "Noto Sans Math", weight: 600, fallback: false)
-	set par(justify: true)
+	set par(justify: not sys.inputs.at("spellcheck", default: false))
 	set page(margin: 3cm)
 
 	set heading(numbering: (..nums) => {

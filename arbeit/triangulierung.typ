@@ -261,11 +261,13 @@ Das neu gefundene Dreieck mit den Eckpunkten $(p_1, p_2, p_3)$ wird zur Triangul
 #figure(
 	caption: [Erweiterung der Triangulierung in 3D.],
 	box(width: 90%, grid(
-		columns: 2,
+		columns: 1 * 2,
 		column-gutter: 2em,
 		row-gutter: 1em,
-		subfigure(image("../images/pivot_0.png", width: 70%), caption: [Kante mit zugehörigem Dreieck, #box[$alpha$-Kugel] und Ring mit Radius $d_c$]), subfigure(image("../images/pivot_1.png", width: 70%), caption: [Kugel mit Radius $alpha + d_c$, welche alle Kandidaten enthält]),
-		subfigure(image("../images/pivot_2.png", width: 70%), caption: [Erster Punkt, welcher entlang der Rotation die Kugel berührt]),                 subfigure(image("../images/pivot_3.png", width: 70%), caption: [Triangulierung, mit dem neuen Dreieck hinzugefügt]),
+		subfigure(image("../images/pivot_0.png", width: 70%), caption: [Kante mit zugehörigem Dreieck, #box[$alpha$-Kugel] und Ring mit Radius $d_c$]),
+		subfigure(image("../images/pivot_1.png", width: 70%), caption: [Kugel mit Radius $alpha + d_c$, welche alle Kandidaten enthält]),
+		subfigure(image("../images/pivot_2.png", width: 70%), caption: [Erster Punkt, welcher entlang der Rotation die Kugel berührt]),
+		subfigure(image("../images/pivot_3.png", width: 70%), caption: [Triangulierung, mit dem neuen Dreieck hinzugefügt]),
 	)),
 ) <triangulierung_erweiterung>
 
@@ -301,23 +303,23 @@ In @triangulierung_alpha wurde die Triangulation für die gleiche Punktwolke mit
 	box(width: 80%, grid(
 		columns: 1 * 5,
 		subfigure(
-			caption: [$0.2$ m],
+			caption: number(0.2, unit: [m]),
 			lines_and_mesh("0.2"),
 		),
 		subfigure(
-			caption: [$0.5$ m],
+			caption: number(0.5, unit: [m]),
 			lines_and_mesh("0.5"),
 		),
 		subfigure(
-			caption: [$1.0$ m],
+			caption: number(1.0, unit: [m]),
 			lines_and_mesh("1.0"),
 		),
 		subfigure(
-			caption: [$2.0$ m],
+			caption: number(2.0, unit: [m]),
 			lines_and_mesh("2.0"),
 		),
 		subfigure(
-			caption: [$5.0$ m],
+			caption: number(5.0, unit: [m]),
 			lines_and_mesh("5.0"),
 		),
 	)),
