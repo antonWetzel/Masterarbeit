@@ -1,4 +1,5 @@
 #import "setup.typ": *
+#import "lt.typ": lt
 
 #set document(
 	author: "Anton Wetzel",
@@ -13,14 +14,19 @@
 // #todo-outline() #pagebreak()
 
 #show: (doc) => setup(doc, print: false)
+#show: lt()
 
 #include "deckblatt.typ"
 
 #include "abstrakt.typ"
 
-#outline(depth: 3)
+#{
+	show: style-outline
+	outline(depth: 3)
+}
 
 #set page(numbering: "1")
+
 #counter(page).update(1)
 
 #include "einleitung.typ"

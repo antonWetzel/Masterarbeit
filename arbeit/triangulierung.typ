@@ -44,9 +44,7 @@ In @ball_pivoting_überblick ist ein Beispiel in 2D gegeben. Dabei werden die Ka
 }
 
 #figure(
-	caption: [
-		Ball-Pivoting Algorithmus in 2D.
-	],
+	caption: [Ball-Pivoting Algorithmus in 2D.],
 	cetz.canvas(length: 1.7cm, {
 		import cetz.draw: *
 
@@ -249,7 +247,7 @@ $ k = a times b #h(40pt) r = k dot (p_2 - p_1) #h(40pt) phi = cases(
 		tau - arccos(s) & "falls" & r < 0,
 	) $
 
-Von allen Kandidaten wird der Punkt $p_3$ ausgewählt, für den $phi$ am kleinsten ist. Wenn $p_1 = p_3$ oder $p_2 = p_3$, dann gibt es keinen dritten Punkt um die Triangulierung zu erweitern und kein weiteres Dreieck wird für die Kante hinzugefügt.
+Von allen Kandidaten wird der Punkt $p_3$ ausgewählt, für den $phi$ am kleinsten ist. Wenn $p_1 = p_3$ oder $p_2 = p_3$, dann gibt es keinen dritten Punkt, um die Triangulierung zu erweitern und kein weiteres Dreieck wird für die Kante hinzugefügt.
 
 Es muss nicht kontrolliert werden, ob ein Punkt in der $alpha$-Kugel von $(p_1, p_2, p_3)$ liegt, weil diese immer leer ist. Würde ein weiterer Punkt in der Kugel liegen, so würde der zugehörige Winkel $phi$ von diesem Punkt kleiner sein, weil der Punkt beim Rollen um die Kante früher von der Kugel berührt wird. Weil $p_3$ aber zum kleinsten Winkel gehört, ist die zugehörige $alpha$-Kugel immer leer. Dies gilt aber nur, wenn die Kugel vor dem Rollen bereits leer war.
 

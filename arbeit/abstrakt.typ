@@ -4,7 +4,7 @@
 
 #v(1fr)
 
-#align(center, box(width: 80%, [
+#align(center, block(width: 80%, [
 
 
 	== Abstrakt

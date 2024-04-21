@@ -82,6 +82,12 @@
 		it,
 	)
 
+	set bibliography(style: "chicago-author-date")
+
+	document
+}
+
+#let style-outline(doc) = {
 	show outline.entry: it => {
 		let elem(it, off) = {
 			v(1.1em, weak: true)
@@ -107,9 +113,7 @@
 			elem(it, 1)
 		}
 	}
-	set bibliography(style: "chicago-author-date")
-
-	document
+	doc
 }
 
 #let link-footnote(_link, _body) = {
