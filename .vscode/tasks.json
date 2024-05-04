@@ -17,9 +17,6 @@
 		{
 			"label": "watch arbeit",
 			"command": "typst",
-			"runOptions": {
-				"runOn": "folderOpen"
-			},
 			"args": [
 				"watch",
 				"--diagnostic-format=short",

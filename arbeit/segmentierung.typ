@@ -19,14 +19,14 @@ Für die Segmentierung werden alle Punkte in gleich breite parallele Scheiben en
 	(0.7, 2.1),
 	(0.6, 1.8),
 	(-0.1, 1.6),
-	//
+
 	(1.8, 1.0),
 	(2.3, 1.1),
 	(2.7, 1.4),
 	(1.8, 0.8),
 	(1.9, 0.4),
 	(2.5, 0.5),
-	//
+
 	(-0.5, -0.9),
 	(-1.2, -1.1),
 	(-0.8, -1.3),
