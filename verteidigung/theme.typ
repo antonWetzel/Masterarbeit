@@ -20,6 +20,7 @@
 	set text(lang: "de", font: "Noto Sans", region: "DE", size: 18pt, weight: 400, fallback: false)
 	show math.equation: set text(font: "Noto Sans Math", weight: 600, fallback: false)
 	set list(indent: 1cm)
+	show raw: set text(size: 1.2em)
 
 	footer_state.update(footer)
 
@@ -76,11 +77,17 @@
 
 #let normal-slide(
 	title: none,
+	alignment: auto,
 	..content,
 ) = {
 	let positional = content.pos()
+	let alignment = if alignment == auto {
+		(1fr, ) * positional.len()
+	} else {
+		alignment
+	}
 	let body = table(
-		columns: (1fr, ) * positional.len(),
+		columns: alignment,
 		stroke: none,
 		..content
 	)
@@ -118,4 +125,11 @@
 		image("assets/final.jpg"),
 		slide-footer(),
 	))
+}
+
+#let focus-slide(background: black, foreground: white, size: 100pt, content) = {
+	set align(center + horizon)
+	logic.polylux-slide(
+		rect(width: 110%, height: 110%, fill: background, text(size: size, fill: foreground, content)),
+	)
 }
