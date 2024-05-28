@@ -236,12 +236,26 @@
 
 #new-section[Referenzen]
 
-#normal-slide[
-	- `https://github.com/antonWetzel/masterarbeit`
-		- Arbeit
-		- Vortrag
-	- `https://github.com/antonWetzel/treee`
-		- Softwareprojekt
+#let referenz(content) = {
+	set text(size: 0.8em)
+	link(content, raw(content))
+}
+
+#normal-slide(
+	title: [Quellen],
+)[
+	- Arbeit und Vortrag
+		- #referenz("https://github.com/antonWetzel/masterarbeit")
+	- Softwareprojekt
+		- #referenz("https://github.com/antonWetzel/treee")
+	- Präsentationvorlage
+		- #referenz("https://intranet.tu-ilmenau.de/site/moef/SitePages/Dokumente.aspx")
 ]
 
 #final-slide(title: [Danke für ihre Aufmerksamkeit], e-mail: [anton.wetzel\@tu-ilmenau.de])
+
+#new-section[Appendix]
+
+#normal-slide(
+	title: [Auswertung],
+)[]
