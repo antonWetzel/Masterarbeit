@@ -39,7 +39,18 @@
 	set text(fill: gray, size: 10pt)
 	stack(
 		dir: ttb,
-		line(length: 100%, stroke: 1pt + color-contrast),
+		utils.polylux-progress(ratio => {
+			locate(loc => {
+				let ratio = (logic.logical-slide.at(loc).first() - 0.5) / logic.logical-slide.at(locate( <final-slide-marker>)).first() * 100%
+				set align(horizon)
+				stack(
+					dir: ltr,
+					line(length: ratio - 0.075cm, stroke: 3pt + color-contrast),
+					circle(radius: 0.15cm, stroke: color-contrast),
+					line(length: 100% - ratio - 0.075cm, stroke: 1pt + color-contrast),
+				)
+			})
+		}),
 		box(height: 100%, align(
 			horizon,
 			table(
@@ -82,7 +93,7 @@
 ) = {
 	let positional = content.pos()
 	let alignment = if alignment == auto {
-		(1fr, ) * positional.len()
+		(1fr,) * positional.len()
 	} else {
 		alignment
 	}
@@ -122,7 +133,7 @@
 				[Bildnachweis: Folie 1: Chris Liebold, Folie #logic.logical-slide.display(): helibild],
 			),
 		)),
-		image("assets/final.jpg"),
+		[#image("assets/final.jpg") <final-slide-marker>],
 		slide-footer(),
 	))
 }
@@ -132,4 +143,34 @@
 	logic.polylux-slide(
 		rect(width: 110%, height: 110%, fill: background, text(size: size, fill: foreground, content)),
 	)
+}
+
+#let number = (number, unit: none) => {
+	let number = str(float(number))
+	let split = number.split(".")
+	let res = []
+	{
+		let text = split.at(0)
+		for i in range(text.len()) {
+			res += text.at(i)
+			let idx = text.len() - i - 1
+			if idx != 0 and calc.rem(idx, 3) == 0 {
+				res += sym.space.thin
+			}
+		}
+	}
+	if split.len() >= 2 {
+		res += $,$
+		let text = split.at(1)
+		for i in range(text.len()) {
+			res += text.at(i)
+			if i != 0 and calc.rem(i, 3) == 0 {
+				res += sym.space.thin
+			}
+		}
+	}
+	if unit != none {
+		res += [ ] + unit
+	}
+	return box(res)
 }

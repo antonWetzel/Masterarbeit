@@ -273,7 +273,7 @@ Die Analyse der Segmente und die Berechnung der Detailstufen sind trivial parall
 		Parallelisierung der Segmentierung.
 	],
 	grid(
-		columns: (1fr, ) + (2fr, ),
+		columns: (1fr,) + (2fr,),
 		gutter: 2em,
 		rect(image("../images/segmentierung_parallel.svg"), inset: 0pt, stroke: gray),
 		align(top + left)[
@@ -307,7 +307,7 @@ Die Struktur ist in @implementierung_datafile gegeben. Am Anfang der Datei wird 
 	caption: [Struktur einer Datei zum Speichern von Daten.],
 	table(
 		align: center + horizon,
-		columns: 11 *(1fr, ),
+		columns: 11 *(1fr,),
 		table.cell(colspan: 7)[*Informationen*],
 		table.cell(colspan: 4)[*Daten*],
 		$s_0$,

@@ -85,10 +85,48 @@
 
 #normal-slide(
 	title: [Ziel],
+	alignment: (2fr, 3fr),
 )[
 	Segmentierung
+	- Ein Segment für jeden Baum
+	- Punkte in Segmente unterteilen
 ][
+	#image("../images/auto-crop/segments-br05-als.png")
+]
+
+#normal-slide(
+	title: [Ziel],
+)[
 	Baumdaten
+	+ Kronendurchmesser
+	+ Stammdurchmesser bei #number(1.3, unit: [m])
+	+ Gesamthöhe
+	+ Kronenhöhe
+	+ Stammhöhe
+][
+	#cetz.canvas(length: 1.5cm, {
+		import cetz.draw: *
+
+		line((-0.2, 0.0), (-0.2, -3.0), (0.2, -3.0), (0.2, 0.0), fill: gray)
+		line((-0.2, -3.0), (0.2, -3.0), (1, -3.2), (-1, -3.2), close: true, fill: gray)
+		circle((0.0, 0.0), radius: 1, fill: gray)
+
+		line((-1.1, 0.0), (1.1, 0.0), mark: (start: "|", end: "|"))
+		content((-1.1, 0.0), $1$, anchor: "east", padding: 0.15)
+
+		line((-0.25, -2.5), (0.25, -2.5), mark: (start: "|", end: "|"))
+		content((-0.2, -2.5), $2$, anchor: "east", padding: 0.15)
+
+		line((1.5, -3.0), (1.5, 1.0), mark: (start: "|", end: "|"))
+		content((1.5, -1.0), $3$, anchor: "west", padding: 0.15)
+
+		line((2.5, -0.95), (2.5, 1.0), mark: (start: "|", end: "|"))
+		content((2.5, 0.0), $4$, anchor: "west", padding: 0.15)
+
+		line((2.5, -1.05), (2.5, -3.0), mark: (start: "|", end: "|"))
+		content((2.5, -2.0), $5$, anchor: "west", padding: 0.15)
+
+	})
 ]
 
 #new-section[Segmentierung]
@@ -258,4 +296,6 @@
 
 #normal-slide(
 	title: [Auswertung],
-)[]
+)[
+
+]
