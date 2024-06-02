@@ -37,11 +37,17 @@
 
 #let slide-footer() = locate(loc => {
 	set text(fill: gray, size: 10pt)
-	stack(
-		dir: ttb,
-		utils.polylux-progress(ratio => {
-			locate(loc => {
-				let ratio = (logic.logical-slide.at(loc).first() - 0.5) / logic.logical-slide.at(locate( <final-slide-marker>)).first() * 100%
+	let columns = (1cm, auto, 1cm, auto, 1fr, 6cm, 1cm)
+	grid(
+		rows: (auto, 1fr),
+		columns: columns,
+		align: horizon,
+		gutter: 0pt,
+		grid.cell(colspan: columns.len(), {
+			let ratio = (logic.logical-slide.at(loc).first() - 0.5) / logic.logical-slide.at(locate( <final-slide-marker>)).first() * 100%
+			if ratio >= 100% {
+				line(length: 100%, stroke: 3pt + color-contrast)
+			} else {
 				set align(horizon)
 				stack(
 					dir: ltr,
@@ -49,27 +55,15 @@
 					circle(radius: 0.15cm, stroke: color-contrast),
 					line(length: 100% - ratio - 0.075cm, stroke: 1pt + color-contrast),
 				)
-			})
+			}
 		}),
-		box(height: 100%, align(
-			horizon,
-			table(
-				columns: (1fr, auto),
-				align: (left, right),
-				stroke: none,
-				stack(
-					dir: ltr,
-					h(1.5cm),
-					logic.logical-slide.display(),
-					h(2cm),
-					footer_state.at(loc),
-				), stack(
-					dir: ltr,
-					image("assets/logo.png"),
-					h(1cm),
-				),
-			),
-		)),
+		[],
+		logic.logical-slide.display(),
+		[],
+		footer_state.at(loc),
+		[],
+		image("assets/logo.png"),
+		[],
 	)
 })
 

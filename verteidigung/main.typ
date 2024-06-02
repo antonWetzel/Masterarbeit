@@ -85,17 +85,6 @@
 
 #normal-slide(
 	title: [Ziel],
-	alignment: (2fr, 3fr),
-)[
-	Segmentierung
-	- Ein Segment für jeden Baum
-	- Punkte in Segmente unterteilen
-][
-	#image("../images/auto-crop/segments-br05-als.png")
-]
-
-#normal-slide(
-	title: [Ziel],
 )[
 	Baumdaten
 	+ Kronendurchmesser
@@ -129,12 +118,77 @@
 	})
 ]
 
+#normal-slide(
+	title: [Ziel],
+	alignment: (2fr, 3fr),
+)[
+	- Punkte in Segmente unterteilen
+	- Ein Segment für jeden Baum
+][
+	#image("../images/auto-crop/segments-br05-als.png")
+]
+
 #new-section[Segmentierung]
 
 #normal-slide(
-	title: [To-do],
+	title: [Ablauf],
+	alignment: (1.1fr, 2fr),
 )[
+	+ *Horizontale Scheiben*
+	+ Bereiche
+	+ Koordinaten
+	+ Punkte zuordnen
+][#{
+	set align(right)
+	only(1, image("../images/crop/layers_1.png"))
+	only(2, image("../images/crop/layers_2.png"))
+	only(3, image("../images/crop/layers_3.png"))
+	only(4, image("../images/crop/layers_4.png"))
+	only(5, image("../images/crop/layers_5.png"))
+	only(6, image("../images/crop/layers_6.png"))
+	only(7, image("../images/crop/layers_7.png"))
+	only(8, image("../images/crop/layers_8.png"))
+}]
 
+#normal-slide(
+	title: [Ablauf],
+	alignment: (1.1fr, 1fr, 1fr),
+)[
+	+ Horizontale Scheiben
+	+ *Bereiche*
+	+ Koordinaten
+	+ Punkte zuordnen
+][
+	#rect(image("../images/test_5-areas.svg"), inset: 0.5pt)
+][
+	#rect(image("../images/test_6-areas.svg"), inset: 0.5pt)
+]
+
+#normal-slide(
+	title: [Ablauf],
+	alignment: (1.1fr, 1fr, 1fr),
+)[
+	+ Horizontale Scheiben
+	+ Bereiche
+	+ *Koordinaten*
+	+ Punkte zuordnen
+][
+	#rect(image("../images/test_5-coords.svg"), inset: 0.5pt)
+][
+	#rect(image("../images/test_6-coords.svg"), inset: 0.5pt)
+]
+
+#normal-slide(
+	title: [Ablauf],
+)[
+	+ Horizontale Scheiben
+	+ Bereiche
+	+ Koordinaten
+	+ *Punkte zuordnen*
+][
+	#rect(image("../images/test_5-moved.svg"), inset: 0.5pt)
+][
+	#rect(image("../images/test_6-moved.svg"), inset: 0.5pt)
 ]
 
 #new-section[Analyse von Bäumen]
@@ -187,8 +241,8 @@
 	- Technologie
 		- Rust
 		- WebGPU
-	- Betriebssystem
-		- Beliebig
+	- Systemanforderungen
+		- Keine
 
 ][
 	#align(center, grid(
@@ -249,8 +303,6 @@
 		set-style(mark: (end: ">", fill: black, scale: 1.4, width: 3.5pt), stroke: black)
 
 		box(0, 2, "Punktdaten", "daten")
-		// rect((0, 2), (3, 3), name: "daten")
-		// content("daten", [Punktdaten])
 		box(box-offset, 4, "Segment 1", "seg0")
 		box(box-offset, 2, "Segment 2", "seg1")
 		box(box-offset, 0, "...", "seg2")
@@ -274,7 +326,7 @@
 
 #new-section[Referenzen]
 
-#let referenz(content) = {
+#let link-ref(content) = {
 	set text(size: 0.8em)
 	link(content, raw(content))
 }
@@ -283,11 +335,11 @@
 	title: [Quellen],
 )[
 	- Arbeit und Vortrag
-		- #referenz("https://github.com/antonWetzel/masterarbeit")
+		- #link-ref("https://github.com/antonWetzel/masterarbeit")
 	- Softwareprojekt
-		- #referenz("https://github.com/antonWetzel/treee")
-	- Präsentationvorlage
-		- #referenz("https://intranet.tu-ilmenau.de/site/moef/SitePages/Dokumente.aspx")
+		- #link-ref("https://github.com/antonWetzel/treee")
+	- Präsentationsvorlage
+		- #link-ref("https://intranet.tu-ilmenau.de/site/moef/SitePages/Dokumente.aspx")
 ]
 
 #final-slide(title: [Danke für ihre Aufmerksamkeit], e-mail: [anton.wetzel\@tu-ilmenau.de])
