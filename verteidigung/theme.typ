@@ -19,7 +19,7 @@
 	set page(width: 25.40cm, height: 14.29cm, margin: 0pt)
 	set text(lang: "de", font: "Noto Sans", region: "DE", size: 18pt, weight: 400, fallback: false)
 	show math.equation: set text(font: "Noto Sans Math", weight: 600, fallback: false)
-	set list(indent: 1cm)
+	set list(indent: 0.25cm)
 	show raw: set text(size: 1.2em)
 
 	footer_state.update(footer)
@@ -82,25 +82,55 @@
 
 #let normal-slide(
 	title: none,
-	alignment: auto,
+	columns: auto,
+	expand-content: false,
 	..content,
 ) = {
 	let positional = content.pos()
-	let alignment = if alignment == auto {
+	let columns = if columns == auto {
 		(1fr,) * positional.len()
+	} else if columns.len() == positional.len() {
+		columns
 	} else {
-		alignment
+		panic("missmatch co.umns and arguments")
 	}
 	let body = table(
-		columns: alignment,
+		columns: columns,
 		stroke: none,
 		..content
 	)
+	let title = slide-title(title)
+	let title = if expand-content {
+		title
+	} else {
+		grid.cell(colspan: columns.len(), title)
+	}
+	let positional = positional.map(p => align(horizon + center, box(align(top + left, p))))
+	let positional = if expand-content {
+		let positional = positional.enumerate().map((arg) => if arg.at(0) == 0 {
+			arg.at(1)
+		} else {
+			grid.cell(rowspan: 2, arg.at(1))
+		})
+		positional.push(positional.remove(0))
+		positional
+	} else {
+		positional
+	}
+
+	let top = pad(1cm, bottom: 0.5cm, grid(
+		rows: distibution.slice(0, 2),
+		column-gutter: 0.5cm,
+		stroke: silver,
+		columns: columns,
+		title,
+		..positional,
+	))
+
 	logic.polylux-slide({
 		grid(
-			rows: distibution,
-			pad(1cm, bottom: 0cm, slide-title(title)),
-			pad(1cm, bottom: 0.5cm, body),
+			rows: (distibution.at(0) + distibution.at(1), distibution.at(2)),
+			top,
 			slide-footer(),
 		)
 	})

@@ -120,7 +120,7 @@
 
 #normal-slide(
 	title: [Ziel],
-	alignment: (2fr, 3fr),
+	columns: (2fr, 3fr),
 )[
 	- Punkte in Segmente unterteilen
 	- Ein Segment für jeden Baum
@@ -132,7 +132,7 @@
 
 #normal-slide(
 	title: [Ablauf],
-	alignment: (1.1fr, 2fr),
+	columns: (1.1fr, 2fr),
 )[
 	+ *Horizontale Scheiben*
 	+ Bereiche
@@ -152,7 +152,7 @@
 
 #normal-slide(
 	title: [Ablauf],
-	alignment: (1.1fr, 1fr, 1fr),
+	columns: (1.1fr, 1fr, 1fr),
 )[
 	+ Horizontale Scheiben
 	+ *Bereiche*
@@ -166,7 +166,7 @@
 
 #normal-slide(
 	title: [Ablauf],
-	alignment: (1.1fr, 1fr, 1fr),
+	columns: (1.1fr, 1fr, 1fr),
 )[
 	+ Horizontale Scheiben
 	+ Bereiche
@@ -194,7 +194,7 @@
 #new-section[Analyse von Bäumen]
 
 #normal-slide(
-	alignment: (2fr, 3fr),
+	columns: (2fr, 3fr),
 	title: [Gesamter Baum],
 )[
 	- Gesamthöhe
@@ -214,7 +214,7 @@
 ]
 
 #normal-slide(
-	alignment: (2fr, 3fr),
+	columns: (2fr, 3fr),
 	title: [Einzelne Punkte],
 )[
 	- Höhe
@@ -233,8 +233,9 @@
 #new-section[Umsetzung]
 
 #normal-slide(
-	alignment: (3fr, 1fr),
+	columns: (3fr, 1fr),
 	title: [Überblick],
+	expand-content: true,
 )[
 	- Repository
 		- `https://github.com/antonWetzel/treee`
@@ -348,6 +349,48 @@
 
 #normal-slide(
 	title: [Auswertung],
+	expand-content: true,
 )[
+	- *Gesamthöhe vom Baum*
+	- Stammdurchmesser bei #number(130, unit: [cm])
+	- Anfangshöhe der Baumkrone
+	- Durchmesser der Baumkrone
+][
+	#image("../data/data_tree_height.svg")
+]
 
+#normal-slide(
+	title: [Auswertung],
+	expand-content: true,
+)[
+	- Gesamthöhe vom Baum
+	- *Stammdurchmesser bei #number(130, unit: [cm])*
+	- Anfangshöhe der Baumkrone
+	- Durchmesser der Baumkrone
+][
+	#image("../data/data_trunk_diameter.svg")
+]
+
+#normal-slide(
+	title: [Auswertung],
+	expand-content: true,
+)[
+	- Gesamthöhe vom Baum
+	- Stammdurchmesser bei #number(130, unit: [cm])
+	- *Anfangshöhe der Baumkrone*
+	- Durchmesser der Baumkrone
+][
+	#image("../data/data_crown_start.svg")
+]
+
+#normal-slide(
+	title: [Auswertung],
+	expand-content: true,
+)[
+	- Gesamthöhe vom Baum
+	- Stammdurchmesser bei #number(130, unit: [cm])
+	- Anfangshöhe der Baumkrone
+	- *Durchmesser der Baumkrone*
+][
+	#image("../data/data_crown_diameter.svg")
 ]
