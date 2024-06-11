@@ -105,7 +105,6 @@
 	} else {
 		grid.cell(colspan: columns.len(), title)
 	}
-	let positional = positional.map(p => align(horizon + center, box(align(top + left, p))))
 	let positional = if expand-content {
 		let positional = positional.enumerate().map((arg) => if arg.at(0) == 0 {
 			arg.at(1)
@@ -121,7 +120,7 @@
 	let top = pad(1cm, bottom: 0.5cm, grid(
 		rows: distibution.slice(0, 2),
 		column-gutter: 0.5cm,
-		stroke: silver,
+		// stroke: silver,
 		columns: columns,
 		title,
 		..positional,
@@ -165,7 +164,7 @@
 #let focus-slide(background: black, foreground: white, size: 100pt, content) = {
 	set align(center + horizon)
 	logic.polylux-slide(
-		rect(width: 110%, height: 110%, fill: background, text(size: size, fill: foreground, content)),
+		rect(width: 110%, height: 110%, fill: background, text(size: size, fill: foreground, strong(content))),
 	)
 }
 

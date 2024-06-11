@@ -12,6 +12,34 @@
 #new-section[Überblick]
 
 #normal-slide(
+	title: [Ablauf],
+)[
+	#set align(center + horizon)
+	#cetz.canvas(length: 1.0cm, {
+		import cetz.draw: *
+		let box-width = 5.0
+
+		let box(x, y, name, stroke: 1pt) = {
+			rect((x, y), (x + box-width, y + 1), name: name, stroke: stroke)
+			content(name, raw(name))
+		}
+		set-style(mark: (end: ">", fill: black, scale: 1.4, width: 3.5pt), stroke: black)
+
+		box(0, 0, "Wald")
+		box(6, -6, "Punktwolke")
+		box(12, 0, "Segmente")
+		box(18, -6, "Informationen")
+
+		line("Wald", "Punktwolke")
+		line("Punktwolke", "Segmente")
+		line("Segmente", "Informationen")
+		content(("Wald", 50%, "Punktwolke"), angle: -45deg, anchor: "south", padding: 0.1cm, [Lidar-Scan])
+		content(("Punktwolke", 50%, "Segmente"), angle: 45deg, anchor: "south", padding: 0.1cm, [Segmentierung])
+		content(("Segmente", 50%, "Informationen"), angle: -45deg, anchor: "south", padding: 0.1cm, [Analyse])
+	})
+]
+
+#normal-slide(
 	title: [Eingabedaten],
 )[
 	- Lidar-Scan von einem Wald
@@ -19,6 +47,7 @@
 		- (`TLS`) Terrestrial
 		- (`ULS`) Drohne
 		- (`ALS`) Flugzeug
+	- Kombination von mehreren Messungen
 ][
 	#import cetz.draw: *
 
@@ -61,25 +90,34 @@
 
 	#let scanner() = {
 		circle((0, 0), stroke: black, fill: red, radius: 0.1)
-
 	}
 
-	#only(1, cetz.canvas(length: 1.2cm, {
+	#let length = 1.4cm
+
+	#only(1, cetz.canvas(length: length, {
 		outer()
 		base()
 		scanner()
 	}))
 
-	#only(2, cetz.canvas(length: 1.2cm, {
+	#only(2, cetz.canvas(length: length, {
 		outer()
 		base()
 		lines()
 		scanner()
 	}))
 
-	#only(3, cetz.canvas(length: 1.2cm, {
+	#only(3, cetz.canvas(length: length, {
 		outer()
 		points()
+	}))
+
+	#only(4, cetz.canvas(length: length, {
+		outer()
+		let stroke = (dash: "dotted", thickness: 2pt)
+		line((-2, -3), (2.3, -3), (2.3, -2), (2.5, -2), (2.5, -3), (6, -3), stroke: stroke)
+		circle((2.4, -2), radius: 0.5, stroke: stroke, fill: white)
+		rect((2.325, -3), (2.4675, -2), fill: white, stroke: none)
 	}))
 ]
 
@@ -191,19 +229,28 @@
 	#rect(image("../images/test_6-moved.svg"), inset: 0.5pt)
 ]
 
+#normal-slide(
+	title: [Ergebnis],
+)[
+	#grid(
+		columns: (1fr, 1fr),
+		image("../images/auto-crop/segments-ka11-als.png"), image("../images/auto-crop/segmentation_uls.png")
+	)
+]
+
 #new-section[Analyse von Bäumen]
 
 #normal-slide(
 	columns: (2fr, 3fr),
 	title: [Gesamter Baum],
 )[
-	- Gesamthöhe
-	- Stamm
-		- Höhe
-		- Durchmesser
-	- Krone
-		- Höhe
-		- Durchmesser
+	+ Scheiben
+	+ Unterteilung
+		- Boden
+		- Stamm
+		- Krone
+	+ Höhen
+	+ Durchmesser
 ][
 	#grid(
 		columns: 1 * 2,
@@ -217,9 +264,13 @@
 	columns: (2fr, 3fr),
 	title: [Einzelne Punkte],
 )[
-	- Höhe
-	- Krümmung
-	- Ausdehnung
+	- Daten
+		- Höhe
+		- Krümmung
+		- Ausdehnung
+	- Visualisierung
+		- Größe
+		- Orientierung
 ][
 	#grid(
 		columns: 1 * 4,
@@ -256,7 +307,7 @@
 #let box-offset = 7; #let box-width = 5;
 
 #normal-slide(title: [Quelltext])[
-	#set align(center)
+	#set align(center + horizon)
 	#cetz.canvas(length: 1.0cm, {
 		import cetz.draw: *
 
@@ -292,7 +343,7 @@
 ]
 
 #normal-slide(title: [Import])[
-	#set align(center)
+	#set align(center + horizon)
 	#cetz.canvas(length: 1cm, {
 		import cetz.draw: *
 
@@ -345,7 +396,16 @@
 
 #final-slide(title: [Danke für ihre Aufmerksamkeit], e-mail: [anton.wetzel\@tu-ilmenau.de])
 
+#focus-slide(background: luma(20%), foreground: luma(80%), size: 90pt, [Nachfragen])
+
 #new-section[Appendix]
+
+#normal-slide(
+	title: [Anzeigen von Punkten],
+	expand-content: true,
+)[
+	...
+]
 
 #normal-slide(
 	title: [Auswertung],
