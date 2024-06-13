@@ -1,7 +1,6 @@
 #import "@preview/polylux:0.3.1": *
 
 #let footer_state = state("footer")
-#let section_state = state("section")
 
 #let color-light = rgb("a5a5a5")
 #let color-important = rgb("ff7900")
@@ -10,10 +9,6 @@
 
 #let distibution = (6fr, 14fr, 3fr)
 #let distibution_no_title = (20fr, 3fr)
-
-#let new-section(section) = {
-	section_state.update(section)
-}
 
 #let setup(footer: none, doc) = {
 	set page(width: 25.40cm, height: 14.29cm, margin: 0pt)
@@ -29,7 +24,7 @@
 #let slide-title(title) = locate(loc => {
 	stack(
 		dir: ttb,
-		text(size: 32pt, fill: color-important, strong(section_state.at(loc))),
+		text(size: 32pt, fill: color-important, strong(utils.current-section)),
 		v(1em),
 		text(size: 24pt, fill: color-important-2, strong(title)),
 	)
@@ -135,6 +130,10 @@
 	})
 }
 
+#let new-section(section) = {
+	utils.register-section(section)
+}
+
 #let final-slide(
 	title: none,
 	e-mail: none,
@@ -161,11 +160,16 @@
 	))
 }
 
-#let focus-slide(background: black, foreground: white, size: 100pt, content) = {
+#let focus-slide(size: 100pt, content) = {
+	utils.register-section(content)
 	set align(center + horizon)
-	logic.polylux-slide(
-		rect(width: 110%, height: 110%, fill: background, text(size: size, fill: foreground, strong(content))),
-	)
+	logic.polylux-slide({
+		grid(
+			rows: distibution_no_title,
+			text(size: size, fill: color-contrast, strong(content)),
+			slide-footer(),
+		)
+	})
 }
 
 #let number = (number, unit: none) => {

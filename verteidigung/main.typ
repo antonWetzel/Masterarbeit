@@ -34,8 +34,12 @@
 		line("Punktwolke", "Segmente")
 		line("Segmente", "Informationen")
 		content(("Wald", 50%, "Punktwolke"), angle: -45deg, anchor: "south", padding: 0.1cm, [Lidar-Scan])
-		content(("Punktwolke", 50%, "Segmente"), angle: 45deg, anchor: "south", padding: 0.1cm, [Segmentierung])
-		content(("Segmente", 50%, "Informationen"), angle: -45deg, anchor: "south", padding: 0.1cm, [Analyse])
+		content(("Punktwolke", 50%, "Segmente"), angle: 45deg, anchor: "south", padding: 0.1cm, [
+			#only(1)[Segmentierung] #only(2)[*Segmentierung*]
+		])
+		content(("Segmente", 50%, "Informationen"), angle: -45deg, anchor: "south", padding: 0.1cm, [
+			#only(1)[Analyse] #only(2)[*Analyse*]
+		])
 	})
 ]
 
@@ -123,6 +127,16 @@
 
 #normal-slide(
 	title: [Ziel],
+	columns: (2fr, 3fr),
+)[
+	- Ein Segment für jeden Baum
+	- Punkte in Segmente unterteilen
+][
+	#image("../images/auto-crop/segments-br05-als.png")
+]
+
+#normal-slide(
+	title: [Ziel],
 )[
 	Baumdaten
 	+ Kronendurchmesser
@@ -154,16 +168,6 @@
 		content((2.5, -2.0), $5$, anchor: "west", padding: 0.15)
 
 	})
-]
-
-#normal-slide(
-	title: [Ziel],
-	columns: (2fr, 3fr),
-)[
-	- Punkte in Segmente unterteilen
-	- Ein Segment für jeden Baum
-][
-	#image("../images/auto-crop/segments-br05-als.png")
 ]
 
 #new-section[Segmentierung]
@@ -374,7 +378,7 @@
 	})
 ]
 
-#focus-slide(background: luma(20%), foreground: luma(80%), size: 90pt, [Demonstration])
+#focus-slide(size: 90pt, [Demonstration])
 
 #new-section[Referenzen]
 
@@ -396,15 +400,34 @@
 
 #final-slide(title: [Danke für ihre Aufmerksamkeit], e-mail: [anton.wetzel\@tu-ilmenau.de])
 
-#focus-slide(background: luma(20%), foreground: luma(80%), size: 90pt, [Nachfragen])
+#focus-slide(size: 90pt, [Nachfragen])
 
 #new-section[Appendix]
 
 #normal-slide(
-	title: [Anzeigen von Punkten],
+	title: [Import (Punkte pro Sekunde)],
 	expand-content: true,
 )[
-	...
+	#image("../data/punkte_pro_sekunde.svg")
+]
+
+#normal-slide(
+	title: [Anzeigen von Punkten],
+)[
+	- Benötigt
+		- Position
+		- Größe
+		- Orientierung
+	- Dreieck + Discard
+	- Instancing
+][
+	#cetz.canvas(length: 1.8cm, {
+		import cetz.draw: *
+		circle((0, 0), radius: 1, fill: silver)
+		line((-1.73, -1), (1.73, -1), (0, 2), close: true)
+	})
+][
+	#image("../images/auto-crop/properties.png")
 ]
 
 #normal-slide(
@@ -453,4 +476,35 @@
 	- *Durchmesser der Baumkrone*
 ][
 	#image("../data/data_crown_diameter.svg")
+]
+
+#let lines_and_mesh(prec) = {
+	grid(
+		rows: (1fr, 1fr, auto),
+		image("../images/crop/triangulation_mesh_" + prec + ".png"),
+		image("../images/crop/triangulation_lines_" + prec + ".png"),
+		align(center, number(prec, unit: [m])),
+	)
+}
+
+#normal-slide(
+	title: [Triangulierung],
+	columns: (1fr, 2fr),
+	expand-content: true,
+)[
+
+	- Ball-Pivoting Algorithmus
+	- Konvexe Hülle
+	- $alpha$ für Genauigkeit
+][
+	#grid(
+		columns: 1 * 5,
+		stroke: silver,
+		inset: 2pt,
+		lines_and_mesh("0.2"),
+		lines_and_mesh("0.5"),
+		lines_and_mesh("1.0"),
+		lines_and_mesh("2.0"),
+		lines_and_mesh("5.0"),
+	)
 ]
