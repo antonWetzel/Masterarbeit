@@ -378,6 +378,44 @@
 	})
 ]
 
+#normal-slide(
+	title: [Detailstufen],
+	expand-content: true,
+)[
+	- Originalen Punkte für Leaf-Knoten
+		- Maximale Punktanzahl
+	- Detailstufen für Branch-Knoten
+][
+	#{
+		set align(center)
+		only(1, image("../images/crop/lod_0.png"))
+		only(2, image("../images/crop/lod_1.png"))
+		only(3, image("../images/crop/lod_2.png"))
+		only(4, image("../images/crop/lod_3.png"))
+		only(5, image("../images/crop/lod_4.png"))
+		only(6, image("../images/crop/lod_5.png"))
+	}
+]
+
+#normal-slide(
+	title: [Culling],
+	expand-content: true,
+)[
+	- Nur sichtbare Knoten anzeigen
+	- Genauer für kleinere Knoten
+][
+	#{
+		set align(center + horizon)
+		only(1, rect(image("../images/culling_0.png"), inset: 0.5pt))
+		only(2, rect(image("../images/culling_1.png"), inset: 0.5pt))
+		only(3, rect(image("../images/culling_2.png"), inset: 0.5pt))
+		only(4, rect(image("../images/culling_3.png"), inset: 0.5pt))
+		only(5, rect(image("../images/culling_4.png"), inset: 0.5pt))
+		only(6, rect(image("../images/culling_5.png"), inset: 0.5pt))
+		only(7, rect(image("../images/culling_6.png"), inset: 0.5pt))
+	}
+]
+
 #focus-slide(size: 90pt, [Demonstration])
 
 #new-section[Referenzen]
