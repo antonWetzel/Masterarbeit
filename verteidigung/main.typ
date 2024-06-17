@@ -5,8 +5,7 @@
 #show: doc => setup(footer: [Anton Wetzel | #datetime.today().display("[day].[month].[year]")], doc)
 
 #title-slide(
-	title: [Kolloquium],
-	subtitle: [Analyse von Bäumen mit 3D-Punktwolken],
+	title: [Analyse und Visualisierung von Bäumen mit 3D-Punktwolken],
 )
 
 #new-section[Überblick]
@@ -465,7 +464,7 @@
 		line((-1.73, -1), (1.73, -1), (0, 2), close: true)
 	})
 ][
-	#image("../images/auto-crop/properties.png")
+	#rect(image("../images/auto-crop/properties.png"), inset: 0.5pt)
 ]
 
 #normal-slide(
