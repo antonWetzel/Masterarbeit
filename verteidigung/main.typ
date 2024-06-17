@@ -222,6 +222,7 @@
 
 #normal-slide(
 	title: [Ablauf],
+	columns: (1.1fr, 1fr, 1fr),
 )[
 	+ Horizontale Scheiben
 	+ Bereiche
@@ -546,3 +547,33 @@
 		lines_and_mesh("5.0"),
 	)
 ]
+
+
+
+/*
+- Laptop strom anschließen
+- Folio 2: Beispielbilder
+- Folio 3: Zweiter Baum
+- Folio 4: Bild größer
+- 25-30min
+- Filio 5: 345 nach links/zuerst listen
+	- Bild größer
+- Folio zwischen 3/4: Datensatz erklärung
+- Folio 6 zuerst alle scheiben gleichzeitig
+- Folio 7/8/9 Bilder beschriften
+- Folio 11 neutraler Baum Bild
+- Folio 11 Klasifizierung mehr kontrast
+- Folio 11: mitte linien dünner
+- Folio 12 nur anschneiden
+- Folie 17: 1 pixel wackler
+- Alle Folion selbsterklärend
+- Softwareprojekt Name ist belegt
+
+- Folio mit ALS, ULS und TLS Daten
+- Ergebniss Folion nach Demo
+
+- SOFTWARE
+- Punkte entfernen
+- Werte neu Berechnen
+- Werte manuel ändern
+*/
