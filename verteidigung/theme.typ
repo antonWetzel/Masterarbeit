@@ -79,6 +79,7 @@
 	title: none,
 	columns: auto,
 	expand-content: false,
+	outline-content: none,
 	..content,
 ) = {
 	let positional = content.pos()
@@ -115,7 +116,7 @@
 	let top = pad(1cm, bottom: 0.5cm, grid(
 		rows: distibution.slice(0, 2),
 		column-gutter: 0.5cm,
-		// stroke: silver,
+		stroke: outline-content,
 		columns: columns,
 		title,
 		..positional,

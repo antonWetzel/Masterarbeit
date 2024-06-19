@@ -8,6 +8,8 @@
 	title: [Analyse und Visualisierung von Bäumen mit 3D-Punktwolken],
 )
 
+#set figure(numbering: none)
+
 #new-section[Überblick]
 
 #normal-slide(
@@ -61,10 +63,10 @@
 		3.05,
 		3.0,
 		3.05,
-		3.1,
-		3.25,
-		3.46,
-		3.78,
+		1.97,
+		1.77,
+		1.75,
+		1.94,
 		2.7,
 		2.65,
 		6,
@@ -75,8 +77,9 @@
 	}
 	#let base() = {
 		rect((-2, -2.99), (6, -3.5), fill: gray, stroke: none)
-		line((-2, -3), (2.3, -3), (2.3, -2), (2.5, -2), (2.5, -3), (6, -3), fill: gray)
+		line((-2, -3), (0.9, -3), (0.9, -2), (1.1, -2), (1.1, -3), (2.3, -3), (2.3, -2), (2.5, -2), (2.5, -3), (6, -3), fill: gray)
 		circle((2.4, -2), fill: gray, radius: 0.5)
+		circle((1, -2), fill: gray, radius: 0.5)
 	}
 
 	#let lines() = {
@@ -118,54 +121,69 @@
 	#only(4, cetz.canvas(length: length, {
 		outer()
 		let stroke = (dash: "dotted", thickness: 2pt)
-		line((-2, -3), (2.3, -3), (2.3, -2), (2.5, -2), (2.5, -3), (6, -3), stroke: stroke)
+		line((-2, -3), (0.9, -3), (0.9, -2), (1.1, -2), (1.1, -3), (2.3, -3), (2.3, -2), (2.5, -2), (2.5, -3), (6, -3), stroke: stroke)
 		circle((2.4, -2), radius: 0.5, stroke: stroke, fill: white)
+		circle((1.0, -2), radius: 0.5, stroke: stroke, fill: white)
 		rect((2.325, -3), (2.4675, -2), fill: white, stroke: none)
+		rect((2.325 - 1.4, -3), (2.4675 - 1.4, -2), fill: white, stroke: none)
 	}))
 ]
 
 #normal-slide(
-	title: [Ziel],
-	columns: (2fr, 3fr),
+	title: [Testdaten],
+	expand-content: true,
+)[
+	- ALS-, ULS- und TLS-Daten
+	- Teilweise in Bäume unterteilt
+	- Messungen für einzelne Bäume
+][
+	#set align(bottom)
+	#figure(caption: [Punktanzahl], image("../data/total_points.svg"))
+]
+
+#normal-slide(
+	title: [Segmentierung],
+	columns: (auto, 1fr),
+	expand-content: true,
 )[
 	- Ein Segment für jeden Baum
-	- Punkte in Segmente unterteilen
+	- Punkte zuordnen
 ][
+	#set align(horizon)
 	#image("../images/auto-crop/segments-br05-als.png")
 ]
 
 #normal-slide(
-	title: [Ziel],
+	title: [Analyse],
+	expand-content: true,
 )[
-	Baumdaten
-	+ Kronendurchmesser
-	+ Stammdurchmesser bei #number(1.3, unit: [m])
 	+ Gesamthöhe
 	+ Kronenhöhe
 	+ Stammhöhe
+	+ Kronendurchmesser
+	+ Stammdurchmesser bei #number(1.3, unit: [m])
 ][
-	#cetz.canvas(length: 1.5cm, {
+	#cetz.canvas(length: 2.6cm, {
 		import cetz.draw: *
 
 		line((-0.2, 0.0), (-0.2, -3.0), (0.2, -3.0), (0.2, 0.0), fill: gray)
 		line((-0.2, -3.0), (0.2, -3.0), (1, -3.2), (-1, -3.2), close: true, fill: gray)
 		circle((0.0, 0.0), radius: 1, fill: gray)
 
+		line((-2.5, -3.0), (-2.5, 1.0), mark: (start: "|", end: "|"))
+		content((-2.5, -1.0), $1$, anchor: "east", padding: 0.1)
+
+		line((-1.8, -0.95), (-1.8, 1.0), mark: (start: "|", end: "|"))
+		content((-1.8, 0.0), $2$, anchor: "east", padding: 0.1)
+
+		line((-1.8, -1.05), (-1.8, -3.0), mark: (start: "|", end: "|"))
+		content((-1.8, -2.0), $3$, anchor: "east", padding: 0.1)
+
 		line((-1.1, 0.0), (1.1, 0.0), mark: (start: "|", end: "|"))
-		content((-1.1, 0.0), $1$, anchor: "east", padding: 0.15)
+		content((-1.1, 0.0), $4$, anchor: "east", padding: 0.1)
 
 		line((-0.25, -2.5), (0.25, -2.5), mark: (start: "|", end: "|"))
-		content((-0.2, -2.5), $2$, anchor: "east", padding: 0.15)
-
-		line((1.5, -3.0), (1.5, 1.0), mark: (start: "|", end: "|"))
-		content((1.5, -1.0), $3$, anchor: "west", padding: 0.15)
-
-		line((2.5, -0.95), (2.5, 1.0), mark: (start: "|", end: "|"))
-		content((2.5, 0.0), $4$, anchor: "west", padding: 0.15)
-
-		line((2.5, -1.05), (2.5, -3.0), mark: (start: "|", end: "|"))
-		content((2.5, -2.0), $5$, anchor: "west", padding: 0.15)
-
+		content((-0.2, -2.5), $5$, anchor: "east", padding: 0.1)
 	})
 ]
 
@@ -180,93 +198,146 @@
 	+ Koordinaten
 	+ Punkte zuordnen
 ][#{
-	set align(right)
-	only(1, image("../images/crop/layers_1.png"))
-	only(2, image("../images/crop/layers_2.png"))
-	only(3, image("../images/crop/layers_3.png"))
-	only(4, image("../images/crop/layers_4.png"))
-	only(5, image("../images/crop/layers_5.png"))
-	only(6, image("../images/crop/layers_6.png"))
-	only(7, image("../images/crop/layers_7.png"))
-	only(8, image("../images/crop/layers_8.png"))
+
+	let images = range(1, 9).map(i => image("../images/crop/layers_" + str(i) + ".png"));
+	only(1, {
+		image("../images/crop/layers_ori.png")
+	})
+	only(2, {
+		image("../images/crop/layers.png")
+	})
+	for (i, img) in images.enumerate() {
+		only(i + 3, img)
+	}
 }]
+
+#let double-image(a, b, text) = {
+	grid(
+		columns: 1 * (1fr, 1fr),
+		gutter: 1em,
+		rect(image(a), inset: 0.5pt),
+		rect(image(b), inset: 0.5pt),
+		grid.cell(colspan: 2, align(center, text))
+	)
+}
 
 #normal-slide(
 	title: [Ablauf],
-	columns: (1.1fr, 1fr, 1fr),
+	columns: (1.1fr, 2fr),
 )[
 	+ Horizontale Scheiben
 	+ *Bereiche*
 	+ Koordinaten
 	+ Punkte zuordnen
 ][
-	#rect(image("../images/test_5-areas.svg"), inset: 0.5pt)
-][
-	#rect(image("../images/test_6-areas.svg"), inset: 0.5pt)
+	#double-image("../images/test_5-areas.svg", "../images/test_6-areas.svg", [Zusammenhängende Bereiche])
 ]
 
 #normal-slide(
 	title: [Ablauf],
-	columns: (1.1fr, 1fr, 1fr),
+	columns: (1.1fr, 2fr),
 )[
 	+ Horizontale Scheiben
 	+ Bereiche
 	+ *Koordinaten*
 	+ Punkte zuordnen
 ][
-	#rect(image("../images/test_5-coords.svg"), inset: 0.5pt)
-][
-	#rect(image("../images/test_6-coords.svg"), inset: 0.5pt)
+	#double-image("../images/test_5-coords.svg", "../images/test_6-coords.svg", [Koordinaten der Bäume])
 ]
 
 #normal-slide(
 	title: [Ablauf],
-	columns: (1.1fr, 1fr, 1fr),
+	columns: (1.1fr, 2fr),
 )[
 	+ Horizontale Scheiben
 	+ Bereiche
 	+ Koordinaten
 	+ *Punkte zuordnen*
 ][
-	#rect(image("../images/test_5-moved.svg"), inset: 0.5pt)
+	#double-image("../images/test_5-moved.svg", "../images/test_6-moved.svg", [Bereiche für die Bäume])
+]
+
+#normal-slide(
+	title: [Ergebnisse],
+	expand-content: true,
+)[
+	#image("../images/auto-crop/segments-ka11-als.png")
 ][
-	#rect(image("../images/test_6-moved.svg"), inset: 0.5pt)
+	#set align(bottom)
+	#image("../images/auto-crop/segmentation_uls.png")
 ]
 
-#normal-slide(
-	title: [Ergebnis],
-)[
-	#grid(
-		columns: (1fr, 1fr),
-		image("../images/auto-crop/segments-ka11-als.png"), image("../images/auto-crop/segmentation_uls.png")
-	)
-]
-
-#new-section[Analyse von Bäumen]
+#new-section[Analyse]
 
 #normal-slide(
-	columns: (2fr, 3fr),
-	title: [Gesamter Baum],
+	columns: (2fr, 4fr),
+	title: [Klassifizierung],
+	expand-content: true,
 )[
-	+ Scheiben
-	+ Unterteilung
+	+ Horizontale Scheiben
+	+ Zugehörige Flächen
+	+ Klassifizierung
 		- Boden
 		- Stamm
 		- Krone
-	+ Höhen
-	+ Durchmesser
 ][
+
+	#set align(center + bottom)
+
 	#grid(
-		columns: 1 * 2,
+		columns: 1 * 4,
 		column-gutter: 2em,
-		image("../images/klassifkation_slices.svg"),
-		image("../images/crop/prop_classification.png"),
+		row-gutter: 0.2em,
+		image("../images/crop/prop_height.png"),
+		image("../images/klassifkation_slices copy.svg"),
+		image("../images/klassifkation_slices copy 2.svg", height: 82%),
+		image("../images/crop/prop_classification-recolor.png"),
+		[Punkte],
+		[Scheiben],
+		[Flächen],
+		[Klassifizierung],
 	)
+]
+
+#normal-slide(
+	columns: (1fr, 1fr),
+	title: [Eigenschaften],
+	expand-content: true,
+)[
+	+ Gesamthöhe
+	+ Kronenhöhe
+	+ Stammhöhe
+	+ Kronendurchmesser
+	+ Stammdurchmesser bei #number(1.3, unit: [m])
+][
+
+	#place(pad(left: 3cm, image("../images/crop/prop_classification-recolor.png")))
+
+	#cetz.canvas(length: 1cm, {
+		import cetz.draw: *
+
+		rect((0, 0.0), (10, 11), stroke: none, fill: rgb(0, 0, 0, 0))
+		line((1.0, 0), (1.0, 11), mark: (start: "|", end: "|"))
+		content((1.0, 5.5), $1$, anchor: "east", padding: 0.1)
+
+		line((2.0, 3.8), (2.0, 11), mark: (start: "|", end: "|"))
+		content((2.0, 7.5), $2$, anchor: "east", padding: 0.1)
+
+		line((2.0, 3.6), (2.0, 0), mark: (start: "|", end: "|"))
+		content((2.0, 1.8), $3$, anchor: "east", padding: 0.1)
+
+		line((3.1, 8.7), (6.8, 8.7), mark: (start: "|", end: "|"))
+		content((3.1, 8.7), $4$, anchor: "east", padding: 0.1)
+
+		line((5, 0.5), (5.3, 0.5), mark: (start: "|", end: "|"))
+		content((5, 0.5), $5$, anchor: "east", padding: 0.1)
+	})
 ]
 
 #normal-slide(
 	columns: (2fr, 3fr),
 	title: [Einzelne Punkte],
+	expand-content: true,
 )[
 	- Daten
 		- Höhe
@@ -276,6 +347,7 @@
 		- Größe
 		- Orientierung
 ][
+	#set align(bottom)
 	#grid(
 		columns: 1 * 4,
 		column-gutter: 2em,
@@ -418,7 +490,55 @@
 
 #focus-slide(size: 90pt, [Demonstration])
 
-#new-section[Referenzen]
+#new-section[Ergebnisse]
+
+#normal-slide(
+	title: [Vergleich],
+	expand-content: true,
+)[
+	- *Gesamthöhe vom Baum*
+	- Stammdurchmesser bei #number(130, unit: [cm])
+	- Anfangshöhe der Baumkrone
+	- Durchmesser der Baumkrone
+][
+	#image("../data/data_tree_height.svg")
+]
+
+#normal-slide(
+	title: [Vergleich],
+	expand-content: true,
+)[
+	- Gesamthöhe vom Baum
+	- *Stammdurchmesser bei #number(130, unit: [cm])*
+	- Anfangshöhe der Baumkrone
+	- Durchmesser der Baumkrone
+][
+	#image("../data/data_trunk_diameter.svg")
+]
+
+#normal-slide(
+	title: [Vergleich],
+	expand-content: true,
+)[
+	- Gesamthöhe vom Baum
+	- Stammdurchmesser bei #number(130, unit: [cm])
+	- *Anfangshöhe der Baumkrone*
+	- Durchmesser der Baumkrone
+][
+	#image("../data/data_crown_start.svg")
+]
+
+#normal-slide(
+	title: [Vergleich],
+	expand-content: true,
+)[
+	- Gesamthöhe vom Baum
+	- Stammdurchmesser bei #number(130, unit: [cm])
+	- Anfangshöhe der Baumkrone
+	- *Durchmesser der Baumkrone*
+][
+	#image("../data/data_crown_diameter.svg")
+] #new-section[Referenzen]
 
 #let link-ref(content) = {
 	set text(size: 0.8em)
@@ -430,7 +550,7 @@
 )[
 	- Arbeit und Vortrag
 		- #link-ref("https://github.com/antonWetzel/masterarbeit")
-	- Softwareprojekt
+	- Programm
 		- #link-ref("https://github.com/antonWetzel/treee")
 	- Präsentationsvorlage
 		- #link-ref("https://intranet.tu-ilmenau.de/site/moef/SitePages/Dokumente.aspx")
@@ -468,54 +588,6 @@
 	#rect(image("../images/auto-crop/properties.png"), inset: 0.5pt)
 ]
 
-#normal-slide(
-	title: [Auswertung],
-	expand-content: true,
-)[
-	- *Gesamthöhe vom Baum*
-	- Stammdurchmesser bei #number(130, unit: [cm])
-	- Anfangshöhe der Baumkrone
-	- Durchmesser der Baumkrone
-][
-	#image("../data/data_tree_height.svg")
-]
-
-#normal-slide(
-	title: [Auswertung],
-	expand-content: true,
-)[
-	- Gesamthöhe vom Baum
-	- *Stammdurchmesser bei #number(130, unit: [cm])*
-	- Anfangshöhe der Baumkrone
-	- Durchmesser der Baumkrone
-][
-	#image("../data/data_trunk_diameter.svg")
-]
-
-#normal-slide(
-	title: [Auswertung],
-	expand-content: true,
-)[
-	- Gesamthöhe vom Baum
-	- Stammdurchmesser bei #number(130, unit: [cm])
-	- *Anfangshöhe der Baumkrone*
-	- Durchmesser der Baumkrone
-][
-	#image("../data/data_crown_start.svg")
-]
-
-#normal-slide(
-	title: [Auswertung],
-	expand-content: true,
-)[
-	- Gesamthöhe vom Baum
-	- Stammdurchmesser bei #number(130, unit: [cm])
-	- Anfangshöhe der Baumkrone
-	- *Durchmesser der Baumkrone*
-][
-	#image("../data/data_crown_diameter.svg")
-]
-
 #let lines_and_mesh(prec) = {
 	grid(
 		rows: (1fr, 1fr, auto),
@@ -549,34 +621,13 @@
 
 - General
 	- Laptop am Strom anschließen
+	- Webex
 	- Gesamtdauer: 25 bis 30 Minuten
 	- Alle Folien selbsterklärend
+	- Analyse Punkte nur Anschneiden
+	- Programm statt Softwareprojekt sagen
 - 2
 	- Beispielbilder
-- 3
-	- Zweiter Baum
-- Einfügen
-	- Datensatz erklären
-- 4
-	- Bild größer
-- 5
-	- Eigenschaften 3, 4 und 5 zuerst aufzählen
-	- Bild größer
-- 6
-	- Zuerst alle Scheiben gleichzeitig
-- 7, 8, 9
-	- Bilder beschriften
-- 11
-	- Bild mit Startpunkten
-	- Bilder beschriften
-	- Bild größer
-	- dünnere Linien
-	- mehr Kontrast für die Klassifizierung
-- 12
-	- nur Anschneiden
-- 17
-	- 1 Pixel Wackler
-- Softwareprojekt Name ist belegt
 - Einfügen (nach Demo)
 	- Folie mit ALS, ULS und TLS Daten
 	- Ergebnis Folien
