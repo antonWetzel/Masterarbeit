@@ -12,10 +12,18 @@
 
 #new-section[Überblick]
 
+#let image2(path) = rect(
+	image(path, width: 5cm, height: 3cm),
+	inset: 0.5pt,
+)
+
+#let rect2 = rect
+#let grid2 = grid
+
 #normal-slide(
 	title: [Ablauf],
 )[
-	#set align(center + horizon)
+	#set align(center)
 	#cetz.canvas(length: 1.0cm, {
 		import cetz.draw: *
 		let box-width = 5.0
@@ -27,20 +35,34 @@
 		set-style(mark: (end: ">", fill: black, scale: 1.4, width: 3.5pt), stroke: black)
 
 		box(0, 0, "Wald")
-		box(6, -6, "Punktwolke")
+		box(6, 0, "Punktwolke")
 		box(12, 0, "Segmente")
-		box(18, -6, "Informationen")
+		box(18, 0, "Informationen")
 
-		line("Wald", "Punktwolke")
-		line("Punktwolke", "Segmente")
-		line("Segmente", "Informationen")
-		content(("Wald", 50%, "Punktwolke"), angle: -45deg, anchor: "south", padding: 0.1cm, [Lidar-Scan])
-		content(("Punktwolke", 50%, "Segmente"), angle: 45deg, anchor: "south", padding: 0.1cm, [
+		let arrow(x, text) = {
+			bezier((x + 3.0, 1), (x + 8.0, 1), (x + 5.5, 2))
+			content((x + 5.5, 1.6), anchor: "south", text)
+		}
+
+		arrow(0.0, [Lidar-Scan])
+		arrow(6.0, [
 			#only(1)[Segmentierung] #only(2)[*Segmentierung*]
 		])
-		content(("Segmente", 50%, "Informationen"), angle: -45deg, anchor: "south", padding: 0.1cm, [
+		arrow(12.0, [
 			#only(1)[Analyse] #only(2)[*Analyse*]
 		])
+
+		content((box-width / 2, -1.8), image2("../images/forest-example.jpg"))
+		content((6 + box-width / 2, -1.8), image2("../images/eye_dome_white_with-edited.png"))
+		content((12 + box-width / 2, -1.8), image2("../images/segment-step.png"))
+		content((18 + box-width / 2, -1.8), rect2(width: 5cm, height: 3cm, inset: 0pt, grid2(
+			columns: 1 * 4,
+			gutter: 1fr,
+			image("../images/crop/prop_classification.png"),
+			image("../images/crop/prop_height.png"),
+			image("../images/crop/prop_curve_all.png"),
+			image("../images/crop/prop_var_all.png"),
+		)))
 	})
 ]
 
@@ -134,8 +156,8 @@
 	expand-content: true,
 )[
 	- ALS-, ULS- und TLS-Daten
-	- Teilweise in Bäume unterteilt
-	- Messungen für einzelne Bäume
+	- Daten teilweise in einzelne Bäume unterteilt
+	- Eigenschaften gemessen für einzelne Bäume
 ][
 	#set align(bottom)
 	#figure(caption: [Punktanzahl], image("../data/total_points.svg"))
@@ -143,11 +165,11 @@
 
 #normal-slide(
 	title: [Segmentierung],
-	columns: (auto, 1fr),
+	columns: (1fr, 1.5fr),
 	expand-content: true,
 )[
 	- Ein Segment für jeden Baum
-	- Punkte zuordnen
+	- Punkte im gleichen Segment zusammenfassen
 ][
 	#set align(horizon)
 	#image("../images/auto-crop/segments-br05-als.png")
@@ -493,6 +515,66 @@
 #new-section[Ergebnisse]
 
 #normal-slide(
+	title: [Beispieldaten],
+	columns: (2fr, 1fr, 1fr),
+	expand-content: true,
+)[
+
+	#let test(idx, content) = {
+		alternatives-match((
+			"1": content,
+			"2": content,
+			"3": content,
+			"4": content,
+			str(idx): table.cell(fill: silver, content),
+		))
+	}
+
+	#for i in range(1, 5) {
+		set align(center)
+		only(i, {
+			let args = (
+				[ALS],
+				number(1503),
+				number(6446),
+				[ULS-off],
+				number(7156),
+				number(58201),
+				[ULS-on],
+				number(6273),
+				number(74262),
+				[TLS],
+				[-],
+				number(1687505),
+			)
+			args = args.enumerate().map(((idx, val)) => if (int(idx / 3) + 1 == i) { table.cell(fill: silver, val) } else { val })
+			table(
+				columns: (1fr, 1fr, 1fr),
+				[*Quelle*], table.cell(colspan: 2)[*Punktanzahl*], inset: 10pt,
+				..args
+			)
+		})
+	}
+
+][
+	#{
+		set align(center)
+		only(1, image("../images/crop/compare2_als.png"))
+		only(2, image("../images/crop/compare2_uls_off.png"))
+		only(3, image("../images/crop/compare2_uls_on.png"))
+		only(4, rect(width: 100%, height: 100%, radius: 5pt, align(center + horizon)[Keine Daten]))
+	}
+][
+	#{
+		set align(center)
+		only(1, image("../images/crop/compare_als.png"))
+		only(2, image("../images/crop/compare_uls_off.png"))
+		only(3, image("../images/crop/compare_uls_on.png"))
+		only(4, image("../images/crop/compare_tls.png"))
+	}
+]
+
+#normal-slide(
 	title: [Vergleich],
 	expand-content: true,
 )[
@@ -541,19 +623,24 @@
 ] #new-section[Referenzen]
 
 #let link-ref(content) = {
-	set text(size: 0.8em)
 	link(content, raw(content))
 }
 
 #normal-slide(
 	title: [Quellen],
 )[
+	#set text(size: 0.7em)
+
 	- Arbeit und Vortrag
 		- #link-ref("https://github.com/antonWetzel/masterarbeit")
 	- Programm
 		- #link-ref("https://github.com/antonWetzel/treee")
 	- Präsentationsvorlage
 		- #link-ref("https://intranet.tu-ilmenau.de/site/moef/SitePages/Dokumente.aspx")
+	- Testdaten
+		- #link-ref("https://doi.pangaea.de/10.1594/PANGAEA.942856?format=html#download")
+	- Waldfoto (Folie 2)
+		- #link-ref("https://commons.wikimedia.org/wiki/File:L%27automne_au_Qu%C3%A9bec_(8072544123).jpg")
 ]
 
 #final-slide(title: [Danke für ihre Aufmerksamkeit], e-mail: [anton.wetzel\@tu-ilmenau.de])
@@ -626,12 +713,6 @@
 	- Alle Folien selbsterklärend
 	- Analyse Punkte nur Anschneiden
 	- Programm statt Softwareprojekt sagen
-- 2
-	- Beispielbilder
-- Einfügen (nach Demo)
-	- Folie mit ALS, ULS und TLS Daten
-	- Ergebnis Folien
-
 - SOFTWARE
 	- Punkte entfernen
 	- Werte neu Berechnen
