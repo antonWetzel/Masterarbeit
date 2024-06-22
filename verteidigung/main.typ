@@ -37,7 +37,7 @@
 		box(0, 0, "Wald")
 		box(6, 0, "Punktwolke")
 		box(12, 0, "Segmente")
-		box(18, 0, "Informationen")
+		box(18, 0, "Eigenschaften")
 
 		let arrow(x, text) = {
 			bezier((x + 3.0, 1), (x + 8.0, 1), (x + 5.5, 2))
@@ -70,7 +70,7 @@
 	title: [Eingabedaten],
 )[
 	- Lidar-Scan von einem Wald
-	- Quelle
+	- Sensor
 		- (`TLS`) Terrestrial
 		- (`ULS`) Drohne
 		- (`ALS`) Flugzeug
@@ -149,18 +149,6 @@
 		rect((2.325, -3), (2.4675, -2), fill: white, stroke: none)
 		rect((2.325 - 1.4, -3), (2.4675 - 1.4, -2), fill: white, stroke: none)
 	}))
-]
-
-#normal-slide(
-	title: [Testdaten],
-	expand-content: true,
-)[
-	- ALS-, ULS- und TLS-Daten
-	- Daten teilweise in einzelne Bäume unterteilt
-	- Eigenschaften gemessen für einzelne Bäume
-][
-	#set align(bottom)
-	#figure(caption: [Punktanzahl], image("../data/total_points.svg"))
 ]
 
 #normal-slide(
@@ -515,6 +503,19 @@
 #new-section[Ergebnisse]
 
 #normal-slide(
+	title: [Testdaten],
+	expand-content: true,
+)[
+	- ALS-, ULS- und TLS-Daten für mehrere Gebiete
+	- Liste von Punkten
+	- Daten in einzelne Bäume unterteilt
+	- Teilweise Eigenschaften für einzelne Bäume gemessen
+][
+	#set align(bottom)
+	#figure(caption: [Punktanzahl], image("../data/total_points.svg"))
+]
+
+#normal-slide(
 	title: [Beispieldaten],
 	columns: (2fr, 1fr, 1fr),
 	expand-content: true,
@@ -706,6 +707,7 @@
 	)
 ]
 
+/*
 - General
 	- Laptop am Strom anschließen
 	- Webex
@@ -717,3 +719,4 @@
 	- Punkte entfernen
 	- Werte neu Berechnen
 	- Werte händisch anpassen
+*/
