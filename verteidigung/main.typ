@@ -151,8 +151,10 @@
 	}))
 ]
 
+#new-section[Segmentierung]
+
 #normal-slide(
-	title: [Segmentierung],
+	title: [Ziel],
 	columns: (1fr, 1.5fr),
 	expand-content: true,
 )[
@@ -162,42 +164,6 @@
 	#set align(horizon)
 	#image("../images/auto-crop/segments-br05-als.png")
 ]
-
-#normal-slide(
-	title: [Analyse],
-	expand-content: true,
-)[
-	+ Gesamthöhe
-	+ Kronenhöhe
-	+ Stammhöhe
-	+ Kronendurchmesser
-	+ Stammdurchmesser bei #number(1.3, unit: [m])
-][
-	#cetz.canvas(length: 2.6cm, {
-		import cetz.draw: *
-
-		line((-0.2, 0.0), (-0.2, -3.0), (0.2, -3.0), (0.2, 0.0), fill: gray)
-		line((-0.2, -3.0), (0.2, -3.0), (1, -3.2), (-1, -3.2), close: true, fill: gray)
-		circle((0.0, 0.0), radius: 1, fill: gray)
-
-		line((-2.5, -3.0), (-2.5, 1.0), mark: (start: "|", end: "|"))
-		content((-2.5, -1.0), $1$, anchor: "east", padding: 0.1)
-
-		line((-1.8, -0.95), (-1.8, 1.0), mark: (start: "|", end: "|"))
-		content((-1.8, 0.0), $2$, anchor: "east", padding: 0.1)
-
-		line((-1.8, -1.05), (-1.8, -3.0), mark: (start: "|", end: "|"))
-		content((-1.8, -2.0), $3$, anchor: "east", padding: 0.1)
-
-		line((-1.1, 0.0), (1.1, 0.0), mark: (start: "|", end: "|"))
-		content((-1.1, 0.0), $4$, anchor: "east", padding: 0.1)
-
-		line((-0.25, -2.5), (0.25, -2.5), mark: (start: "|", end: "|"))
-		content((-0.2, -2.5), $5$, anchor: "east", padding: 0.1)
-	})
-]
-
-#new-section[Segmentierung]
 
 #normal-slide(
 	title: [Ablauf],
@@ -264,7 +230,7 @@
 	+ Koordinaten
 	+ *Punkte zuordnen*
 ][
-	#double-image("../images/test_5-moved.svg", "../images/test_6-moved.svg", [Bereiche für die Bäume])
+	#double-image("../images/test_5-moved.svg", "../images/test_6-moved.svg", [Bereiche für die Punkte])
 ]
 
 #normal-slide(
@@ -278,6 +244,40 @@
 ]
 
 #new-section[Analyse]
+
+#normal-slide(
+	title: [Ziel],
+	expand-content: true,
+)[
+	+ Gesamthöhe
+	+ Kronenhöhe
+	+ Stammhöhe
+	+ Kronendurchmesser
+	+ Stammdurchmesser bei #number(1.3, unit: [m])
+][
+	#cetz.canvas(length: 2.6cm, {
+		import cetz.draw: *
+
+		line((-0.2, 0.0), (-0.2, -3.0), (0.2, -3.0), (0.2, 0.0), fill: gray)
+		line((-0.2, -3.0), (0.2, -3.0), (1, -3.2), (-1, -3.2), close: true, fill: gray)
+		circle((0.0, 0.0), radius: 1, fill: gray)
+
+		line((-2.5, -3.0), (-2.5, 1.0), mark: (start: "|", end: "|"))
+		content((-2.5, -1.0), $1$, anchor: "east", padding: 0.1)
+
+		line((-1.8, -0.95), (-1.8, 1.0), mark: (start: "|", end: "|"))
+		content((-1.8, 0.0), $2$, anchor: "east", padding: 0.1)
+
+		line((-1.8, -1.05), (-1.8, -3.0), mark: (start: "|", end: "|"))
+		content((-1.8, -2.0), $3$, anchor: "east", padding: 0.1)
+
+		line((-1.1, 0.0), (1.1, 0.0), mark: (start: "|", end: "|"))
+		content((-1.1, 0.0), $4$, anchor: "east", padding: 0.1)
+
+		line((-0.25, -2.5), (0.25, -2.5), mark: (start: "|", end: "|"))
+		content((-0.2, -2.5), $5$, anchor: "east", padding: 0.1)
+	})
+]
 
 #normal-slide(
 	columns: (2fr, 4fr),
@@ -551,7 +551,8 @@
 			args = args.enumerate().map(((idx, val)) => if (int(idx / 3) + 1 == i) { table.cell(fill: silver, val) } else { val })
 			table(
 				columns: (1fr, 1fr, 1fr),
-				[*Quelle*], table.cell(colspan: 2)[*Punktanzahl*], inset: 10pt,
+				inset: 10pt,
+				[*Quelle*], table.cell(colspan: 2)[*Punktanzahl*],
 				..args
 			)
 		})
